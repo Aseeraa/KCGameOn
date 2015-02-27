@@ -7,35 +7,30 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
  <form class="form-inline" role="search">
   <div class="form-inline">
-    <input type="text" class="form-control" placeholder="Username to find">
-    <button type="submit" class="btn btn-default">Find</button>
+    <input id="Mapsearch" type="text" class="form-control" placeholder="Username to find">
   </div>
 </form>
     <script>
-        //debugger;
-        //var found = 0;
-        //$(document).ready(function () {
-        //    $('.').typeahead({
-        //        source: function (query) {
-        //            debugger;
-        //            $.ajax({
-        //                type: "POST",
-        //                url: "Map.aspx/FindUser",
-        //                data: '{user: ' + JSON.stringify(typeahead) + '}',
-        //                contentType: "application/json; charset=utf-8",
-        //                dataType: "json",
-        //                sucess: function (response) {
-        //                    debugger;
-        //                    found = response;
-        //                },
-        //                error: function () {
-        //                }
-        //            });
-        //        }
-        //    });
-        //});
+        $(document).ready(function () {
+            $('#Mapsearch').typeahead({
+                source: function (query) {
+                    $.ajax({
+                        type: "POST",
+                        url: "Map.aspx/FindUser",
+                        data: '{user: ' + JSON.stringify(typeahead) + '}',
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        sucess: function (response) {
+                            debugger;
+                            found = response;
+                        },
+                        error: function () {
+                        }
+                    });
+                }
+            });
+        });
     </script>
-
         <div id="viewport"></div>
     <script src="js/bootbox.js"></script>
     <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>

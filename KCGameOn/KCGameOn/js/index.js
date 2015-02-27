@@ -219,6 +219,7 @@
         var projectors = ["138", "140", "148", "145", "143", "127", "118", "116"];
         //var userFound = found;
         var world = new GameOn.CustomMap(mapDivId);
+
         //var infowindow = new google.maps.InfoWindow();
         //var infobox = new InfoBox({
         //    content: '<button class="reserve-button" onclick="myFunction()">Reserve</button>',
@@ -247,132 +248,130 @@
                         window.open('/Account/Login.aspx', '_self');
                     }
                 },{
-                "label": "Cancel",
-                "class": "danger",
-                "callback": function () {
-                }
-            }]);
-            //prompt(e.latLng);
-            //var id = prompt("Seat id:");
-            //if (id == null || id == "")
-            //    return;
-            //world.addMarker(e.latLng, id, "Empty");
+                    "label": "Cancel",
+                    "class": "danger",
+                    "callback": function () {
+                    }
+                }]);
         });
-        //index 137, 139, 147, 144, 142, 126, 117, 115
-
-        if (currentUser != null) {
             world.setMarkerEvents({
                 click: function (e) {
-                    world.markers.forEach(function (marker) {
-                        if (marker.title == currentUser) {
-                            if ($.inArray(marker.id, projectors) != -1) {
-                                marker.title = "Projector";
-                                marker.setIcon(world.icons.projector);
+                    debugger;
+                    if (currentUser != null) {
+                        world.markers.forEach(function (marker) {
+                            if (marker.title == currentUser) {
+                                if ($.inArray(marker.id, projectors) != -1) {
+                                    marker.title = "Projector";
+                                    marker.setIcon(world.icons.projector);
+                                }
+                                else {
+                                    marker.title = "Empty";
+                                    marker.setIcon(world.icons.empty);
+                                }
                             }
-                            else{
-                                marker.title = "Empty";
-                                marker.setIcon(world.icons.empty);
+                            else if (e.marker.title == "Empty") {
+                                //infowindow.open(world.map, e.marker);
+                                //infobox.open(world.map, e.marker);
+                                e.marker.title = currentUser;
+                                e.marker.setIcon(world.icons.active);
                             }
-                            //if (previous == "Projector") {
-                            //    marker.title = "Projector";
-                            //    marker.setIcon(world.icons.projector);
-                            //}
-                            //else {
-                            //    marker.title = "Empty";
-                            //    marker.setIcon(world.icons.empty);
-                            //}
-                            //infobox.close();
-                        }
-                        else if (e.marker.title == "Empty") {
-                            //infowindow.open(world.map, e.marker);
-                            //infobox.open(world.map, e.marker);
-                            e.marker.title = currentUser;
-                            e.marker.setIcon(world.icons.active);
-                        }
-                        else if (e.marker.title == "Projector") {
-                            e.marker.title = currentUser;
-                            e.marker.setIcon(world.icons.active_projector);
-                        }
-                        //var infowindow = new google.maps.InfoWindow({
-                        //    content: " "
-                        //});
-                        //google.maps.event.addListener(marker, 'click', function() {
-                        //    infowindow.setContent('<p>This is a projector seat, projector is provided.</p>' +
-                        //                '<button onclick="myFunction()">Sit Down</button>');
-                        //    infowindow.open(gmaps, marker);
-                        //});
-                    });
-                    //Makes call to set user to the current seat.
-                    var user = {};
-                    user.Username = currentUser;
-                    user.SeatID = e.marker.id;
-                    $.ajax({
-                        type: "POST",
-                        url: "Map.aspx/SaveUser",
-                        data: '{user: ' + JSON.stringify(user) + '}',
-                        contentType: "application/json; charset=utf-8",
-                        dataType: "json",
-                        sucess: function (response) {
-                            alert("You have been successfully seated.");
-                            window.location.reload();
-                        },
-                        error: function () {
-                            alert("Failed to sit down, please inform an administrator or try again in a few minutes.");
-                            window.location.reload();
-                        }
-                    });
+                            else if (e.marker.title == "Projector") {
+                                e.marker.title = currentUser;
+                                e.marker.setIcon(world.icons.active_projector);
+                            }
+                        });
+
+                        //Makes call to set user to the current seat.
+                        var user = {};
+                        user.Username = currentUser;
+                        user.SeatID = e.marker.id;
+                        $.ajax({
+                            type: "POST",
+                            url: "Map.aspx/SaveUser",
+                            data: '{user: ' + JSON.stringify(user) + '}',
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                            sucess: function (response) {
+                                alert("You have been successfully seated.");
+                                window.location.reload();
+                            },
+                            error: function () {
+                                alert("Failed to sit down, please inform an administrator or try again in a few minutes.");
+                                window.location.reload();
+                            }
+                        });
+                    }
+                    else {
+                        bootbox.dialog("Please login to choose a seat.", [
+                        {
+                            "label": "Login",
+                            "class": "primary",
+                            "callback": function () {
+                                window.open('/Account/Login.aspx', '_self');
+                            }
+                        }, {
+                            "label": "Cancel",
+                            "class": "danger",
+                            "callback": function () {
+                            }
+                        }]);
+                    }
                 },
                 rightclick: function (e) {
-                    world.markers.forEach(function (marker) {
-                        if (e.marker.title == currentUser) {
-                            if ($.inArray(e.marker.id, projectors) != -1) {
-                                e.marker.title = "Projector";
-                                e.marker.setIcon(world.icons.projector);
+                    if (currentUser != null) {
+                        world.markers.forEach(function (marker) {
+                            if (e.marker.title == currentUser) {
+                                if ($.inArray(e.marker.id, projectors) != -1) {
+                                    e.marker.title = "Projector";
+                                    e.marker.setIcon(world.icons.projector);
+                                }
+                                else {
+                                    e.marker.title = "Empty";
+                                    e.marker.setIcon(world.icons.empty);
+                                }
                             }
-                            else {
-                                e.marker.title = "Empty";
-                                e.marker.setIcon(world.icons.empty);
-                            }
-                        }
-                    });
+                        });
+                    }
+                    else {
+                    }
                 }
             });
-        }
-        world.loadMarkers(seats);
+                    
+            world.loadMarkers(seats);
 
-        var updateMarkers = function(people) {
-            people.forEach(function(person) {
-                world.markers.forEach(function(marker) {
-                    if (marker.id == person.id) {
-                        if ($.inArray(marker.id, projectors) == -1) {
-                            marker.title = person.title;
-                            marker.setIcon(world.icons.full);
+            var updateMarkers = function(people) {
+                people.forEach(function(person) {
+                    world.markers.forEach(function(marker) {
+                        if (marker.id == person.id) {
+                            if ($.inArray(marker.id, projectors) == -1) {
+                                marker.title = person.title;
+                                marker.setIcon(world.icons.full);
+                            }
+                            else {
+                                marker.title = person.title;
+                                marker.setIcon(world.icons.occupied_projector);
+                            }
                         }
-                        else {
-                            marker.title = person.title;
+                        if (marker.title == currentUser) {
+                            if ($.inArray(marker.id,projectors) != -1)
+                                marker.setIcon(world.icons.active_projector);
+                            else
+                                marker.setIcon(world.icons.active);
+                        }
+                        if (marker.title == "Reserved")
+                            marker.setIcon(world.icons.reserved);
+                        if (marker.title == "Projector")
+                            marker.setIcon(world.icons.projector);
+                        if (marker.title == "Occupied Projector") {
+                            marker.title = currentUser;
                             marker.setIcon(world.icons.occupied_projector);
                         }
-                    }
-                    if (marker.title == currentUser) {
-                        if ($.inArray(marker.id,projectors) != -1)
-                            marker.setIcon(world.icons.active_projector);
-                        else
-                            marker.setIcon(world.icons.active);
-                    }
-                    if (marker.title == "Reserved")
-                        marker.setIcon(world.icons.reserved);
-                    if (marker.title == "Projector")
-                        marker.setIcon(world.icons.projector);
-                    if (marker.title == "Occupied Projector") {
-                        marker.title = currentUser;
-                        marker.setIcon(world.icons.occupied_projector);
-                    }
+                    });
                 });
-            });
+            };
+            return {
+                updateMarkers: updateMarkers
+            };
         };
-        return {
-            updateMarkers: updateMarkers
-        };
-    };
 
-})(window.GameOn = window.GameOn || {}, google.maps);
+    })(window.GameOn = window.GameOn || {}, google.maps);
