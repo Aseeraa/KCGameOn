@@ -7,26 +7,31 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
  <form class="form-inline" role="search">
   <div class="form-inline">
-    <input id="Mapsearch" type="text" class="form-control" placeholder="Username to find">
+    <input id="Mapsearch" type="text" placeholder="Username to find"/>
   </div>
 </form>
     <script>
+        var people = <%=people%>
+        seats = <%=seats%>
+        filtered = [];
         $(document).ready(function () {
-            $('#Mapsearch').typeahead({
-                source: function (query) {
-                    $.ajax({
-                        type: "POST",
-                        url: "Map.aspx/FindUser",
-                        data: '{user: ' + JSON.stringify(typeahead) + '}',
-                        contentType: "application/json; charset=utf-8",
-                        dataType: "json",
-                        sucess: function (response) {
-                            debugger;
-                            found = response;
-                        },
-                        error: function () {
+            $('form input').keydown(function (event) {
+                if (event.keyCode == 13) {
+                    event.preventDefault();
+                    var found = [];
+                    var value = $(this).val().toLowerCase();
+                    $.grep(people, function (n) {
+                        if (value != "") {
+                            var index = n.title.indexOf(value);
+                            if (index != -1) {
+                                //filtered.push(people.get(index));
+                                found.push(n);
+                            }
                         }
                     });
+                    debugger;
+                    filtered = found;
+                    viewport.updateMarkers(people, filtered);
                 }
             });
         });
@@ -41,12 +46,10 @@
     <script>
 
         var viewport,
-            currentUser = null,
-            seats = <%=seats%>
-        people = <%=people%>
+            currentUser = null
                     function initialize() {
                         viewport = new GameOn.SeatingMap(document.getElementById("viewport"), seats, currentUser);
-                        viewport.updateMarkers(people);
+                        viewport.updateMarkers(people, filtered);
                     }
         google.maps.event.addDomListener(window, "load", initialize);
     </script>
@@ -54,12 +57,10 @@
         <%else { %>
     <script>
         var viewport,
-            currentUser = "<%= SessionVariables.UserName.ToLower() %>",
-            seats = <%=seats%>
-        people = <%=people%>
+            currentUser = "<%= SessionVariables.UserName.ToLower() %>"
         function initialize() {
             viewport = new GameOn.SeatingMap(document.getElementById("viewport"), seats, currentUser);
-            viewport.updateMarkers(people);
+            viewport.updateMarkers(people, filtered);
         }
         google.maps.event.addDomListener(window, "load", initialize);
         </script>

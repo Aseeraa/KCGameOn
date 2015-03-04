@@ -24,7 +24,8 @@
                 map: map,
                 position: latLng,
                 title: title,
-                icon: icons.empty
+                icon: icons.empty,
+                zIndex: google.maps.Marker.MAX_ZINDEX -1
             });
             marker.id = id;
             markers.push(marker);
@@ -93,7 +94,11 @@
             };
             icons.found = {
                 url: "/img/found.png",
-                size: base.size, origin: base.origin, anchor: base.anchor
+                size: new gmaps.Size(22, 22), origin: base.origin, anchor: base.anchor
+            };
+            icons.proj_found = {
+                url: "/img/proj_found.png",
+                size: new gmaps.Size(22, 22), origin: base.origin, anchor: base.anchor
             };
         }
 
@@ -240,23 +245,24 @@
         //});
         //infowindow.setContent('<p><button onclick="myFunction()">Reserve</button><p>');
         gmaps.event.addListener(world.map, "click", function (e) {
-            bootbox.dialog("Please login to choose a seat.", [
-                {
-                    "label": "Login",
-                    "class": "primary",
-                    "callback": function () {
-                        window.open('/Account/Login.aspx', '_self');
-                    }
-                },{
-                    "label": "Cancel",
-                    "class": "danger",
-                    "callback": function () {
-                    }
-                }]);
+            if (currentUser == null) {
+                bootbox.dialog("Please login to choose a seat.", [
+                    {
+                        "label": "Login",
+                        "class": "primary",
+                        "callback": function () {
+                            window.open('/Account/Login.aspx', '_self');
+                        }
+                    }, {
+                        "label": "Cancel",
+                        "class": "danger",
+                        "callback": function () {
+                        }
+                    }]);
+            }
         });
             world.setMarkerEvents({
                 click: function (e) {
-                    debugger;
                     if (currentUser != null) {
                         world.markers.forEach(function (marker) {
                             if (marker.title == currentUser) {
@@ -339,13 +345,31 @@
                     
             world.loadMarkers(seats);
 
-            var updateMarkers = function(people) {
+            function pluckByName(inArr, name) {
+                for (var ind = 0; ind < inArr.length; ind++) {
+                    if (inArr[ind].title == name && name != "") {
+                        return true;
+                    }
+                }
+                return false;
+            }
+            var zInd = google.maps.Marker.MAX_ZINDEX + 1;
+            var updateMarkers = function (people, filtered) {
                 people.forEach(function(person) {
-                    world.markers.forEach(function(marker) {
+                    world.markers.forEach(function (marker) {
                         if (marker.id == person.id) {
-                            if ($.inArray(marker.id, projectors) == -1) {
+                            if ($.inArray(marker.id, projectors) == -1 && !pluckByName(filtered, person.title)) {
                                 marker.title = person.title;
                                 marker.setIcon(world.icons.full);
+                            }
+                            else if (marker.id == person.id && $.inArray(marker.id, projectors) != -1 && pluckByName(filtered, person.title)) {
+                                marker.setIcon(world.icons.proj_found);
+                                marker.zIndex = zInd;
+                            }
+                            else if (marker.id == person.id && pluckByName(filtered, person.title) && $.inArray(marker.id, projectors) == -1) {
+                                marker.title = person.title;
+                                marker.setIcon(world.icons.found);
+                                marker.zIndex = zInd;
                             }
                             else {
                                 marker.title = person.title;
@@ -353,7 +377,7 @@
                             }
                         }
                         if (marker.title == currentUser) {
-                            if ($.inArray(marker.id,projectors) != -1)
+                            if ($.inArray(marker.id, projectors) != -1)
                                 marker.setIcon(world.icons.active_projector);
                             else
                                 marker.setIcon(world.icons.active);
