@@ -3,46 +3,46 @@
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
     <style>
         .listdiv {
-  width: 400px;
-}
+              width: 400px;
+            }
  
-.listh2 {
-  font: 200 20px/1.5 Helvetica, Verdana, sans-serif;
-  color: #33b5e5;
-  margin: 0;
-  padding: 0;
-}
+            .listh2 {
+              font: 200 20px/1.5 Helvetica, Verdana, sans-serif;
+              color: #33b5e5;
+              margin: 0;
+              padding: 0;
+            }
 
-.registerh3 {
-  font: 200 25px/1.5 Helvetica, Verdana, sans-serif;
-  font-style:italic;
-  color: #33b5e5;
-  margin: 0;
-  padding: 0;
-}
+            .registerh3 {
+              font: 200 25px/1.5 Helvetica, Verdana, sans-serif;
+              font-style:italic;
+              color: #33b5e5;
+              margin: 0;
+              padding: 0;
+            }
  
-.listul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
+            .listul {
+              list-style-type: none;
+              margin: 0;
+              padding: 0;
+            }
  
-.listli {
-  font: 200 15px/1.5 Helvetica, Verdana, sans-serif;
-  border-bottom: 1px solid #ccc;
-  padding: 5px;
-}
+            .listli {
+              font: 200 15px/1.5 Helvetica, Verdana, sans-serif;
+              border-bottom: 1px solid #ccc;
+              padding: 5px;
+            }
  
-.listli:last-child {
-  border: none;
-}
+            .listli:last-child {
+              border: none;
+            }
  
-.listli:hover {
-  font-size: 20px;
-  background: #33b5e5;
-  color: #FFFFFF;
-  padding: 5px;
-}
+            .listli:hover {
+              font-size: 20px;
+              background: #33b5e5;
+              color: #FFFFFF;
+              padding: 5px;
+            }
     </style>
     <script src='https://www.google.com/recaptcha/api.js'></script>
     <script type="text/javascript">
@@ -118,7 +118,10 @@
 <div class="row-fluid" >
     <div class="span6">
     <form class="well form-horizontal" runat="server" id="contactformvalidation">
-        <h3 style="color:red"><%=RegisterErrorString%></h3>
+        <%if (RegisterErrorString != null && RegisterErrorString != ""){ %>
+            <div class="alert alert-error"><%=RegisterErrorString%></div>
+        <%} %>
+        
         <br />
         <div class="control-group">
             <label class="control-label" for="inputFirst">First Name</label>

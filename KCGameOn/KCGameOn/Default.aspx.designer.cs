@@ -13,6 +13,15 @@ namespace KCGameOn {
     public partial class _Default {
         
         /// <summary>
+        /// myForm control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlForm myForm;
+        
+        /// <summary>
         /// table_feed control.
         /// </summary>
         /// <remarks>

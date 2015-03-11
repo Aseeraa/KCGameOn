@@ -4894,17 +4894,17 @@ a.badge:hover {
 {
     text-decoration:underline;
     font-weight:bolder;
-    color:#0099cc;
+    color:#FFFFFF;
    
 }
 
 .Menubody-trigger-active
 {
-    color:#0099cc;
+    color:#FFFFFF;
 }
 .Menubody-trigger {
     font-size: medium;
-    color:#66cc33;
+    color:#33b5e5;
 }
 
 .captionjs {

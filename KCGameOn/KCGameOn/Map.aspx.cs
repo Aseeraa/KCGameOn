@@ -25,11 +25,12 @@ namespace KCGameOn
             String UserInfo = ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString;
             try
             {
-
                 cmd = new MySqlCommand("SELECT * FROM seatcoords", new MySqlConnection(UserInfo));
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Connection.Open();
-                reader = cmd.ExecuteReader();
+                IAsyncResult result = cmd.BeginExecuteReader();
+                //reader = cmd.ExecuteReader();
+                reader = cmd.EndExecuteReader(result);
                 seats += "[";
                 while (reader.Read())
                 {
@@ -38,15 +39,18 @@ namespace KCGameOn
                 }
                 seats += "]";
                 reader.Close();
+
                 cmd.Connection.Close();
 
                 cmd = new MySqlCommand("SELECT * FROM seatingchart", new MySqlConnection(UserInfo));
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Connection.Open();
+                result = cmd.BeginExecuteReader();
 
                 int counter = 0;
 
-                reader = cmd.ExecuteReader();
+                //reader = cmd.ExecuteReader();
+                reader = cmd.EndExecuteReader(result);
                 people += "[";
                 while (reader.Read())
                 {

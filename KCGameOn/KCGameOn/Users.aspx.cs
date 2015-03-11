@@ -16,11 +16,12 @@ namespace KCGameOn
         protected void Page_Load(object sender, EventArgs e)
         {
             String UserInfo = ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString;
-            MySqlDataReader Reader;
+            MySqlDataReader Reader = null;
+            MySqlCommand cmd = null;
 
             try
             {
-                MySqlCommand cmd = new MySqlCommand("getUsers", new MySqlConnection(UserInfo));
+                cmd = new MySqlCommand("getUsers", new MySqlConnection(UserInfo));
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
                 cmd.Connection.Open();
@@ -40,6 +41,10 @@ namespace KCGameOn
             }
             finally
             {
+                if (cmd.Connection != null)
+                    cmd.Connection.Close();
+                if (Reader != null)
+                    Reader.Close();
             }
         }
     }

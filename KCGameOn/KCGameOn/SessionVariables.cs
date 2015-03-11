@@ -10,6 +10,9 @@ using Newtonsoft.Json.Linq;
 using System.Web.Security;
 using System.Text;
 using System.Net.NetworkInformation;
+using System.Net.Mail;
+using System.Net;
+using System.Configuration;
 
 namespace KCGameOn
 {
@@ -29,7 +32,18 @@ namespace KCGameOn
                 return null;
             }
         }
-
+        private static string RecoveryCode;
+        public static string recoveryCode
+        {
+            get { return RecoveryCode; }
+            set { RecoveryCode = value; }
+        }
+        private static int iseq;
+        public static int iSeq
+        {
+            get { return iseq; }
+            set { iseq = value; }
+        }
         private static void setSessionString(object item, string name)
         {
             if (item != null)
@@ -113,6 +127,30 @@ namespace KCGameOn
             Rfc2898DeriveBytes Hasher = new Rfc2898DeriveBytes(Password,
                 System.Text.Encoding.Default.GetBytes(Salt), 10000);
             return Convert.ToBase64String(Hasher.GetBytes(25));
+        }
+    }
+    public class MailClient
+    {
+        public void SendEmail(string body, string subject, string ToEmail)
+        {
+            //Send User an email.
+            using (MailMessage mm = new MailMessage(ConfigurationManager.ConnectionStrings["FromEmail"].ConnectionString, ToEmail))
+            {
+                mm.Subject = subject;
+                mm.Body = body;
+                mm.IsBodyHtml = true;
+
+                var smtp = new SmtpClient
+                {
+                    Host = "smtp.gmail.com",
+                    Port = 587,
+                    EnableSsl = true,
+                    DeliveryMethod = SmtpDeliveryMethod.Network,
+                    UseDefaultCredentials = true,
+                    Credentials = new NetworkCredential(ConfigurationManager.ConnectionStrings["FromEmail"].ConnectionString, ConfigurationManager.ConnectionStrings["FromEmailPass"].ConnectionString)
+                };
+                smtp.Send(mm);
+            }
         }
     }
 }

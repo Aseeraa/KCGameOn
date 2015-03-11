@@ -61,7 +61,6 @@ namespace KCGameOn.Account
             if (!IsPostBack)
             {
                 ErrorString = null;
-
                 HttpCookie authCookie = Request.Cookies[FormsAuthentication.FormsCookieName];
                 HttpCookie macCookie = Request.Cookies[ConfigurationManager.ConnectionStrings["MacCookieName"].ConnectionString];
                 HttpCookie ipCookie = Request.Cookies[ConfigurationManager.ConnectionStrings["IpCookieName"].ConnectionString];
@@ -78,6 +77,10 @@ namespace KCGameOn.Account
                         {
                             SessionVariables.UserName = ticket.Name;
                             if (String.IsNullOrEmpty(redirect))
+                            {
+                                    Response.Redirect("/Default.aspx");
+                            }
+                            else if (redirect.Contains("/AccountManagement.aspx"))
                             {
                                 Response.Redirect("/Default.aspx");
                             }
@@ -161,6 +164,10 @@ namespace KCGameOn.Account
                     {
                         Response.Redirect("/Default.aspx");
                     }
+                    else if(redirect.Contains("/AccountManagement.aspx"))
+                        {
+                            Response.Redirect("/Default.aspx");
+                        }
                     else
                     {
                         Response.Redirect(redirect);

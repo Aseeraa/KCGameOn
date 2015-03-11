@@ -1,4 +1,5 @@
-(function(GameOn, gmaps) {
+
+(function (GameOn, gmaps) {
     "use strict";
 
     // Custom Map
@@ -107,21 +108,27 @@
                 draggable: false,
                 center: new gmaps.LatLng(84.55, -171.5),
                 zoom: 7,
-                disableDefaultUI: true
+                disableDefaultUI: true,
+                backgroundColor: '#FFFFFF'
             };
-            map =  new gmaps.Map(mapDivId, options);
+            map = new gmaps.Map(mapDivId, options);
         }
 
-        function setCustomMapType() {
-            var options = {
+	function setCustomMapType() {
+            var images = ["7_1_1", "7_1_2", "7_1_3", "7_2_1", "7_2_2", "7_2_3", "7_3_1", "7_3_2", "7_3_3", "7_4_1", "7_4_2", "7_4_3", "7_5_1", "7_5_2", "7_5_3", "7_6_1", "7_6_2", "7_6_3"];
+	    var options = {
                 getTileUrl: function (coord, zoom) {
                     var normalizedCoord = getNormalizedCoord(coord, zoom);
                     if (!normalizedCoord)
                         return null;
-                    var imageURL = "/img/tiles/" + zoom + "_" + normalizedCoord.x + "_" + normalizedCoord.y + ".png";
-                    if (exists(imageURL)) {
-                        return imageURL;
+                    var image = zoom + "_" + normalizedCoord.x + "_" + normalizedCoord.y;
+                    if ($.inArray(image, images) != -1) {
+                        var imageURL = "/img/tiles/" + image + ".png";
+			return imageURL;
                     }
+                    //if (exists(imageURL)) {
+                    //    return imageURL;
+                    //}
                 },
                 tileSize: new gmaps.Size(208, 208),
                 maxZoom: 7,
@@ -221,7 +228,7 @@
 
     // Seating Map
     GameOn.SeatingMap = function(mapDivId, seats, currentUser) {
-        var projectors = ["138", "140", "148", "145", "143", "127", "118", "116"];
+        var projectors = ["138", "140", "148", "145", "142", "127", "118", "116"];
         //var userFound = found;
         var world = new GameOn.CustomMap(mapDivId);
 
@@ -398,4 +405,5 @@
             };
         };
 
-    })(window.GameOn = window.GameOn || {}, google.maps);
+})(window.GameOn = window.GameOn || {}, google.maps);
+

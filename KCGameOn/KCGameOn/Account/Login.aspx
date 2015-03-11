@@ -8,9 +8,11 @@
         <h2>KcGameOn Login</h2>
             <p>
         Please enter your username and password.
-        <a href="/Account/Register.aspx">Register</a> if you don't have an account.
-        <h3 style="color:red"><%=ErrorString%></h3>
-    </p>
+        <a href="/Account/Register.aspx">Register</a> if you don't have an account.</p>
+        <%if (ErrorString != null && ErrorString != ""){ %>
+            <div class="alert alert-error"><%=ErrorString%></div>
+        <%} %>
+    
         <br />
             <span class="failureNotification">
                 <asp:Literal ID="FailureText" runat="server"></asp:Literal>
@@ -43,6 +45,7 @@
                          <a href="/Account/AccountManagement.aspx?AccountAction=recovery">Forgot password?</a>
                     </p>
                 </fieldset>
-        <asp:Button ID="Button1" Class="btn btn-inverse" runat="server" Text="LogIn" ValidationGroup="LoginUserValidationGroup" OnClick="Button1_Click"/>
+            </div>
+        <asp:Button ID="Button1" Class="btn btn-inverse" runat="server" Text="Login" ValidationGroup="LoginUserValidationGroup" OnClick="Button1_Click"/>
     </form>
 </asp:Content>

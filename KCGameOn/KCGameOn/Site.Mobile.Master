@@ -5,6 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Cache-control" content="public">
     <title></title>
     <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
 </head>

@@ -80,6 +80,6 @@
 </form>
     <%} 
       else {%>
-        <h2>Please login to view this page.</h2><br />
+        <h2>Please <a href="/Account/Login.aspx">login</a> to view this page.</h2><br />
     <%} %>
 </asp:Content>

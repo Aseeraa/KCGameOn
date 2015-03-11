@@ -11,14 +11,14 @@
 	    <tr>
 		    <th>
 			    <br />
-			    <img src="/img/dennis.jpg"><p>
+			    <img src="/img/dennis.png"><p>
 			    Dennis Avondet<p>
 			    "Iceman"<p>
 			
 		    </th>
 		    <th>
 			    <br />
-			    <img src="/img/nick.jpg"><p>
+			    <img src="/img/nick.png"><p>
 			    Nick Engstrom<p>
 			    "nickthenerd"<p>			
 			

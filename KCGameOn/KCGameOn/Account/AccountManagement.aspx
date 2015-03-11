@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="KcGameOn Account Recovery" Language="C#" EnableEventValidation="false"  MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AccountManagement.aspx.cs" Inherits="KCGameOn.Account.AccountManagement" %>
 <%@ Import Namespace="KCGameOn.Account" %>
+<%@ Import Namespace="KCGameOn" %>
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
     <script type="text/javascript">
         function checkRecoveryPasswordMatch() {
@@ -8,9 +9,13 @@
 
             if (password != confirmPassword) {
                 $('input[type="submit"]').attr('disabled', true);
+                document.getElementById('PassErrorImg').style.visibility = "visible";
+                document.getElementById('PassErrorImg1').style.visibility = "visible";
             }
             else {
                 $('input[type="submit"]').attr('disabled', false);
+                document.getElementById('PassErrorImg').style.visibility = "hidden";
+                document.getElementById('PassErrorImg1').style.visibility = "hidden";
             }
 
         }
@@ -101,10 +106,10 @@
                 <asp:Literal ID="ltMessage" runat="server">You have Successfully changed your Password!.</asp:Literal>
             </div>
         <%} %>
-    <%}else if(AccountManagements == "recovery"){ %>
-        
-        <form class="well form-inline" runat="server">
-        <%if (Request.Form["sequence"] == null ||  Request.Form["sequence"].Length == 0){ %>
+    <%}else if(AccountManagements == "recovery"){ %>          
+        <%if (Request.Form["sequence"] == null || Request.Form["sequence"].Length == 0 || SessionVariables.iSeq == 1)
+          { %>
+            <form class="well form-inline" runat="server">
                 <h3>Having trouble signing in?</h3>
                 <br />
                 <div class="UImenu">
@@ -114,6 +119,9 @@
                         <div class="Content">
                             <div class="control-group" style="margin-left: 40px;">
                                 <p>To reset your password, enter the email address you used to create a KcGameOn account.</p>
+                                <%if(recoveryError.Text.CompareTo("") == 1){ %>
+                                    <br /><div class="alert alert-error"><asp:Literal ID="recoveryError" runat="server"/></div>
+                                <%} %>
                                 <label class="control-label" for="RecoverEmail"><h4>Email Address</h4></label>
                                 <div class="controls">
                                 <input id="Email" name="inputRecoveryEmail" class= "inputRecoveryEmail" runat="server" placeholder="Email" type="text" onkeyup="RadioControl();"/>
@@ -125,39 +133,53 @@
                 <label>I don't know my UserName.</label>
                <br />
                <br />
-               <input type="hidden" name="sequence" value="1" />
+               <input type="hidden" name="sequence" value="1"/>
                <asp:Button ID="AccountRecovery" name="AccountRecovery" Class="btn btn-inverse" runat="server" Text="Submit" OnClick="Recovery_Click"/>
-        <%}else if(Request.Form["sequence"].CompareTo("1") == 0 && Request.Form["RadioRecovery"].CompareTo("1") == 0){ %>
+          </form>
+        <%}
+          else if ((Request.Form["sequence"].CompareTo("1") == 0 && Request.Form["RadioRecovery"].CompareTo("1") == 0) || (SessionVariables.iSeq == 2 && Request.Form["RadioRecovery"].CompareTo("1") == 0))
+          { %>
+                <form class="well form-inline" runat="server">
                     <h3>Having trouble signing in?</h3>
                     <br />
                     An email has been sent to your email address.  Please read that email, copy the code and paste it into "Verification Code" field.
+                    <%if(recoveryError1.Text.CompareTo("") == 1){ %>
+                        <div class="alert alert-error"> <asp:Literal ID="recoveryError1" runat="server"/> </div>
+                    <%} %>
                     <div class="control-group">
-                        <label class="control-label" for="ResetCode"><h4>Varification Code</h4></label>
+                        <label class="control-label" for="ResetCode"><h4>Verification Code</h4></label>
                         <div class="controls">
                             <input id="inputCode" name="inputCode" class="inputCode" runat="server" placeholder="Code" type="text" />
                         </div>
                     </div>
-                    <br />
-                    <input type="hidden" name="sequence" value="2" />
-                    <asp:Button ID="Button1" name="AccountRecovery" Class="btn btn-inverse" runat="server" Text="Continue" OnClick="Recovery_Click"/>
-        <%}else if(Request.Form["sequence"].CompareTo("2") == 0 && Request.Form["RadioRecovery"].CompareTo("1") == 0){ %>
-                    <h3>Having trouble signing in?</h3>
                     <div class="control-group">
                         <label class="control-label" for="inputRecoverNewPass">New Password</label>
                         <div class="controls">
-                            <input id="inputRecoveryNewPass" name="inputRecoveryNewPass" class="inputRecoveryNewPass" runat="server" placeholder="New Password" type="password" onkeyup="checkRecoveryPasswordMatch();" />
+                            <input id="inputRecoveryNewPass" name="inputRecoveryNewPass" class="inputRecoveryNewPass" runat="server" placeholder="New Password" type="password" onkeyup="checkRecoveryPasswordMatch();" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" title="Password must contain at least 6 characters, including UPPER/lowercase and numbers"/>
+                            <img id="PassErrorImg" style="visibility:hidden" src="../img/Actions-button-cancel-icon.png" />
                         </div>
                     </div>
                     
                     <div class="control-group">
                         <label class="control-label" for="inputConfirmRecoverNewPass">Confirm Password</label>
                         <div class="controls">
-                            <input id="inputConfirmRecoverNewPass" name="inputConfirmRecoverNewPass" class="inputConfirmRecoverNewPass" runat="server" placeholder="Confirm Password" type="password" onkeyup="checkRecoveryPasswordMatch();"/>
+                            <input id="inputConfirmRecoverNewPass" name="inputConfirmRecoverNewPass" class="inputConfirmRecoverNewPass" runat="server" placeholder="Confirm Password" type="password" onkeyup="checkRecoveryPasswordMatch();" required/>
+                            <img id="PassErrorImg1" style="visibility:hidden" src="../img/Actions-button-cancel-icon.png" />
                         </div>
                     </div>
-                    <input type="hidden" name="sequence" value="3" />
-                    <asp:Button ID="Button2" name="AccountRecovery" Class="btn btn-inverse" runat="server" Text="Submit" OnClick="Recovery_Click"/>
+                    <br />
+                    <input type="hidden" name="sequence" value="2"/>
+                    <input type="hidden" name="RadioRecovery" value="1" />
+                    <input type="hidden" name="RecoveryEmail" value=<%=Request.Form["ctl00$MainContent$Email"]%> />
+                    <asp:Button ID="Button1" name="AccountRecovery" Class="btn btn-inverse" runat="server" Text="Continue" OnClick="Recovery_Click"/>
+                    </form>
+        <%}else if ((Request.Form["sequence"].CompareTo("2") == 0 && Request.Form["RadioRecovery"].CompareTo("1") == 0) || (SessionVariables.iSeq == 3 && Request.Form["RadioRecovery"].CompareTo("1") == 0)) { %>
+            <div class="alert alert-info">
+                Password Reset Tips and Info! <br />
+                <li>Password reset successful. <br /></li>
+                <li>Good Job, Now write this down.<br /></li>
+                <li>Use KeePass next time to store your password<br /></li>
+            </div>
         <%} %>
-        </form>
     <%} %>
 </asp:Content>

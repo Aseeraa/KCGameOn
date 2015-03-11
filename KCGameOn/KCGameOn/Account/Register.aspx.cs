@@ -194,31 +194,17 @@ namespace KCGameOn.Account
                 cmd.ExecuteNonQuery();
             }
             //Send User an email.
-            using (MailMessage mm = new MailMessage(ConfigurationManager.ConnectionStrings["FromEmail"].ConnectionString, Request.Form["ctl00$MainContent$inputEmail"]))
-            {
-                mm.Subject = "KcGameOn Account Activation";
-                string body = "Behold " + userName + ",";
-                body += "<br /><br />Registration is almost complete!";
-                body += "<br /><br />This message is an automated reply to your registration request. In order to complete the process, please validate your email address by clicking the link below.";
-                body += "<br /><a href = '" + Request.Url.AbsoluteUri.Replace("Register.aspx", "Activation.aspx?ActivationCode=" + activationCode) + "'>Click here to activate your account.</a>";
-                body += "<br /><br />Once validated, you will be able to register for the events, get event information and sound off on the message board.";
-                body += "<br /><br />If you did not register for our website, kcgameon.com, then feel free to ignore this email and you will not be bothered again";
-                body += "<br /><br />Thanks,";
-                body += "<br />KcGameOn";
-                mm.Body = body;
-                mm.IsBodyHtml = true;
-
-                var smtp = new SmtpClient
-                {
-                    Host = "smtp.gmail.com",
-                    Port = 587,
-                    EnableSsl = true,
-                    DeliveryMethod = SmtpDeliveryMethod.Network,
-                    UseDefaultCredentials = true,
-                    Credentials = new NetworkCredential(ConfigurationManager.ConnectionStrings["FromEmail"].ConnectionString, ConfigurationManager.ConnectionStrings["FromEmailPass"].ConnectionString)
-                };
-                smtp.Send(mm);
-            }
+            string subject = "KcGameOn Account Activation";
+            string body = "Behold " + userName + ",";
+            body += "<br /><br />Registration is almost complete!";
+            body += "<br /><br />This message is an automated reply to your registration request. In order to complete the process, please validate your email address by clicking the link below.";
+            body += "<br /><a href = '" + Request.Url.AbsoluteUri.Replace("Register.aspx", "Activation.aspx?ActivationCode=" + activationCode) + "'>Click here to activate your account.</a>";
+            body += "<br /><br />Once validated, you will be able to register for the events, get event information and sound off on the message board.";
+            body += "<br /><br />If you did not register for our website, kcgameon.com, then feel free to ignore this email and you will not be bothered again";
+            body += "<br /><br />Thanks,";
+            body += "<br />KcGameOn";
+            MailClient Mailsender = new MailClient();
+            Mailsender.SendEmail(body, subject, Request.Form["ctl00$MainContent$inputEmail"]);
         }
     }
 }

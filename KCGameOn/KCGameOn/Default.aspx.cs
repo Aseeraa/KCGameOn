@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -8,6 +9,7 @@ using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Xml;
+using MySql.Data.MySqlClient;
 
 namespace KCGameOn
 {
@@ -86,10 +88,6 @@ namespace KCGameOn
                     sLink = "";
                 }
             }
-        }
-        protected void EventHandler_Click(Object sender, EventArgs e)
-        {
-
         }
     }
 }

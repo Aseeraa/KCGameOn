@@ -13,13 +13,14 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
 	<meta name="author" content="">
+	<meta http-equiv="Cache-control" content="public">
 
 	<!-- Le styles -->
 	<link rel="shortcut icon" type="image/x-icon" href="~/favicon.ico" />
 	<link href="/css/bootstrap.css" rel="stylesheet">
 	<link id="switch_style" href="/css/Black/bootstrap.min.css" rel="stylesheet">
 	<link href="/css/bootstrap-responsive.css" rel="stylesheet">
-	<script src="/js/jquery.js"></script>
+        <script src="/js/jquery.js"></script>
 	<script src="/js/bootstrap-transition.js"></script>
 	<script src="/js/bootstrap-alert.js"></script>
 	<script src="/js/bootstrap-modal.js"></script>
@@ -40,7 +41,7 @@
 
 <div class="row-fluid">
 	<div class="span9"><br/>
-		<img src="/Images/logo.png" />
+		<img src="/img/logo.png" height="43px" width="295px"/>
 	</div>
 	<div class="span3"><br/>
 		<div class="pull-right">
@@ -99,7 +100,7 @@
 		  <%if (SessionVariables.UserName != null){ %>
 		  <ul class="nav pull-right">
 			<li class="dropdown">
-			  <a id="UserDropDown" runat="server" data-toggle="dropdown" class="dropdown-toggle" href="#"><%= SessionVariables.UserName.ToString() %><b class="caret"></b></a>
+			  <a id="UserDropDown" runat="server" data-toggle="dropdown" class="dropdown-toggle" href="#"><%= SessionVariables.UserName.ToString()%><b class="caret"></b></a>
 			  <ul class="dropdown-menu">
 				<%if (SessionVariables.UserAdmin == 1) { %>
 				<li><a href="#">Admin</a></li>
