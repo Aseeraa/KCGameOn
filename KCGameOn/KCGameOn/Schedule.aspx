@@ -10,6 +10,12 @@
 		<link rel="stylesheet" type="text/css" href="https://datatables.net/media/blog/bootstrap/DT_bootstrap.css">
 		<script type="text/javascript" language="javascript" src="https://datatables.net/release-datatables/media/js/jquery.js"></script>
 		<script type="text/javascript" language="javascript" src="https://datatables.net/release-datatables/media/js/jquery.dataTables.js"></script>
+    <style>
+        div.dataTables_info {
+	color: #4cff00
+
+}
+    </style>
 		<script type="text/javascript" charset="utf-8">
 		    /* Default class modification */
 		    $.extend($.fn.dataTableExt.oStdClasses, {
@@ -111,8 +117,10 @@
 		    /* Table initialisation */
 		    $(document).ready(function () {
 		        $('#example').dataTable({
+		            "iDisplayLength": 5,
                     "order":[[0, "desc"]],
-		            "sDom": "<'row'<'span8'l><'span8'f>r>t<'row'<'span8'i><'span8'p>>",
+		            "sDom": "<'row'<'span8'><'span8'f>r>t<'row'<'span8'i><'span8'p>>",
+                    //"dom": '<"top"i>rt<"bottom"flp><"clear">',
 		            "sPaginationType": "bootstrap",
 		            "oLanguage": {
 		                "sLengthMenu": "_MENU_ records per page"
