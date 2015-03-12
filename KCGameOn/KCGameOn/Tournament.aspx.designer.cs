@@ -10,6 +10,6 @@
 namespace KCGameOn {
     
     
-    public partial class Users {
+    public partial class Tournament {
     }
 }

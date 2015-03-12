@@ -10,11 +10,21 @@ using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Xml;
 using MySql.Data.MySqlClient;
+using System.Web.Services;
+using System.Web.Script.Services;
 
 namespace KCGameOn
 {
     public partial class _Default : Page
     {
+        private string errorString;
+
+        private string ErrorString
+        {
+            get { return errorString; }
+            set { errorString = value; }
+        }
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             WebRequest MyRssRequest = WebRequest.Create("http://store.steampowered.com/feeds/news.xml");
@@ -86,6 +96,66 @@ namespace KCGameOn
                     sTitle = "";
                     sDescription = "";
                     sLink = "";
+                }
+            }
+        }
+
+        [WebMethod]
+        [ScriptMethod]
+        protected void validatePass(String password)
+        {
+            String UserName = SessionVariables.UserName;
+            String Password = password.ToString();
+
+            //Set Connection String to MySql.
+            String UserInfo = ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString;
+
+            if (UserName != null && Password != null)
+            {
+
+                //Hash Users Password.
+                PasswordHash PasswordHasher = new PasswordHash();
+                String Salt = PasswordHasher.CreateSalt(UserName.ToLower());
+                String HashedPassword = PasswordHasher.HashPassword(Salt, Password);
+                MySqlCommand cmd = null;
+                int Authentication = 0;
+
+                try
+                {
+                    cmd = new MySqlCommand("checkUser", new MySqlConnection(UserInfo));
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("Username", UserName);
+                    cmd.Parameters.AddWithValue("UserPass", HashedPassword);
+
+                    cmd.Connection.Open();
+                    //Reader = cmd.ExecuteReader();
+                    Authentication = Convert.ToInt32(cmd.ExecuteScalar());
+
+                    switch (Authentication)
+                    {
+                        case -1:
+                            ErrorString = "Please Activate your account.";
+                            break;
+                        case -2: // UserActivated, User Is Admin and UserAuthenticated.
+                            SessionVariables.UserName = UserName;
+                            SessionVariables.UserAdmin = 1;
+                            break;
+                        case -3: // UserActivatd, UseAuthenticated and User isn't Admin.
+                            SessionVariables.UserName = UserName;
+                            SessionVariables.UserAdmin = 0;
+                            break;
+                        case -4:
+                            ErrorString = "Your Input Sucks!";
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                finally
+                {
+                    if (cmd != null)
+                        cmd.Connection.Close();
                 }
             }
         }

@@ -11,20 +11,21 @@
         <script type="text/javascript" language="javascript" src="https://datatables.net/release-datatables/media/js/jquery.js"></script>
         <script type="text/javascript" language="javascript" src="https://datatables.net/release-datatables/media/js/jquery.dataTables.js"></script>
         <style>
-            div.dataTables_info
-            {
+            div.dataTables_info {
                 color: #33b5e5;
             }
 
-            a
-            {
+            a {
                 color: #33b5e5;
             }
 
-            div.dataTables_filter label
-            {
+            div.dataTables_filter label {
                 color: #33b5e5;
                 font-family: inherit;
+            }
+
+            div.dataTables_length label  {
+                color: #33b5e5;
             }
         </style>
         <script type="text/javascript" charset="utf-8">

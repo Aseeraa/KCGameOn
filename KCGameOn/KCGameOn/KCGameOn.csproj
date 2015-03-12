@@ -153,7 +153,7 @@
     <Content Include="ErrorPage\Error.aspx" />
     <Content Include="FAQ\FAQ.aspx" />
     <Content Include="FAQ\WhatToBring.aspx" />
-    <Content Include="Gallery.aspx" />
+    <Content Include="GameServers.aspx" />
     <Content Include="icon\digg.png" />
     <Content Include="icon\facebook.png" />
     <Content Include="icon\myspace.png" />
@@ -212,6 +212,8 @@
     <Content Include="Schedule.aspx" />
     <Content Include="Sponsors.aspx" />
     <Content Include="Staff.aspx" />
+    <Content Include="Swag.aspx" />
+    <Content Include="Tournament.aspx" />
     <Content Include="Users.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config">
@@ -300,12 +302,12 @@
     <Compile Include="FAQ\WhatToBring.aspx.designer.cs">
       <DependentUpon>WhatToBring.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Gallery.aspx.cs">
-      <DependentUpon>Gallery.aspx</DependentUpon>
+    <Compile Include="GameServers.aspx.cs">
+      <DependentUpon>GameServers.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Gallery.aspx.designer.cs">
-      <DependentUpon>Gallery.aspx</DependentUpon>
+    <Compile Include="GameServers.aspx.designer.cs">
+      <DependentUpon>GameServers.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -353,6 +355,20 @@
     </Compile>
     <Compile Include="Staff.aspx.designer.cs">
       <DependentUpon>Staff.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Swag.aspx.cs">
+      <DependentUpon>Swag.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Swag.aspx.designer.cs">
+      <DependentUpon>Swag.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tournament.aspx.cs">
+      <DependentUpon>Tournament.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tournament.aspx.designer.cs">
+      <DependentUpon>Tournament.aspx</DependentUpon>
     </Compile>
     <Compile Include="Users.aspx.cs">
       <DependentUpon>Users.aspx</DependentUpon>

@@ -19,17 +19,24 @@
         }
     </style>
     <script type="text/javascript">
-        $(function () {
+        $(document).ready(function () {
             $('#validate').click(function (e) {
-                e.preventDefault();
-                alert($('#passwordValidation').val());
-                /*
-				$.post('http://path/to/post', 
-				   $('#myForm').serialize(), 
-				   function(data, status, xhr){
-					 // do something here with response;
-				   });
-				*/
+                e.preventDefault;
+                $.ajax({
+                    type: "POST",
+                    url: "Default.aspx/validatePass",
+                    data: { password: $("#passwordValidation").val() },
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    sucess: function (response) {
+                        alert("You have been successfully validated.");
+                        window.location.reload();
+                    },
+                    error: function () {
+                        alert("Failed to validate, please contact an administrator for help.");
+                        window.location.reload();
+                    }
+                });
             });
         });
 

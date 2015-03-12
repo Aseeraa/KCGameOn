@@ -70,10 +70,11 @@
 
 			<li><a href="/Map.aspx" class="active">Map</a></li>
 			<li><a href="/Schedule.aspx" class ="active">Schedule</a></li>
-			<li><a href="/Gallery.aspx">Game Servers</a></li>
+            <li><a href="/Tournament.aspx" class ="active">Tournaments</a></li>
+			<li><a href="/GameServers.aspx">Game Servers</a></li>
 			<li><a href="/forums/index.php?p=/">Forums</a></li>
 			<li><a href="/Sponsors.aspx">Sponsors</a></li>
-			<li><a href="/Swag.aspx">Swag</a></li>
+			<li><a href="/Swag.aspx" target="_blank">Swag</a></li>
 			<li><a href="/Staff.aspx">Staff</a></li>
 			<li><a href="/Users.aspx">Users</a></li>
 			<li class="dropdown">
