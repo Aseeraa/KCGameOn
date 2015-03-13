@@ -10,7 +10,7 @@
 namespace KCGameOn {
     
     
-    public partial class _Default {
+    public partial class Default {
         
         /// <summary>
         /// myForm control.

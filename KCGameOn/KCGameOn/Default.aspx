@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="KCGameOn._Default" %>
+﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="KCGameOn.Default" %>
 
 <%@ Import Namespace="KCGameOn" %>
 <asp:Content ID="HeadContent" ContentPlaceHolderID="HeadContent" runat="server">
@@ -19,26 +19,26 @@
         }
     </style>
     <script type="text/javascript">
-        $(document).ready(function () {
-            $('#validate').click(function (e) {
-                e.preventDefault;
-                $.ajax({
-                    type: "POST",
-                    url: "Default.aspx/validatePass",
-                    data: { password: $("#passwordValidation").val() },
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    sucess: function (response) {
-                        alert("You have been successfully validated.");
-                        window.location.reload();
-                    },
-                    error: function () {
-                        alert("Failed to validate, please contact an administrator for help.");
-                        window.location.reload();
-                    }
-                });
-            });
-        });
+        //$(document).ready(function () {
+        //    $('#validate').click(function (e) {
+        //        e.preventDefault;
+        //        $.ajax({
+        //            type: "POST",
+        //            url: "Default.aspx/validatePass",
+        //            data: { password: $("#passwordValidation").val() },
+        //            contentType: "application/json; charset=utf-8",
+        //            dataType: "json",
+        //            sucess: function (response) {
+        //                alert("You have been successfully validated.");
+        //                window.location.reload();
+        //            },
+        //            error: function () {
+        //                alert("Failed to validate, please contact an administrator for help.");
+        //                window.location.reload();
+        //            }
+        //        });
+        //    });
+        //});
 
         jQuery(document).bind('keyup', function (e) {
 
@@ -64,8 +64,21 @@
             <form runat="server" id="myForm" method="post">
                 <%if (SessionVariables.UserName != null)
                   { %>
-                <input id="passwordValidation" type="password" placeholder="KCGameOn password..." /></br>
-                <button id="validate" class="btn btn-inverse " type="button">Validate</button>
+                    <div class="container">
+        <table cellpadding="0" cellspacing="0" border="0" class="bordered-table zebra-striped" id="payTable">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%=Default.DefaultHTML%>
+            </tbody>
+        </table>
+
+    </div>
                 <% }%>
                 <%else
                   {  %>

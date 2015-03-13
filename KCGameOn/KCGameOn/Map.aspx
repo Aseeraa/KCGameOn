@@ -22,15 +22,20 @@
         <div class="btn-group pull-right">
             <button id="Legend" class="btn btn-default pull-right dropdown-toggle" type="button" data-toggle="dropdown">Legend</button>
             <ul id="legenddropdown" class="dropdown-menu pull-right" role="menu">
-                <li><img src="/img/active.png" /> Current seat</li>
+                <li>Current/Projector seat</br>
+                    <img src="/img/active.png" /> | <img src="/img/active_proj.png" />
+                </li>
                 <li class="divider"></li>
-                <li><img src="/img/occupied.png" /> Occupied seat</li>
+                <li>Occupied/Projector seat</br>
+                    <img src="/img/occupied.png" /> | <img src="/img/occupied_proj.png" />
+                </li>
+                <li class="divider"></li>
+                <li>Empty/Projector seat</br>
+                    <img src="/img/empty.png" /> | <img src="/img/projector.png" />
+                </li>
                 <li class="divider"></li>
                 <li><img src="/img/reserved.png" /> Reserved seat</li>
-                <li class="divider"></li>
-                <li><img src="/img/empty.png" /> Empty seat</li>
-                <li class="divider"></li>
-                <li><img src="/img/active_proj.png" /> <img src="/img/occupied_proj.png" /> <img src="/img/projector.png" /> Projector seats</li>
+
             </ul>
         </div>
     </div>
@@ -79,7 +84,7 @@
     <div id="viewport">
 
     <script async src="js/bootbox.js"></script>
-    <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
     <script src="js/index.js"></script>
     <%if (String.IsNullOrEmpty(SessionVariables.UserName))
       {%>
