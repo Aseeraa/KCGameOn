@@ -4,6 +4,8 @@
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
+    <%if (!String.IsNullOrEmpty(SessionVariables.UserName))
+      {%>
     <head>
 
         <link rel="stylesheet" type="text/css" href="css/black/bootstrap.css">
@@ -11,20 +13,24 @@
         <script type="text/javascript" language="javascript" src="https://datatables.net/release-datatables/media/js/jquery.js"></script>
         <script type="text/javascript" language="javascript" src="https://datatables.net/release-datatables/media/js/jquery.dataTables.js"></script>
         <style>
-            div.dataTables_info {
+            div.dataTables_info
+            {
                 color: #33b5e5;
             }
 
-            a {
+            a
+            {
                 color: #33b5e5;
             }
 
-            div.dataTables_filter label {
+            div.dataTables_filter label
+            {
                 color: #33b5e5;
                 font-family: inherit;
             }
 
-            div.dataTables_length label  {
+            div.dataTables_length label
+            {
                 color: #33b5e5;
             }
         </style>
@@ -156,4 +162,11 @@
         </table>
 
     </div>
+    <%}
+      else
+      {%>
+    <h2>Please <a href="/Account/Login.aspx">login</a> to view this page.</h2>
+    <h3>There are currently <%=count.ToString() %> people registered at kcgameon.com, <a href="https://www.kcgameon.com/Account/Register.aspx">sign up</a> today!</>
+    <br />
+    <%} %>
 </asp:Content>

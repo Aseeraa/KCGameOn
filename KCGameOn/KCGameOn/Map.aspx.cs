@@ -9,7 +9,6 @@ using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using MySql.Data.MySqlClient;
-using Newtonsoft.Json.Linq;
 
 namespace KCGameOn
 {
@@ -18,6 +17,7 @@ namespace KCGameOn
         public static List<String> seatList = new List<String>();
         public string seats;
         public string people;
+        public int count;
         MySqlDataReader reader = null;
         MySqlCommand cmd = null;
         protected void Page_Load(object sender, EventArgs e)
@@ -25,6 +25,7 @@ namespace KCGameOn
             String UserInfo = ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString;
             try
             {
+                count = 0;
                 cmd = new MySqlCommand("SELECT * FROM seatcoords", new MySqlConnection(UserInfo));
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Connection.Open();
@@ -74,6 +75,7 @@ namespace KCGameOn
                 {
                     people = "[\"{}\"]";
                 }
+                count = counter;
             }
             catch (Exception s)
             {

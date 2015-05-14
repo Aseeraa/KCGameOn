@@ -3,10 +3,20 @@
 
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-
+<style>
+    table {
+    /* cellspacing */
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin:auto;
+}
+th, td {
+    text-align:center;
+}
+</style>
 <center><h2><b>Your KCGameOn Organizers:</b></h2></center>
 <form class="well form-inline">	
-    <table style="width:100%" cellpadding="20" cellspacing="10" border="0" id="example" >
+    <table style="width:100%" id="example" >
 	
 	    <tr>
 		    <th>

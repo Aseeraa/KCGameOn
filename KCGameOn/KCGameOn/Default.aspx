@@ -1,6 +1,5 @@
 ﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="KCGameOn.Default" %>
 
-<%@ Import Namespace="KCGameOn" %>
 <asp:Content ID="HeadContent" ContentPlaceHolderID="HeadContent" runat="server">
     <style>
         .tbody
@@ -18,27 +17,10 @@
             width: 100%;
         }
     </style>
-    <script type="text/javascript">
-        //$(document).ready(function () {
-        //    $('#validate').click(function (e) {
-        //        e.preventDefault;
-        //        $.ajax({
-        //            type: "POST",
-        //            url: "Default.aspx/validatePass",
-        //            data: { password: $("#passwordValidation").val() },
-        //            contentType: "application/json; charset=utf-8",
-        //            dataType: "json",
-        //            sucess: function (response) {
-        //                alert("You have been successfully validated.");
-        //                window.location.reload();
-        //            },
-        //            error: function () {
-        //                alert("Failed to validate, please contact an administrator for help.");
-        //                window.location.reload();
-        //            }
-        //        });
-        //    });
-        //});
+    <script async>
+        function myFunction() {
+            document.getElementById("demo").innerHTML = "This part is currently under development";
+        }
 
         jQuery(document).bind('keyup', function (e) {
 
@@ -55,43 +37,6 @@
 
 </asp:Content>
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
-    <div id="eventRegistration" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h3 id="registrationLabel">KCGameOn Event Registration</h3>
-        </div>
-        <div class="modal-body">
-            <form runat="server" id="myForm" method="post">
-                <%if (SessionVariables.UserName != null)
-                  { %>
-                    <div class="container">
-        <table cellpadding="0" cellspacing="0" border="0" class="bordered-table zebra-striped" id="payTable">
-            <thead>
-                <tr>
-                    <th>Username</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                </tr>
-            </thead>
-            <tbody>
-                <%=Default.DefaultHTML%>
-            </tbody>
-        </table>
-
-    </div>
-                <% }%>
-                <%else
-                  {  %>
-                <p><b>Please <a href="/Account/Login.aspx">login</a> to register for the next LAN event.</b></p>
-                <%} %>
-            </form>
-        </div>
-        <div class="modal-footer">
-            <button class="btn pull-right" data-dismiss="modal" aria-hidden="true">Close</button>
-        </div>
-    </div>
-
-
     <div class="row-fluid">
         <div class="span7">
             <div id="myCarousel" class="carousel slide">
@@ -162,13 +107,13 @@
             </div>
             <%--<a data-toggle="modal" href="#myModal" >
 		<img src="/img/GameOn.jpg"style="width:389px;height:235px;width:100%"/></a>--%>
-            <%--            <div class="modal hide" id="myModal">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">×</button>
-					<h3>GameOn Events</h3>
-					<img src="/img/GameOn.jpg" />
-				</div>
-			</div>--%>
+<%--            <div class="modal hide" id="myModal">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h3>GameOn Events</h3>
+                    <img src="/img/GameOn.jpg" />
+                </div>
+            </div>--%>
 
 
             <br />
@@ -180,8 +125,7 @@
                 <div class="control-group">
                     <div class="controls">
                         <div class="input-append">
-                            <%--<button id="register" type="button" class="btn btn-inverse" style="padding-left: 13px" runat="server">Register for Event 62!</button>--%>
-                            <button href="#eventRegistration" type="button" class="btn btn-inverse" data-toggle="modal" style="padding-left: 13px" runat="server">Register for Event 62!</button>
+                <button id="Button1" type="button" class="btn btn-inverse" style="padding-left: 13px" onclick="myFunction()" runat="server">Register for Event 62!</button>
                             <p id="demo"></p>
                         </div>
                     </div>
@@ -189,11 +133,11 @@
                 <p style="text-align: justify">
 
                     <b style="color: #0099cc;">Who we are:</b> Cerner associates putting on a team building and networking event for Cerner associates and your friends.
-			<br />
+            <br />
                     <b style="color: #0099cc;">Where:</b> 2702 Rockcreek Parkway, the entire lower level of the building.
-			<br />
-                    <b style="color: #0099cc;">Cost:</b> $15 if you pre-pay, $20 dollars at the door.  You can pay using paypal via dalha_is@hotmail.com, bitcoin OR by cash.  
-			<br />
+            <br />
+                    <b style="color: #0099cc;">Cost:</b> $15 if you pre-pay, $20 dollars at the door.  You can pay using paypal via payments@kcgameon.com, bitcoin OR by cash.  
+            <br />
                 </p>
 
             </form>
@@ -204,8 +148,10 @@
     <div class="row-fluid">
         <div class="span4">
             <center>
-                <a href="http://www.ibm.com">
-                    <img src="img/IBM_logo_transparent.png" /></a>
+                <a href="http://www.shinra.com">
+                    <img src="img/shinra.png" /></a><p>
+		<p><a href="http://www.cerner.com">
+                        <img src="img/cernerlogo2.png" /></a></p>
                 <br />
                 <br />
             </center>
@@ -213,19 +159,20 @@
 
         <div class="span4">
             <p>
-                <center>
-                    <a href="http://www.cerner.com">
-                        <img src="img/cernerlogo2.png" /></a>
-                    <br />
-                    <br />
-                </center>
-                <br>
-                <center>
+		<center>
                     <a href="http://www.ransomgaming.com">
                         <img src="img/ransomgaminglogo.png" /></a>
                     <br />
                     <br />
                 </center>
+                <center>
+		<a href="http://www.ibm.com">
+                        <img src="img/IBM_logo_transparent.png" /></a>
+                    
+                    <br />
+                    <br />
+                </center>
+                
         </div>
 
         <div class="span4">

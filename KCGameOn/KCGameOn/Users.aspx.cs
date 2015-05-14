@@ -12,9 +12,11 @@ namespace KCGameOn
 {
     public partial class Users : System.Web.UI.Page
     {
+        public static int count;
         public static StringBuilder UserHTML;
         protected void Page_Load(object sender, EventArgs e)
         {
+            count = 0;
             String UserInfo = ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString;
             MySqlDataReader Reader = null;
             MySqlCommand cmd = null;
@@ -30,6 +32,7 @@ namespace KCGameOn
 
                 while (Reader.Read())
                 {
+                    count++;
                     UserHTML.AppendLine("<tr>");
                     UserHTML.AppendLine("<td>").Append(Reader.GetString("UserName").ToString()).Append("</td>");
                     UserHTML.AppendLine("<td>").Append(Reader.GetString("FirstName").ToString()).Append("</td>");

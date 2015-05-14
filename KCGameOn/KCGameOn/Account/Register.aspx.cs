@@ -105,12 +105,16 @@ namespace KCGameOn.Account
             String Email = Request.Form["ctl00$MainContent$inputEmail"].ToString().Trim();
             String ConfirmEmail = Request.Form["ctl00$MainContent$inputEmail1"].ToString().Trim();
             String UserName = Request.Form["ctl00$MainContent$inputUser"].ToString().Trim();
+            String Sponsor = Request.Form["ctl00$MainContent$inputCerner"].ToString().Trim();
             String Password = Request.Form["ctl00$MainContent$Password"].ToString().Trim();
             String ConfirmPassword = Request.Form["ctl00$MainContent$Password1"].ToString().Trim();
             String SecretQuestion = Request.Form["ctl00$MainContent$DropDownList1"].ToString().Trim();
             String SecretAnswer = Request.Form["ctl00$MainContent$SecretAnswer"].ToString().Trim();
             Regex regex = new Regex(@"(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}");
             Match match = regex.Match(Password);
+            
+            //No spaces allowed :).
+            Regex.Replace(UserName, @"\s+", "");
 
             int userID = 0;
 
@@ -139,6 +143,7 @@ namespace KCGameOn.Account
                         cmd.Parameters.AddWithValue("First", FirstName);
                         cmd.Parameters.AddWithValue("Last", LastName);
                         cmd.Parameters.AddWithValue("Email", Email);
+                        cmd.Parameters.AddWithValue("Cerner", Sponsor);
                         cmd.Parameters.AddWithValue("Admin", 0);
                         cmd.Parameters.AddWithValue("SecretQuestion", SecretQuestion);
                         cmd.Parameters.AddWithValue("SecretAnswer", HashedSecretAnswer);

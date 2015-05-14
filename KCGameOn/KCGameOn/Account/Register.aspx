@@ -47,7 +47,8 @@
     <script src='https://www.google.com/recaptcha/api.js'></script>
     <script type="text/javascript">
         function checkValidInputs() {
-            if (checkPasswordMatch() && checkEmailMatch() && checkAnswer()) {
+            debugger;
+            if (checkUsername() && checkPasswordMatch() && checkEmailMatch() && checkAnswer()) {
                 $('input[type="submit"]').attr('disabled', false);
 
             }
@@ -84,6 +85,19 @@
             else {
                 document.getElementById('PassErrorImg').style.visibility = "hidden";
                 document.getElementById('PassErrorImg1').style.visibility = "hidden";
+                return true;
+            }
+        }
+        function checkUsername() {
+            var Username = $(".inputUser").val();
+            var re = /\s/;
+
+            if (Username.length == 0 || re.test(Username)) {
+                document.getElementById('UsernameMatch').style.visibility = "visible";
+                return false;
+            }
+            else {
+                document.getElementById('UsernameMatch').style.visibility = "hidden";
                 return true;
             }
         }
@@ -163,7 +177,8 @@
             <label class="control-label" for="inputUser">Username</label>
 
             <div class="controls">
-                <input id="inputUser" runat="server" placeholder="KcGameOn Username" type="text" required>
+                <input id="inputUser" class="inputUser" runat="server" onkeyup="checkValidInputs();" placeholder="KcGameOn Username" type="text" required>
+                <img id="UsernameMatch" style="visibility:hidden" src="../img/Actions-button-cancel-icon.png" />
             </div>
         </div>
 
@@ -186,6 +201,13 @@
                 <img id="PassErrorImg1" style="visibility:hidden" src="../img/Actions-button-cancel-icon.png" />
             </div>
             <p id="PassError"></p>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="inputCerner">Cerner ID or Sponsor</label>
+
+            <div class="controls">
+                <input id="inputCerner" runat="server" placeholder="ex. ne013424 or Sponsor name" type="text" required>
+            </div>
         </div>
         <div class="control-group">
             <label class="control-label" for="inputLast">SecretQuestion</label>

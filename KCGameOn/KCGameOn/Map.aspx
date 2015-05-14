@@ -11,6 +11,23 @@
         {
             margin-bottom: 10px;
         }
+                .modal-content, .modal-dialog, .modal-footer
+        {
+            background: #282828;
+        }
+        h3
+        {
+            color:#33b5e5;
+            padding:0px;
+            margin:0px;
+        }
+        .Count
+        {
+            margin:auto;
+            margin-left: 150px;
+            width:auto;
+            max-width:450px;
+        }
     </style>
     <div class="">
         <form class="form-inline pull-left" role="search">
@@ -19,6 +36,7 @@
                 <button id="Mapsearchbutton" class="btn btn-default " type="button">Search</button>
             </div>
         </form>
+        <div class="Count pull-left"><h3>There currently <%= count %> gamers locked in for the LAN</h3></div>
         <div class="btn-group pull-right">
             <button id="Legend" class="btn btn-default pull-right dropdown-toggle" type="button" data-toggle="dropdown">Legend</button>
             <ul id="legenddropdown" class="dropdown-menu pull-right" role="menu">

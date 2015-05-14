@@ -6,7 +6,6 @@ using System.Security.Cryptography;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
-using Newtonsoft.Json.Linq;
 using System.Web.Security;
 using System.Text;
 using System.Net.NetworkInformation;
@@ -18,7 +17,6 @@ namespace KCGameOn
 {
     public class SessionVariables
     {
-        
         public static int UserAdmin;
 
         public static string getSessionString(String name)

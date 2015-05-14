@@ -18,9 +18,10 @@
 	<!-- Le styles -->
 	<link rel="shortcut icon" type="image/x-icon" href="~/favicon.ico" />
 	<link href="/css/bootstrap.css" rel="stylesheet">
-	<link id="switch_style" href="/css/Black/bootstrap.min.css" rel="stylesheet">
+	<link id="switch_style" href="/css/black/bootstrap.min.css" rel="stylesheet">
 	<link href="/css/bootstrap-responsive.css" rel="stylesheet">
-        <script src="/js/jquery.js"></script>
+    <script src="/js/jquery-2.1.3.min.js"></script>
+    <script src="/js/bootstrap.js"></script>
 	<script src="/js/bootstrap-transition.js"></script>
 	<script src="/js/bootstrap-alert.js"></script>
 	<script src="/js/bootstrap-modal.js"></script>
@@ -34,6 +35,7 @@
 	<script src="/js/bootstrap-carousel.js"></script>
 	<script src="/js/bootstrap-typeahead.js"></script>
 	<script src="/js/application.js"></script>
+    <script src="js/bootbox.js"></script>
 	<asp:ContentPlaceHolder ID="HeadContent" runat="server"></asp:ContentPlaceHolder>
 </head>	
 <body>
@@ -44,7 +46,7 @@
 		<img src="/img/logo.png" height="43px" width="295px"/>
 	</div>
 	<div class="span3"><br/>
-		<div class="pull-right">
+	<div class="pull-right">
 	<a href="https://www.flickr.com/photos/124351731@N07/sets/"  original-title="Flickr"><img src="/icon/flickr.png"  alt="flickr"></a>
 	</div>
 	<div class="pull-right">
@@ -53,6 +55,9 @@
 	<div class="pull-right">
 	<a href="https://www.facebook.com/KcGameOn"  original-title="facebook"><img src="/icon/soc1.png"  alt="facebook"></a>
 	</div>
+	<div class="pull-right">
+	<a href="https://www.twitter.com/KCGameOn"  original-title="twitter"><img src="/icon/twitter.png"  alt="twitter"></a>
+	</div>	
 	</div>
 </div>
 
@@ -67,16 +72,41 @@
 		<a href="/Default.aspx" class="brand">Home</a>
 		<div class="nav-collapse">
 		  <ul class="nav">
-
 			<li><a href="/Map.aspx" class="active">Map</a></li>
-			<li><a href="/Schedule.aspx" class ="active">Schedule</a></li>
+<%--			<li><a href="/Schedule.aspx" class ="active">Schedule</a></li>
             <li><a href="/Tournament.aspx" class ="active">Tournaments</a></li>
-			<li><a href="/GameServers.aspx">Game Servers</a></li>
+			<li><a href="/GameServers.aspx">Game Servers</a></li>--%>
+
+              <li class="dropdown">
+			  <a data-toggle="dropdown" class="dropdown-toggle" href="#">Event Info<b class="caret"></b></a>
+			  <ul class="dropdown-menu">
+				<li><a href="/Schedule.aspx" class ="active">Schedule</a></li>
+                <li><a href="/Tournament.aspx" class ="active">Tournaments</a></li>
+			    <li><a href="/GameServers.aspx">Game Servers</a></li>
+			  </ul>
+			</li>
+
 			<li><a href="/forums/index.php?p=/">Forums</a></li>
-			<li><a href="/Sponsors.aspx">Sponsors</a></li>
-			<li><a href="/Swag.aspx" target="_blank">Swag</a></li>
-			<li><a href="/Staff.aspx">Staff</a></li>
-			<li><a href="/Users.aspx">Users</a></li>
+			<li class="dropdown">
+			  <a data-toggle="dropdown" class="dropdown-toggle" href="#">Sponsors<b class="caret"></b></a>
+			  <ul class="dropdown-menu">
+				<li><a href="/Sponsors/Sponsors.aspx">Sponsors</a></li>
+				<li><a href="/Sponsors/Apply.aspx">How to help</a></li>
+			  </ul>
+			</li>
+			<li><a href="https://kcgameon.spreadshirt.com/" target="_blank">Swag</a></li>
+
+			<%--			<li><a href="/Staff.aspx">Staff</a></li>
+			<li><a href="/Users.aspx">Users</a></li>--%>
+            
+            <li class="dropdown">
+			  <a data-toggle="dropdown" class="dropdown-toggle" href="#">Users<b class="caret"></b></a>
+			  <ul class="dropdown-menu">
+			    <li><a href="/Users.aspx">Users</a></li>
+                <li><a href="/Staff.aspx">Staff</a></li>
+			  </ul>
+			</li>
+
 			<li class="dropdown">
 			  <a data-toggle="dropdown" class="dropdown-toggle" href="#">FAQ<b class="caret"></b></a>
 			  <ul class="dropdown-menu">
@@ -92,6 +122,7 @@
 			  <ul class="dropdown-menu">
 				<%if (SessionVariables.UserName == null){ %>
 				<li><a href="/Account/Login.aspx">Login</a></li>
+                <li><a href="/Account/Profile.aspx">User Profile</a></li>
 				<li><a href="/Account/Register.aspx">Register</a></li>
 				<%} %>
 			  </ul>
@@ -103,6 +134,7 @@
 			<li class="dropdown">
 			  <a id="UserDropDown" runat="server" data-toggle="dropdown" class="dropdown-toggle" href="#"><%= SessionVariables.UserName.ToString()%><b class="caret"></b></a>
 			  <ul class="dropdown-menu">
+                <li><a href="/Account/Profile.aspx">User Profile</a></li>
 				<%if (SessionVariables.UserAdmin == 1) { %>
 				<li><a href="#">Admin</a></li>
 				<%} %>

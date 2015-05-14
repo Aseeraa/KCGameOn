@@ -10,15 +10,15 @@
 namespace KCGameOn {
     
     
-    public partial class Default {
+    public partial class EventRegistration {
         
         /// <summary>
-        /// table_feed control.
+        /// Form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTable table_feed;
+        protected global::System.Web.UI.HtmlControls.HtmlForm Form1;
     }
 }

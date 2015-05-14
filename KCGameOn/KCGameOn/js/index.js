@@ -109,7 +109,7 @@
                 center: new gmaps.LatLng(84.55, -171.5),
                 zoom: 7,
                 disableDefaultUI: true,
-                backgroundColor: '#FFFFFF'
+                backgroundColor: '#DDDDDD'
             };
             map = new gmaps.Map(mapDivId, options);
         }
@@ -253,19 +253,38 @@
         //infowindow.setContent('<p><button onclick="myFunction()">Reserve</button><p>');
         gmaps.event.addListener(world.map, "click", function (e) {
             if (currentUser == null) {
-                bootbox.dialog("Please login to choose a seat.", [
-                    {
-                        "label": "Login",
-                        "class": "primary",
-                        "callback": function () {
-                            window.open('/Account/Login.aspx', '_self');
+                //bootbox.dialog("Please login to choose a seat.", [
+                //    {
+                //        "label": "Login",
+                //        "class": "primary",
+                //        "callback": function () {
+                //            window.open('/Account/Login.aspx', '_self');
+                //        }
+                //    }, {
+                //        "label": "Cancel",
+                //        "class": "danger",
+                //        "callback": function () {
+                //        }
+                //    }]);
+                bootbox.dialog({
+                    message: "Please login to choose a seat.",
+                    title: "Seating",
+                    buttons: {
+                        danger: {
+                            label: "Cancel",
+                            className: "btn-danger",
+                            callback: function () {
+                            }
+                        },
+                        main: {
+                            label: "Login",
+                            className: "btn-primary",
+                            callback: function () {
+                                window.open('/Account/Login.aspx', '_self');
+                            }
                         }
-                    }, {
-                        "label": "Cancel",
-                        "class": "danger",
-                        "callback": function () {
-                        }
-                    }]);
+                    }
+                });
             }
         });
             world.setMarkerEvents({
@@ -315,19 +334,38 @@
                         });
                     }
                     else {
-                        bootbox.dialog("Please login to choose a seat.", [
-                        {
-                            "label": "Login",
-                            "class": "primary",
-                            "callback": function () {
-                                window.open('/Account/Login.aspx', '_self');
+                        bootbox.dialog({
+                            message: "Please login to choose a seat.",
+                            title: "Seating",
+                            buttons: {
+                                danger: {
+                                    label: "Cancel",
+                                    className: "btn-danger",
+                                    callback: function () {
+                                    }
+                                },
+                                main: {
+                                    label: "Login",
+                                    className: "btn-primary",
+                                    callback: function () {
+                                        window.open('/Account/Login.aspx', '_self');
+                                    }
+                                }
                             }
-                        }, {
-                            "label": "Cancel",
-                            "class": "danger",
-                            "callback": function () {
-                            }
-                        }]);
+                        });
+                        //bootbox.dialog("Please login to choose a seat.", [
+                        //{
+                        //    "label": "Login",
+                        //    "class": "primary",
+                        //    "callback": function () {
+                        //        window.open('/Account/Login.aspx', '_self');
+                        //    }
+                        //}, {
+                        //    "label": "Cancel",
+                        //    "class": "danger",
+                        //    "callback": function () {
+                        //    }
+                        //}]);
                     }
                 },
                 rightclick: function (e) {

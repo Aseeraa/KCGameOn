@@ -44,6 +44,9 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\packages\HtmlAgilityPack.1.4.9\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="MySql.Data">
       <HintPath>..\packages\MySql.Data.6.9.6\lib\net45\MySql.Data.dll</HintPath>
@@ -51,8 +54,13 @@
     <Reference Include="mysql.data.entity.EF6">
       <HintPath>..\packages\MySql.Data.Entities.6.8.3.0\lib\net45\mysql.data.entity.EF6.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PayPal, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5b4afc1ccaef40fb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\PayPal.1.4.0\lib\net45\PayPal.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -140,17 +148,21 @@
     <Content Include="Account\AccountManagement.aspx" />
     <Content Include="Account\Activation.aspx" />
     <Content Include="Account\Login.aspx" />
+    <Content Include="Account\Profile.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\SignOut.aspx" />
     <Content Include="css\black\bootstrap.css" />
     <Content Include="css\black\bootstrap.min.css" />
     <Content Include="css\bootstrap-responsive.css" />
     <Content Include="css\bootstrap-responsive.min.css" />
+    <Content Include="css\bootstrap-theme.css" />
+    <Content Include="css\bootstrap-theme.min.css" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\index.css" />
     <Content Include="ErrorPage\404.aspx" />
     <Content Include="ErrorPage\Error.aspx" />
+    <Content Include="EventRegistration.aspx" />
     <Content Include="FAQ\FAQ.aspx" />
     <Content Include="FAQ\WhatToBring.aspx" />
     <Content Include="GameServers.aspx" />
@@ -188,7 +200,6 @@
     <Content Include="img\user_orange.png" />
     <Content Include="js\application.js" />
     <Content Include="js\bootbox.js" />
-    <Content Include="js\bootbox.min.js" />
     <Content Include="js\bootstrap-alert.js" />
     <Content Include="js\bootstrap-button.js" />
     <Content Include="js\bootstrap-carousel.js" />
@@ -202,9 +213,9 @@
     <Content Include="js\bootstrap-transition.js" />
     <Content Include="js\bootstrap-typeahead.js" />
     <Content Include="js\bootstrap.js" />
-    <Content Include="js\bootstrap.min.js" />
     <Content Include="js\index.js" />
-    <Content Include="js\jquery.js" />
+    <Content Include="js\jquery-2.1.3.min.js" />
+    <Content Include="js\npm.js" />
     <Content Include="js\prettify.js" />
     <Content Include="Map.aspx" />
     <Content Include="packages.config" />
@@ -223,6 +234,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Site.Mobile.Master" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="css\bootstrap-theme.css.map" />
+    <Content Include="css\bootstrap.css.map" />
     <None Include="Properties\PublishProfiles\KcGameOn.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -252,6 +270,13 @@
     </Compile>
     <Compile Include="Account\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Profile.aspx.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Profile.aspx.designer.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>
@@ -287,6 +312,13 @@
     </Compile>
     <Compile Include="ErrorPage\Error.aspx.designer.cs">
       <DependentUpon>Error.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EventRegistration.aspx.cs">
+      <DependentUpon>EventRegistration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EventRegistration.aspx.designer.cs">
+      <DependentUpon>EventRegistration.aspx</DependentUpon>
     </Compile>
     <Compile Include="FAQ\FAQ.aspx.cs">
       <DependentUpon>FAQ.aspx</DependentUpon>
