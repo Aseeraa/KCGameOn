@@ -13,8 +13,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using HtmlAgilityPack;
 using MySql.Data.MySqlClient;
-using PayPal;
-using PayPal.Api;
+using PayPal.AdaptivePayments;
+using PayPal.AdaptivePayments.Model;
 
 namespace KCGameOn
 {
@@ -151,7 +151,7 @@ namespace KCGameOn
             }
         }
 
-        [WebMethod()]
+        [WebMethod]
         public static String BuyTickets(string data)
         {
             bool tableValid = true;
@@ -186,6 +186,7 @@ namespace KCGameOn
                     switch (userValue)
                     {
                         case -1: // Successfully Validated
+                            quantity = mystring.Count;
                             break;
                         case -2: // Unsuccessfully validated
                             tableValid = false;
@@ -212,25 +213,9 @@ namespace KCGameOn
             }
             if (tableValid)
             {
-                quantity = mystring.Count;
-                //paymnt = CreatePayment("daniel.t.robison-facilitator@gmail.com", "15.00", quantity.ToString(), "KCGameOn Tickets", "www.kcgameon.com/Map.aspx", "www.kcgameon.com/Default.aspx");
-                string url = "https://www.sandbox.paypal.com/cgi-bin/webscr";
-
-
-                var builder = new StringBuilder();
-                builder.Append(url);
-                builder.AppendFormat("?cmd=_xclick&business={0}", HttpUtility.UrlEncode("daniel.t.robison-facilitator@gmail.com"));
-                builder.Append("&lc=US&no_note=0&currency_code=USD");
-                builder.AppendFormat("&item_name={0}", HttpUtility.UrlEncode("KCGameOn Ticket"));
-                builder.AppendFormat("&amount={0}", HttpUtility.UrlEncode("15.00"));
-                builder.AppendFormat("&return={0}", HttpUtility.UrlEncode("www.kcgameon.com/Map.aspx"));
-                builder.AppendFormat("&cancel_return={0}", HttpUtility.UrlEncode("www.kcgameon.com/Default.aspx"));
-                builder.AppendFormat("&quantity={0}", HttpUtility.UrlEncode(quantity.ToString()));
-
-                //WkznwF8qQAau1-lXhLJrkhkS0WfwoUnwghvu7U4XV-fZp0J_edX7DK0cKuu
-
-                RedirectURL = builder.ToString();
-
+                PayRequest requestPay = Payment(quantity);
+                PayResponse responsePay = PayAPIOperations(requestPay);
+                RedirectURL = "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_ap-payment&paykey=" + responsePay.payKey;
             }
             else
             {
@@ -241,120 +226,105 @@ namespace KCGameOn
             return RedirectURL;
         }
 
-        //public static Payment CreatePayment(string email, string orderAmount, string orderQuan, string orderDescription, string returnUrl, string cancelUrl)
-        //{
-        //    Payment pymnt = null;
+        // # Payment
+        public static PayRequest Payment(int quantity)
+        {
+            // # PayRequest
+            // The code for the language in which errors are returned
+            RequestEnvelope envelopeRequest = new RequestEnvelope();
+            envelopeRequest.errorLanguage = "en_US";
 
-        //    Amount amount = new Amount();
-        //    amount.currency = "USD";
-        //    amount.total = orderAmount;
+            List<Receiver> listReceiver = new List<Receiver>();
 
-        //    RedirectUrls redirectUrls = new RedirectUrls();
-        //    redirectUrls.return_url = returnUrl;
-        //    redirectUrls.cancel_url = cancelUrl;
+            // Amount to be credited to the receiver's account
+            decimal amount = Convert.ToDecimal(quantity * 15.00);
+            Receiver receive = new Receiver(amount);
 
-        //    Transaction transaction = new Transaction();
-        //    transaction.amount = amount;
-        //    transaction.description = orderDescription;
-        //    transaction.notify_url = "www.kcgameon.com/Map.aspx";
-        //    List<Transaction> transactions = new List<Transaction>();
-        //    transactions.Add(transaction);
+            // A receiver's email address
+            receive.email = "daniel.t.robison-facilitator@gmail.com";
+            listReceiver.Add(receive);
+            ReceiverList listOfReceivers = new ReceiverList(listReceiver);
 
-        //    Payer payer = new Payer();
+            // PayRequest which takes mandatory params:
+            //  
+            // * `Request Envelope` - Information common to each API operation, such
+            // as the language in which an error message is returned.
+            // * `Action Type` - The action for this request. Possible values are:
+            // * PAY - Use this option if you are not using the Pay request in
+            // combination with ExecutePayment.
+            // * CREATE - Use this option to set up the payment instructions with
+            // SetPaymentOptions and then execute the payment at a later time with
+            // the ExecutePayment.
+            // * PAY_PRIMARY - For chained payments only, specify this value to delay
+            // payments to the secondary receivers; only the payment to the primary
+            // receiver is processed.
+            // * `Cancel URL` - URL to redirect the sender's browser to after
+            // canceling the approval for a payment; it is always required but only
+            // used for payments that require approval (explicit payments)
+            // * `Currency Code` - The code for the currency in which the payment is
+            // made; you can specify only one currency, regardless of the number of
+            // receivers
+            // * `Recevier List` - List of receivers
+            // * `Return URL` - URL to redirect the sender's browser to after the
+            // sender has logged into PayPal and approved a payment; it is always
+            // required but only used if a payment requires explicit approval
+            PayRequest requestPay = new PayRequest(envelopeRequest, "PAY", "http://localhost:665385/Default.aspx", "USD", listOfReceivers, "http://localhost:665385/Map.aspx");
+            return requestPay;
+        }
 
-        //    Payment pyment = new Payment();
-        //    pyment.intent = "sale";
-        //    pyment.payer = payer;
-        //    pyment.transactions = transactions;
-        //    pyment.redirect_urls = redirectUrls;
+        // # Pay API Operations
+        // Use the Pay API operations to transfer funds from a sender’s PayPal account to one or more receivers’ PayPal accounts. You can use the Pay API operation to make simple payments, chained payments, or parallel payments; these payments can be explicitly approved, preapproved, or implicitly approved. 
+        public static PayResponse PayAPIOperations(PayRequest reqPay)
+        {
+            // Create the PayResponse object
+            PayResponse responsePay = new PayResponse();
 
-        //    pymnt = pyment.Create(Api);
-        //    return pymnt;
-        //}
+            try
+            {
+                // Create the service wrapper object to make the API call
+                AdaptivePaymentsService service = new AdaptivePaymentsService();
 
-        //private static string AccessToken
-        //{
-        //    get
-        //    {
-        //        string token = new OAuthTokenCredential
-        //                        (
-        //                           "AT2GqVN3r3pMF8uMUBCt4ppky6PAyHN4eOvOxeJTzmXfbIvOFYDV1g8OSzAfiffnjAY2dwGXXSfod4Un",
-        //                            "EKsz2uNaFzeNu9tqa25ild9fhg_RpNau-FejBIMFuY85_nzr1yf2LmKRAWFhaGAqtLhXa9XvzjnboTeH"
-        //                        ).GetAccessToken();
-        //        return token;
-        //    }
-        //}
+                // # API call
+                // Invoke the Pay method in service wrapper object
+                responsePay = service.Pay(reqPay);
 
-        //private static APIContext Api
-        //{
-        //    get
-        //    {
-        //        APIContext context = new APIContext(AccessToken);
-        //        return context;
-        //    }
-        //}
+                if (responsePay != null)
+                {
+                    // Response envelope acknowledgement
+                    string acknowledgement = "Pay API Operation - ";
+                    acknowledgement += responsePay.responseEnvelope.ack.ToString();
 
-        //public void deleteLast(object sender, EventArgs e)
-        //{
-        //    int rowCount = registrationTable.Rows.Count - 1;
-        //    if (rowCount < 1)
-        //    {
-        //        registrationTable.Rows[1].Cells.Clear();
-        //    }
-        //    else
-        //    {
-        //        TableRow row = registrationTable.Rows[rowCount];
-        //        registrationTable.Rows.Remove(row);
-        //    }
-        //}
+                    // # Success values
+                    if (responsePay.responseEnvelope.ack.ToString().Trim().ToUpper().Equals("SUCCESS"))
+                    {
+                        // The pay key, which is a token you use in other Adaptive
+                        // Payment APIs (such as the Refund Method) to identify this
+                        // payment. The pay key is valid for 3 hours; the payment must
+                        // be approved while the pay key is valid.
 
-        //public void addUser(object sender, EventArgs e)
-        //{
-        //    newRow = new StringBuilder();
-        //    String username = Request.Form["ctl00$MainContent$lastDropdown"].ToString().Trim();
-        //    String firstname = Request.Form["ctl00$MainContent$userDropdown"].ToString().Trim();
-        //    String lastname = Request.Form["ctl00$MainContent$firstDropdown"].ToString().Trim();
+                        //use responsePay.payKey with username
 
-        //    TableRow row = new TableRow();
-        //    for (int i = 0; i < 4; i++)
-        //    {
-        //        row.Cells.Add(new TableCell());
-        //    }
+                        // Once you get success response, user has to redirect to PayPal
+                        // for the payment. Construct redirectURL as follows,
+                        //redirectURL="https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_ap-payment&paykey=" + responsePay.payKey;
+                    }
+                    // # Error Values 
+                    else
+                    {
+                        List<ErrorData> errorMessages = responsePay.error;
+                        foreach (ErrorData error in errorMessages)
+                        {
 
-        //    row.Cells[0].Text = username;
-        //    row.Cells[1].Text = firstname;
-        //    row.Cells[2].Text = lastname;
-        //    row.Cells[3].Text = "15.00";
-
-        //    registrationTable.Rows.Add(row);
-        //}
-
-        //public void addPayment(String username, String firstname, String lastname)
-        //{
-        //    if (!String.IsNullOrEmpty(username) || !String.IsNullOrEmpty(firstname) || !String.IsNullOrEmpty(lastname))
-        //    {
-        //        if (!username.Equals("None") || !firstname.Equals("None") || !lastname.Equals("None"))
-        //        {
-        //            payments.Add(new users(username, firstname, lastname));
-        //        }
-        //    }
-        //}
-
-        //public void removePayment(String username, String firstname, String lastname)
-        //{
-        //    if (!String.IsNullOrEmpty(username) || !String.IsNullOrEmpty(firstname) || !String.IsNullOrEmpty(lastname))
-        //    {
-        //        if (!username.Equals("None") || !firstname.Equals("None") || !lastname.Equals("None"))
-        //        {
-        //            users user = new users(username, firstname, lastname);
-        //            payments.Remove(user);
-        //        }
-        //    }
-        //}
-
-        //public void submitPayment(List<users> payments)
-        //{
-
-        //}
+                        }
+                    }
+                }
+            }
+            // # Exception log    
+            catch (System.Exception ex)
+            {
+                // Log the exception message
+            }
+            return responsePay;
+        }
     }
 }

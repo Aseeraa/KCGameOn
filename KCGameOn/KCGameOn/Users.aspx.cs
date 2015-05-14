@@ -34,11 +34,11 @@ namespace KCGameOn
                 {
                     count++;
                     UserHTML.AppendLine("<tr>");
-                    UserHTML.AppendLine("<td>").Append(Reader.GetString("UserName").ToString()).Append("</td>");
-                    UserHTML.AppendLine("<td>").Append(Reader.GetString("FirstName").ToString()).Append("</td>");
-                    UserHTML.AppendLine("<td>").Append(Reader.GetString("LastName").ToString()).Append("</td>");
-                    UserHTML.AppendLine("<td>").Append(Reader.GetString("GamingInitials").ToString()).Append("</td>");
-                    UserHTML.AppendLine("<td>").Append(Reader.GetString("GamingGroup").ToString()).Append("</td>");
+                    UserHTML.AppendLine("<td class=\"col-md-1\">").Append(Reader.GetString("UserName").ToString()).Append("</td>");
+                    UserHTML.AppendLine("<td class=\"col-md-1\">").Append(Reader.GetString("FirstName").ToString()).Append("</td>");
+                    UserHTML.AppendLine("<td class=\"col-md-1\">").Append(Reader.GetString("LastName").ToString()).Append("</td>");
+                    UserHTML.AppendLine("<td class=\"col-md-1\">").Append(Reader.GetString("GamingInitials").ToString()).Append("</td>");
+                    UserHTML.AppendLine("<td class=\"col-md-1\">").Append(Reader.GetString("GamingGroup").ToString()).Append("</td>");
                     UserHTML.AppendLine("</tr>");
                 }
             }

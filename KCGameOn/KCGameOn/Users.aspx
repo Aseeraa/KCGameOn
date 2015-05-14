@@ -135,7 +135,7 @@
             /* Table initialisation */
             $(document).ready(function () {
                 $('#example').dataTable({
-                    "sDom": "<'row'<'span6'l><'pull-right'f>r>t<'row'<'span6'i><'span8'p>>",
+                    "sDom": "<'row'<'col-md-5'l><'col-md-7'f>r>t<'row'<'col-md-7'i><'col-md-5'p>>",
                     //"sDom": "<'row'<'span8'l><'span8'f>r>t<'row'<'span8'i><'span8'p>>",
                     "sPaginationType": "bootstrap",
                     "oLanguage": {

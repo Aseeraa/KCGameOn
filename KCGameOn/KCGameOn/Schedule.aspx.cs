@@ -110,18 +110,18 @@ namespace KCGameOn
                     if (Reader.GetString("Active").ToString().Equals("1"))
                     {
                         ScheduleHTMLActive.AppendLine("<tr>");
-                        ScheduleHTMLActive.AppendLine("<td>").Append(Reader.GetString("Tournament").ToString()).Append("</td>");
-                        ScheduleHTMLActive.AppendLine("<td>").Append(Reader.GetString("TournamentDate").ToString()).Append("</td>");
-                        ScheduleHTMLActive.AppendLine("<td>").Append(Reader.GetString("StartTime").ToString() + " - " + Reader.GetString("StopTime").ToString()).Append("</td>");
+                        ScheduleHTMLActive.AppendLine("<td class=\"col-md-1\">").Append(Reader.GetString("Tournament").ToString()).Append("</td>");
+                        ScheduleHTMLActive.AppendLine("<td class=\"col-md-1\">").Append(Reader.GetString("TournamentDate").ToString()).Append("</td>");
+                        ScheduleHTMLActive.AppendLine("<td class=\"col-md-1\">").Append(Reader.GetString("StartTime").ToString() + " - " + Reader.GetString("StopTime").ToString()).Append("</td>");
                         ScheduleHTMLActive.AppendLine("</tr>");
                     }
                     else
                     {
                         ScheduleHTMLOld.AppendLine("<tr>");
-                        ScheduleHTMLOld.AppendLine("<td>").Append(Reader.GetString("Tournament").ToString()).Append("</td>");
-                        ScheduleHTMLOld.AppendLine("<td>").Append(Reader.GetString("TournamentDate").ToString()).Append("</td>");
-                        ScheduleHTMLOld.AppendLine("<td>").Append(Reader.GetString("StartTime").ToString() + " - " + Reader.GetString("StopTime").ToString()).Append("</td>");
-                        ScheduleHTMLOld.AppendLine("<td>").Append(Reader.GetString("Attendance").ToString()).Append("</td>");
+                        ScheduleHTMLOld.AppendLine("<td class=\"col-md-1\">").Append(Reader.GetString("Tournament").ToString()).Append("</td>");
+                        ScheduleHTMLOld.AppendLine("<td class=\"col-md-1\">").Append(Reader.GetString("TournamentDate").ToString()).Append("</td>");
+                        ScheduleHTMLOld.AppendLine("<td class=\"col-md-1\">").Append(Reader.GetString("StartTime").ToString() + " - " + Reader.GetString("StopTime").ToString()).Append("</td>");
+                        ScheduleHTMLOld.AppendLine("<td class=\"col-md-1\">").Append(Reader.GetString("Attendance").ToString()).Append("</td>");
                         ScheduleHTMLOld.AppendLine("</tr>");
                     }
                 }

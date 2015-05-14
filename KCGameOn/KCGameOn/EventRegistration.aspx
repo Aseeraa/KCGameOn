@@ -148,6 +148,7 @@
             $(calculateSum);
 
             $('#pay').click(function (event) {
+                debugger;
                 var payments = []
                 $('#registrationTable tbody tr').each(function () {
                     var tdArray = []
@@ -162,8 +163,8 @@
                     data: "{'data':'" + JSON.stringify(payments) + "'}",
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
-                    success: function (url) {
-                        window.location = url;
+                    success: function (e) {
+                        window.location = e.d;
                     }
                 });
                 //event.preventDefault();

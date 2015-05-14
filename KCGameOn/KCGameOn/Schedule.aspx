@@ -125,10 +125,10 @@
 
             /* Table initialisation */
             $(document).ready(function () {
-                $('#example').dataTable({
+                $('#Table2').dataTable({
                     "iDisplayLength": 5,
                     "order": [[0, "desc"]],
-                    "sDom": "<'row'<'span8'><'span8'f>r>t<'row'<'span8'i><'span8'p>>",
+                    "sDom": "<'row'<'col-md-12'><'col-md-12'f>r>t<'row'<'col-md-12'i><'col-md-12'p>>",
                     //"dom": '<"top"i>rt<"bottom"flp><"clear">',
                     "sPaginationType": "bootstrap",
                     "oLanguage": {
@@ -138,14 +138,14 @@
             });
         </script>
     </head>
-    <div class="container">
+    <div class="container" id="tableContainer">
         <h2>Upcoming Events</h2>
         <table cellpadding="0" cellspacing="0" border="0" class="bordered-table zebra-striped" id="Table1">
             <thead>
                 <tr>
-                    <th>Event</th>
-                    <th>Event Date</th>
-                    <th>Time</th>
+                    <th class="col-md-1">Event</th>
+                    <th class="col-md-1">Event Date</th>
+                    <th class="col-md-1">Time</th>
                 </tr>
             </thead>
             <tbody>
@@ -153,13 +153,13 @@
             </tbody>
         </table>
         <h2>Previous Events</h2>
-        <table cellpadding="0" cellspacing="0" border="0" class="bordered-table zebra-striped" id="example">
+        <table cellpadding="0" cellspacing="0" border="0" class="bordered-table zebra-striped" id="Table2">
             <thead>
                 <tr>
-                    <th>Event</th>
-                    <th>Event Date</th>
-                    <th>Time</th>
-                    <th>Attendance</th>
+                    <th class="col-md-1">Event</th>
+                    <th class="col-md-1">Event Date</th>
+                    <th class="col-md-1">Time</th>
+                    <th class="col-md-1">Attendance</th>
                 </tr>
             </thead>
             <tbody>
