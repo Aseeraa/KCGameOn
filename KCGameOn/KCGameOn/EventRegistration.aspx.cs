@@ -155,6 +155,7 @@ namespace KCGameOn
         public static String BuyTickets(string data)
         {
             bool tableValid = true;
+            String UserInfo = ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString;
             //Payment paymnt = null;
             quantity = 0;
             List<users> payment = new List<users>();
@@ -165,8 +166,7 @@ namespace KCGameOn
                 String user = mystring.ElementAt(i).ElementAt(0).ToString();
                 String first = mystring.ElementAt(i).ElementAt(1).ToString();
                 String last = mystring.ElementAt(i).ElementAt(2).ToString();
-                String UserInfo = ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString;
-
+               
                 MySqlCommand cmd = null;
                 MySqlConnection conn = null;
 
@@ -216,6 +216,45 @@ namespace KCGameOn
                 PayRequest requestPay = Payment(quantity);
                 PayResponse responsePay = PayAPIOperations(requestPay);
                 RedirectURL = "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_ap-payment&paykey=" + responsePay.payKey;
+                for (int i = 0; i < mystring.Count; i++)
+                {
+                    String user = mystring.ElementAt(i).ElementAt(0).ToString();
+                    String payKey = responsePay.payKey;
+                    String fullYear = "N";
+                    String verfiedPaid = "N";
+                    String paymentMethod = "PayPal";
+
+                    MySqlCommand cmd = null;
+                    MySqlConnection conn = null;
+
+                    try
+                    {
+                        conn = new MySqlConnection(UserInfo);
+                        conn.Open();
+
+                        cmd = new MySqlCommand("spAddPayment", conn);
+                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("Username", user);
+                        cmd.Parameters.AddWithValue("VerifiedPaid", verfiedPaid);
+                        cmd.Parameters.AddWithValue("PaidFullYear", fullYear);
+                        cmd.Parameters.AddWithValue("PaymentMethod", paymentMethod);
+                        cmd.Parameters.AddWithValue("PaymentKey", payKey);
+
+                        int userValue = Convert.ToInt32(cmd.ExecuteScalar());
+                    }
+                    catch (Exception)
+                    {
+                        //return "An internal error has occurred, please contact an administrator.";
+                        //return;
+                    }
+                    finally
+                    {
+                        if (conn != null)
+                        {
+                            conn.Close();
+                        }
+                    }
+                }
             }
             else
             {
@@ -241,7 +280,7 @@ namespace KCGameOn
             Receiver receive = new Receiver(amount);
 
             // A receiver's email address
-            receive.email = "daniel.t.robison-facilitator@gmail.com";
+            receive.email = "payments@kcgameon.com";
             listReceiver.Add(receive);
             ReceiverList listOfReceivers = new ReceiverList(listReceiver);
 
@@ -268,7 +307,7 @@ namespace KCGameOn
             // * `Return URL` - URL to redirect the sender's browser to after the
             // sender has logged into PayPal and approved a payment; it is always
             // required but only used if a payment requires explicit approval
-            PayRequest requestPay = new PayRequest(envelopeRequest, "PAY", "http://localhost:665385/Default.aspx", "USD", listOfReceivers, "http://localhost:665385/Map.aspx");
+            PayRequest requestPay = new PayRequest(envelopeRequest, "PAY", "https://kcgameon.com/Default.aspx", "USD", listOfReceivers, "https://kcgameon.com/Map.aspx");
             return requestPay;
         }
 

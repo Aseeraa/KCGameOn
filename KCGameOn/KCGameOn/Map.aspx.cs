@@ -8,9 +8,8 @@ using System.Web.Script.Services;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web.Http;
 using MySql.Data.MySqlClient;
-using System.Web.Mvc;
+
 using System.Net;
 
 namespace KCGameOn

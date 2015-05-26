@@ -224,7 +224,8 @@
     <Content Include="packages.config" />
     <Content Include="icon\Thumbs.db" />
     <Content Include="Schedule.aspx" />
-    <Content Include="Sponsors.aspx" />
+    <Content Include="Sponsors\HowToHelp.aspx" />
+    <Content Include="Sponsors\Sponsors.aspx" />
     <Content Include="Staff.aspx" />
     <Content Include="Swag.aspx" />
     <Content Include="Tournament.aspx" />
@@ -377,11 +378,11 @@
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
-    <Compile Include="Sponsors.aspx.cs">
+    <Compile Include="Sponsors\Sponsors.aspx.cs">
       <DependentUpon>Sponsors.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Sponsors.aspx.designer.cs">
+    <Compile Include="Sponsors\Sponsors.aspx.designer.cs">
       <DependentUpon>Sponsors.aspx</DependentUpon>
     </Compile>
     <Compile Include="Staff.aspx.cs">

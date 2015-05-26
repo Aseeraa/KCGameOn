@@ -2,7 +2,7 @@
 
 <%@ Import Namespace="KCGameOn" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <link href="css/index.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -11,22 +11,25 @@
         {
             margin-bottom: 10px;
         }
-                .modal-content, .modal-dialog, .modal-footer
+
+        .modal-content, .modal-dialog, .modal-footer
         {
             background: #282828;
         }
+
         h3
         {
-            color:#33b5e5;
-            padding:0px;
-            margin:0px;
+            color: #33b5e5;
+            padding: 0px;
+            margin: 0px;
         }
+
         .Count
         {
-            margin:auto;
+            margin: auto;
             margin-left: 150px;
-            width:auto;
-            max-width:450px;
+            width: auto;
+            max-width: 450px;
         }
     </style>
     <div class="">
@@ -36,23 +39,33 @@
                 <button id="Mapsearchbutton" class="btn btn-default " type="button">Search</button>
             </div>
         </form>
-        <div class="Count pull-left"><h3>There currently <%= count %> gamers locked in for the LAN</h3></div>
+        <div class="Count pull-left">
+            <h3>There currently <%= count %> gamers locked in for the LAN</h3>
+        </div>
         <div class="btn-group pull-right">
             <button id="Legend" class="btn btn-default pull-right dropdown-toggle" type="button" data-toggle="dropdown">Legend</button>
             <ul id="legenddropdown" class="dropdown-menu pull-right" role="menu">
                 <li>Current/Projector seat</br>
-                    <img src="/img/active.png" /> | <img src="/img/active_proj.png" />
+                    <img src="/img/active.png" />
+                    |
+                    <img src="/img/active_proj.png" />
                 </li>
                 <li class="divider"></li>
                 <li>Occupied/Projector seat</br>
-                    <img src="/img/occupied.png" /> | <img src="/img/occupied_proj.png" />
+                    <img src="/img/occupied.png" />
+                    |
+                    <img src="/img/occupied_proj.png" />
                 </li>
                 <li class="divider"></li>
                 <li>Empty/Projector seat</br>
-                    <img src="/img/empty.png" /> | <img src="/img/projector.png" />
+                    <img src="/img/empty.png" />
+                    |
+                    <img src="/img/projector.png" />
                 </li>
                 <li class="divider"></li>
-                <li><img src="/img/reserved.png" /> Reserved seat</li>
+                <li>
+                    <img src="/img/reserved.png" />
+                    Reserved seat</li>
 
             </ul>
         </div>
@@ -101,34 +114,35 @@
     </script>
     <div id="viewport">
 
-    <script async src="js/bootbox.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
-    <script src="js/index.js"></script>
-    <%if (String.IsNullOrEmpty(SessionVariables.UserName))
-      {%>
-    <script async>
+        <script async src="js/bootbox.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+        <script src="js/index.js"></script>
+        <%if (String.IsNullOrEmpty(SessionVariables.UserName))
+          {%>
+        <script async>
 
-        var viewport,
-            currentUser = null
+            var viewport,
+                currentUser = null
+            function initialize() {
+                viewport = new GameOn.SeatingMap(document.getElementById("viewport"), seats, currentUser);
+                viewport.updateMarkers(people, filtered);
+            }
+            google.maps.event.addDomListener(window, "load", initialize);
+        </script>
+        <%} %>
+        <%else
+          { %>
+        <script async>
+            var viewport,
+                currentUser = "<%= SessionVariables.UserName.ToLower() %>"
         function initialize() {
             viewport = new GameOn.SeatingMap(document.getElementById("viewport"), seats, currentUser);
             viewport.updateMarkers(people, filtered);
         }
         google.maps.event.addDomListener(window, "load", initialize);
-    </script>
-    <%} %>
-    <%else
-      { %>
-    <script async>
-        var viewport,
-            currentUser = "<%= SessionVariables.UserName.ToLower() %>"
-        function initialize() {
-            viewport = new GameOn.SeatingMap(document.getElementById("viewport"), seats, currentUser);
-            viewport.updateMarkers(people, filtered);
-        }
-        google.maps.event.addDomListener(window, "load", initialize);
-    </script>
-    <%} %>
+        </script>
+        <%} %>
+        </div>
 </asp:Content>
 
 

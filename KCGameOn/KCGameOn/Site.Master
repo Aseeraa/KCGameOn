@@ -91,7 +91,7 @@
 			  <a data-toggle="dropdown" class="dropdown-toggle" href="#">Sponsors<b class="caret"></b></a>
 			  <ul class="dropdown-menu">
 				<li><a href="/Sponsors/Sponsors.aspx">Sponsors</a></li>
-				<li><a href="/Sponsors/Apply.aspx">How to help</a></li>
+				<li><a href="/Sponsors/HowToHelp.aspx">How to help</a></li>
 			  </ul>
 			</li>
 			<li><a href="https://kcgameon.spreadshirt.com/" target="_blank">Swag</a></li>
@@ -147,7 +147,7 @@
 	  </div>
 	</div><!-- /navbar-inner -->
   </div>
-  <div>
+  <div class="container">
 	<asp:ContentPlaceHolder runat="server" ID="MainContent" />
   </div>
 <div class="row"><center><br/><br/>&copy; All rights reserved. <br/> <br/></center></div>
