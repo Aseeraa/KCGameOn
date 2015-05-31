@@ -150,7 +150,7 @@
   <div class="container">
 	<asp:ContentPlaceHolder runat="server" ID="MainContent" />
   </div>
-<div class="row"><center><br/><br/>&copy; All rights reserved. <br/> <br/></center></div>
+   rel="nofollow"
 </div>
 </body>
 </html>
