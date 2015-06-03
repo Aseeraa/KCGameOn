@@ -150,7 +150,9 @@
   <div class="container">
 	<asp:ContentPlaceHolder runat="server" ID="MainContent" />
   </div>
+<div class="row"><center><br/><br/>&copy; All rights reserved. <a href="webmaster [at] kcgameon.com"
    rel="nofollow"
+   onclick="this.href='mailto:' + 'webmaster' + '@' + 'kcgameon.com'">Questions/Comments/Concerns?</a><br/> <br/></center></div>
 </div>
 </body>
 </html>
