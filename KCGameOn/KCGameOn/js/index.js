@@ -382,6 +382,24 @@
                                 }
                             }
                         });
+                        var user = {};
+                        user.Username = currentUser;
+                        user.SeatID = e.marker.id;
+                        $.ajax({
+                            type: "POST",
+                            url: "Map.aspx/DeleteUser",
+                            data: '{user: ' + JSON.stringify(user) + '}',
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                            sucess: function (response) {
+                                alert("You have been successfully seated.");
+                                window.location.reload();
+                            },
+                            error: function () {
+                                alert("Failed to sit down, please inform an administrator or try again in a few minutes.");
+                                window.location.reload();
+                            }
+                        });
                     }
                     else {
                     }

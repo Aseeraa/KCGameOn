@@ -8,6 +8,7 @@ using System.Net;
 using System.Text;
 using System.Web;
 using System.Web.Script.Serialization;
+using System.Web.Script.Services;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -152,6 +153,7 @@ namespace KCGameOn
         }
 
         [WebMethod]
+        [ScriptMethod]
         public static String BuyTickets(string data)
         {
             bool tableValid = true;

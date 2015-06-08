@@ -132,6 +132,41 @@ namespace KCGameOn
                 // Some smart kid is trying to update seat for someone else.
             }
         }
+
+        [WebMethod]
+        [ScriptMethod]
+        public static void DeleteUser(User user)
+        {
+            if (SessionVariables.UserName.ToLower() == user.Username.ToLower())// Add or User is Admin)
+            {
+                // SQL query to update the SeatingChart.
+                using (MySqlCommand cmd = new MySqlCommand("spRemoveUserSeat", new MySqlConnection(ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString)))
+                {
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("seatID", user.SeatID);
+                    cmd.Parameters.AddWithValue("Username", user.Username.ToLower());
+
+                    cmd.Connection.Open();
+                    int seatValue = Convert.ToInt32(cmd.ExecuteScalar());
+
+                    switch (seatValue)
+                    {
+                        case -1: // Successfully Removed UserSeat.
+                            break;
+                        case -2: // Could not remove seat.
+                            break;
+                        default:
+                            break;
+                    }
+                    cmd.Connection.Close();
+                }
+            }
+            else
+            {
+                // Some smart kid is trying to update seat for someone else.
+            }
+        }
     }
 }
 public class User

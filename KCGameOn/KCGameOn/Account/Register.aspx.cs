@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Data.Linq;
 using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using MySql.Data.MySqlClient;
 using System.Configuration;
@@ -21,6 +20,7 @@ namespace KCGameOn.Account
 {
     public partial class Register : System.Web.UI.Page
     {
+        String file = "C:\\inetpub\\KCGameOn\\logs\\registrationlog.txt";
         private string errorString;
         public bool registartionSucess;
         public string RegisterErrorString
@@ -66,33 +66,51 @@ namespace KCGameOn.Account
             RegisterErrorString = null;
             RegistrationSucess = false;
         }
-        public bool Validate()
-        {
-            string Response = Request.Form["g-recaptcha-response"];
-            bool Valid = false;
+        
+        //public bool Validate()
+        //{
 
-            HttpWebRequest req = (HttpWebRequest)WebRequest.Create("https://www.google.com/recaptcha/api/siteverify?secret=" + System.Configuration.ConfigurationManager.ConnectionStrings["captchaKey"].ToString() + "&response=" + Response);
-            try
-            {
-                using (WebResponse wResoponse = req.GetResponse())
-                {
-                    using (StreamReader readStream = new StreamReader(wResoponse.GetResponseStream()))
-                    {
-                        string jsonResponse = readStream.ReadToEnd();
+        //    try
+        //    {
+        //        using (StreamWriter writer = new StreamWriter(file))
+        //        {
+        //            string Response = Request.Form["g-recaptcha-response"];
+        //            bool Valid = false;
+        //            writer.WriteLine("Beginning validation process...");
+        //            HttpWebRequest req = (HttpWebRequest)WebRequest.Create(string.Format("https://www.google.com/recaptcha/api/siteverify?secret={0}&response={1}", System.Configuration.ConfigurationManager.ConnectionStrings["captchaKey"].ToString(), Response));
+        //            try
+        //            {
+        //                using (WebResponse wResoponse = req.GetResponse())
+        //                {
+        //                    using (StreamReader readStream = new StreamReader(wResoponse.GetResponseStream()))
+        //                    {
+        //                        writer.WriteLine("Received response from Google.");
+        //                        string jsonResponse = readStream.ReadToEnd();
+        //                        writer.WriteLine(jsonResponse);
 
-                        JavaScriptSerializer js = new JavaScriptSerializer();
-                        MyObject data = js.Deserialize<MyObject>(jsonResponse);
+        //                        JavaScriptSerializer js = new JavaScriptSerializer();
+        //                        MyObject data = js.Deserialize<MyObject>(jsonResponse);
 
-                        Valid = Convert.ToBoolean(data.success);
-                    }
-                }
-                return Valid;
-            }
-            catch (WebException ex)
-            {
-                throw ex;
-            }
-        }
+        //                        Valid = Convert.ToBoolean(data.success);
+        //                        writer.WriteLine(Valid.ToString());
+        //                    }
+        //                }
+        //                return Valid;
+        //            }
+        //            catch (WebException ex)
+        //            {
+        //                writer.WriteLine("Error!");
+        //                writer.WriteLine(ex.StackTrace);
+        //                throw ex;
+        //            }
+        //        }
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        System.Console.WriteLine(e.StackTrace);
+        //        return false;
+        //    }
+        //}
         public class MyObject
         {
             public string success { get; set; }
@@ -120,7 +138,8 @@ namespace KCGameOn.Account
 
             String UserInfo = ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString;
 
-            if (Validate())
+            //if (Validate())
+            if (int.Parse(Request.Form["ctl00$MainContent$HumanValidation"].ToString().Trim()) == 8)
             {
                 if (!String.IsNullOrEmpty(UserName) && !String.IsNullOrEmpty(Password) &&
                     !String.IsNullOrEmpty(Email) && !String.IsNullOrEmpty(SecretAnswer) &&
@@ -166,7 +185,7 @@ namespace KCGameOn.Account
                                 break;
                         }
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         // Redirect to Error Page.
                     }

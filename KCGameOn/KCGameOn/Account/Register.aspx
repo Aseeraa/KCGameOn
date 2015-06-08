@@ -230,11 +230,18 @@
                 <input id="SecretAnswer" class="SecretAnswer" onkeyup="checkValidInputs();" runat="server" placeholder="E.g. Hegde" type="password" required>
             </div>
         </div>
-        <div class="control-group">
+        <!--<div class="control-group">
             <label class="control-label" for="inputLast">Are You Human?</label>
 
             <div class="controls">
-                <div class="g-recaptcha" data-sitekey="6Lee8QATAAAAAMq-p2P1MDAYAoJj6uKOTikKdx6N"></div>
+				<input runat="server" placeholder="Put any sponsor in this box" type="text" required>
+                <div class="g-recaptcha" data-sitekey="6LdyHwMTAAAAANbhWjVZ720wOmNiBt-CO7l60sDg"></div>
+            </div>
+        </div>-->
+		<div class="control-group">
+            <label class="control-label" for="inputHuman"></label>
+            <div class="controls">
+                <input id="HumanValidation" runat="server" placeholder="3 + 5 = ?" type="text" required>
             </div>
         </div>
         <div class="control-group">

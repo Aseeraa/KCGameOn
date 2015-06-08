@@ -115,12 +115,13 @@
                 var rowCount = table.rows.length;
                 if (rowCount > 0) {
                     table.deleteRow(rowCount - 1);
+                    $(calculateSum);
                 }
             }
 
             $('#delete_row').click(function (event) {
                 event.preventDefault();
-                deleterow('#registrationTable');
+                deleterow('registrationTable');
             });
 
             $('#add').click(function (event) {
@@ -148,7 +149,7 @@
             $(calculateSum);
 
             $('#pay').click(function (event) {
-                debugger;
+                event.preventDefault();
                 var payments = []
                 $('#registrationTable tbody tr').each(function () {
                     var tdArray = []
@@ -164,11 +165,9 @@
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     success: function (e) {
-                        window.location = e.d;
+                        window.location.href = e.d;
                     }
                 });
-                //event.preventDefault();
-
             });
         });
 
@@ -200,12 +199,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <%--                    <tr>
-                        <td><%= SessionVariables.UserName %></td>
-                        <td><%= current.First %></td>
-                        <td><%= current.Last %></td>
-                        <td class="price">15.00</td>
-                    </tr>--%>
                 </tbody>
             </table>
             <div class="total pull-right">
