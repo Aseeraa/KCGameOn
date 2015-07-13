@@ -332,6 +332,7 @@
                                 window.location.reload();
                             }
                         });
+                        alert("You have been successfully seated.");
                     }
                     else {
                         bootbox.dialog({

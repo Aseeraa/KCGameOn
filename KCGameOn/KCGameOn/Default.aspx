@@ -120,12 +120,12 @@
             <br />
 
             <form class="well form-inline">
-                <h3>Announcing the 62nd Cerner LAN - April 25, 2015!</h3>
+                <h3>Announcing the 64th Cerner LAN - August 1, 2015!</h3>
                 <br />
                 <div class="control-group">
                     <div class="controls">
                         <div class="input-append">
-                <button id="Button1" type="button" class="btn btn-inverse" style="padding-left: 13px" onclick="myFunction()" runat="server">Register for Event 62!</button>
+                <button id="Button1" type="button" class="btn btn-inverse" style="padding-left: 13px" onclick="myFunction()" runat="server">Register for Event 64!</button>
                             <p id="demo"></p>
                         </div>
                     </div>
