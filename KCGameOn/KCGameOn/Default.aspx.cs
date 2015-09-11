@@ -26,6 +26,7 @@ namespace KCGameOn
         protected void Page_Load(object sender, EventArgs e)
         {
             WebRequest MyRssRequest = WebRequest.Create("http://store.steampowered.com/feeds/news.xml");
+            
             WebResponse MyRssResponse = MyRssRequest.GetResponse();
 
             Stream MyRssStream = MyRssResponse.GetResponseStream();

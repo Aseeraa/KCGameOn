@@ -11,6 +11,9 @@ using System.Web.UI.WebControls;
 using MySql.Data.MySqlClient;
 
 using System.Net;
+using System.Web.Script.Serialization;
+using System.Web.Helpers;
+using System.Web.Mvc;
 
 namespace KCGameOn
 {
@@ -97,7 +100,7 @@ namespace KCGameOn
         }
 
         [WebMethod]
-        [ScriptMethod]
+        [ScriptMethod(UseHttpGet = true,ResponseFormat = System.Web.Script.Services.ResponseFormat.Json)]
         public static void SaveUser(User user)
         {
             if (SessionVariables.UserName.ToLower() == user.Username.ToLower())// Add or User is Admin)

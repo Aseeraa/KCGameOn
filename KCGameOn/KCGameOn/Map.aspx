@@ -135,14 +135,14 @@
         <script async>
             var viewport,
                 currentUser = "<%= SessionVariables.UserName.ToLower() %>"
-        function initialize() {
-            viewport = new GameOn.SeatingMap(document.getElementById("viewport"), seats, currentUser);
-            viewport.updateMarkers(people, filtered);
-        }
-        google.maps.event.addDomListener(window, "load", initialize);
+            function initialize() {
+                viewport = new GameOn.SeatingMap(document.getElementById("viewport"), seats, currentUser);
+                viewport.updateMarkers(people, filtered);
+            }
+            google.maps.event.addDomListener(window, "load", initialize);
         </script>
         <%} %>
-        </div>
+    </div>
 </asp:Content>
 
 

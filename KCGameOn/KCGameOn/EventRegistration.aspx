@@ -48,6 +48,7 @@
         }
     </style>
     <script>
+
         $(document).ready(function () {
             var users = <%= new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(usernames)%>
                 namelist = <%= new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(names)%>
@@ -163,13 +164,29 @@
                     url: "EventRegistration.aspx/BuyTickets",
                     data: "{'data':'" + JSON.stringify(payments) + "'}",
                     contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    success: function (e) {
-                        window.location.href = e.d;
-                    }
-                });
+                    dataType: "json"
+                })
+                    .done(function (data) { window.location.href = data.d; })
+                    .fail(function () {
+                        failedBox();
+                    });
             });
         });
+
+        function failedBox() {
+            bootbox.dialog({
+                message: "Failed to proceed to checkout, please contact an administrator or try again later.",
+                title: "Payment",
+                buttons: {
+                    main: {
+                        label: "Ok!",
+                        className: "btn-primary",
+                        callback: function () {
+                        }
+                    }
+                }
+            });
+        }
 
     </script>
 </asp:Content>
