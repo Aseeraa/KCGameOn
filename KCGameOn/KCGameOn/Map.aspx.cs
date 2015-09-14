@@ -100,7 +100,7 @@ namespace KCGameOn
         }
 
         [WebMethod]
-        [ScriptMethod(UseHttpGet = true,ResponseFormat = System.Web.Script.Services.ResponseFormat.Json)]
+        [ScriptMethod(UseHttpGet = false,ResponseFormat = System.Web.Script.Services.ResponseFormat.Json)]
         public static void SaveUser(User user)
         {
             if (SessionVariables.UserName.ToLower() == user.Username.ToLower())// Add or User is Admin)
