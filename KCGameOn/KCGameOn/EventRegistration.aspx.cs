@@ -21,21 +21,12 @@ namespace KCGameOn
 {
     public partial class EventRegistration : System.Web.UI.Page
     {
-        //Used on pageload only.
         public static List<users> userlist = new List<users>();
         public static List<String> usernames = new List<String>();
         public static List<String> firstnames = new List<String>();
         public static List<String> lastnames = new List<String>();
         public static List<String> names = new List<String>();
-
-        public static String tableUsername = "";
-        public static String tableFirstname = "";
-        public static String tableLastname = "";
-
-        //For use with "Pay Now" button
-        public static List<users> usersToPay = new List<users>();
-
-
+        public List<users> payments = new List<users>();
         public static int quantity = 0;
         public static users current = new users("", "", "");
         public static StringBuilder newRow;
@@ -120,10 +111,50 @@ namespace KCGameOn
             }
         }
 
+
+        public class users
+        {
+            private string username;
+            private string firstname;
+            private string lastname;
+            private double price;
+
+            public users(string username, string firstname, string lastname)
+            {
+                // TODO: Complete member initialization
+                this.username = username;
+                this.firstname = firstname;
+                this.lastname = lastname;
+            }
+
+            public string Username
+            {
+                set { this.username = value; }
+                get { return this.username; }
+            }
+
+            public string First
+            {
+                set { this.firstname = value; }
+                get { return this.firstname; }
+            }
+
+            public string Last
+            {
+                set { this.lastname = value; }
+                get { return this.lastname; }
+            }
+
+            public double Price
+            {
+                set { this.price = value; }
+                get { return this.price; }
+            }
+        }
+
         [WebMethod]
         [ScriptMethod]
-        public static String BuyTickets()
-        //public static String BuyTickets(string data)
+        public static String BuyTickets(string data)
         {
             bool tableValid = true;
             String UserInfo = ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString;
@@ -131,16 +162,12 @@ namespace KCGameOn
             quantity = 0;
             List<users> payment = new List<users>();
             JavaScriptSerializer json = new JavaScriptSerializer();
-            //List<String[]> mystring = json.Deserialize<List<string[]>>(data);
-            //for (int i = 0; i < mystring.Count; i++)
-            foreach(users user in usersToPay)
+            List<String[]> mystring = json.Deserialize<List<string[]>>(data);
+            for (int i = 0; i < mystring.Count; i++)
             {
-                string username = user.Username;
-                string first = user.First;
-                string last = user.Last;
-                //String user = mystring.ElementAt(i).ElementAt(0).ToString();
-                //String first = mystring.ElementAt(i).ElementAt(1).ToString();
-                //String last = mystring.ElementAt(i).ElementAt(2).ToString();
+                String user = mystring.ElementAt(i).ElementAt(0).ToString();
+                String first = mystring.ElementAt(i).ElementAt(1).ToString();
+                String last = mystring.ElementAt(i).ElementAt(2).ToString();
                
                 MySqlCommand cmd = null;
                 MySqlConnection conn = null;
@@ -152,7 +179,7 @@ namespace KCGameOn
 
                     cmd = new MySqlCommand("spValidateUsersForPayment", conn);
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("UserName", username);
+                    cmd.Parameters.AddWithValue("UserName", user);
                     cmd.Parameters.AddWithValue("Firstname", first);
                     cmd.Parameters.AddWithValue("Lastname", last);
 
@@ -161,8 +188,7 @@ namespace KCGameOn
                     switch (userValue)
                     {
                         case -1: // Successfully Validated
-                            //quantity = mystring.Count;
-                            quantity = usersToPay.Count;
+                            quantity = mystring.Count;
                             break;
                         case -2: // Unsuccessfully validated
                             tableValid = false;
@@ -192,10 +218,9 @@ namespace KCGameOn
                 PayRequest requestPay = Payment(quantity);
                 PayResponse responsePay = PayAPIOperations(requestPay);
                 RedirectURL = "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_ap-payment&paykey=" + responsePay.payKey;
-                //for (int i = 0; i < mystring.Count; i++)
-                foreach (users user in usersToPay)
+                for (int i = 0; i < mystring.Count; i++)
                 {
-                    String username = user.Username;//mystring.ElementAt(i).ElementAt(0).ToString();
+                    String user = mystring.ElementAt(i).ElementAt(0).ToString();
                     String payKey = responsePay.payKey;
                     String fullYear = "N";
                     String verfiedPaid = "N";
@@ -211,7 +236,7 @@ namespace KCGameOn
 
                         cmd = new MySqlCommand("spAddPayment", conn);
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("Username", username);
+                        cmd.Parameters.AddWithValue("Username", user);
                         cmd.Parameters.AddWithValue("VerifiedPaid", verfiedPaid);
                         cmd.Parameters.AddWithValue("PaidFullYear", fullYear);
                         cmd.Parameters.AddWithValue("PaymentMethod", paymentMethod);
@@ -341,89 +366,6 @@ namespace KCGameOn
                 // Log the exception message
             }
             return responsePay;
-        }
-
-        public class users
-        {
-            private string username;
-            private string firstname;
-            private string lastname;
-            private double price;
-
-            public users()
-            {
-
-            }
-            public users(string username, string firstname, string lastname)
-            {
-                // TODO: Complete member initialization
-                this.username = username;
-                this.firstname = firstname;
-                this.lastname = lastname;
-            }
-
-            public string Username
-            {
-                set { this.username = value; }
-                get { return this.username; }
-            }
-
-            public string First
-            {
-                set { this.firstname = value; }
-                get { return this.firstname; }
-            }
-
-            public string Last
-            {
-                set { this.lastname = value; }
-                get { return this.lastname; }
-            }
-
-            public double Price
-            {
-                set { this.price = value; }
-                get { return this.price; }
-            }
-        }
-
-        protected void pay_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void add_Click(object sender, EventArgs e)
-        {
-            // Total number of rows.
-            int rowCnt;
-            // Current row count.
-            int rowCtr;
-            // Total number of cells per row (columns).
-            int cellCtr;
-            // Current cell counter
-            int cellCnt;
-
-            rowCnt = int.Parse(TextBox1.Text);
-            cellCnt = int.Parse(TextBox2.Text);
-
-            for (rowCtr = 1; rowCtr <= rowCnt; rowCtr++)
-            {
-                // Create new row and add it to the table.
-                TableRow tRow = new TableRow();
-                Table1.Rows.Add(tRow);
-                for (cellCtr = 1; cellCtr <= cellCnt; cellCtr++)
-                {
-                    // Create a new cell and add it to the row.
-                    TableCell tCell = new TableCell();
-                    tCell.Text = "Row " + rowCtr + ", Cell " + cellCtr;
-                    tRow.Cells.Add(tCell);
-                }
-            }
-        }
-
-        protected void delete_row_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
