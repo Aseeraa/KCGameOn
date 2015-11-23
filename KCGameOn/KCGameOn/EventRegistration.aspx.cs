@@ -217,7 +217,8 @@ namespace KCGameOn
             {
                 PayRequest requestPay = Payment(quantity);
                 PayResponse responsePay = PayAPIOperations(requestPay);
-                RedirectURL = "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_ap-payment&paykey=" + responsePay.payKey;
+                RedirectURL = "https://www.paypal.com/cgi-bin/webscr?cmd=_ap-payment&paykey=" + responsePay.payKey;
+                //RedirectURL = "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_ap-payment&paykey=" + responsePay.payKey;
                 for (int i = 0; i < mystring.Count; i++)
                 {
                     String user = mystring.ElementAt(i).ElementAt(0).ToString();
