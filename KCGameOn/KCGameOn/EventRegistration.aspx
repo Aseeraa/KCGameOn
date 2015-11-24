@@ -24,7 +24,7 @@
         #registrationTable
         {
             width: auto;
-            min-width: 600px;
+            min-width: 800px;
             max-width: 800px;
             margin-bottom: 20px;
         }
@@ -191,24 +191,22 @@
     </script>
 </asp:Content>
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
-    <form action="EventRegistration.aspx" method="post" id="Form1" runat="server">
-        <div id="field-body">
-            <div id="fields" class="pull-left">
-                <h3>Pay for another user:</h3>
-                <label>Username:</label>
-                <select id="userDropdown" class="dropdown">
-                    <option selected="selected">None</option>
-                </select>
-                <label>Name:</label>
-                <select id="nameDropdown" class="dropdown">
-                    <option selected="selected">None</option>
-                </select>
-                <br />
-                <%--<button id="add" class="btn btn-default pull-right">Add User</button>--%>
-                <asp:Button Text="Add User" ID="add" runat="server" class="btn btn-default pull-right" OnClick="add_Click"></asp:Button>
-            </div>
-
-            <%--<table id="registrationTable" class="table bordered-table zebra-striped pull-right">
+    <div id="field-body">
+        <div id="fields" class="pull-left">
+            <h3>Pay for another user:</h3>
+            <label>Username:</label>
+            <select id="userDropdown" class="dropdown">
+                <option selected="selected">None</option>
+            </select>
+            <label>Name:</label>
+            <select id="nameDropdown" class="dropdown">
+                <option selected="selected">None</option>
+            </select>
+            <br />
+            <button id="add" class="btn btn-default pull-right">Add User</button>
+        </div>
+        <form id="Form1" runat="server">
+            <table id="registrationTable" class="table bordered-table zebra-striped pull-right">
                 <thead>
                     <tr>
                         <th>Username</th>
@@ -219,33 +217,23 @@
                 </thead>
                 <tbody>
                 </tbody>
-            </table>--%>
-            <asp:Table ID="registrationTable" runat="server" class="table bordered-table zebra-striped pull-right">
-                <asp:TableRow>
-                    <asp:TableCell>Username</asp:TableCell>
-                    <asp:TableCell>First Name</asp:TableCell>
-                    <asp:TableCell>Last Name</asp:TableCell>
-                    <asp:TableCell>Cost</asp:TableCell>
-                </asp:TableRow>
-            </asp:Table>
-
+            </table>
             <div class="total pull-right">
                 <div>
                     <h3 class="pull-right" id="result"></h3>
                 </div>
-                <%--<button id="delete_row" class="pull-left btn btn-default">Delete User</button>--%>
-                <asp:Button Text="Delete User" ID="delete_row" runat="server" class="pull-left btn btn-default" OnClick="delete_row_Click"></asp:Button>
-                <asp:Button Text="Pay Now" ID="pay" runat="server" class="btn pull-right btn-inverse" OnClick="pay_Click"></asp:Button>
+                <button id="delete_row" class="pull-left btn btn-default">Delete User</button>
+
+                <button id="pay" class="btn pull-right btn-inverse">Pay Now</button>
             </div>
+        </form>
+    </div>
 
-        </div>
-
-        <%--        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+    <%--        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
             <input type="hidden" name="cmd" value="_s-xclick" />
             <input type="hidden" name="hosted_button_id" value="7E2DQ4F62C4L6" />
             <input id="quantityInput" type="hidden" name="quantity" value="" />
             <input type="image" src="/img/paypal.png" class="pull-right" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" />
             <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
         </form>--%>
-    </form>
 </asp:Content>

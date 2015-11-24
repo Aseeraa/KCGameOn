@@ -22,14 +22,14 @@ th, td {
 		    <th>
 			    <br />
 			    <img src="/img/dennis.png"><p>
-			    Dennis Avondet<p>
+			    Dennis<p>
 			    "Iceman"<p>
 			
 		    </th>
 		    <th>
 			    <br />
 			    <img src="/img/nick.png"><p>
-			    Nick Engstrom<p>
+			    Nick<p>
 			    "nickthenerd"<p>			
 			
 		    </th>

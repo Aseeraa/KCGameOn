@@ -16,10 +16,33 @@
             height: 235px;
             width: 100%;
         }
+        /* Fade transition for carousel items */
+.carousel .item {
+    left: 0 !important;
+      -webkit-transition: opacity .4s; /*adjust timing here */
+         -moz-transition: opacity .4s;
+           -o-transition: opacity .4s;
+              transition: opacity .4s;
+}
+.carousel-control {
+    background-image: none !important; /* remove background gradients on controls */
+}
+/* Fade controls with items */
+.next.left,
+.prev.right {
+    opacity: 1;
+    z-index: 1;
+}
+.active.left,
+.active.right {
+    opacity: 0;
+    z-index: 2;
+}
     </style>
-    <script async>
+    <script>
         function myFunction() {
-            document.getElementById("demo").innerHTML = "This part is currently under development";
+            <!-- document.getElementById("demo").innerHTML = "For now, log into website and seat yourself on the map"; -->
+		window.location.href = "https://kcgameon.com/EventRegistration.aspx";
         }
 
         jQuery(document).bind('keyup', function (e) {
@@ -39,10 +62,10 @@
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
     <div class="row-fluid">
         <div class="span7">
-            <div id="myCarousel" class="carousel slide">
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
                 <!-- Carousel items -->
                 <div class="carousel-inner">
-                    <div class="active item">
+                    <div class="item active">
                         <img src="/img/poster2015-2.png" style="width: 100%" />
                         <div class="carousel-caption">
                             <h4>KCGameOn</h4>
@@ -120,13 +143,13 @@
             <br />
 
             <form class="well form-inline">
-                <h3>Announcing the 64th Cerner LAN - August 1, 2015!</h3>
+                <h3>Announcing the 66th Cerner LAN - Dec 5, 2015!</h3>
                 <br />
                 <div class="control-group">
                     <div class="controls">
                         <div class="input-append">
-                <button id="Button1" type="button" class="btn btn-inverse" style="padding-left: 13px" onclick="myFunction()" runat="server">Register for Event 64!</button>
-                            <p id="demo"></p>
+                <button id="Button1" type="button" class="btn btn-inverse" style="padding-left: 13px" onclick="myFunction()" runat="server">Registration for #66!</button>
+                            <!-- <p id="demo"></p> -->
                         </div>
                     </div>
                 </div>
@@ -136,9 +159,7 @@
             <br />
                     <b style="color: #0099cc;">Where:</b> 2702 Rockcreek Parkway, the entire lower level of the building.
             <br />
-                    <b style="color: #0099cc;">Cost:</b> $15 if you pre-pay, $20 dollars at the door.  You can pay using paypal via payments@kcgameon.com, bitcoin OR by cash.  
-            <br />
-                </p>
+                    <b style="color: #0099cc;">Cost:</b> $15 if you pre-pay, $20 dollars at the door.  You can pay using paypal via payments@kcgameon.com, bitcoin OR by cash.
 
             </form>
 
@@ -150,8 +171,8 @@
             <center>
                 <a href="http://www.shinra.com">
                     <img src="img/shinra.png" /></a><p>
-		<p><a href="http://www.cerner.com">
-                        <img src="img/cernerlogo2.png" /></a></p>
+		<!-- <p><a href="http://www.cerner.com"> -->
+                        <!-- <img src="img/cernerlogo2.png" /></a></p> -->
                 <br />
                 <br />
             </center>

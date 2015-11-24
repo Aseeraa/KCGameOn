@@ -40,7 +40,7 @@
             </div>
         </form>
         <div class="Count pull-left">
-            <h3>There are currently <%= count %> gamers locked in for the LAN</h3>
+            <h5>Left click to sit, right click the same seat to stand up.<br>There are currently <%= count %> gamers locked in for the LAN</h5>
         </div>
         <div class="btn-group pull-right">
             <button id="Legend" class="btn btn-default pull-right dropdown-toggle" type="button" data-toggle="dropdown">Legend</button>

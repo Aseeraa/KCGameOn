@@ -34,7 +34,7 @@
         </p>
         <div class="UImenu">
             <div class="UImenuItem">
-                <label class="Menubody-trigger">192.168.1.241 Counter-Strike:GO</label>
+                <label class="Menubody-trigger"><strike>192.168.1.241 Counter-Strike:GO</strike></label>
                 <div class="Content">
                     Launch Counter-Strike<p>
                         (enable the console) click options, scroll near the bottom and find 'Enable Developer Console (~)' and set this to YES.  click back<p>
@@ -44,7 +44,7 @@
                 </div>
             </div>
             <div class="UImenuItem">
-                <label class="Menubody-trigger">192.168.1.242 Left4Dead2</label>
+                <label class="Menubody-trigger"><strike>192.168.1.242 Left4Dead2</strike></label>
                 <div class="Content">
                     Launch L4D2<p>
                         (enable the console) Options> Keyboard/Mouse> Allow Developer Console > Enabled.  Click Done.<p>
@@ -52,7 +52,7 @@
                 </div>
             </div>
             <div class="UImenuItem">
-                <label class="Menubody-trigger">192.168.1.243 Minecraft - Feed The Beast Unleashed</label>
+                <label class="Menubody-trigger"><strike>192.168.1.243 Minecraft - Feed The Beast Unleashed</strike></label>
                 <div class="Content">
                     Click <a href="http://www.creeperrepo.net/direct/FTB2/cbf28412ef3ab36443e551e59b42b2eb/launcher%5EFTB_Launcher.exe">HERE</a> to download the FTB launcher.<p>
                         Execute the EXE and install it to the folder of your choice - I recommend the game folder you may or may not have already.<p>
@@ -64,7 +64,7 @@
                 </div>
             </div>
             <div class="UImenuItem">
-                <label class="Menubody-trigger">192.168.1.244 Mumble (voice chat)</label>
+                <label class="Menubody-trigger">192.168.1.243 Mumble (voice chat)</label>
                 <div class="Content">
                     Click <a href="http://mumble.sourceforge.net/Main_Page">HERE</a> and download the compatible client for your machine.<p>
                         Once installed, Mumble will ask you for a connection, create new connection, name it GAMEONLAN, address = 192.168.1.244, port = 64738, name = (your gamer name here), then hit OK, then connect.<p>
@@ -72,12 +72,28 @@
                 </div>
             </div>
             <div class="UImenuItem">
-                <label class="Menubody-trigger">192.168.1.245 Starbound</label>
+                <label class="Menubody-trigger">192.168.1.241 Starbound</label>
                 <div class="Content">
-                    Launch Starbound, click multiplayer, server = 192.168.1.245, no user/pass is required
+                    Launch Starbound, click multiplayer, server = 192.168.1.241, no user/pass is required
                 </div>
             </div>
 
+		<div class="UImenuItem">
+                <label class="Menubody-trigger">192.168.1.242 Minecraft - vanilla</label>
+                <div class="Content">
+                    Launch Minecraft-login with your user/pass, Click Multiplayer, server = 192.168.1.246<p>
+                    
+                </div>
+		</div>
+
+		<div class="UImenuItem">
+                <label class="Menubody-trigger">192.168.1.244 Terraria</label>
+                <div class="Content">
+                    Launch Terraria-click multiplayer, use ip 192.168.1.244, no user/pass required <p>
+                    
+                </div>
+         </div>
+		 
         </div>
         <br />
         If you want to request a KCGAMEON server for a particular game, please let us know and we will try to get one set up.

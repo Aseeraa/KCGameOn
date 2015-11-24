@@ -4,8 +4,6 @@
 
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-    <style>
-    </style>
     <form class="well form-inline" runat="server">
         <h2>KcGameOn Login</h2>
             <p>
