@@ -41,7 +41,7 @@
     </style>
     <script>
         function myFunction() {
-            <!-- document.getElementById("demo").innerHTML = "For now, log into website and seat yourself on the map"; -->
+            //document.getElementById("demo").innerHTML = "For now, log into website and seat yourself on the map";
 		window.location.href = "https://kcgameon.com/EventRegistration.aspx";
         }
 
