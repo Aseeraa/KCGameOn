@@ -10,6 +10,6 @@
 namespace KCGameOn {
     
     
-    public partial class eventreport {
+    public partial class EventReport {
     }
 }

@@ -177,7 +177,7 @@
     <Content Include="Account\Profile.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\SignOut.aspx" />
-    <Content Include="Admin\eventreport.aspx" />
+    <Content Include="Admin\EventReport.aspx" />
     <Content Include="css\black\bootstrap.css" />
     <Content Include="css\black\bootstrap.min.css" />
     <Content Include="css\bootstrap-responsive.css" />
@@ -187,6 +187,7 @@
     <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\index.css" />
+    <Content Include="css\jquery.bracket.min.css" />
     <Content Include="ErrorPage\404.aspx" />
     <Content Include="ErrorPage\Error.aspx" />
     <Content Include="EventRegistration.aspx" />
@@ -238,6 +239,7 @@
     <Content Include="js\bootstrap.js" />
     <Content Include="js\index.js" />
     <Content Include="js\jquery-2.1.3.min.js" />
+    <Content Include="js\jquery.bracket.min.js" />
     <Content Include="js\npm.js" />
     <Content Include="js\prettify.js" />
     <Content Include="Map.aspx" />
@@ -316,12 +318,12 @@
     <Compile Include="Account\SignOut.aspx.designer.cs">
       <DependentUpon>SignOut.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\eventreport.aspx.cs">
-      <DependentUpon>eventreport.aspx</DependentUpon>
+    <Compile Include="Admin\EventReport.aspx.cs">
+      <DependentUpon>EventReport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\eventreport.aspx.designer.cs">
-      <DependentUpon>eventreport.aspx</DependentUpon>
+    <Compile Include="Admin\EventReport.aspx.designer.cs">
+      <DependentUpon>EventReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

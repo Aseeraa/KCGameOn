@@ -48,7 +48,7 @@ namespace KCGameOn
 
                 cmd.Connection.Close();
 
-                cmd = new MySqlCommand("SELECT * FROM seatingchart", new MySqlConnection(UserInfo));
+                cmd = new MySqlCommand("SELECT * FROM seatingchart WHERE ActiveIndicator = \'TRUE\'", new MySqlConnection(UserInfo));
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Connection.Open();
                 result = cmd.BeginExecuteReader();

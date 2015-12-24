@@ -1,4 +1,4 @@
-﻿<%@ Page Title="eventreport" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="eventreport.aspx.cs" Inherits="KCGameOn.eventreport" %>
+﻿<%@ Page Title="EventReport" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EventReport.aspx.cs" Inherits="KCGameOn.EventReport" %>
 
 <%@ Import Namespace="KCGameOn" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">

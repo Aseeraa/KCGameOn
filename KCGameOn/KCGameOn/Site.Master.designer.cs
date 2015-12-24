@@ -22,22 +22,22 @@ namespace KCGameOn {
         protected global::System.Web.UI.WebControls.ContentPlaceHolder HeadContent;
         
         /// <summary>
-        /// LoginDrop control.
+        /// A1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor LoginDrop;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor A1;
         
         /// <summary>
-        /// UserDropDown control.
+        /// A2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor UserDropDown;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor A2;
         
         /// <summary>
         /// MainContent control.
