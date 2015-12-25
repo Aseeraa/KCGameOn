@@ -32,6 +32,8 @@ namespace KCGameOn
         public static StringBuilder newRow;
         //private static Page page;
         public static String RedirectURL;
+        public static int remainingEvents = 0;
+        public static bool paymentsBlocked = false;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -40,7 +42,7 @@ namespace KCGameOn
             MySqlDataReader Reader = null;
             MySqlCommand cmd = null;
             MySqlConnection conn = null;
-
+            
             try
             {
                 conn = new MySqlConnection(UserInfo);
@@ -50,7 +52,6 @@ namespace KCGameOn
                 firstnames = new List<String>();
                 lastnames = new List<String>();
                 names = new List<String>();
-
                 cmd = new MySqlCommand("getUsers", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
@@ -76,7 +77,6 @@ namespace KCGameOn
                 usernames.Sort();
                 firstnames.Sort();
                 lastnames.Sort();
-
                 if (SessionVariables.UserName != null)
                 {
                     if (current != null)
@@ -85,6 +85,7 @@ namespace KCGameOn
                         {
                             foreach (var user in userlist)
                             {
+                                
                                 if (user.Username == SessionVariables.UserName.ToLower())
                                 {
                                     current = user;
@@ -104,6 +105,52 @@ namespace KCGameOn
                     cmd.Connection.Close();
                 if (Reader != null)
                     Reader.Close();
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+
+            try
+            {
+                conn = new MySqlConnection(UserInfo);
+                conn.Open();
+
+                cmd = new MySqlCommand("spFetchRemainingEvents", conn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                remainingEvents = Convert.ToInt32(cmd.ExecuteScalar());
+            }
+            catch(Exception)
+            {
+
+            }
+            finally
+            {
+                if (cmd.Connection != null)
+                    cmd.Connection.Close();
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+            try
+            {
+                conn = new MySqlConnection(UserInfo);
+                conn.Open();
+                cmd = new MySqlCommand("SELECT BlockPayments FROM AdminProperties", conn);
+                cmd.CommandType = System.Data.CommandType.Text;
+                string blocked = cmd.ExecuteScalar().ToString();
+                if (blocked.Equals("TRUE"))
+                    paymentsBlocked = true;
+            }
+            catch (Exception)
+            {
+
+            }
+            finally
+            {
+                if (cmd.Connection != null)
+                    cmd.Connection.Close();
                 if (conn != null)
                 {
                     conn.Close();
@@ -165,9 +212,9 @@ namespace KCGameOn
             List<String[]> mystring = json.Deserialize<List<string[]>>(data);
             for (int i = 0; i < mystring.Count; i++)
             {
-                String user = mystring.ElementAt(i).ElementAt(0).ToString();
-                String first = mystring.ElementAt(i).ElementAt(1).ToString();
-                String last = mystring.ElementAt(i).ElementAt(2).ToString();
+                String user = mystring.ElementAt(i).ElementAt(1).ToString();
+                String first = mystring.ElementAt(i).ElementAt(2).ToString();
+                String last = mystring.ElementAt(i).ElementAt(3).ToString();
                
                 MySqlCommand cmd = null;
                 MySqlConnection conn = null;
@@ -188,7 +235,10 @@ namespace KCGameOn
                     switch (userValue)
                     {
                         case -1: // Successfully Validated
-                            quantity = mystring.Count;
+                            if (mystring.ElementAt(i).ElementAt(0).Equals("True"))
+                                quantity += remainingEvents;
+                            else
+                                quantity += 1;
                             break;
                         case -2: // Unsuccessfully validated
                             tableValid = false;
@@ -219,50 +269,58 @@ namespace KCGameOn
                 PayResponse responsePay = PayAPIOperations(requestPay);
                 RedirectURL = "https://www.paypal.com/cgi-bin/webscr?cmd=_ap-payment&paykey=" + responsePay.payKey;
                 //RedirectURL = "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_ap-payment&paykey=" + responsePay.payKey;
-                for (int i = 0; i < mystring.Count; i++)
+                if (responsePay.payKey != null)
                 {
-                    String user = mystring.ElementAt(i).ElementAt(0).ToString();
-                    String payKey = responsePay.payKey;
-                    String fullYear = "N";
-                    String verfiedPaid = "N";
-                    String paymentMethod = "PayPal";
-
-                    MySqlCommand cmd = null;
-                    MySqlConnection conn = null;
-
-                    try
+                    for (int i = 0; i < mystring.Count; i++)
                     {
-                        conn = new MySqlConnection(UserInfo);
-                        conn.Open();
+                        String fullYear;
+                        if (mystring.ElementAt(i).ElementAt(0).ToString().Equals("True"))
+                            fullYear = "Y";
+                        else
+                            fullYear = "N";
+                        String user = mystring.ElementAt(i).ElementAt(1).ToString();
+                        String payKey = responsePay.payKey;
 
-                        cmd = new MySqlCommand("spAddPayment", conn);
-                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("Username", user);
-                        cmd.Parameters.AddWithValue("VerifiedPaid", verfiedPaid);
-                        cmd.Parameters.AddWithValue("PaidFullYear", fullYear);
-                        cmd.Parameters.AddWithValue("PaymentMethod", paymentMethod);
-                        cmd.Parameters.AddWithValue("PaymentKey", payKey);
+                        String verfiedPaid = "N";
+                        String paymentMethod = "PayPal";
 
-                        int userValue = Convert.ToInt32(cmd.ExecuteScalar());
-                    }
-                    catch (Exception)
-                    {
-                        //return "An internal error has occurred, please contact an administrator.";
-                        //return;
-                    }
-                    finally
-                    {
-                        if (conn != null)
+                        MySqlCommand cmd = null;
+                        MySqlConnection conn = null;
+
+                        try
                         {
-                            conn.Close();
+                            conn = new MySqlConnection(UserInfo);
+                            conn.Open();
+
+                            cmd = new MySqlCommand("spAddPayment", conn);
+                            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                            cmd.Parameters.AddWithValue("Username", user);
+                            cmd.Parameters.AddWithValue("VerifiedPaid", verfiedPaid);
+                            cmd.Parameters.AddWithValue("PaidFullYear", fullYear);
+                            cmd.Parameters.AddWithValue("PaymentMethod", paymentMethod);
+                            cmd.Parameters.AddWithValue("PaymentKey", payKey);
+
+                            int userValue = Convert.ToInt32(cmd.ExecuteScalar());
+                        }
+                        catch (Exception)
+                        {
+                            //return "An internal error has occurred, please contact an administrator.";
+                            //return;
+                        }
+                        finally
+                        {
+                            if (conn != null)
+                            {
+                                conn.Close();
+                            }
                         }
                     }
                 }
-            }
-            else
-            {
-                quantity = 0;
-                RedirectURL = "www.kcgameon.com/Default.aspx";
+                else
+                {
+                    quantity = 0;
+                    RedirectURL = "https://kcgameon.com/Default.aspx";
+                }
             }
             //HttpContext.Current.Response.Redirect(RedirectURL, true);
             return RedirectURL;

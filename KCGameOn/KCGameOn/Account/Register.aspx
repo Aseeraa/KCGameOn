@@ -262,7 +262,7 @@
                <li class="listli">Gaming is thy holy pastime, thou shalt not have outdoor activities before thee.</li>
                <li class="listli">Thou shalt not be fanboyish in the name of gaming.</li>
                 <li class="listli">Remember though keep holy the game release dates.</li>
-               <li class="listli">Honor thy PC and thy console.</li>
+                <li class="listli">Honor thy PC and thy console.</li>
                 <li class="listli">Thou shalt not kill steal.</li>
                 <li class="listli">Thou shalt not frag... without gloating in the aftermath</li>
                 <li class="listli">Thou shalt lose graciously; thou shalt not whine when fragged.</li>

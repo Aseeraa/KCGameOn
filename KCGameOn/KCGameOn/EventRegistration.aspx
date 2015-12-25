@@ -46,29 +46,43 @@
         {
             top: 50%;
         }
+
+        .fullyear
+        {
+            text-align: center;
+        }
     </style>
     <script>
+        function calculateSum() {
+            var sum = 0;
+            // iterate through each td based on class and add the values
+            //$(".price").each(function () {
+            //    var value = $(this).text();
+            //    // add only if the value is number
+            //    if (!isNaN(value) && value.length != 0) {
+            //        sum += parseFloat(value);
+            //    }
+            //});
+
+            $('.fullyear').find('input[type="checkbox"]').each(function () {
+                if ($(this).prop('checked') == true) {
+
+                    sum += 15.00 * remainingEvents;
+                }
+                else {
+                    sum += 15.00;
+                }
+            });
+            $('#result').text("Total cost: $" + sum.toFixed(2));
+        };
 
         $(document).ready(function () {
             var users = <%= new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(usernames)%>
                 namelist = <%= new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(names)%>
                 ulist = <%= new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(userlist)%>
+                remainingEvents = <%= remainingEvents%>
 
             $(loadDropdowns);
-
-
-            function calculateSum() {
-                var sum = 0;
-                // iterate through each td based on class and add the values
-                $(".price").each(function () {
-                    var value = $(this).text();
-                    // add only if the value is number
-                    if (!isNaN(value) && value.length != 0) {
-                        sum += parseFloat(value);
-                    }
-                });
-                $('#result').text("Total cost: $" + sum.toFixed(2));
-            };
 
             $('#userDropdown').on('change', function () {
                 var user = $(this).val();
@@ -111,12 +125,11 @@
             };
 
             function deleterow(tableID) {
-                debugger;
                 var table = document.getElementById(tableID);
                 var rowCount = table.rows.length;
                 if (rowCount > 0) {
                     table.deleteRow(rowCount - 1);
-                    $(calculateSum);
+                    calculateSum();
                 }
             }
 
@@ -139,23 +152,33 @@
                         });
                     }
                     else {
-                        var newRow = $('<tr><td>' + user + '</td><td>' + first + '</td><td>' + last + '</td><td class = "price">' + num.toFixed(2) + '</td></tr>');
+                        var newRow = $('<tr><td>' + user + '</td><td>' + first + '</td><td>' + last + '</td><td class = "price">' + num.toFixed(2) + '</td><td class="fullyear">' + '<input type="checkbox" value="checked" onclick="calculateSum();">' + '</tr>');
                         $('#registrationTable').append(newRow);
-                        $(calculateSum);
+                        calculateSum();
                     }
                 }
             });
             $(".Content").hide();
-
-            $(calculateSum);
+            //$(calculateSum);
 
             $('#pay').click(function (event) {
                 event.preventDefault();
                 var payments = []
+                var fullYear = false;
                 $('#registrationTable tbody tr').each(function () {
+                    $(this).find('input[type="checkbox"]').each(function () {
+                        if ($(this).prop('checked') == true) {
+
+                            fullYear = true;
+                        }
+                        else {
+                            fullYear = false;
+                        }
+                    });
                     var tdArray = []
+                    tdArray.push(fullYear);
                     $(this).find('td').each(function () {
-                        tdArray.push($(this).text())
+                        tdArray.push($(this).text());
                     })
                     payments.push(tdArray)
                 })
@@ -191,6 +214,8 @@
     </script>
 </asp:Content>
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
+    <%if(!paymentsBlocked)
+          {%>
     <div id="field-body">
         <div id="fields" class="pull-left">
             <h3>Pay for another user:</h3>
@@ -212,7 +237,8 @@
                         <th>Username</th>
                         <th>First Name</th>
                         <th>Last Name</th>
-                        <th>Cost</th>
+                        <th>Cost per event</th>
+                        <th>Pay for all remaining 2016 events?</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -228,12 +254,11 @@
             </div>
         </form>
     </div>
-
-    <%--        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-            <input type="hidden" name="cmd" value="_s-xclick" />
-            <input type="hidden" name="hosted_button_id" value="7E2DQ4F62C4L6" />
-            <input id="quantityInput" type="hidden" name="quantity" value="" />
-            <input type="image" src="/img/paypal.png" class="pull-right" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" />
-            <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
-        </form>--%>
+    <%} %>
+    <%else
+    { %>
+    
+        <h2>There are currently no events available for registration, please check back closer to the event date or when the announcement email has been sent.</h2>
+        <br />
+        <%} %>
 </asp:Content>

@@ -177,7 +177,7 @@
     <Content Include="Account\Profile.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\SignOut.aspx" />
-    <Content Include="Admin\EventReport.aspx" />
+    <Content Include="Admin\Admin.aspx" />
     <Content Include="css\black\bootstrap.css" />
     <Content Include="css\black\bootstrap.min.css" />
     <Content Include="css\bootstrap-responsive.css" />
@@ -318,12 +318,12 @@
     <Compile Include="Account\SignOut.aspx.designer.cs">
       <DependentUpon>SignOut.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\EventReport.aspx.cs">
-      <DependentUpon>EventReport.aspx</DependentUpon>
+    <Compile Include="Admin\Admin.aspx.cs">
+      <DependentUpon>Admin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\EventReport.aspx.designer.cs">
-      <DependentUpon>EventReport.aspx</DependentUpon>
+    <Compile Include="Admin\Admin.aspx.designer.cs">
+      <DependentUpon>Admin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

@@ -154,7 +154,7 @@ namespace KCGameOn.Account
 
                     try
                     {
-                        cmd = new MySqlCommand("AddUsers", new MySqlConnection(UserInfo));
+                        cmd = new MySqlCommand("spAddUsers", new MySqlConnection(UserInfo));
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
                         cmd.Parameters.AddWithValue("UserName", UserName);

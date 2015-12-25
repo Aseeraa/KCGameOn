@@ -41,14 +41,23 @@
     <style>
         .navbar-default, .navbar-collapse {
             border: none;
+            padding: none;
+        }
+        .navbar-inner{
+            padding-left:5px;
+            padding-right:0px;
         }
 
+        .navbar-collapse
+        {
+            padding-right: 0px;
+        }
         .navbar-default {
             background-color: transparent;
         }
 
         .container {
-            max-width: 940px;
+            max-width: 1170px;
             width: auto;
         }
         .navbar-default navbar-toggle .icon-bar{
@@ -110,7 +119,7 @@
 			      </ul>
 			    </li>
 
-			    <li><a href="/forums/index.php?p=/">Forums</a></li>
+			    <%--<li><a href="/forums/index.php?p=/">Forums</a></li>--%>
 			    <li class="dropdown">
 			      <a data-toggle="dropdown" class="dropdown-toggle" href="#">Sponsors<b class="caret"></b></a>
 			      <ul class="dropdown-menu">
@@ -138,10 +147,14 @@
 				    <li><a href="/FAQ/WhatToBring.aspx">What To Bring</a></li>
 			      </ul>
 			    </li>
+                <%if (SessionVariables.UserAdmin == 1)
+                { %>
+				    <li><a href="/Admin/Admin.aspx">Admin</a></li>
+			    <%} %>
 		      </ul>
 		      <%if (SessionVariables.UserName == null)
           { %>
-		      <ul class="nav pull-right">
+		      <ul class="nav navbar-right">
 			    <li class="dropdown">
 			      <a id="A1" runat="server" data-toggle="dropdown" class="dropdown-toggle" href="/Acccount/Login.aspx">Login <b class="caret"></b></a>
 			      <ul class="dropdown-menu">
@@ -162,10 +175,6 @@
 			      <a id="A2" runat="server" data-toggle="dropdown" class="dropdown-toggle" href="#"><%= SessionVariables.UserName.ToString()%><b class="caret"></b></a>
 			      <ul class="dropdown-menu">
                     <li><a href="/Account/Profile.aspx">User Profile</a></li>
-				    <%if (SessionVariables.UserAdmin == 1)
-          { %>
-				    <li><a href="#">Admin</a></li>
-				    <%} %>
 				    <li><a href="/Account/SignOut.aspx">SignOut</a></li>
 			      </ul>
 			    </li>

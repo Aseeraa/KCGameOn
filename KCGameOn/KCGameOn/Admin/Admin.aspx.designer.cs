@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace KCGameOn {
+namespace KCGameOn.Admin {
     
     
-    public partial class EventReport {
+    public partial class Admin {
     }
 }
