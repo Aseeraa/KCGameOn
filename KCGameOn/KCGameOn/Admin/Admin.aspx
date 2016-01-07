@@ -5,6 +5,14 @@
     <meta charset="UTF-8" />
     <script>
         function registrationAllowances() {
+            <% if (SessionVariables.registrationBlocked == true)%>
+            <% {%>
+            $("#blockRegistration").prop("disabled", true);
+            <% }%>
+            <% else %>
+            <% {%>
+            $("#unblockRegistration").prop("disabled", true);
+            <% }%>
 
         }
     </script>
@@ -18,8 +26,8 @@
         <h3>Block/Unblock Payments
         </h3>
         <div class="pull-left">
-            <button id="blockPayments" class="btn pull-left btn-danger" onclick="registrationAllowances">Block Registration</button>
-            <button id="unblockPayments" class="btn pull-left btn-success" onclick="registrationAllowances">Unblock Registration</button>
+            <button id="blockRegistration" class="btn pull-left btn-danger" onclick="registrationAllowances">Block Registration</button>
+            <button id="unblockRegistration" class="btn pull-left btn-success" onclick="registrationAllowances">Unblock Registration</button>
         </div>
         <h3>Archive Event
         </h3>
