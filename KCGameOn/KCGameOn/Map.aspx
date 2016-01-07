@@ -7,31 +7,31 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <style>
-        .form-inline, .form, .btn-group
-        {
+        .form-inline, .form, .btn-group {
             margin-bottom: 10px;
         }
 
-        .modal-content, .modal-dialog, .modal-footer
-        {
+        .modal-content, .modal-dialog, .modal-footer {
             background: #282828;
         }
 
-        h3
-        {
+        h3 {
             color: #33b5e5;
             padding: 0px;
             margin: 0px;
         }
 
-        .Count
-        {
+        .Count {
             margin: auto;
             margin-left: 150px;
             width: auto;
             max-width: 450px;
         }
     </style>
+    <%if (!SessionVariables.registrationBlocked)
+      {%>
+    <%if (String.IsNullOrEmpty(SessionVariables.UserName))
+      {%>
     <div class="">
         <form class="form-inline pull-left" role="search">
             <div class="form-inline">
@@ -117,8 +117,6 @@
         <script async src="js/bootbox.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
         <script src="js/index.js"></script>
-        <%if (String.IsNullOrEmpty(SessionVariables.UserName))
-          {%>
         <script async>
 
             var viewport,
@@ -131,18 +129,25 @@
         </script>
         <%} %>
         <%else
-          { %>
+      { %>
         <script async>
             var viewport,
                 currentUser = "<%= SessionVariables.UserName.ToLower() %>"
-        function initialize() {
-            viewport = new GameOn.SeatingMap(document.getElementById("viewport"), seats, currentUser);
-            viewport.updateMarkers(people, filtered);
-        }
-        google.maps.event.addDomListener(window, "load", initialize);
+            function initialize() {
+                viewport = new GameOn.SeatingMap(document.getElementById("viewport"), seats, currentUser);
+                viewport.updateMarkers(people, filtered);
+            }
+            google.maps.event.addDomListener(window, "load", initialize);
         </script>
         <%} %>
-        </div>
+    </div>
+    <%} %>
+    <%else
+      { %>
+
+    <h2>There are currently no events available for registration, please check back closer to the event date or when the announcement email has been sent.</h2>
+    <br />
+    <%} %>
 </asp:Content>
 
 

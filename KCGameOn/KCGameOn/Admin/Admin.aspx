@@ -4,7 +4,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <meta charset="UTF-8" />
     <script>
-        function paymentAllowances() {
+        function registrationAllowances() {
 
         }
     </script>
@@ -18,8 +18,8 @@
         <h3>Block/Unblock Payments
         </h3>
         <div class="pull-left">
-            <button id="blockPayments" class="btn pull-left btn-danger" onclick="paymentAllowances">Block Payments</button>
-            <button id="unblockPayments" class="btn pull-left btn-success" onclick="paymentAllowances">Unblock Payments</button>
+            <button id="blockPayments" class="btn pull-left btn-danger" onclick="registrationAllowances">Block Registration</button>
+            <button id="unblockPayments" class="btn pull-left btn-success" onclick="registrationAllowances">Unblock Registration</button>
         </div>
         <h3>Archive Event
         </h3>

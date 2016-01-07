@@ -18,7 +18,7 @@ namespace KCGameOn
     public class SessionVariables
     {
         public static int UserAdmin;
-
+        public static bool registrationBlocked;
         public static string getSessionString(String name)
         {
             if (HttpContext.Current.Session[name] != null)

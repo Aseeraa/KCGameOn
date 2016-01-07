@@ -12,7 +12,7 @@ namespace KCGameOn.Admin
         public static string blockButtonVal;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (EventRegistration.paymentsBlocked == true)
+            if (SessionVariables.registrationBlocked == true)
                 blockButtonVal = "Unblock";
             else
                 blockButtonVal = "Block";

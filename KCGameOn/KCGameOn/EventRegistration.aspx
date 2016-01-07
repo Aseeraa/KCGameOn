@@ -214,7 +214,7 @@
     </script>
 </asp:Content>
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
-    <%if(!paymentsBlocked)
+    <%if (!SessionVariables.registrationBlocked)
           {%>
     <div id="field-body">
         <div id="fields" class="pull-left">

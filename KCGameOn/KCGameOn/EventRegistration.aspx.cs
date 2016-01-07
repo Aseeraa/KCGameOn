@@ -33,7 +33,6 @@ namespace KCGameOn
         //private static Page page;
         public static String RedirectURL;
         public static int remainingEvents = 0;
-        public static bool paymentsBlocked = false;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -133,29 +132,7 @@ namespace KCGameOn
                     conn.Close();
                 }
             }
-            try
-            {
-                conn = new MySqlConnection(UserInfo);
-                conn.Open();
-                cmd = new MySqlCommand("SELECT BlockPayments FROM AdminProperties", conn);
-                cmd.CommandType = System.Data.CommandType.Text;
-                string blocked = cmd.ExecuteScalar().ToString();
-                if (blocked.Equals("TRUE"))
-                    paymentsBlocked = true;
-            }
-            catch (Exception)
-            {
-
-            }
-            finally
-            {
-                if (cmd.Connection != null)
-                    cmd.Connection.Close();
-                if (conn != null)
-                {
-                    conn.Close();
-                }
-            }
+            
         }
 
 
