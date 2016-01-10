@@ -1,0 +1,46 @@
+BEGIN:VCALENDAR
+VERSION:4.0
+PRODID:-//PUC Calendar// v4.0//EN
+BEGIN:VEVENT
+DTSTART:20160220T120000
+DTEND:20160221T030000
+SUMMARY:Cerner GAMEON LAN
+LOCATION:2702 Rockcreek Parkway\, North Kansas City\, MO 64117
+DESCRIPTION:$15/$20 at the door\, come and go when you please. Dinner and door prizes will be provided around 6p. Please sign up at www.kcgameon.com to add yourself to the attendance list and then reserve your seat on the map.
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20160423T120000
+DTEND:20160424T030000
+SUMMARY:Cerner GAMEON LAN
+LOCATION:2702 Rockcreek Parkway\, North Kansas City\, MO 64117
+DESCRIPTION:$15/$20 at the door\, come and go when you please. Dinner and door prizes will be provided around 6p. Please sign up at www.kcgameon.com to add yourself to the attendance list and then reserve your seat on the map.
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20160611T120000
+DTEND:20160612T030000
+SUMMARY:Cerner GAMEON LAN
+LOCATION:2702 Rockcreek Parkway\, North Kansas City\, MO 64117
+DESCRIPTION:$15/$20 at the door\, come and go when you please. Dinner and door prizes will be provided around 6p. Please sign up at www.kcgameon.com to add yourself to the attendance list and then reserve your seat on the map.
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20160730T120000
+DTEND:20160731T030000
+SUMMARY:Cerner GAMEON LAN
+LOCATION:2702 Rockcreek Parkway\, North Kansas City\, MO 64117
+DESCRIPTION:$15/$20 at the door\, come and go when you please. Dinner and door prizes will be provided around 6p. Please sign up at www.kcgameon.com to add yourself to the attendance list and then reserve your seat on the map.
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20161008T120000
+DTEND:20161009T030000
+SUMMARY:Cerner GAMEON LAN
+LOCATION:2702 Rockcreek Parkway\, North Kansas City\, MO 64117
+DESCRIPTION:$15/$20 at the door\, come and go when you please. Dinner and door prizes will be provided around 6p. Please sign up at www.kcgameon.com to add yourself to the attendance list and then reserve your seat on the map.
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20161203T120000
+DTEND:20161204T030000
+SUMMARY:Cerner GAMEON LAN
+LOCATION:2702 Rockcreek Parkway\, North Kansas City\, MO 64117
+DESCRIPTION:$15/$20 at the door\, come and go when you please. Dinner and door prizes will be provided around 6p. Please sign up at www.kcgameon.com to add yourself to the attendance list and then reserve your seat on the map. 
+END:VEVENT
+END:VCALENDAR

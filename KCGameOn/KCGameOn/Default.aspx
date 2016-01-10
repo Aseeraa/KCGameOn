@@ -66,52 +66,74 @@
                 <!-- Carousel items -->
                 <div class="carousel-inner">
                     <div class="item active">
-                        <img src="/img/poster2015-2.png" style="width: 100%" />
+                        <img src="/img/gameon2016.png" style="width: 100%" />
                         <div class="carousel-caption">
                             <h4>KCGameOn</h4>
-                            <p>KCGameOn 2015 poster</p>
+                            <p>KCGameOn 2016 poster</p>
                         </div>
                     </div>
                     <div class="item">
                         <img src="/img/csgo.png" style="width: 100%" />
                         <div class="carousel-caption">
-                            <h4>Counter Strike:GO</h4>
+                            
                             <p>Hrishi is king, beat him and take his title</p>
                         </div>
                     </div>
+                    
                     <div class="item">
+                        <img src="/img/League-of-Legends.png" style="width: 100%" />
+                        <div class="carousel-caption">
+                            
+                            <p>Our most popular game</p>
+                        </div>
+                    </div>
+					<div class="item">
+                        <img src="/img/rocket-league.png" style="width: 100%" />
+                        <div class="carousel-caption">
+                            
+                            <p>3v3 tournament and a ton of fun</p>
+						</div>
+					</div>
+					<div class="item">
+                        <img src="/img/dota_2.png" style="width: 100%" />
+                        <div class="carousel-caption">
+                            
+                            <p>A MOBA favorite at KCGameOn</p>
+						</div>
+					</div>
+					<div class="item">
                         <img src="/img/lfd2.png" style="width: 100%" />
                         <div class="carousel-caption">
-                            <h4>Left 4 Dead 2</h4>
+                            
                             <p>A great 4v4 game for everyone to enjoy</p>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <img src="/img/lol.png" style="width: 100%" />
-                        <div class="carousel-caption">
-                            <h4>LoL</h4>
-                            <p>League of Legends - our most popular game</p>
-                        </div>
-                    </div>
+						</div>
+					</div>
                     <div class="item">
                         <img src="/img/mtg.png" style="width: 100%" />
                         <div class="carousel-caption">
-                            <h4>MTG</h4>
-                            <p>Magic the Gathering - Test out your new decks, and have fun!</p>
+                            <h4>Magic:The Gathering</h4>
+                            <p>Play Standard, Legacy, Commander and other various multiplayer formats!</p>
+                        </div>
+                    </div>
+					<div class="item">
+                        <img src="/img/hearthstone.png" style="width: 100%" />
+                        <div class="carousel-caption">
+                            
+                            <p>Pull up a chair by the hearth!</p>
                         </div>
                     </div>
                     <div class="item">
                         <img src="/img/diablo-3.png" style="width: 100%" />
                         <div class="carousel-caption">
-                            <h4>Diablo 3</h4>
-                            <p>Hack N' Slash your way to better loot!</p>
+                            
+                            <p>Hack n' Slash your way to better loot!</p>
                         </div>
                     </div>
                     <div class="item">
-                        <img src="/img/boardgames.png" style="width: 100%" />
+                        <img src="/img/boardgames.jpg" style="width: 100%" />
                         <div class="carousel-caption">
-                            <h4>Board Games</h4>
-                            <p>Wide variety of board games!</p>
+                            <h4>Board Gaming</h4>
+                            <p>A huge variety of board games with friendly gamers!</p>
                         </div>
                     </div>
                 </div>
@@ -160,7 +182,8 @@
                     <b style="color: #0099cc;">Where:</b> 2702 Rockcreek Parkway, the entire lower level of the building.
             <br />
                     <b style="color: #0099cc;">Cost:</b> $15 if you pre-pay, $20 dollars at the door.  You can pay using paypal via payments@kcgameon.com, bitcoin OR by cash.
-
+			<br />
+					<b style="color: #0099cc;">For more poster submission information, click <a href="https://kcgameon.com/Postersubmission.aspx">HERE.</a>
             </form>
 
         </div>
@@ -169,8 +192,8 @@
     <div class="row-fluid">
         <div class="span4">
             <center>
-                <a href="http://www.shinra.com">
-                    <img src="img/shinra.png" /></a><p>
+                
+                    <img src="img/shinra.png" /><p>
 		<!-- <p><a href="http://www.cerner.com"> -->
                         <!-- <img src="img/cernerlogo2.png" /></a></p> -->
                 <br />
