@@ -20,6 +20,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <TargetFrameworkProfile />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -251,6 +252,7 @@
     <Content Include="Staff.aspx" />
     <Content Include="Swag.aspx" />
     <Content Include="Tournament.aspx" />
+    <Content Include="Checkin.aspx" />
     <Content Include="Users.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config">
@@ -434,6 +436,13 @@
     </Compile>
     <Compile Include="Tournament.aspx.designer.cs">
       <DependentUpon>Tournament.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Checkin.aspx.cs">
+      <DependentUpon>Checkin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Checkin.aspx.designer.cs">
+      <DependentUpon>Checkin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Users.aspx.cs">
       <DependentUpon>Users.aspx</DependentUpon>
