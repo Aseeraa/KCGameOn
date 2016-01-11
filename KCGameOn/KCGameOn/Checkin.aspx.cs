@@ -14,26 +14,29 @@ namespace KCGameOn
     {
         public static int count;
         public static StringBuilder UserHTML;
-        public String hasPaid;
-        public bool hasCheckedIn;
+        public static String hasPaid;
+        public static String hasCheckedIn;
+        public static Int32 getEventID;
         String connectionString = ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
-                MySqlCommand cmd = new MySqlCommand("SELECT verifiedPaid FROM payTable WHERE username = \'" + SessionVariables.UserName + "\'", new MySqlConnection(connectionString));
+                MySqlCommand cmd = new MySqlCommand("SELECT EventID FROM kcgameon.schedule WHERE Active = 1 order by ID LIMIT 1;", new MySqlConnection(connectionString));
                 cmd.Connection.Open();
-                hasPaid = (String) cmd.ExecuteScalar();
-                cmd.ExecuteNonQuery();
+                cmd.CommandType = System.Data.CommandType.Text;
+                getEventID = (Int32)cmd.ExecuteScalar();
                 cmd.Connection.Close();
-                paidStatus.Text = hasPaid.ToString();
-
-                MySqlCommand cmd2 = new MySqlCommand("SELECT checkedin FROM seatingchart WHERE username = \'" + SessionVariables.UserName + "\'", new MySqlConnection(connectionString));
+                MySqlCommand cmd1 = new MySqlCommand("SELECT verifiedPaid FROM payTable WHERE username = \'" + SessionVariables.UserName + "\' AND EventID = " + getEventID, new MySqlConnection(connectionString));
+                cmd1.Connection.Open();
+                cmd1.CommandType = System.Data.CommandType.Text;
+                hasPaid = (String)cmd1.ExecuteScalar();
+                cmd1.Connection.Close();
+                MySqlCommand cmd2 = new MySqlCommand("SELECT checkedin FROM seatingchart WHERE username = \'" + SessionVariables.UserName + "\' AND EventID = " + getEventID, new MySqlConnection(connectionString));
                 cmd2.Connection.Open();
-                hasCheckedIn = (bool)cmd2.ExecuteScalar();
-                cmd2.ExecuteNonQuery();
+                cmd2.CommandType = System.Data.CommandType.Text;
+                hasCheckedIn = Convert.ToString(cmd2.ExecuteScalar());
                 cmd2.Connection.Close();
-                checkInStatus.Text = hasCheckedIn.ToString();
             }
             catch { }
         }
@@ -42,15 +45,34 @@ namespace KCGameOn
         {
             try
             {
-                MySqlCommand cmd = new MySqlCommand("UPDATE seatingchart SET checkedin = true WHERE Username = \'" + SessionVariables.UserName + "\'", new MySqlConnection(connectionString));
+                MySqlCommand cmd = new MySqlCommand("UPDATE seatingchart SET checkedin = true WHERE Username = \'" + SessionVariables.UserName + "\' AND EventID = " + getEventID, new MySqlConnection(connectionString));
                 cmd.Connection.Open();
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.ExecuteNonQuery();
                 cmd.Connection.Close();
-                successLabel.Text = "You have successfully checked yourself in.";
+                checkinLabel.Text = "You have successfully checked yourself in.";
+                CheckinButton.Visible = false;
             }
             catch {
-                successLabel.Text = "An error occured.  Sorry please try again.";
+                checkinLabel.Text = "An error occured.  Sorry please try again.";
+            }
+        }
+
+        protected void CheckoutButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand("UPDATE seatingchart SET checkedin = false WHERE Username = \'" + SessionVariables.UserName + "\' AND EventID = " + getEventID, new MySqlConnection(connectionString));
+                cmd.Connection.Open();
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.ExecuteNonQuery();
+                cmd.Connection.Close();
+                checkoutLabel.Text = "You have successfully checked yourself out.";
+                CheckoutButton.Visible = false;
+            }
+            catch
+            {
+                checkoutLabel.Text = "An error occured.  Sorry please try again.";
             }
         }
     }

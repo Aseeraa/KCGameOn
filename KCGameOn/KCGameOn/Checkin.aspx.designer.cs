@@ -13,24 +13,6 @@ namespace KCGameOn {
     public partial class Checkin {
         
         /// <summary>
-        /// paidStatus control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label paidStatus;
-        
-        /// <summary>
-        /// checkInStatus control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label checkInStatus;
-        
-        /// <summary>
         /// CheckinForm control.
         /// </summary>
         /// <remarks>
@@ -40,13 +22,13 @@ namespace KCGameOn {
         protected global::System.Web.UI.HtmlControls.HtmlForm CheckinForm;
         
         /// <summary>
-        /// successLabel control.
+        /// checkinLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label successLabel;
+        protected global::System.Web.UI.WebControls.Label checkinLabel;
         
         /// <summary>
         /// CheckinButton control.
@@ -56,5 +38,32 @@ namespace KCGameOn {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button CheckinButton;
+        
+        /// <summary>
+        /// CheckoutForm control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlForm CheckoutForm;
+        
+        /// <summary>
+        /// checkoutLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label checkoutLabel;
+        
+        /// <summary>
+        /// CheckoutButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button CheckoutButton;
     }
 }
