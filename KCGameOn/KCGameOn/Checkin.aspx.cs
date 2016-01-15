@@ -45,7 +45,7 @@ namespace KCGameOn
         {
             try
             {
-                MySqlCommand cmd = new MySqlCommand("UPDATE seatingchart SET checkedin = true WHERE Username = \'" + SessionVariables.UserName + "\' AND EventID = " + getEventID, new MySqlConnection(connectionString));
+                MySqlCommand cmd = new MySqlCommand("UPDATE seatingchart SET checkedin = true, checkedin_time = CURRENT_TIMESTAMP() WHERE Username = \'" + SessionVariables.UserName + "\' AND EventID = " + getEventID, new MySqlConnection(connectionString));
                 cmd.Connection.Open();
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.ExecuteNonQuery();
@@ -62,7 +62,7 @@ namespace KCGameOn
         {
             try
             {
-                MySqlCommand cmd = new MySqlCommand("UPDATE seatingchart SET checkedin = false WHERE Username = \'" + SessionVariables.UserName + "\' AND EventID = " + getEventID, new MySqlConnection(connectionString));
+                MySqlCommand cmd = new MySqlCommand("UPDATE seatingchart SET checkedin = false, checkedin_time = null WHERE Username = \'" + SessionVariables.UserName + "\' AND EventID = " + getEventID, new MySqlConnection(connectionString));
                 cmd.Connection.Open();
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.ExecuteNonQuery();

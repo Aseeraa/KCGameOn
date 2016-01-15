@@ -41,7 +41,7 @@
     else
     {%>
         <h2>Please <a href="/Account/Login.aspx">login</a> to view this page.</h2>
-        <h3>There are currently <%=count.ToString() %> people registered at kcgameon.com, <a href="https://www.kcgameon.com/Account/Register.aspx">sign up</a> today!</>
+        <h3>There are currently <%=Users.count.ToString() %> people registered at kcgameon.com, <a href="https://www.kcgameon.com/Account/Register.aspx">sign up</a> today!</h3>
         <br />
     <%} %>
 </asp:Content>
