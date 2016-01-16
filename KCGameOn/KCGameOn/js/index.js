@@ -228,7 +228,7 @@
 
     // Seating Map
     GameOn.SeatingMap = function (mapDivId, seats, currentUser) {
-        var projectors = ["59", "60", "64", "116", "118", "127"];
+        var projectors = ["59", "60", "64"];
         //var userFound = found;
         var world = new GameOn.CustomMap(mapDivId);
 
