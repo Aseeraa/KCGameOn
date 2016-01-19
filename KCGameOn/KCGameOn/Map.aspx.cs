@@ -14,6 +14,8 @@ using System.Net;
 using System.Web.Script.Serialization;
 using System.Web.Helpers;
 using System.Web.Mvc;
+using PayPal.AdaptivePayments.Model;
+using PayPal.AdaptivePayments;
 
 namespace KCGameOn
 {
@@ -97,10 +99,157 @@ namespace KCGameOn
                     cmd.Connection.Close();
                 }
             }
+            checkPaid(UserInfo);
+        }
+
+        private void checkPaid(string UserInfo)
+        {
+            string paymentKey = "";
+            string verifiedPaid = "";
+
+            if (!String.IsNullOrEmpty(SessionVariables.UserName))
+            {
+                try
+                {
+                    cmd = new MySqlCommand("SELECT paymentKey,verifiedPaid FROM payTable WHERE paidDate = (SELECT MAX(paidDate) FROM payTable where userName = \'" + SessionVariables.UserName.ToLower() + "\')", new MySqlConnection(UserInfo));
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.Connection.Open();
+                    IAsyncResult result = cmd.BeginExecuteReader();
+                    reader = cmd.EndExecuteReader(result);
+                    result = cmd.BeginExecuteReader();
+                    while (reader.Read())
+                    {
+                        paymentKey = reader["paymentKey"].ToString();
+                        verifiedPaid = reader["verifiedPaid"].ToString();
+                    }
+                }
+                catch (Exception)
+                {
+
+                }
+                finally
+                {
+                    if (reader != null)
+                    {
+                        reader.Close();
+                    }
+                    if (cmd != null)
+                    {
+                        cmd.Connection.Close();
+                    }
+                }
+                if (!verifiedPaid.Equals("Y"))
+                {
+                    PaymentDetailsResponse responsePaymentDetails = new PaymentDetailsResponse();
+
+                    try
+                    {
+                        // # PaymentDetailsRequest
+                        // The code for the language in which errors are returned
+                        RequestEnvelope envelopeRequest = new RequestEnvelope();
+                        envelopeRequest.errorLanguage = "en_US";
+
+                        // PaymentDetailsRequest which takes,
+                        // `Request Envelope` - Information common to each API operation, such
+                        // as the language in which an error message is returned.
+                        PaymentDetailsRequest requestPaymentDetails = new PaymentDetailsRequest(envelopeRequest);
+
+                        // You must specify either,
+                        //
+                        // * `Pay Key` - The pay key that identifies the payment for which you want to retrieve details. This is the pay key returned in the PayResponse message.
+                        // * `Transaction ID` - The PayPal transaction ID associated with the payment. The IPN message associated with the payment contains the transaction ID.
+                        // `payDetailsRequest.transactionId = transactionId`
+                        // * `Tracking ID` - The tracking ID that was specified for this payment in the PayRequest message.
+                        // `requestPaymentDetails.trackingId = trackingId`
+                        requestPaymentDetails.payKey = paymentKey;
+
+                        // Create the service wrapper object to make the API call
+                        AdaptivePaymentsService service = new AdaptivePaymentsService();
+
+                        // # API call
+                        // Invoke the PaymentDetails method in service wrapper object
+                        responsePaymentDetails = service.PaymentDetails(requestPaymentDetails);
+
+                        if (responsePaymentDetails != null)
+                        {
+                            // Response envelope acknowledgement
+                            string acknowledgement = "PaymentDetails API Operation - ";
+                            acknowledgement += responsePaymentDetails.responseEnvelope.ack.ToString();
+                            Console.WriteLine(acknowledgement + "\n");
+
+                            // # Success values
+                            if (responsePaymentDetails.responseEnvelope.ack.ToString().Trim().ToUpper().Equals("SUCCESS"))
+                            {
+                                // The status of the payment. Possible values are:
+                                //
+                                // * CREATED - The payment request was received; funds will be
+                                // transferred once the payment is approved
+                                // * COMPLETED - The payment was successful
+                                // * INCOMPLETE - Some transfers succeeded and some failed for a
+                                // parallel payment or, for a delayed chained payment, secondary
+                                // receivers have not been paid
+                                // * ERROR - The payment failed and all attempted transfers failed
+                                // or all completed transfers were successfully reversed
+                                // * REVERSALERROR - One or more transfers failed when attempting
+                                // to reverse a payment
+                                // * PROCESSING - The payment is in progress
+                                // * PENDING - The payment is awaiting processing
+                                if (responsePaymentDetails.status == "COMPLETED")
+                                {
+                                    updatePayTable(UserInfo, paymentKey);
+                                }
+                                Console.WriteLine("Payment Execution Status : " + responsePaymentDetails.status + "\n");
+                            }
+                            // # Error Values
+                            else
+                            {
+                                List<ErrorData> errorMessages = responsePaymentDetails.error;
+                                foreach (ErrorData error in errorMessages)
+                                {
+                                    Console.WriteLine(error.message + "\n");
+                                }
+                            }
+                        }
+                    }
+                    // # Exception log    
+                    catch (System.Exception ex)
+                    {
+                        // Log the exception message
+                        Console.WriteLine("Error Message : " + ex.Message);
+                    }
+                }
+            }
+        }
+
+        private void updatePayTable(string UserInfo, string paymentkey)
+        {
+            try
+            {
+                cmd = new MySqlCommand("spUpdatePayment", new MySqlConnection(UserInfo));
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Connection.Open();
+                cmd.Parameters.AddWithValue("Username", SessionVariables.UserName);
+                cmd.Parameters.AddWithValue("PaymentKey", paymentkey);
+            }
+            catch (Exception)
+            {
+
+            }
+            finally
+            {
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+                if (cmd != null)
+                {
+                    cmd.Connection.Close();
+                }
+            }
         }
 
         [WebMethod]
-        [ScriptMethod(UseHttpGet = false,ResponseFormat = System.Web.Script.Services.ResponseFormat.Json)]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = System.Web.Script.Services.ResponseFormat.Json)]
         public static void SaveUser(User user)
         {
             if (SessionVariables.UserName.ToLower() == user.Username.ToLower())// Add or User is Admin)

@@ -297,6 +297,7 @@ namespace KCGameOn
                 {
                     quantity = 0;
                     RedirectURL = "https://kcgameon.com/Default.aspx";
+                    //RedirectURL = "https://nickthenerd.com/Default.aspx";
                 }
             }
             //HttpContext.Current.Response.Redirect(RedirectURL, true);
@@ -346,6 +347,7 @@ namespace KCGameOn
             // sender has logged into PayPal and approved a payment; it is always
             // required but only used if a payment requires explicit approval
             PayRequest requestPay = new PayRequest(envelopeRequest, "PAY", "https://kcgameon.com/Default.aspx", "USD", listOfReceivers, "https://kcgameon.com/Map.aspx");
+            //PayRequest requestPay = new PayRequest(envelopeRequest, "PAY", "https://nickthenerd.com/Default.aspx", "USD", listOfReceivers, "https://nickthenerd.com/Map.aspx");
             return requestPay;
         }
 
@@ -360,7 +362,7 @@ namespace KCGameOn
             {
                 // Create the service wrapper object to make the API call
                 AdaptivePaymentsService service = new AdaptivePaymentsService();
-
+                
                 // # API call
                 // Invoke the Pay method in service wrapper object
                 responsePay = service.Pay(reqPay);

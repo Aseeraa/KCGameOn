@@ -12,10 +12,26 @@ namespace KCGameOn.Admin
         public static string blockButtonVal;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (SessionVariables.registrationBlocked == true)
-                blockButtonVal = "Unblock";
-            else
-                blockButtonVal = "Block";
+            //try
+            //{
+
+            //    cmd = new MySqlCommand("SELECT BlockPayments FROM AdminProperties", new MySqlConnection(UserInfo));
+            //    cmd.Connection.Open();
+            //    cmd.CommandType = System.Data.CommandType.Text;
+            //    string blocked = cmd.ExecuteScalar().ToString();
+            //    if (blocked.Equals("TRUE"))
+            //        if (SessionVariables.UserAdmin == 0)
+            //            SessionVariables.registrationBlocked = true;
+            //}
+            //catch (Exception)
+            //{
+
+            //}
+            //finally
+            //{
+            //    if (cmd.Connection != null)
+            //        cmd.Connection.Close();
+            //}
         }
     }
 }

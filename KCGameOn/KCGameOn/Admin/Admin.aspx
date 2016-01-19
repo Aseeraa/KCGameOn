@@ -38,10 +38,24 @@
             </select>
             <button id="archiveEvent" class="btn pull-left btn-danger">Archive Event</button>
         </div>
-        <h3>User Payment Verification
-        </h3>
-        <table>
-        </table>
+        <div>
+            <h3>User Payment Verification
+            </h3>
+            <table cellpadding="0" cellspacing="0" border="0" class="bordered-table zebra-striped" id="example">
+                <thead>
+                    <tr>
+                        <th>UserName</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Paid</th>
+                        <th>Payment Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%=Users.UserHTML%>
+                </tbody>
+            </table>
+        </div>
     </div>
     <%}
           else
