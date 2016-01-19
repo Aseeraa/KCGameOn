@@ -12,6 +12,7 @@ using System.Net.NetworkInformation;
 using System.Net.Mail;
 using System.Net;
 using System.Configuration;
+using MySql.Data.MySqlClient;
 
 namespace KCGameOn
 {
@@ -19,6 +20,8 @@ namespace KCGameOn
     {
         public static int UserAdmin;
         public static bool registrationBlocked;
+        private static string paymentVerify;
+
         public static string getSessionString(String name)
         {
             if (HttpContext.Current.Session[name] != null)
@@ -58,6 +61,51 @@ namespace KCGameOn
         {
             get { return getSessionString("UserName");}
             set { setSessionString(value, "UserName"); }
+        }
+
+        public static string paymentKey { get; set; }
+
+        public static string verifiedPaid
+        {
+            get { return paymentVerify; }
+            set
+            {
+                paymentVerify = value;
+                if (paymentVerify == "Y")
+                {
+                    updatePayTable(paymentKey);
+                }
+            }
+        }
+
+        private static void updatePayTable(string paymentkey)
+        {
+            string UserInfo = ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString;
+            MySqlDataReader reader = null;
+            MySqlCommand cmd = null;
+            try
+            {
+                cmd = new MySqlCommand("spUpdatePayment", new MySqlConnection(UserInfo));
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Connection.Open();
+                cmd.Parameters.AddWithValue("Username", SessionVariables.UserName);
+                cmd.Parameters.AddWithValue("PaymentKey", paymentkey);
+            }
+            catch (Exception)
+            {
+
+            }
+            finally
+            {
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+                if (cmd != null)
+                {
+                    cmd.Connection.Close();
+                }
+            }
         }
     }
 

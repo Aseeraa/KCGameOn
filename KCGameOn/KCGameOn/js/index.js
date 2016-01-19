@@ -290,43 +290,80 @@
         world.setMarkerEvents({
             click: function (e) {
                 if (currentUser != null) {
-                    world.markers.forEach(function (marker) {
-                        if (marker.title == currentUser) {
-                            if ($.inArray(marker.id, projectors) != -1) {
-                                marker.title = "Projector";
-                                marker.setIcon(world.icons.projector);
-                            }
-                            else {
-                                marker.title = "Empty";
-                                marker.setIcon(world.icons.empty);
-                            }
-                        }
-                        else if (e.marker.title == "Empty") {
-                            //infowindow.open(world.map, e.marker);
-                            //infobox.open(world.map, e.marker);
-                            e.marker.title = currentUser;
-                            e.marker.setIcon(world.icons.active);
-                        }
-                        else if (e.marker.title == "Projector") {
-                            e.marker.title = currentUser;
-                            e.marker.setIcon(world.icons.active_projector);
-                        }
-                    });
-
-                    //Makes call to set user to the current seat.
-                    var user = {};
-                    user.Username = currentUser;
-                    user.SeatID = e.marker.id;
                     $.ajax({
                         type: "POST",
-                        url: "Map.aspx/SaveUser",
-                        data: '{user: ' + JSON.stringify(user) + '}',
+                        url: "Map.aspx/checkPaid",
                         contentType: "application/json; charset=utf-8",
-                        dataType: "json",
-                    })    
-                    .done(function (data) { successBox(); })
-                    .fail(function () { failedBox(); })
-                    ;
+                        dataType: "json"})
+                        .success(function(data)
+                        {
+                            debugger;
+                            if (data.d == "true") {
+                                world.markers.forEach(function (marker) {
+                                    if (marker.title == currentUser) {
+                                        if ($.inArray(marker.id, projectors) != -1) {
+                                            marker.title = "Projector";
+                                            marker.setIcon(world.icons.projector);
+                                        }
+                                        else {
+                                            marker.title = "Empty";
+                                            marker.setIcon(world.icons.empty);
+                                        }
+                                    }
+                                    else if (e.marker.title == "Empty") {
+                                        //infowindow.open(world.map, e.marker);
+                                        //infobox.open(world.map, e.marker);
+                                        e.marker.title = currentUser;
+                                        e.marker.setIcon(world.icons.active);
+                                    }
+                                    else if (e.marker.title == "Projector") {
+                                        e.marker.title = currentUser;
+                                        e.marker.setIcon(world.icons.active_projector);
+                                    }
+                                });
+
+                                //Makes call to set user to the current seat.
+                                var user = {};
+                                user.Username = currentUser;
+                                user.SeatID = e.marker.id;
+                                $.ajax({
+                                    type: "POST",
+                                    url: "Map.aspx/SaveUser",
+                                    data: '{user: ' + JSON.stringify(user) + '}',
+                                    contentType: "application/json; charset=utf-8",
+                                    dataType: "json",
+                                })
+                                .done(function (data) { successBox(); })
+                                .fail(function () { failedBox(); })
+                                ;
+                            }
+                            else {
+                                debugger;
+                                bootbox.dialog({
+                                    message: "Please pay to choose a seat.  If you have already paid using cash or PayPal, please wait a few minutes before trying to sit again.  If the issue persists contact an admin.",
+                                    title: "Seating",
+                                    buttons: {
+                                        danger: {
+                                            label: "Cancel",
+                                            className: "btn-danger",
+                                            callback: function () {
+                                            }
+                                        },
+                                        main: {
+                                            label: "PayPal",
+                                            className: "btn-primary",
+                                            callback: function () {
+                                                window.open('EventRegistration.aspx', '_self');
+                                            }
+                                        }
+                                    }
+                                });
+                            }
+                        })
+                        .fail(function(error) {
+                            alert(error.message);
+                        });
+                    
                 }
                 else {
                     bootbox.dialog({

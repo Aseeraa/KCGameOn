@@ -25,11 +25,12 @@ namespace KCGameOn
         public string seats;
         public string people;
         public int count;
+        private string UserInfo = ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString;
         MySqlDataReader reader = null;
         MySqlCommand cmd = null;
         protected void Page_Load(object sender, EventArgs e)
         {
-            String UserInfo = ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString;
+            
             try
             {
                 count = 0;
@@ -99,15 +100,13 @@ namespace KCGameOn
                     cmd.Connection.Close();
                 }
             }
-            checkPaid(UserInfo);
+            checkForUpdate();
+            checkPayPal();
         }
 
-        private void checkPaid(string UserInfo)
+        private void checkForUpdate()
         {
-            string paymentKey = "";
-            string verifiedPaid = "";
-
-            if (!String.IsNullOrEmpty(SessionVariables.UserName))
+            if (SessionVariables.UserName != null)
             {
                 try
                 {
@@ -119,13 +118,12 @@ namespace KCGameOn
                     result = cmd.BeginExecuteReader();
                     while (reader.Read())
                     {
-                        paymentKey = reader["paymentKey"].ToString();
-                        verifiedPaid = reader["verifiedPaid"].ToString();
+                        SessionVariables.paymentKey = reader["paymentKey"].ToString();
+                        SessionVariables.verifiedPaid = reader["verifiedPaid"].ToString();
                     }
                 }
                 catch (Exception)
                 {
-
                 }
                 finally
                 {
@@ -138,7 +136,14 @@ namespace KCGameOn
                         cmd.Connection.Close();
                     }
                 }
-                if (!verifiedPaid.Equals("Y"))
+            }
+        }
+
+        private void checkPayPal()
+        {
+            if (!String.IsNullOrEmpty(SessionVariables.UserName) && !String.IsNullOrEmpty(SessionVariables.verifiedPaid) && !String.IsNullOrEmpty(SessionVariables.paymentKey))
+            {
+                if (!SessionVariables.verifiedPaid.Equals("Y"))
                 {
                     PaymentDetailsResponse responsePaymentDetails = new PaymentDetailsResponse();
 
@@ -161,7 +166,7 @@ namespace KCGameOn
                         // `payDetailsRequest.transactionId = transactionId`
                         // * `Tracking ID` - The tracking ID that was specified for this payment in the PayRequest message.
                         // `requestPaymentDetails.trackingId = trackingId`
-                        requestPaymentDetails.payKey = paymentKey;
+                        requestPaymentDetails.payKey = SessionVariables.paymentKey;
 
                         // Create the service wrapper object to make the API call
                         AdaptivePaymentsService service = new AdaptivePaymentsService();
@@ -196,9 +201,8 @@ namespace KCGameOn
                                 // * PENDING - The payment is awaiting processing
                                 if (responsePaymentDetails.status == "COMPLETED")
                                 {
-                                    updatePayTable(UserInfo, paymentKey);
+                                    SessionVariables.verifiedPaid = "Y";
                                 }
-                                Console.WriteLine("Payment Execution Status : " + responsePaymentDetails.status + "\n");
                             }
                             // # Error Values
                             else
@@ -206,7 +210,6 @@ namespace KCGameOn
                                 List<ErrorData> errorMessages = responsePaymentDetails.error;
                                 foreach (ErrorData error in errorMessages)
                                 {
-                                    Console.WriteLine(error.message + "\n");
                                 }
                             }
                         }
@@ -215,37 +218,35 @@ namespace KCGameOn
                     catch (System.Exception ex)
                     {
                         // Log the exception message
-                        Console.WriteLine("Error Message : " + ex.Message);
                     }
                 }
             }
         }
 
-        private void updatePayTable(string UserInfo, string paymentkey)
+        [WebMethod]
+        public static string checkPaid()
         {
-            try
-            {
-                cmd = new MySqlCommand("spUpdatePayment", new MySqlConnection(UserInfo));
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd.Connection.Open();
-                cmd.Parameters.AddWithValue("Username", SessionVariables.UserName);
-                cmd.Parameters.AddWithValue("PaymentKey", paymentkey);
-            }
-            catch (Exception)
-            {
+            bool paid = false;
 
-            }
-            finally
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            string UserInfo = ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString;
+
+            if (!String.IsNullOrEmpty(SessionVariables.UserName) && !String.IsNullOrEmpty(SessionVariables.verifiedPaid))
             {
-                if (reader != null)
+                if (!SessionVariables.verifiedPaid.Equals("Y"))
                 {
-                    reader.Close();
+                    paid = false;
+                    return serializer.Serialize(paid);
                 }
-                if (cmd != null)
+                //User was already verified
+                else
                 {
-                    cmd.Connection.Close();
+                    paid = true;
+                    return serializer.Serialize(paid);
                 }
             }
+            paid = false;
+            return serializer.Serialize(paid);
         }
 
         [WebMethod]
