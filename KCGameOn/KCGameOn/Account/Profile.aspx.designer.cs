@@ -49,13 +49,13 @@ namespace KCGameOn.Account {
         protected global::System.Web.UI.WebControls.Literal lastNameText;
         
         /// <summary>
-        /// emailText control.
+        /// emailInput control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal emailText;
+        protected global::System.Web.UI.WebControls.TextBox emailInput;
         
         /// <summary>
         /// sponsorText control.
@@ -76,22 +76,49 @@ namespace KCGameOn.Account {
         protected global::System.Web.UI.WebControls.Literal joinedDateText;
         
         /// <summary>
-        /// Password control.
+        /// ActiveCheckbox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputPassword Password;
+        protected global::System.Web.UI.WebControls.CheckBox ActiveCheckbox;
         
         /// <summary>
-        /// Password1 control.
+        /// CurrentPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputPassword Password1;
+        protected global::System.Web.UI.HtmlControls.HtmlInputPassword CurrentPassword;
+        
+        /// <summary>
+        /// NewPassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputPassword NewPassword;
+        
+        /// <summary>
+        /// NewPasswordConfirm control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputPassword NewPasswordConfirm;
+        
+        /// <summary>
+        /// ProfileUpdateMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal ProfileUpdateMessage;
         
         /// <summary>
         /// ChangeProfileConfirm control.

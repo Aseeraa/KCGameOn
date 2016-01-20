@@ -7,7 +7,7 @@
     <script type="text/javascript">
         function checkValidInputs() {
             debugger;
-            if (checkPasswordMatch()) {
+            if (checkPasswordMatch() && checkEmailMatch()) {
                 $('input[type="submit"]').attr('disabled', false);
 
             }
@@ -16,8 +16,8 @@
             }
         }
         function checkPasswordMatch() {
-            var password = $('.Password').val();
-            var confirmPassword = $('.Password1').val();
+            var password = $('.NewPassword').val();
+            var confirmPassword = $('.NewPasswordConfirm').val();
 
             if (password != confirmPassword) {
 
@@ -25,13 +25,25 @@
                 document.getElementById('PassErrorImg1').style.visibility = "visible";
                 return false;
             }
-            else if (password.length == 0 || confirmPassword.length == 0)
-            {
-                return false;
-            }
             else {
                 document.getElementById('PassErrorImg').style.visibility = "hidden";
                 document.getElementById('PassErrorImg1').style.visibility = "hidden";
+                return true;
+            }
+        }
+        function checkEmailMatch() {
+            var Email = $(".emailInput").val();
+            var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+            if (!re.test(Email)) {
+                document.getElementById('EmailMatch').style.visibility = "visible";
+                return false;
+            }
+            else if (Email.length == 0) {
+                return false;
+            }
+            else {
+                document.getElementById('EmailMatch').style.visibility = "hidden";
                 return true;
             }
         }
@@ -49,10 +61,11 @@
         </label>
     </div>
     <div class="control-group">
-        <label class="control-label">Email</label>
-        <label class="controls" style="margin-top: 5px;">
-            <asp:Literal runat="server" id="emailText" EnableViewState="false" />
-        </label>
+        <label class="control-label" for="emailInput">Email</label>
+        <div class="controls">
+            <asp:TextBox id="emailInput" class="emailInput" runat="server" value="" onkeyup="checkValidInputs();" placeholder="E.g. Nick@KcGameOn.com" type="text" required="true" />
+            <img id="EmailMatch" style="visibility:hidden" src="../img/Actions-button-cancel-icon.png" />
+        </div>
     </div>
     <div class="control-group">
         <label class="control-label">Sponsor</label>
@@ -66,11 +79,26 @@
             <asp:Literal runat="server" id="joinedDateText" EnableViewState="false" />
         </label>
     </div>
+        <div class="control-group">
+        <label class="control-label">Subscribed</label>
+        <label class="controls" style="margin-top: 5px;">
+            <asp:CheckBox ID="ActiveCheckbox" runat="server" />
+        </label>
+    </div>
     <div class="control-group">
-        <label class="control-label" for="inputPassword">Password</label> 
+        <label class="control-label" for="CurrentPassword">Current Password</label> 
 
         <div class="controls">
-            <input id="Password" class="Password" onkeyup="checkValidInputs();" placeholder="Min. 6 Characters" type="password" runat="server" required="true" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" title="Password must contain at least 6 characters, including UPPER/lowercase and numbers" />
+            <input id="CurrentPassword" class="CurrentPassword" onkeyup="" placeholder="Min. 6 Characters" type="password" runat="server" required="true" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" title="Password must contain at least 6 characters, including UPPER/lowercase and numbers" />
+            <img alt="Error" id="PassErrorImg2" style="visibility:hidden" src="../img/Actions-button-cancel-icon.png" />
+        </div>
+    </div>
+    
+    <div class="control-group">
+        <label class="control-label" for="NewPassword">New Password</label> 
+
+        <div class="controls">
+            <input id="NewPassword" class="NewPassword" onkeyup="checkValidInputs();" placeholder="Min. 6 Characters" type="password" runat="server" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" title="Password must contain at least 6 characters, including UPPER/lowercase and numbers" />
             <img alt="Error" id="PassErrorImg" style="visibility:hidden" src="../img/Actions-button-cancel-icon.png" />
         </div>
         <p id="P1"></p>
@@ -78,15 +106,18 @@
 
     <div class="control-group">
         <label class="control-label" for=
-        "inputPassword">Password Confirmation</label> 
+        "NewPasswordConfirm">Password Confirmation</label> 
 
         <div class="controls">
-            <input id="Password1" class="Password1" onkeyup="checkValidInputs();" placeholder="Min. 6 Characters" type="password" runat="server" required="true" />
+            <input id="NewPasswordConfirm" class="NewPasswordConfirm" onkeyup="checkValidInputs();" placeholder="Min. 6 Characters" type="password" runat="server" />
             <img alt="Error" id="PassErrorImg1" style="visibility:hidden" src="../img/Actions-button-cancel-icon.png" />
         </div>
         <p id="PassError"></p>
+    </div>    
+    <div class="control-group">
+        <asp:Literal runat="server" id="ProfileUpdateMessage" EnableViewState="false" />
     </div>
-    <asp:Button ID="ChangeProfileConfirm" class="btn btn-large btn-success" type="submit" Text="Change Password" onclick="ChangeProfile_Click" runat="server"/>
+    <asp:Button ID="ChangeProfileConfirm" class="btn btn-large btn-success" type="submit" Text="Submit Changes" onclick="ChangeProfile_Click" runat="server"/>
     </form>
     <%}
           else
