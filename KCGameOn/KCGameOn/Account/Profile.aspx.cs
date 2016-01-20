@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using MySql.Data.MySqlClient;
+using System.Text.RegularExpressions;
 
 namespace KCGameOn.Account
 {
@@ -31,16 +32,38 @@ namespace KCGameOn.Account
                 Reader = cmd.ExecuteReader();
                 while (Reader.Read())
                 {
+                    usernameText.Text = SessionVariables.UserName;
                     FirstName = Reader.GetString("FirstName").ToString();
+                    firstNameText.Text = FirstName;
                     LastName = Reader.GetString("LastName").ToString();
+                    lastNameText.Text = LastName;
                     Email = Reader.GetString("Email").ToString();
+                    emailText.Text = Email;
                     if (!Reader.IsDBNull(10))
                     {
-                        Sponsor = Reader.GetString("Sponsor").ToString();
+                        Sponsor = Reader.GetString("Cerner").ToString();
+                        sponsorText.Text = Sponsor;
                     }
 
                     Joined = Reader.GetString("Submission_Date").ToString();
+                    joinedDateText.Text = Joined;
                 }
+                cmd.Connection.Close();
+            }
+        }
+        protected void ChangeProfile_Click(object sender, EventArgs e)
+        {
+            String Password = Request.Form["ctl00$MainContent$Password"].ToString().Trim();
+            Regex regex = new Regex(@"(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}");
+            Match match = regex.Match(Password);
+            PasswordHash PasswordHasher = new PasswordHash();
+            String Salt = PasswordHasher.CreateSalt(SessionVariables.UserName.ToLower());
+            String HashedPassword = PasswordHasher.HashPassword(Salt, Password);
+            using (MySqlCommand cmd = new MySqlCommand("UPDATE useraccount SET Password = \'" + HashedPassword + "\' WHERE useraccount.Username = \'" + SessionVariables.UserName + "\'", new MySqlConnection(ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString)))
+            {
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Connection.Open();
+                cmd.ExecuteNonQuery();
                 cmd.Connection.Close();
             }
         }
