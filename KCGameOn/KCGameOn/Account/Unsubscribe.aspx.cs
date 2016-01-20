@@ -19,17 +19,17 @@ namespace KCGameOn.Account
             if (!String.IsNullOrEmpty(SessionVariables.UserName))
             {
                 //get user EmailID by QueryString as below:
-                if (Request.QueryString["emailID"] != null && Request.QueryString["emailID"] != "0")
-                {
-                    EmailID = Request.QueryString["emailID"].ToString();
-                }
-                else
-                {
-                    EmailID = null;
-                }
+                //if (Request.QueryString["emailID"] != null && Request.QueryString["emailID"] != "0")
+                //{
+                //    EmailID = Request.QueryString["emailID"].ToString();
+                //}
+                //else
+                //{
+                //    EmailID = null;
+                //}
 
-                if (EmailID != null)
-                {
+                //if (EmailID != null)
+                //{
                     //Update the usertable as below:
                     //using (MySqlCommand cmd = new MySqlCommand("UPDATE useraccount SET Active = false WHERE useraccount.Email = '" + EmailID + "' AND useraccount.username = '" + SessionVariables.UserName + "'", new MySqlConnection(ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString)))
                     //{
@@ -41,11 +41,11 @@ namespace KCGameOn.Account
                         cmd.Connection.Close();
                         unsubscribeMessage.Text = "Successfully unsubscribed and set to inactive!";
                     }
-                }
-                else
-                {
-                    unsubscribeMessage.Text = "Nothing to do here!";
-                }
+                //}
+                //else
+                //{
+                //    unsubscribeMessage.Text = "Nothing to do here!";
+                //}
             }          
         }
     }
