@@ -14,6 +14,9 @@ namespace KCGameOn.Account
     {
         private string errorString;
         private static string redirect;
+        string UserInfo = ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString;
+        MySqlDataReader reader = null;
+        MySqlCommand cmd = null;
         public string ErrorString
         {
             get { return errorString;}
@@ -166,7 +169,7 @@ namespace KCGameOn.Account
                     cmd.CommandType = System.Data.CommandType.Text;
                     string blocked = cmd.ExecuteScalar().ToString();
                     if (blocked.Equals("TRUE"))
-                        if(SessionVariables.UserAdmin == 0)
+                        if(SessionVariables.UserAdmin == 0 && !SessionVariables.UserName.ToLower().Equals("kctestaccount"))
                             SessionVariables.registrationBlocked = true;
                 }
                 catch (Exception)
@@ -181,6 +184,41 @@ namespace KCGameOn.Account
                 
                 if (SessionVariables.UserName != null)
                 {
+                    try
+                    {
+                        cmd = new MySqlCommand("SELECT paymentKey,verifiedPaid FROM payTable WHERE paidDate = (SELECT MAX(paidDate) FROM payTable where userName = \'" + SessionVariables.UserName.ToLower() + "\')", new MySqlConnection(UserInfo));
+                        cmd.CommandType = System.Data.CommandType.Text;
+                        cmd.Connection.Open();
+                        IAsyncResult result = cmd.BeginExecuteReader();
+                        reader = cmd.EndExecuteReader(result);
+                        result = cmd.BeginExecuteReader();
+                        if (reader == null || !reader.HasRows)
+                        {
+                            SessionVariables.verifiedPaid = "N";
+                        }
+                        else
+                        {
+                            while (reader.Read())
+                            {
+                                SessionVariables.paymentKey = reader["paymentKey"].ToString();
+                                SessionVariables.verifiedPaid = reader["verifiedPaid"].ToString();
+                            }
+                        }
+                    }
+                    catch (Exception)
+                    {
+                    }
+                    finally
+                    {
+                        if (reader != null)
+                        {
+                            reader.Close();
+                        }
+                        if (cmd != null)
+                        {
+                            cmd.Connection.Close();
+                        }
+                    }
                     if (String.IsNullOrEmpty(redirect))
                     {
                         Response.Redirect("/Default.aspx");

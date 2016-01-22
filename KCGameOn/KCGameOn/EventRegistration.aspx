@@ -210,7 +210,6 @@
                 }
             });
         }
-
     </script>
 </asp:Content>
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">

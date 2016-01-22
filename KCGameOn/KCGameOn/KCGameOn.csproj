@@ -459,6 +459,7 @@
     <Compile Include="Users.aspx.designer.cs">
       <DependentUpon>Users.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UsersObject.cs" />
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

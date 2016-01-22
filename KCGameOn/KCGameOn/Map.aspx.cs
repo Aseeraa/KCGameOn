@@ -14,6 +14,8 @@ using System.Net;
 using System.Web.Script.Serialization;
 using System.Web.Helpers;
 using System.Web.Mvc;
+using PayPal.AdaptivePayments.Model;
+using PayPal.AdaptivePayments;
 
 namespace KCGameOn
 {
@@ -23,11 +25,12 @@ namespace KCGameOn
         public string seats;
         public string people;
         public int count;
+        private string UserInfo = ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString;
         MySqlDataReader reader = null;
         MySqlCommand cmd = null;
         protected void Page_Load(object sender, EventArgs e)
         {
-            String UserInfo = ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString;
+            
             try
             {
                 count = 0;
@@ -97,10 +100,164 @@ namespace KCGameOn
                     cmd.Connection.Close();
                 }
             }
+            checkPayPal();
+            checkForUpdate();
+        }
+
+        private void checkForUpdate()
+        {
+            if (SessionVariables.UserName != null)
+            {
+                try
+                {
+                    cmd = new MySqlCommand("SELECT paymentKey,verifiedPaid FROM payTable WHERE paidDate = (SELECT MAX(paidDate) FROM payTable where userName = \'" + SessionVariables.UserName.ToLower() + "\' AND ActiveIndicator = \'TRUE\')", new MySqlConnection(UserInfo));
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.Connection.Open();
+                    IAsyncResult result = cmd.BeginExecuteReader();
+                    reader = cmd.EndExecuteReader(result);
+                    result = cmd.BeginExecuteReader();
+                    if (reader == null || !reader.HasRows)
+                    {
+                        SessionVariables.verifiedPaid = "N";
+                    }
+                    else
+                    {
+                        while (reader.Read())
+                        {
+                            SessionVariables.paymentKey = reader["paymentKey"].ToString();
+                            SessionVariables.verifiedPaid = reader["verifiedPaid"].ToString();
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                }
+                finally
+                {
+                    if (reader != null)
+                    {
+                        reader.Close();
+                    }
+                    if (cmd != null)
+                    {
+                        cmd.Connection.Close();
+                    }
+                }
+            }
+        }
+
+        private void checkPayPal()
+        {
+            if (!String.IsNullOrEmpty(SessionVariables.UserName) && !String.IsNullOrEmpty(SessionVariables.verifiedPaid) && !String.IsNullOrEmpty(SessionVariables.paymentKey))
+            {
+                if (!SessionVariables.verifiedPaid.Equals("Y"))
+                {
+                    PaymentDetailsResponse responsePaymentDetails = new PaymentDetailsResponse();
+
+                    try
+                    {
+                        // # PaymentDetailsRequest
+                        // The code for the language in which errors are returned
+                        RequestEnvelope envelopeRequest = new RequestEnvelope();
+                        envelopeRequest.errorLanguage = "en_US";
+
+                        // PaymentDetailsRequest which takes,
+                        // `Request Envelope` - Information common to each API operation, such
+                        // as the language in which an error message is returned.
+                        PaymentDetailsRequest requestPaymentDetails = new PaymentDetailsRequest(envelopeRequest);
+
+                        // You must specify either,
+                        //
+                        // * `Pay Key` - The pay key that identifies the payment for which you want to retrieve details. This is the pay key returned in the PayResponse message.
+                        // * `Transaction ID` - The PayPal transaction ID associated with the payment. The IPN message associated with the payment contains the transaction ID.
+                        // `payDetailsRequest.transactionId = transactionId`
+                        // * `Tracking ID` - The tracking ID that was specified for this payment in the PayRequest message.
+                        // `requestPaymentDetails.trackingId = trackingId`
+                        requestPaymentDetails.payKey = SessionVariables.paymentKey;
+
+                        // Create the service wrapper object to make the API call
+                        AdaptivePaymentsService service = new AdaptivePaymentsService();
+
+                        // # API call
+                        // Invoke the PaymentDetails method in service wrapper object
+                        responsePaymentDetails = service.PaymentDetails(requestPaymentDetails);
+
+                        if (responsePaymentDetails != null)
+                        {
+                            // Response envelope acknowledgement
+                            string acknowledgement = "PaymentDetails API Operation - ";
+                            acknowledgement += responsePaymentDetails.responseEnvelope.ack.ToString();
+                            Console.WriteLine(acknowledgement + "\n");
+
+                            // # Success values
+                            if (responsePaymentDetails.responseEnvelope.ack.ToString().Trim().ToUpper().Equals("SUCCESS"))
+                            {
+                                // The status of the payment. Possible values are:
+                                //
+                                // * CREATED - The payment request was received; funds will be
+                                // transferred once the payment is approved
+                                // * COMPLETED - The payment was successful
+                                // * INCOMPLETE - Some transfers succeeded and some failed for a
+                                // parallel payment or, for a delayed chained payment, secondary
+                                // receivers have not been paid
+                                // * ERROR - The payment failed and all attempted transfers failed
+                                // or all completed transfers were successfully reversed
+                                // * REVERSALERROR - One or more transfers failed when attempting
+                                // to reverse a payment
+                                // * PROCESSING - The payment is in progress
+                                // * PENDING - The payment is awaiting processing
+                                if (responsePaymentDetails.status == "COMPLETED")
+                                {
+                                    SessionVariables.verifiedPaid = "Y";
+                                }
+                            }
+                            // # Error Values
+                            else
+                            {
+                                List<ErrorData> errorMessages = responsePaymentDetails.error;
+                                foreach (ErrorData error in errorMessages)
+                                {
+                                }
+                            }
+                        }
+                    }
+                    // # Exception log    
+                    catch (System.Exception ex)
+                    {
+                        // Log the exception message
+                    }
+                }
+            }
         }
 
         [WebMethod]
-        [ScriptMethod(UseHttpGet = false,ResponseFormat = System.Web.Script.Services.ResponseFormat.Json)]
+        public static string checkPaid()
+        {
+            bool paid = false;
+
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            string UserInfo = ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString;
+
+            if (!String.IsNullOrEmpty(SessionVariables.UserName) && !String.IsNullOrEmpty(SessionVariables.verifiedPaid))
+            {
+                if (!SessionVariables.verifiedPaid.Equals("Y"))
+                {
+                    paid = false;
+                    return serializer.Serialize(paid);
+                }
+                //User was already verified
+                else
+                {
+                    paid = true;
+                    return serializer.Serialize(paid);
+                }
+            }
+            paid = false;
+            return serializer.Serialize(paid);
+        }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = false, ResponseFormat = System.Web.Script.Services.ResponseFormat.Json)]
         public static void SaveUser(User user)
         {
             if (SessionVariables.UserName.ToLower() == user.Username.ToLower())// Add or User is Admin)
