@@ -109,14 +109,14 @@
                 });
     </script>
     <%if (!SessionVariables.registrationBlocked)
-      {%>
-    <%if (String.IsNullOrEmpty(SessionVariables.UserName))
+    {%>
+      <%if (String.IsNullOrEmpty(SessionVariables.UserName))
       {%>
     <div id="viewport">
 
-        <script async src="js/bootbox.js"></script>
+        <script async src="js/bootbox.js?v=1.0"></script>
         <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
-        <script src="js/index.js"></script>
+        <script src="js/index.js?v=1.0"></script>
         <script async>
 
             var viewport,
@@ -130,12 +130,12 @@
         <div>
             <%} %>
             <%else
-      { %>
+            { %>
             <div id="viewport">
 
-                <script async src="js/bootbox.js"></script>
+                <script async src="js/bootbox.js?v=1.0"></script>
                 <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
-                <script src="js/index.js"></script>
+                <script src="js/index.js?v=1.0"></script>
                 <script async>
                     var viewport,
                         currentUser = "<%= SessionVariables.UserName.ToLower() %>"
@@ -150,7 +150,7 @@
         </div>
         <%} %>
         <%else
-      { %>
+        { %>
 
         <h2>There are currently no events available for registration, please check back closer to the event date or when the announcement email has been sent.</h2>
         <br />

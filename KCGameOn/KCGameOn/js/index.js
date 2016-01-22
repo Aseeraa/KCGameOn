@@ -338,7 +338,6 @@
                                 ;
                             }
                             else {
-                                debugger;
                                 bootbox.dialog({
                                     message: "Please pay to choose a seat.  If you have already paid using cash or PayPal, please wait a few minutes before trying to sit again.  If the issue persists contact an admin.",
                                     title: "Seating",
@@ -442,7 +441,7 @@
 
         function failedBox() {
             bootbox.dialog({
-                message: "Failed to sit down, please try again shortly or contact an administrator.",
+                message: "Failed to sit down, please refresh the map page and try again.",
                 title: "Seating",
                 buttons: {
                     main: {

@@ -71,7 +71,7 @@ namespace KCGameOn
             set
             {
                 paymentVerify = value;
-                if (paymentVerify == "Y")
+                if (paymentVerify.Equals("Y"))
                 {
                     updatePayTable(paymentKey);
                 }

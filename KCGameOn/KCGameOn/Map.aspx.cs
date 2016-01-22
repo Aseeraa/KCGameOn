@@ -100,8 +100,8 @@ namespace KCGameOn
                     cmd.Connection.Close();
                 }
             }
-            checkForUpdate();
             checkPayPal();
+            checkForUpdate();
         }
 
         private void checkForUpdate()
@@ -110,16 +110,23 @@ namespace KCGameOn
             {
                 try
                 {
-                    cmd = new MySqlCommand("SELECT paymentKey,verifiedPaid FROM payTable WHERE paidDate = (SELECT MAX(paidDate) FROM payTable where userName = \'" + SessionVariables.UserName.ToLower() + "\')", new MySqlConnection(UserInfo));
+                    cmd = new MySqlCommand("SELECT paymentKey,verifiedPaid FROM payTable WHERE paidDate = (SELECT MAX(paidDate) FROM payTable where userName = \'" + SessionVariables.UserName.ToLower() + "\' AND ActiveIndicator = \'TRUE\')", new MySqlConnection(UserInfo));
                     cmd.CommandType = System.Data.CommandType.Text;
                     cmd.Connection.Open();
                     IAsyncResult result = cmd.BeginExecuteReader();
                     reader = cmd.EndExecuteReader(result);
                     result = cmd.BeginExecuteReader();
-                    while (reader.Read())
+                    if (reader == null || !reader.HasRows)
                     {
-                        SessionVariables.paymentKey = reader["paymentKey"].ToString();
-                        SessionVariables.verifiedPaid = reader["verifiedPaid"].ToString();
+                        SessionVariables.verifiedPaid = "N";
+                    }
+                    else
+                    {
+                        while (reader.Read())
+                        {
+                            SessionVariables.paymentKey = reader["paymentKey"].ToString();
+                            SessionVariables.verifiedPaid = reader["verifiedPaid"].ToString();
+                        }
                     }
                 }
                 catch (Exception)

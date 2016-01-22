@@ -169,7 +169,7 @@ namespace KCGameOn.Account
                     cmd.CommandType = System.Data.CommandType.Text;
                     string blocked = cmd.ExecuteScalar().ToString();
                     if (blocked.Equals("TRUE"))
-                        if(SessionVariables.UserAdmin == 0)
+                        if(SessionVariables.UserAdmin == 0 && !SessionVariables.UserName.ToLower().Equals("kctestaccount"))
                             SessionVariables.registrationBlocked = true;
                 }
                 catch (Exception)
@@ -192,10 +192,17 @@ namespace KCGameOn.Account
                         IAsyncResult result = cmd.BeginExecuteReader();
                         reader = cmd.EndExecuteReader(result);
                         result = cmd.BeginExecuteReader();
-                        while (reader.Read())
+                        if (reader == null || !reader.HasRows)
                         {
-                            SessionVariables.paymentKey = reader["paymentKey"].ToString();
-                            SessionVariables.verifiedPaid = reader["verifiedPaid"].ToString();
+                            SessionVariables.verifiedPaid = "N";
+                        }
+                        else
+                        {
+                            while (reader.Read())
+                            {
+                                SessionVariables.paymentKey = reader["paymentKey"].ToString();
+                                SessionVariables.verifiedPaid = reader["verifiedPaid"].ToString();
+                            }
                         }
                     }
                     catch (Exception)

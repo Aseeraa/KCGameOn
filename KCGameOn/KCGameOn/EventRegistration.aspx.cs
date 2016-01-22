@@ -21,14 +21,14 @@ namespace KCGameOn
 {
     public partial class EventRegistration : System.Web.UI.Page
     {
-        public static List<users> userlist = new List<users>();
+        public static List<UsersObject> userlist = new List<UsersObject>();
         public static List<String> usernames = new List<String>();
         public static List<String> firstnames = new List<String>();
         public static List<String> lastnames = new List<String>();
         public static List<String> names = new List<String>();
-        public List<users> payments = new List<users>();
+        public List<UsersObject> payments = new List<UsersObject>();
         public static int quantity = 0;
-        public static users current = new users("", "", "");
+        public static UsersObject current = new UsersObject("", "", "");
         public static StringBuilder newRow;
         //private static Page page;
         public static String RedirectURL;
@@ -46,7 +46,7 @@ namespace KCGameOn
             {
                 conn = new MySqlConnection(UserInfo);
                 conn.Open();
-                userlist = new List<users>();
+                userlist = new List<UsersObject>();
                 usernames = new List<String>();
                 firstnames = new List<String>();
                 lastnames = new List<String>();
@@ -65,7 +65,7 @@ namespace KCGameOn
                     string username = Reader.GetString("UserName").ToString();
                     string first = Reader.GetString("FirstName").ToString();
                     string last = Reader.GetString("LastName").ToString();
-                    users newUser = new users(username, first, last);
+                    UsersObject newUser = new UsersObject(username, first, last);
                     usernames.Add(username);
                     firstnames.Add(first);
                     lastnames.Add(last);
@@ -135,47 +135,6 @@ namespace KCGameOn
             
         }
 
-
-        public class users
-        {
-            private string username;
-            private string firstname;
-            private string lastname;
-            private double price;
-
-            public users(string username, string firstname, string lastname)
-            {
-                // TODO: Complete member initialization
-                this.username = username;
-                this.firstname = firstname;
-                this.lastname = lastname;
-            }
-
-            public string Username
-            {
-                set { this.username = value; }
-                get { return this.username; }
-            }
-
-            public string First
-            {
-                set { this.firstname = value; }
-                get { return this.firstname; }
-            }
-
-            public string Last
-            {
-                set { this.lastname = value; }
-                get { return this.lastname; }
-            }
-
-            public double Price
-            {
-                set { this.price = value; }
-                get { return this.price; }
-            }
-        }
-
         [WebMethod]
         [ScriptMethod]
         public static String BuyTickets(string data)
@@ -184,7 +143,7 @@ namespace KCGameOn
             String UserInfo = ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString;
             //Payment paymnt = null;
             quantity = 0;
-            List<users> payment = new List<users>();
+            List<Users> payment = new List<Users>();
             JavaScriptSerializer json = new JavaScriptSerializer();
             List<String[]> mystring = json.Deserialize<List<string[]>>(data);
             for (int i = 0; i < mystring.Count; i++)
