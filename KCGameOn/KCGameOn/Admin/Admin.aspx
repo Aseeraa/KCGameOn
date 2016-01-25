@@ -3,6 +3,17 @@
 <%@ Import Namespace="KCGameOn" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <meta charset="UTF-8" />
+    <style>
+        .modal-content, .modal-dialog, .modal-footer
+        {
+            background: #282828;
+        }
+
+        .modal-backdrop.in, .modal-backdrop
+        {
+            opacity: 0.5 !important;
+        }
+    </style>
     <script>
         $(document).ready(function () {
             var users = <%= new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(usernames)%>
@@ -69,10 +80,10 @@
                     dataType: "json"
                 })
                     .done(function () {
-                        successBox();
+                        $("#success").modal('show');
                     })
                     .fail(function () {
-                        failedBox();
+                        $("#failure").modal('show');
                     });
             });
 
@@ -93,47 +104,57 @@
                     contentType: "application/json; charset=utf-8",
                     dataType: "json"
                 })
-                    .done(function (data) {
-                        successBox();
+                    .done(function () {
+                        $("#success").modal('show');
                     })
                     .fail(function () {
-                        failedBox();
+                        $("#failure").modal('show');
                     });
             });
-
-            function failedBox() {
-                bootbox.dialog({
-                    message: "Failed to add user payment, contact Dan (or applicable developer).",
-                    title: "Failed",
-                    buttons: {
-                        main: {
-                            label: "Ok!",
-                            className: "btn-primary",
-                            callback: function () {
-                            }
-                        }
-                    }
-                });
-            }
-
-            function successBox() {
-                bootbox.dialog({
-                    message: "Added the user payment to the database like a boss.",
-                    title: "Success",
-                    buttons: {
-                        main: {
-                            label: "Ok!",
-                            className: "btn-primary",
-                            callback: function () {
-                            }
-                        }
-                    }
-                });
-            }
         });
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <!-- Success modal-->
+    <div class="modal" id="success" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Success</h4>
+                </div>
+                <div class="modal-body" id="successMessage">
+                    <p>Added the user payment to the database like a boss!</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+    <!-- Failure modal-->
+    <div class="modal" id="failure" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Failure</h4>
+                </div>
+                <div class="modal-body" id="failureMessage">
+                    <p>Unable to add user payment to the database, contact Dan (or applicable engineer).</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
     <%if (!String.IsNullOrEmpty(SessionVariables.UserName))
       {
           if (SessionVariables.UserAdmin == 1)

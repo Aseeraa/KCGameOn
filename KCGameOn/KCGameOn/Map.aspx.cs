@@ -30,7 +30,7 @@ namespace KCGameOn
         MySqlCommand cmd = null;
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            checkPayPal();
             try
             {
                 count = 0;
@@ -100,14 +100,15 @@ namespace KCGameOn
                     cmd.Connection.Close();
                 }
             }
-            checkPayPal();
-            checkForUpdate();
         }
 
-        private void checkForUpdate()
+        private static bool checkForUpdate()
         {
             if (SessionVariables.UserName != null)
             {
+                MySqlDataReader reader = null;
+                MySqlCommand cmd = null;
+                string UserInfo = ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString;
                 try
                 {
                     cmd = new MySqlCommand("SELECT paymentKey,verifiedPaid FROM payTable WHERE paidDate = (SELECT MAX(paidDate) FROM payTable where userName = \'" + SessionVariables.UserName.ToLower() + "\' AND ActiveIndicator = \'TRUE\')", new MySqlConnection(UserInfo));
@@ -118,15 +119,11 @@ namespace KCGameOn
                     result = cmd.BeginExecuteReader();
                     if (reader == null || !reader.HasRows)
                     {
-                        SessionVariables.verifiedPaid = "N";
+                        return false;
                     }
                     else
                     {
-                        while (reader.Read())
-                        {
-                            SessionVariables.paymentKey = reader["paymentKey"].ToString();
-                            SessionVariables.verifiedPaid = reader["verifiedPaid"].ToString();
-                        }
+                        return true;
                     }
                 }
                 catch (Exception)
@@ -144,13 +141,14 @@ namespace KCGameOn
                     }
                 }
             }
+            return false;
         }
 
-        private void checkPayPal()
+        private static bool checkPayPal()
         {
-            if (!String.IsNullOrEmpty(SessionVariables.UserName) && !String.IsNullOrEmpty(SessionVariables.verifiedPaid) && !String.IsNullOrEmpty(SessionVariables.paymentKey))
+            if (!String.IsNullOrEmpty(SessionVariables.UserName))
             {
-                if (!SessionVariables.verifiedPaid.Equals("Y"))
+                if (!checkForUpdate())
                 {
                     PaymentDetailsResponse responsePaymentDetails = new PaymentDetailsResponse();
 
@@ -208,23 +206,93 @@ namespace KCGameOn
                                 // * PENDING - The payment is awaiting processing
                                 if (responsePaymentDetails.status == "COMPLETED")
                                 {
-                                    SessionVariables.verifiedPaid = "Y";
+                                    updatePayTable();
+                                    return true;
                                 }
                             }
                             // # Error Values
                             else
                             {
-                                List<ErrorData> errorMessages = responsePaymentDetails.error;
-                                foreach (ErrorData error in errorMessages)
-                                {
-                                }
+                                return false;
+                                //List<ErrorData> errorMessages = responsePaymentDetails.error;
+                                //foreach (ErrorData error in errorMessages)
+                                //{
+                                //}
                             }
                         }
                     }
                     // # Exception log    
                     catch (System.Exception ex)
                     {
+                        return false;
                         // Log the exception message
+                    }
+                }
+                else
+                    return true;
+            }
+            return false;
+        }
+
+        private static void updatePayTable()
+        {
+            string UserInfo = ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString;
+            MySqlDataReader reader = null;
+            MySqlCommand cmd = null;
+            string paymentkey = null;
+            try
+            {
+                cmd = new MySqlCommand("SELECT paymentKey,verifiedPaid FROM payTable WHERE paidDate = (SELECT MAX(paidDate) FROM payTable where userName = \'" + SessionVariables.UserName.ToLower() + "\' AND ActiveIndicator = \'TRUE\')", new MySqlConnection(UserInfo));
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Connection.Open();
+                IAsyncResult result = cmd.BeginExecuteReader();
+                reader = cmd.EndExecuteReader(result);
+                result = cmd.BeginExecuteReader();
+                if (reader == null || !reader.HasRows)
+                {
+                }
+                else
+                {
+                    paymentkey = reader["paymentKey"].ToString();
+                }
+            }
+            catch (Exception)
+            {
+            }
+            finally
+            {
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+                if (cmd != null)
+                {
+                    cmd.Connection.Close();
+                }
+            }
+            if (!string.IsNullOrEmpty(paymentkey))
+            {
+                try
+                {
+                    cmd = new MySqlCommand("spUpdatePayment", new MySqlConnection(UserInfo));
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.Connection.Open();
+                    cmd.Parameters.AddWithValue("Username", SessionVariables.UserName);
+                    cmd.Parameters.AddWithValue("PaymentKey", paymentkey);
+                }
+                catch (Exception)
+                {
+
+                }
+                finally
+                {
+                    if (reader != null)
+                    {
+                        reader.Close();
+                    }
+                    if (cmd != null)
+                    {
+                        cmd.Connection.Close();
                     }
                 }
             }
@@ -234,22 +302,41 @@ namespace KCGameOn
         public static string checkPaid()
         {
             bool paid = false;
-
             JavaScriptSerializer serializer = new JavaScriptSerializer();
             string UserInfo = ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString;
-
-            if (!String.IsNullOrEmpty(SessionVariables.UserName) && !String.IsNullOrEmpty(SessionVariables.verifiedPaid))
+            MySqlDataReader paidReader = null;
+            MySqlCommand mySQLCmd = null;
+            try
             {
-                if (!SessionVariables.verifiedPaid.Equals("Y"))
+                mySQLCmd = new MySqlCommand("SELECT paymentKey,verifiedPaid FROM payTable WHERE paidDate = (SELECT MAX(paidDate) FROM payTable where userName = \'" + SessionVariables.UserName.ToLower() + "\' AND ActiveIndicator = \'TRUE\')", new MySqlConnection(UserInfo));
+                mySQLCmd.CommandType = System.Data.CommandType.Text;
+                mySQLCmd.Connection.Open();
+                IAsyncResult result = mySQLCmd.BeginExecuteReader();
+                paidReader = mySQLCmd.EndExecuteReader(result);
+                result = mySQLCmd.BeginExecuteReader();
+                if (paidReader == null || !paidReader.HasRows)
                 {
-                    paid = false;
+                    paid = checkPayPal();
                     return serializer.Serialize(paid);
                 }
-                //User was already verified
                 else
                 {
                     paid = true;
                     return serializer.Serialize(paid);
+                }
+            }
+            catch (Exception)
+            {
+            }
+            finally
+            {
+                if (paidReader != null)
+                {
+                    paidReader.Close();
+                }
+                if (mySQLCmd != null)
+                {
+                    mySQLCmd.Connection.Close();
                 }
             }
             paid = false;
