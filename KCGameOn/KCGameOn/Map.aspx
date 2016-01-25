@@ -28,6 +28,100 @@
             max-width: 450px;
         }
     </style>
+    <script>
+        $(function () {
+            $('#payButton').click(function () {
+                window.location = 'EventRegistration.aspx'
+            });
+        });
+        $(function () {
+            $('#loginButton').click(function () {
+                window.location = '/Account/Login.aspx'
+            });
+        });
+    </script>
+    <!-- Success modal-->
+    <div class="modal" id="success" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Success</h4>
+                </div>
+                <div class="modal-body" id="successMessage">
+                    <p>You have been successfully seated.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+    <!-- Failure modal-->
+    <div class="modal" id="failure" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Failure</h4>
+                </div>
+                <div class="modal-body" id="failureMessage">
+                    <p>Failed to sit down, please inform an administrator or try again in a few minutes.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+    <!-- Pay modal-->
+    <div class="modal" id="payToSit" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Failure</h4>
+                </div>
+                <div class="modal-body" id="payToSitMessage">
+                    <p>Failed to sit down, please inform an administrator or try again in a few minutes.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" id="payButton" class="btn btn-primary" data-dismiss="modal">Pay Now</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+    <!-- Login modal-->
+    <div class="modal" id="login" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Login</h4>
+                </div>
+                <div class="modal-body" id="loginMessage">
+                    <p>Please login before attempting to find a seat.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" id="loginButton" class="btn btn-primary" data-dismiss="modal">Login</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
     <div class="">
         <form class="form-inline pull-left" role="search">
             <div class="form-inline">

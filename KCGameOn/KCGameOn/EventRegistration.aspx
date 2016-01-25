@@ -4,6 +4,16 @@
 
 <asp:Content ID="HeadContent" ContentPlaceHolderID="HeadContent" runat="server">
     <style>
+        .modal-content, .modal-dialog, .modal-footer
+        {
+            background: #282828;
+        }
+
+        .modal-backdrop.in, .modal-backdrop
+        {
+            opacity: 0.5 !important;
+        }
+
         #field-body
         {
             max-width: 1140px;
@@ -148,8 +158,9 @@
                 var num = 15.00;
                 if (user != "None" && name != "None") {
                     if ($('#registrationTable tr > td:contains(' + user + ') + td:contains(' + first + ') + td:contains(' + last + ')').length) {
-                        bootbox.alert("User is already in the table.", function () {
-                        });
+                        //bootbox.alert("User is already in the table.", function () {
+                        //});
+                        $("#userInTable").modal('show');
                     }
                     else {
                         var newRow = $('<tr><td>' + user + '</td><td>' + first + '</td><td>' + last + '</td><td class = "price">' + num.toFixed(2) + '</td><td class="fullyear">' + '<input type="checkbox" value="checked" onclick="calculateSum();">' + '</tr>');
@@ -191,28 +202,53 @@
                 })
                     .done(function (data) { window.location.href = data.d; })
                     .fail(function () {
-                        failedBox();
+                        $("#failure").modal('show');
                     });
             });
         });
-
-        function failedBox() {
-            bootbox.dialog({
-                message: "Failed to proceed to checkout, please contact an administrator or try again later.",
-                title: "Payment",
-                buttons: {
-                    main: {
-                        label: "Ok!",
-                        className: "btn-primary",
-                        callback: function () {
-                        }
-                    }
-                }
-            });
-        }
     </script>
 </asp:Content>
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
+    <!-- Success modal-->
+    <div class="modal" id="failure" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Failed</h4>
+                </div>
+                <div class="modal-body" id="failureMessage">
+                    <p>Failed to proceed to checkout, please contact an administrator or try again later.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+    <!-- Success modal-->
+    <div class="modal" id="userInTable" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">User Exists</h4>
+                </div>
+                <div class="modal-body" id="userExistsMessage">
+                    <p>The specified user already exists in the table.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
     <%if (!SessionVariables.registrationBlocked)
           {%>
     <div id="field-body">

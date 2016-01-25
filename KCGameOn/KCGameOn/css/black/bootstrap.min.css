@@ -926,9 +926,9 @@ input[disabled],select[disabled],textarea[disabled],input[readonly],select[reado
 input:focus,textarea:focus,input.focused,textarea.focused{border-color:#52a8ec;outline:0;outline:thin dotted \9;}
 input[type="file"]:focus,input[type="radio"]:focus,input[type="checkbox"]:focus,select:focus{-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none;outline:thin dotted #333;outline:5px auto -webkit-focus-ring-color;outline-offset:-2px;}
 .form-actions{border-top:1px solid #222;}
-.modal{-webkit-border-radius:1px;-moz-border-radius:1px;border-radius:1px;border-top:solid 1px #353535;background-color:#282828;}
+/*.modal{-webkit-border-radius:1px;-moz-border-radius:1px;border-radius:1px;border-top:solid 1px #353535;background-color:#282828;}
 .modal-header{border-bottom:1px solid #222;}
-.modal-footer{background-color:#282828;border-top:1px solid #222;-webkit-border-radius:0 0 6px 6px;-moz-border-radius:0 0 6px 6px;border-radius:0 0 6px 6px;-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none;}
+.modal-footer{background-color:#282828;border-top:1px solid #222;-webkit-border-radius:0 0 6px 6px;-moz-border-radius:0 0 6px 6px;border-radius:0 0 6px 6px;-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none;}*/
 .table,.well,.hero-unit,.prettyprint,input,textarea,select{-webkit-border-radius:1px;-moz-border-radius:1px;border-radius:1px;}
 code,pre{background-color:#eeeeee;}
 .well,.hero-unit{background-color:#131517;border-top:solid 1px #353535;-webkit-box-shadow:0 2px 4px rgba(0, 0, 0, 0.8);-moz-box-shadow:0 2px 4px rgba(0, 0, 0, 0.8);box-shadow:0 2px 4px rgba(0, 0, 0, 0.8);}

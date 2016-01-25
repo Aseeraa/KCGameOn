@@ -266,25 +266,26 @@
                 //        "callback": function () {
                 //        }
                 //    }]);
-                bootbox.dialog({
-                    message: "Please login to choose a seat.",
-                    title: "Seating",
-                    buttons: {
-                        danger: {
-                            label: "Cancel",
-                            className: "btn-danger",
-                            callback: function () {
-                            }
-                        },
-                        main: {
-                            label: "Login",
-                            className: "btn-primary",
-                            callback: function () {
-                                window.open('/Account/Login.aspx', '_self');
-                            }
-                        }
-                    }
-                });
+                //bootbox.dialog({
+                //    message: "Please login to choose a seat.",
+                //    title: "Seating",
+                //    buttons: {
+                //        danger: {
+                //            label: "Cancel",
+                //            className: "btn-danger",
+                //            callback: function () {
+                //            }
+                //        },
+                //        main: {
+                //            label: "Login",
+                //            className: "btn-primary",
+                //            callback: function () {
+                //                window.open('/Account/Login.aspx', '_self');
+                //            }
+                //        }
+                //    }
+                //});
+                $("#login").modal('show');
             }
         });
         world.setMarkerEvents({
@@ -333,30 +334,37 @@
                                     contentType: "application/json; charset=utf-8",
                                     dataType: "json",
                                 })
-                                .done(function (data) { successBox(); })
-                                .fail(function () { failedBox(); })
+                                .done(function (data) {
+                                    //successBox();
+                                    $("#success").modal('show');
+                                })
+                                .fail(function () {
+                                    //failedBox();
+                                    $("#failure").modal('show');
+                                })
                                 ;
                             }
                             else {
-                                bootbox.dialog({
-                                    message: "Please pay to choose a seat.  If you have already paid using cash or PayPal, please wait a few minutes before trying to sit again.  If the issue persists contact an admin.",
-                                    title: "Seating",
-                                    buttons: {
-                                        danger: {
-                                            label: "Cancel",
-                                            className: "btn-danger",
-                                            callback: function () {
-                                            }
-                                        },
-                                        main: {
-                                            label: "PayPal",
-                                            className: "btn-primary",
-                                            callback: function () {
-                                                window.open('EventRegistration.aspx', '_self');
-                                            }
-                                        }
-                                    }
-                                });
+                                $("#payToSit").modal('show');
+                                //bootbox.dialog({
+                                //    message: "Please pay to choose a seat.  If you have already paid using cash or PayPal, please wait a few minutes before trying to sit again.  If the issue persists contact an admin.",
+                                //    title: "Seating",
+                                //    buttons: {
+                                //        danger: {
+                                //            label: "Cancel",
+                                //            className: "btn-danger",
+                                //            callback: function () {
+                                //            }
+                                //        },
+                                //        main: {
+                                //            label: "PayPal",
+                                //            className: "btn-primary",
+                                //            callback: function () {
+                                //                window.open('EventRegistration.aspx', '_self');
+                                //            }
+                                //        }
+                                //    }
+                                //});
                             }
                         })
                         .fail(function(error) {
@@ -410,12 +418,14 @@
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
                         sucess: function () {
-                            alert("You have been successfully seated.");
-                            window.location.reload();
+                            //alert("You have been successfully seated.");
+                            //window.location.reload();
+                            $("#success").modal('show');
                         },
                         error: function () {
-                            alert("Failed to sit down, please inform an administrator or try again in a few minutes.");
-                            window.location.reload();
+                            //alert("Failed to sit down, please inform an administrator or try again in a few minutes.");
+                            //window.location.reload();
+                            $("#failure").modal('show');
                         }
                     });
                 }
