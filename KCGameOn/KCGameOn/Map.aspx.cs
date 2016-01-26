@@ -148,7 +148,7 @@ namespace KCGameOn
         {
             if (!String.IsNullOrEmpty(SessionVariables.UserName))
             {
-                if (!checkForUpdate())
+                if (checkForUpdate())
                 {
                     PaymentDetailsResponse responsePaymentDetails = new PaymentDetailsResponse();
 
@@ -229,7 +229,7 @@ namespace KCGameOn
                     }
                 }
                 else
-                    return true;
+                    return false;
             }
             return false;
         }
@@ -239,6 +239,7 @@ namespace KCGameOn
             string UserInfo = ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString;
             MySqlDataReader reader = null;
             MySqlCommand cmd = null;
+            bool paid = false;
             string paymentkey = null;
             try
             {
@@ -253,7 +254,10 @@ namespace KCGameOn
                 }
                 else
                 {
+                    reader.Read();
                     paymentkey = reader["paymentKey"].ToString();
+                    if (reader["verifiedPaid"].ToString().Equals("Y"))
+                        paid = true;
                 }
             }
             catch (Exception)
@@ -270,7 +274,7 @@ namespace KCGameOn
                     cmd.Connection.Close();
                 }
             }
-            if (!string.IsNullOrEmpty(paymentkey))
+            if (!string.IsNullOrEmpty(paymentkey) && !paid)
             {
                 try
                 {
@@ -279,6 +283,7 @@ namespace KCGameOn
                     cmd.Connection.Open();
                     cmd.Parameters.AddWithValue("Username", SessionVariables.UserName);
                     cmd.Parameters.AddWithValue("PaymentKey", paymentkey);
+                    cmd.ExecuteScalar();
                 }
                 catch (Exception)
                 {
@@ -316,12 +321,20 @@ namespace KCGameOn
                 result = mySQLCmd.BeginExecuteReader();
                 if (paidReader == null || !paidReader.HasRows)
                 {
-                    paid = checkPayPal();
+                    paid = false;
                     return serializer.Serialize(paid);
                 }
                 else
                 {
-                    paid = true;
+                    while (paidReader.Read())
+                    {
+                        if (paidReader["verifiedPaid"].ToString().Equals("Y"))
+                        {
+                            paid = true;
+                        }
+                    }
+                    if(paid != true)
+                        paid = checkPayPal();
                     return serializer.Serialize(paid);
                 }
             }
