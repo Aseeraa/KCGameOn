@@ -24,7 +24,9 @@
             }
 
             .cscontentmain, .hscontentmain, .lolcontentmain, .rlcontentmain {
-                background-color: rgba(0, 0, 0, 0.6);
+				padding: 10px;
+                background-color: rgba(0, 0, 0, 0.75);
+				overflow-y: auto;
                 height: 700px;
                 width: 500px;
                 margin: auto;
@@ -36,7 +38,9 @@
             }
 
             .cscontentleft, .hscontentleft, .rlcontentleft, .lolcontentleft {
-                background-color: rgba(0, 0, 0, 0.6);
+				padding: 10px;
+                background-color: rgba(0, 0, 0, 0.75);
+				overflow-y: auto;
                 height: 700px;
                 width: 250px;
                 margin: auto;
@@ -48,7 +52,9 @@
             }
 
             .cscontentright, .hscontentright, .rlcontentright, .lolcontentright {
-                background-color: rgba(0, 0, 0, 0.6);
+				padding: 10px;
+                background-color: rgba(0, 0, 0, 0.75);
+				overflow-y: auto;
                 height: 700px;
                 width: 250px;
                 margin: auto;
@@ -141,9 +147,6 @@
             });
         </script>
     </head>
-
-    <%if (!String.IsNullOrEmpty(SessionVariables.UserName))
-      {%>
     <h2>Event Tournaments</h2>
     <h4>If you want to request a tournament for a particular game, please let us know and we will work on getting one set up!</h4>
     <div class="container">
@@ -184,14 +187,63 @@
             <a name="leagueoflegendspage"></a>
             <div class="loldiv">
                 <div class="lolcontentleft">
-                    <p>Filler content</p>
+                    <p>Game & Region</p>
+					<p><h2>League of Legends</h2></p>
+					<p>North America</p>
+					<br />
+					<p>Date & Time</p>
+					<p><h2>Saturday, Feb 20, 2016</h2></p>
+					<p><h2>2:30PM</h2></p>
+					<br />
+					<p>Format</p>
+					<p><h2>5v5</h2></p>
+					<br />
+					<p>Game Map & Type</p>
+					<p><h2>Summoners Rift</h2></p>
+					<p>Tournament Draft</p>		
                 </div>
                 <div class="lolcontentmain">
-                    <p>Filler content</p>
+                    <p><h2>Rules</h2></p>
+					Note: Please report your team's score after each given match.<br />
+
+<p><h2>Registration Rules</h2></p>
+
+<p>We only accept serious registrations. If you do register for a League of Legends tournament, we ask that you follow through and show up on game day. If your team is not present at the proper time, you may face a ban from future tournaments.
+You may only register one team at a time. Please do not try to register more than once as it will not increase your chances of participating.
+If you have any questions or inquiries about a current registration, please email us at info@vipertechgaming.com
+The registration period ends at 6:30 PM EST on the day of the tournament. Make sure you fill up the slots or they will be filled with BYEs.</p>
+<p><h2>Player/Team Eligibility</h2></p>
+
+<p>In order to compete, your summoner name must be included with the team's initial registration.
+Once a League of Legends tournament begins, no roster swapping will be allowed. Only the original 5 members may compete.
+We currently are only accepting NA teams and players.</p>
+
+<p><h2>Game Conduct</h2></p>
+
+<p>Please be respectful to other teams and participants. Refrain from using vulgar language or racial/sexist slurs in "All Chat" or you will be disqualified immediately.
+You may use an approved third-party communication program to coordinate and speak with your team, however, there is zero-tolerance for the use of a hack or cheat. Players accused and proved of hacking are immediately disqualified.
+If a team is found intentionally feeding or throwing the game, they will be disqualified and possibly banned from our future League of Legends tournaments.</p>
+
+<p><h2>Tournament Check-In</h2></p>
+
+<p>We require that all registered teams check-in no later than 10 minutes before the tournament start.
+A reminder will be sent to the Team Captain prior to check-in.
+All 5 members on your team must be present at check-in or else it will not qualify.
+If a team that is registered fails to show up to check-in, a substitute team that is checked in will take their place.</p>
+
+<p>Captains can report their own score.</p>				
+					
                     <div class="lolbracket"></div>
                 </div>
                 <div class="lolcontentright">
-                    <p>Filler content</p>
+                    <p><h2>Prizes</h2></p>
+					<p>In the process of getting sponsorship</p>
+					<p><h2>Schedule</h2></p>
+					<p>2:30</p>
+					<p>3:30PM</p>
+					<p>etc</p>
+					<p><h2>Questions</h2></p>
+					<p>Contact nick@kcgameon for any questions</p>
                 </div>
             </div>
             <a name="rocketleaguepage"></a>
@@ -208,11 +260,5 @@
                 </div>
             </div>
         </form>
-        <%}
-      else
-      {%>
-        <h2>Please <a href="/Account/Login.aspx">login</a> to view this page.</h2>
-        <br />
-        <%} %>
     </div>
 </asp:Content>
