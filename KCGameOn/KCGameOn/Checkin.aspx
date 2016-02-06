@@ -12,34 +12,25 @@
 
         <%if (Checkin.hasPaid == "Y")
         {%>
-            <%if (Checkin.hasCheckedIn == "False")
-            {%>
-                <form id="CheckinForm" runat="server">
-                    <h2><asp:Label ID="checkinLabel" Text="Click the button to check yourself in." runat="server" /></h2><br />
-                    <center><asp:Button ID="CheckinButton" CssClass="btn btn-inverse" Font-Size="28px" Width="300px" Height="150px" OnClick="CheckinButton_Click" runat="server" Text="Check In"/></center>
-                </form>
-            <%}
-            else if (Checkin.hasCheckedIn == "True")
-            {%>
-                <form id="CheckoutForm" runat="server">
-                    <h2><asp:Label ID="checkoutLabel" Text="You are already checked in, press the button to check out." runat="server" /></h2><br />
-                    <center><asp:Button ID="CheckoutButton" CssClass="btn btn-inverse" Font-Size="28px" Width="300px" Height="150px" OnClick="CheckoutButton_Click" runat="server" Text="Check Out"/></center>
-                </form>
-
-            <%}
-            else 
-            {%>
-                <h2>Checkin for event <% =Checkin.getEventID %>  is not ready yet, please try again on the day of the event.</h2>
-            <%} %>
+            <h2>Welcome <% =SessionVariables.UserName %>, <asp:Label ID="checkinLabel" Text="" runat="server" /></h2><br />
+            <form id="CheckinForm" runat="server">
+                <center>
+                    <h3>You may view your seat on the map or sign up for tournaments with the following buttons.</h3><br />
+                    <asp:Button ID="MapButton" CssClass="btn btn-inverse" Font-Size="28px" Width="300px" Height="150px" OnClick="MapButton_Click" OnClientClick="document.getElementById('CheckinForm').target ='_blank';" runat="server" Text="Map"/>
+                    <asp:Button ID="TournButton" CssClass="btn btn-inverse" Font-Size="28px" Width="300px" Height="150px" OnClick="TournButton_Click" OnClientClick="document.getElementById('CheckinForm').target ='_blank';" runat="server" Text="Tournaments"/>
+                    <h3><br /><asp:Label ID="checkoutLabel" Text="Click the button when you are finished." runat="server" /><br /><br /></h3>
+                    <asp:Button ID="CheckoutButton" CssClass="btn btn-inverse" Font-Size="28px" Width="300px" Height="150px" OnClick="CheckoutButton_Click" OnClientClick="document.getElementById('CheckinForm').target ='';" runat="server" Text="Done"/>
+                </center>
+            </form>
         <%}
         else
         {%>
-            <h2>You have not paid.  Please pay so you can check in.</h2>
+            <h2>You have not paid.  Please <a href="./EventRegistration.aspx">click here</a> to pay so you can check in. Or you may pay cash to the check in managers.</h2>
         <%} %>    
     </div>
     <%}
     else
     {%>
-        <h2>Please <a href="/Account/Login.aspx">login</a> to view this page.</h2>
+        <h2>Please <a href="/Account/Login.aspx">login</a> to check into the event.</h2>
     <%} %>
 </asp:Content>
