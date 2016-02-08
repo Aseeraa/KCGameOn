@@ -150,42 +150,37 @@
     <h2>Event Tournaments</h2>
     <h4>If you want to request a tournament for a particular game, please let us know and we will work on getting one set up!</h4>
     <div class="container">
-        <ul class="list-inline">
-            <li><a id="csgo" href="#" class="brand">Counter-Strike: Global Offensive</a></li>
-            <li><a id="hs" href="#" class="brand">Hearthstone</a></li>
-            <li><a id="lol" href="#" class="brand">League of Legends</a></li>
-            <li><a id="rl" href="#" class="brand">Rocket League</a></li>
-        </ul>
-
-        <form class="well form-inline">
-            <a name="csgopage"></a>
-            <div class="csdiv">
-                <div class="cscontentleft">
-                    <p>Filler content</p>
-                </div>
-                <div class="cscontentmain">
-                    <p>Filler content</p>
-                    <div class="csbracket"></div>
-                </div>
-                <div class="cscontentright">
-                    <p>Filler content</p>
-                </div>
-            </div>
-            <a name="hearthstonepage"></a>
-            <div class="hsdiv">
-                <div class="hscontentleft">
-                    <p>Filler content</p>
-                </div>
-                <div class="hscontentmain">
-                    <p>Filler content</p>
-                    <div class="hsbracket"></div>
-                </div>
-                <div class="hscontentright">
-                    <p>Filler content</p>
-                </div>
-            </div>
-            <a name="leagueoflegendspage"></a>
-            <div class="loldiv">
+        <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+      <li class="active">
+          <a href="#LoL" role="tab" data-toggle="tab">
+              <%--<i class="fa fa-envelope"></i>--%> League of Legends
+          </a>
+      </li>
+      <li>
+          <a href="#RL" role="tab" data-toggle="tab">
+              <%--<i class="fa fa-cog"></i>--%> Rocket League
+          </a>
+      </li>
+    
+	  <li>
+          <a href="#CSGO" role="tab" data-toggle="tab">
+              <%--<icon class="fa fa-home"></icon>--%> Counter-Strike: Global Offensive 
+          </a>
+      </li>
+      <li><a href="#HS" role="tab" data-toggle="tab">
+          <%--<i class="fa fa-user"></i>--%> Hearthstone
+          </a>
+      </li>
+	</ul>  
+      
+    
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <%-- League of Legends--%>
+      <div class="tab-pane fade" id="LoL">
+          <h2>League of Legends</h2>
+          <div class="loldiv">
                 <div class="lolcontentleft">
                     <p>Game & Region</p>
 					<p><h2>League of Legends</h2></p>
@@ -200,7 +195,8 @@
 					<br />
 					<p>Game Map & Type</p>
 					<p><h2>Summoners Rift</h2></p>
-					<p>Tournament Draft</p>		
+					<p>Tournament Draft</p>
+<iframe src="https://battlefy.com/embeds/join/56b2d7647c6f7c050300654e" title="KCGameOn #67 League of Legends" width="186" height="80" scrolling="no" frameborder="0"></iframe>					
                 </div>
                 <div class="lolcontentmain">
                     <p><h2>Rules</h2></p>
@@ -210,7 +206,7 @@
 
 <p>We only accept serious registrations. If you do register for a League of Legends tournament, we ask that you follow through and show up on game day. If your team is not present at the proper time, you may face a ban from future tournaments.
 You may only register one team at a time. Please do not try to register more than once as it will not increase your chances of participating.
-If you have any questions or inquiries about a current registration, please email us at info@vipertechgaming.com
+If you have any questions or inquiries about a current registration, please email us at webmaster@kcgameon.com
 The registration period ends at 6:30 PM EST on the day of the tournament. Make sure you fill up the slots or they will be filled with BYEs.</p>
 <p><h2>Player/Team Eligibility</h2></p>
 
@@ -239,15 +235,21 @@ If a team that is registered fails to show up to check-in, a substitute team tha
                     <p><h2>Prizes</h2></p>
 					<p>In the process of getting sponsorship</p>
 					<p><h2>Schedule</h2></p>
-					<p>2:30</p>
-					<p>3:30PM</p>
+					<p>2:30 PM</p>
+					<p>3:30</p>
 					<p>etc</p>
 					<p><h2>Questions</h2></p>
 					<p>Contact nick@kcgameon for any questions</p>
+					
+					<br />
+					<iframe src="https://battlefy.com/embeds/teams/56b2d7647c6f7c050300654e" title="Battlefy Tournament Teams" width="100%" height="500" scrolling="yes" frameborder="0"></iframe>
                 </div>
             </div>
-            <a name="rocketleaguepage"></a>
-            <div class="rldiv">
+      </div>
+      <%-- Rocket League --%>
+      <div class="tab-pane fade" id="RL">
+          <h2>Rocket League</h2>
+          <div class="rldiv">
                 <div class="rlcontentleft">
                     <p>Filler content</p>
                 </div>
@@ -259,6 +261,56 @@ If a team that is registered fails to show up to check-in, a substitute team tha
                     <p>Filler content</p>
                 </div>
             </div>
-        </form>
+      </div>
+	  <%-- CS:GO --%>
+      <div class="tab-pane fade active in" id="CSGO">
+          <h2>Counter-Strike: Global Offensive</h2>
+          <div class="csdiv">
+                <div class="cscontentleft">
+                    <p>Filler content</p>
+                </div>
+                <div class="cscontentmain">
+                    <p>Filler content</p>
+                    <div class="csbracket"></div>
+                </div>
+                <div class="cscontentright">
+                    <p>Filler content</p>
+                </div>
+            </div>
+      </div>
+      <%-- Hearthstone --%>
+      <div class="tab-pane fade" id="HS">
+          <h2>Hearthstone</h2>
+          <div class="hsdiv">
+                <div class="hscontentleft">
+                    <p>Filler content</p>
+                </div>
+                <div class="hscontentmain">
+                    <p>Filler content</p>
+                    <div class="hsbracket"></div>
+                </div>
+                <div class="hscontentright">
+                    <p>Filler content</p>
+                </div>
+            </div>
+      </div>        
+    </div>
+        <%--<ul class="list-inline">
+            <li><a id="csgo" href="#" class="brand">Counter-Strike: Global Offensive</a></li>
+            <li><a id="hs" href="#" class="brand">Hearthstone</a></li>
+            <li><a id="lol" href="#" class="brand">League of Legends</a></li>
+            <li><a id="rl" href="#" class="brand">Rocket League</a></li>
+        </ul>--%>
+
+        <%--<form class="well form-inline">--%>
+            <%--<a name="csgopage"></a>--%>
+            
+            <%--<a name="hearthstonepage"></a>--%>
+            
+            <%--<a name="leagueoflegendspage"></a>--%>
+            
+            <%--<a name="rocketleaguepage"></a>--%>
+            
+        <%--</form>--%>
     </div>
 </asp:Content>
