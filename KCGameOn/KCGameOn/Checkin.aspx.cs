@@ -32,6 +32,11 @@ namespace KCGameOn
                 cmd2.Connection.Open();
                 cmd2.CommandType = System.Data.CommandType.Text;
                 hasCheckedIn = Convert.ToString(cmd2.ExecuteScalar());
+                if (hasCheckedIn == "")
+                {
+                    CheckoutButton.Enabled = false;
+                    checkoutLabel.Text = "You must go to the map and select a seat before finishing.";
+                }
                 cmd2.Connection.Close();
 
                 MySqlCommand cmd1 = new MySqlCommand("SELECT verifiedPaid FROM payTable WHERE username = \'" + SessionVariables.UserName + "\' AND EventID = " + getEventID, new MySqlConnection(connectionString));

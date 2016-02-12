@@ -12,12 +12,12 @@
 
         <%if (Checkin.hasPaid == "Y")
         {%>
-            <h2>Welcome <% =SessionVariables.UserName %>, <asp:Label ID="checkinLabel" Text="" runat="server" /></h2><br />
+            <h2>Welcome <% =SessionVariables.UserName %>, <asp:Label ID="checkinLabel" Text="" runat="server" /><asp:Label ID="Label1" Text="" runat="server" /></h2><br />
             <form id="CheckinForm" runat="server">
                 <center>
                     <h3>You may view your seat on the map or sign up for tournaments with the following buttons.</h3><br />
-                    <asp:Button ID="MapButton" CssClass="btn btn-inverse" Font-Size="28px" Width="300px" Height="150px" OnClick="MapButton_Click" OnClientClick="document.getElementById('CheckinForm').target ='_blank';" runat="server" Text="Map"/>
-                    <asp:Button ID="TournButton" CssClass="btn btn-inverse" Font-Size="28px" Width="300px" Height="150px" OnClick="TournButton_Click" OnClientClick="document.getElementById('CheckinForm').target ='_blank';" runat="server" Text="Tournaments"/>
+                    <asp:Button ID="MapButton" CssClass="btn btn-inverse" Font-Size="28px" Width="300px" Height="150px" OnClick="MapButton_Click" runat="server" Text="Map"/>
+                    <asp:Button ID="TournButton" CssClass="btn btn-inverse" Font-Size="28px" Width="300px" Height="150px" OnClick="TournButton_Click" runat="server" Text="Tournaments"/>
                     <h3><br /><asp:Label ID="checkoutLabel" Text="Click the button when you are finished." runat="server" /><br /><br /></h3>
                     <asp:Button ID="CheckoutButton" CssClass="btn btn-inverse" Font-Size="28px" Width="300px" Height="150px" OnClick="CheckoutButton_Click" OnClientClick="document.getElementById('CheckinForm').target ='';" runat="server" Text="Done"/>
                 </center>

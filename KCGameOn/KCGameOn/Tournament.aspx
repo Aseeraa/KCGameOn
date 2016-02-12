@@ -141,7 +141,7 @@
             });
         </script>
     </head>
-
+    <center><h3 style="color: red;"><asp:Label ID="previousPage" Text="" runat="server" /></h3></center>
     <%if (!String.IsNullOrEmpty(SessionVariables.UserName))
       {%>
     <h2>Event Tournaments</h2>
