@@ -28,7 +28,6 @@
             max-width: 450px;
         }
     </style>
-    <center><h3 style="color: red;"><asp:Label ID="previousPage" Text="" runat="server" /></h3></center>
     <div class="">
         <form class="form-inline pull-left" role="search">
             <div class="form-inline">
