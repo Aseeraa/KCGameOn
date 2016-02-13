@@ -9,7 +9,6 @@ namespace KCGameOn
 {
     public partial class Tournament : System.Web.UI.Page
     {
-        public string pp = null;
         protected void Page_Load(object sender, EventArgs e)
         {
 

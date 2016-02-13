@@ -141,6 +141,7 @@
             });
         </script>
     </head>
+
     <%if (!String.IsNullOrEmpty(SessionVariables.UserName))
       {%>
     <h2>Event Tournaments</h2>

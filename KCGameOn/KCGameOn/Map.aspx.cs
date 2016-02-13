@@ -22,7 +22,6 @@ namespace KCGameOn
         public static List<String> seatList = new List<String>();
         public string seats;
         public string people;
-        public string pp = null;
         public int count;
         MySqlDataReader reader = null;
         MySqlCommand cmd = null;
