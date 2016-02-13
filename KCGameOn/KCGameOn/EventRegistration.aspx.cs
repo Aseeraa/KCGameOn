@@ -33,9 +33,17 @@ namespace KCGameOn
         //private static Page page;
         public static String RedirectURL;
         public static int remainingEvents = 0;
+        public static string checkInDay = "false";
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Request.UrlReferrer != null)
+            {
+                if (Request.UrlReferrer.ToString().Contains("Checkin.aspx"))
+                {
+                    checkInDay = "true";
+                }
+            }
             //page = this.Page;
             String UserInfo = ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString;
             MySqlDataReader Reader = null;
@@ -274,7 +282,11 @@ namespace KCGameOn
             List<Receiver> listReceiver = new List<Receiver>();
 
             // Amount to be credited to the receiver's account
-            decimal amount = Convert.ToDecimal(quantity * 15.00);
+            decimal amount;
+            if(checkInDay.Equals("true"))
+                amount = Convert.ToDecimal(quantity * 20.00);
+            else
+               amount = Convert.ToDecimal(quantity * 15.00);
             Receiver receive = new Receiver(amount);
 
             // A receiver's email address
@@ -305,7 +317,11 @@ namespace KCGameOn
             // * `Return URL` - URL to redirect the sender's browser to after the
             // sender has logged into PayPal and approved a payment; it is always
             // required but only used if a payment requires explicit approval
-            PayRequest requestPay = new PayRequest(envelopeRequest, "PAY", "https://kcgameon.com/Default.aspx", "USD", listOfReceivers, "https://kcgameon.com/Map.aspx");
+            PayRequest requestPay;
+            if (checkInDay.Equals("true"))
+                requestPay = new PayRequest(envelopeRequest, "PAY", "https://kcgameon.com/Checkin.aspx", "USD", listOfReceivers, "https://kcgameon.com/Checkin.aspx");
+            else
+                requestPay = new PayRequest(envelopeRequest, "PAY", "https://kcgameon.com/Default.aspx", "USD", listOfReceivers, "https://kcgameon.com/Map.aspx");
             //PayRequest requestPay = new PayRequest(envelopeRequest, "PAY", "https://nickthenerd.com/Default.aspx", "USD", listOfReceivers, "https://nickthenerd.com/Map.aspx");
             return requestPay;
         }

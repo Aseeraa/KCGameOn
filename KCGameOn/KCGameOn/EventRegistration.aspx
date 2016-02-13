@@ -63,6 +63,8 @@
         }
     </style>
     <script>
+        var amount = 15.00;
+        var checkIn = <%= checkInDay%>
         function calculateSum() {
             var sum = 0;
             // iterate through each td based on class and add the values
@@ -76,11 +78,10 @@
 
             $('.fullyear').find('input[type="checkbox"]').each(function () {
                 if ($(this).prop('checked') == true) {
-
-                    sum += 15.00 * remainingEvents;
+                    sum += amount * remainingEvents;
                 }
                 else {
-                    sum += 15.00;
+                    sum += amount;
                 }
             });
             $('#result').text("Total cost: $" + sum.toFixed(2));
@@ -155,7 +156,9 @@
                 var split = name.split(" ");
                 var first = split[0];
                 var last = split[1];
-                var num = 15.00;
+                if (checkIn == true) {
+                    amount = 20.00
+                }
                 if (user != "None" && name != "None") {
                     if ($('#registrationTable tr > td:contains(' + user + ') + td:contains(' + first + ') + td:contains(' + last + ')').length) {
                         //bootbox.alert("User is already in the table.", function () {
@@ -163,7 +166,7 @@
                         $("#userInTable").modal('show');
                     }
                     else {
-                        var newRow = $('<tr><td>' + user + '</td><td>' + first + '</td><td>' + last + '</td><td class = "price">' + num.toFixed(2) + '</td><td class="fullyear">' + '<input type="checkbox" value="checked" onclick="calculateSum();">' + '</tr>');
+                        var newRow = $('<tr><td>' + user + '</td><td>' + first + '</td><td>' + last + '</td><td class = "price">' + amount.toFixed(2) + '</td><td class="fullyear">' + '<input type="checkbox" value="checked" onclick="calculateSum();">' + '</tr>');
                         $('#registrationTable').append(newRow);
                         calculateSum();
                     }
