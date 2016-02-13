@@ -110,5 +110,27 @@ namespace KCGameOn
                 checkoutLabel.Text = "An error occured.  Sorry please try again.";
             }
         }
+        protected void CashButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Response.Redirect("./Checkin.aspx");
+            }
+            catch
+            {
+                checkoutLabel.Text = "An error occured.  Sorry please try again.";
+            }
+        }
+        protected void PaypalButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Response.Redirect("./EventRegistration.aspx");
+            }
+            catch
+            {
+                checkoutLabel.Text = "An error occured.  Sorry please try again.";
+            }
+        }
     }
 }

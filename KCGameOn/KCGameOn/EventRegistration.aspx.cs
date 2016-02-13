@@ -39,7 +39,7 @@ namespace KCGameOn
         {
             if (Request.UrlReferrer != null)
             {
-                if (Request.UrlReferrer.ToString().Contains("Checkin.aspx"))
+                if (Request.UrlReferrer.ToString().ToLower().Contains("checkin.aspx"))
                 {
                     checkInDay = "true";
                 }
