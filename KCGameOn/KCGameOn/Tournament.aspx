@@ -147,6 +147,7 @@
             });
         </script>
     </head>
+    <center><h3 style="color: red;"><asp:Label ID="previousPage" Text="" runat="server" /></h3></center>
     <h2>Event Tournaments</h2>
     <h4>If you want to request a tournament for a particular game, please let us know and we will work on getting one set up!</h4>
     <div class="container">
