@@ -23,6 +23,7 @@ namespace KCGameOn.Account
         String file = "C:\\inetpub\\KCGameOn\\logs\\registrationlog.txt";
         private string errorString;
         public bool registartionSucess;
+        public static bool checkInDay = false;
         public string RegisterErrorString
         {
             get { return errorString; }
@@ -35,6 +36,13 @@ namespace KCGameOn.Account
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Request.UrlReferrer != null)
+            {
+                if (Request.UrlReferrer.ToString().ToLower().Contains("checkin.aspx"))
+                {
+                    checkInDay = true;
+                }
+            }
             if (!IsPostBack)
             {
                 InitializeForm();

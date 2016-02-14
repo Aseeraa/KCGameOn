@@ -279,7 +279,7 @@
         <button class="close" data-dismiss="alert" type="button">×</button> <strong>Confirmation:</strong>
             A confirmation email has been sent to your
             email.<br>
-            Thank you for your registration.
+            Thank you for your registration. <%if (Register.checkInDay){ %><br /><br />Click <a href="/Checkin.aspx">here</a> to continue the checkin process.  Make sure you activate your account first.<%}%>
     </div>
 <%}%>
 </asp:Content>
