@@ -37,6 +37,7 @@ namespace KCGameOn
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            checkInDay = "false";
             if (Request.UrlReferrer != null)
             {
                 if (Request.UrlReferrer.ToString().ToLower().Contains("checkin.aspx"))
