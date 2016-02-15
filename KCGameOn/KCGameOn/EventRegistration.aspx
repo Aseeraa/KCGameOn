@@ -78,7 +78,7 @@
 
             $('.fullyear').find('input[type="checkbox"]').each(function () {
                 if ($(this).prop('checked') == true) {
-                    sum += 20.00 + (15.00 * (remainingEvents-1));
+                    sum += amount + (15.00 * (remainingEvents-1));
                 }
                 else {
                     sum += amount;
