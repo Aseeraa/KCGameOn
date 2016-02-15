@@ -283,10 +283,13 @@ namespace KCGameOn
 
             // Amount to be credited to the receiver's account
             decimal amount;
-            if(checkInDay.Equals("true"))
-                amount = Convert.ToDecimal(quantity * 20.00);
+            if (checkInDay.Equals("true"))
+            {
+                amount = Convert.ToDecimal((quantity - 1) * 15.00);
+                amount += Convert.ToDecimal(20.00);
+            }
             else
-               amount = Convert.ToDecimal(quantity * 15.00);
+                amount = Convert.ToDecimal(quantity * 15.00);
             Receiver receive = new Receiver(amount);
 
             // A receiver's email address
