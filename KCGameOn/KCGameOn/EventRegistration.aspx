@@ -147,6 +147,19 @@
             $('#delete_row').click(function (event) {
                 event.preventDefault();
                 deleterow('registrationTable');
+                if ($('#registrationTable tr').size() > 1) {
+                    $('#pay').removeAttr('disabled');
+                }
+                else {
+                    $('#pay').attr('disabled', 'disabled');
+                }
+                if ($('#registrationTable tr').size() == 1) {
+                    $('#delete_row').attr('disabled', 'disabled');
+                }
+                else {
+                    $('#delete_row').removeAttr('disabled');
+                }
+
             });
 
             $('#add').click(function (event) {
@@ -170,6 +183,18 @@
                         $('#registrationTable').append(newRow);
                         calculateSum();
                     }
+                }
+                if ($('#registrationTable tr').size() > 1) {
+                    $('#pay').removeAttr('disabled');
+                }
+                else {
+                    $('#pay').attr('disabled', 'disabled');
+                }
+                if ($('#registrationTable tr').size() == 1) {
+                    $('#delete_row').attr('disabled', 'disabled');
+                }
+                else {
+                    $('#delete_row').removeAttr('disabled');
                 }
             });
             $(".Content").hide();
@@ -288,7 +313,7 @@
                 </div>
                 <button id="delete_row" class="pull-left btn btn-default">Delete User</button>
 
-                <button id="pay" class="btn pull-right btn-inverse">Pay Now</button>
+                <button id="pay" disabled="disabled" class="btn pull-right btn-inverse">Pay Now</button>
             </div>
         </form>
     </div>
