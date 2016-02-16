@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using MySql.Data.MySqlClient;
 using System.Configuration;
 using System.Text;
@@ -14,16 +10,13 @@ namespace KCGameOn
     public partial class Checkin : System.Web.UI.Page
     {
         public static int count;
-        public static StringBuilder UserHTML;
         public static String hasPaid;
         public static String hasCheckedIn;
         public static Int32 getEventID;
 
         private string errorString;
-        private static string redirect;
         string UserInfo = ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString;
         MySqlDataReader reader = null;
-        MySqlCommand cmd = null;
         public string ErrorString
         {
             get { return errorString; }
@@ -33,6 +26,7 @@ namespace KCGameOn
         String connectionString = ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
+            
             try
             {
                 MySqlCommand cmd = new MySqlCommand("SELECT EventID FROM kcgameon.schedule WHERE Active = 1 order by ID LIMIT 1;", new MySqlConnection(connectionString));
@@ -88,7 +82,7 @@ namespace KCGameOn
             HttpCookie cookie2 = new HttpCookie("ASP.NET_SessionId", "");
             cookie2.Expires = DateTime.Now.AddYears(-1);
             Response.Cookies.Add(cookie2);
-            Response.Redirect("/Checkin.aspx");
+            Response.Redirect("~/Checkin.aspx");
             //FormsAuthentication.RedirectToLoginPage();
 
             //try
@@ -111,7 +105,7 @@ namespace KCGameOn
         {
             try
             {
-                Response.Redirect("/Map.aspx");
+                Response.Redirect("~/Map.aspx");
             }
             catch
             {
@@ -122,7 +116,7 @@ namespace KCGameOn
         {
             try
             {
-                Response.Redirect("/Tournament.aspx");
+                Response.Redirect("~/Tournament.aspx");
             }
             catch
             {
@@ -132,7 +126,7 @@ namespace KCGameOn
         {
             try
             {
-                Response.Redirect("/Checkin.aspx");
+                Response.Redirect("~/Checkin.aspx");
             }
             catch
             {
@@ -148,9 +142,6 @@ namespace KCGameOn
             {
             }
         }
-
-
-
         protected void Button1_Click(object sender, EventArgs e)
         {
             String UserName = Request.Form["ctl00$MainContent$UserName"];
@@ -180,7 +171,6 @@ namespace KCGameOn
                     cmd.Connection.Open();
                     //Reader = cmd.ExecuteReader();
                     Authentication = Convert.ToInt32(cmd.ExecuteScalar());
-
                     switch (Authentication)
                     {
                         case -1:
@@ -270,7 +260,10 @@ namespace KCGameOn
                 }
                 try
                 {
-                    Response.Redirect("/Checkin.aspx");
+                    if (SessionVariables.UserName != null)
+                    {
+                        Response.Redirect("~/Checkin.aspx");
+                    }
                 }
                 catch
                 {
