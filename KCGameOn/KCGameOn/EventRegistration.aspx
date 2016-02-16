@@ -125,6 +125,9 @@
                 });
             });
 
+            
+
+
             function loadDropdowns() {
                 for (i = 0; i < users.length; i++) {
                     $('<option/>').val(users[i]).html(users[i]).appendTo('#userDropdown.dropdown');
@@ -144,9 +147,7 @@
                 }
             }
 
-            $('#delete_row').click(function (event) {
-                event.preventDefault();
-                deleterow('registrationTable');
+            function buttonToggle() {
                 if ($('#registrationTable tr').size() > 1) {
                     $('#pay').removeAttr('disabled');
                 }
@@ -160,7 +161,12 @@
                 else {
                     $('#delete_row').removeAttr('disabled');
                 }
+            }
 
+            $('#delete_row').click(function (event) {
+                event.preventDefault();
+                deleterow('registrationTable');
+                buttonToggle()
             });
 
             $('#add').click(function (event) {
@@ -185,19 +191,7 @@
                         calculateSum();
                     }
                 }
-                if ($('#registrationTable tr').size() > 1) {
-                    $('#pay').removeAttr('disabled');
-                }
-                else {
-                    $('#pay').attr('disabled', 'disabled');
-                }
-                if ($('#registrationTable tr').size() == 1) {
-                    $('#delete_row').attr('disabled', 'disabled');
-                    $('#result').text("");
-                }
-                else {
-                    $('#delete_row').removeAttr('disabled');
-                }
+                buttonToggle()
             });
             $(".Content").hide();
             //$(calculateSum);
@@ -239,6 +233,7 @@
     </script>
 </asp:Content>
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
+     
     <!-- Success modal-->
     <div class="modal" id="failure" tabindex="-1" role="dialog">
         <div class="modal-dialog">
