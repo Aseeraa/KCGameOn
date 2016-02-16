@@ -155,6 +155,7 @@
                 }
                 if ($('#registrationTable tr').size() == 1) {
                     $('#delete_row').attr('disabled', 'disabled');
+                    $('#result').text("");
                 }
                 else {
                     $('#delete_row').removeAttr('disabled');
@@ -192,6 +193,7 @@
                 }
                 if ($('#registrationTable tr').size() == 1) {
                     $('#delete_row').attr('disabled', 'disabled');
+                    $('#result').text("");
                 }
                 else {
                     $('#delete_row').removeAttr('disabled');
@@ -311,7 +313,7 @@
                 <div>
                     <h3 class="pull-right" id="result"></h3>
                 </div>
-                <button id="delete_row" class="pull-left btn btn-default">Delete User</button>
+                <button id="delete_row"  disabled="disabled" class="pull-left btn btn-default">Delete User</button>
 
                 <button id="pay" disabled="disabled" class="btn pull-right btn-inverse">Pay Now</button>
             </div>
