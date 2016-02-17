@@ -4,7 +4,6 @@
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-
 <%--    <asp:Label ID="DebugLabel" runat="server" Visible="true" Text="" />--%>
     <%if (!String.IsNullOrEmpty(SessionVariables.UserName))
       {%>
@@ -12,13 +11,13 @@
         <form id="CheckinForm" runat="server">
         <%if (Checkin.hasPaid == "Y")
         {%>
-            <center><h2>Welcome <% =SessionVariables.UserName %>, your funds have been verified! <br /><!--<asp:Label ID="checkinLabel" Text="" runat="server" /><asp:Label ID="Label1" Text="" runat="server" /></h2><br />-->
+            <center><h2>Welcome <% =SessionVariables.UserName %>, your funds have been verified! <br /><!--<asp:Label ID="checkinLabel" Text="" runat="server" /><asp:Label ID="Label1" Text="" runat="server" />--></h2><br />
                 
                     <h3>You may view your seat on the map or sign up for tournaments with the following buttons.</h3><br />
                     <asp:Button ID="MapButton" CssClass="btn btn-inverse" Font-Size="28px" Width="300px" Height="150px" OnClick="MapButton_Click" runat="server" Text="Map"/>
                     <asp:Button ID="TournButton" CssClass="btn btn-inverse" Font-Size="28px" Width="300px" Height="150px" OnClick="TournButton_Click" runat="server" Text="Tournaments"/>
-                    <h3><br /><asp:Label ID="checkoutLabel" Text="" runat="server" /><br /><br /></h3>
-                    <asp:Button ID="CheckoutButton" CssClass="btn btn-inverse" Font-Size="28px" Width="300px" Height="150px" OnClick="CheckoutButton_Click" runat="server" Text="Complete Checkin"/>
+                    <h3><br /><asp:Label ID="checkoutLabel" Text="" ForeColor="Yellow" runat="server" /><br /><br /></h3>
+                    <asp:Button ID="CheckoutButton" CssClass="btn btn-inverse" Font-Size="28px" Width="300px" Height="150px" OnClick="CheckoutButton_Click" runat="server" Text="Complete Check-In"/>
                 </center>
             
         <%}
@@ -40,7 +39,7 @@
     {%>
     <form class="well form-inline" runat="server">
         <center>
-        <h2>KcGameOn Event Checkin System</h2>
+        <h2>KcGameOn Event Check-In System</h2>
             <p>
         Please enter your username and password.
         

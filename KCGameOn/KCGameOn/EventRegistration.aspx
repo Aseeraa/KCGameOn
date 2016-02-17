@@ -129,6 +129,9 @@
                 });
             });
 
+            
+
+
             function loadDropdowns() {
                 for (i = 0; i < users.length; i++) {
                     $('<option/>').val(users[i]).html(users[i]).appendTo('#userDropdown.dropdown');
@@ -148,9 +151,26 @@
                 }
             }
 
+            function buttonToggle() {
+                if ($('#registrationTable tr').size() > 1) {
+                    $('#pay').removeAttr('disabled');
+                }
+                else {
+                    $('#pay').attr('disabled', 'disabled');
+                }
+                if ($('#registrationTable tr').size() == 1) {
+                    $('#delete_row').attr('disabled', 'disabled');
+                    $('#result').text("");
+                }
+                else {
+                    $('#delete_row').removeAttr('disabled');
+                }
+            }
+
             $('#delete_row').click(function (event) {
                 event.preventDefault();
                 deleterow('registrationTable');
+                buttonToggle()
             });
 
             $('#add').click(function (event) {
@@ -179,6 +199,7 @@
                         calculateSum();
                     }
                 }
+                buttonToggle()
             });
             $(".Content").hide();
             //$(calculateSum);
@@ -220,6 +241,7 @@
     </script>
 </asp:Content>
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
+     
     <!-- Success modal-->
     <div class="modal" id="failure" tabindex="-1" role="dialog">
         <div class="modal-dialog">
@@ -294,9 +316,9 @@
                 <div>
                     <h3 class="pull-right" id="result"></h3>
                 </div>
-                <button id="delete_row" class="pull-left btn btn-default">Delete User</button>
+                <button id="delete_row"  disabled="disabled" class="pull-left btn btn-default">Delete User</button>
 
-                <button id="pay" class="btn pull-right btn-inverse">Pay Now</button>
+                <button id="pay" disabled="disabled" class="btn pull-right btn-inverse">Pay Now</button>
             </div>
         </form>
     </div>
