@@ -9,7 +9,7 @@
       {%>
     <div class="container">
         <form id="CheckinForm" runat="server">
-        <%if (Checkin.hasPaid == "Y")
+        <%if (Checkin.hasPaid.Equals("Y"))
         {%>
             <center><h2>Welcome <% =SessionVariables.UserName %>, your funds have been verified! <br /><!--<asp:Label ID="checkinLabel" Text="" runat="server" /><asp:Label ID="Label1" Text="" runat="server" />--></h2><br />
                 

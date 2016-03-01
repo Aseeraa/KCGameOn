@@ -8,6 +8,7 @@ using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using MySql.Data.MySqlClient;
+using System.Text;
 
 namespace KCGameOn.Admin
 {
@@ -19,7 +20,7 @@ namespace KCGameOn.Admin
         public static List<String> lastnames = new List<String>();
         public static List<String> names = new List<String>();
         public static UsersObject current = new UsersObject("", "", "");
-
+        public static StringBuilder AdminUserHTML;
         protected void Page_Load(object sender, EventArgs e)
         {
             userlist = new List<UsersObject>();
@@ -63,6 +64,8 @@ namespace KCGameOn.Admin
                     names.Add(first + ' ' + last);
                     userlist.Add(newUser);
                 }
+                Reader.Close();
+                Reader = null;
                 names.Sort();
                 usernames.Sort();
                 firstnames.Sort();
@@ -83,6 +86,37 @@ namespace KCGameOn.Admin
                             }
                         }
                     }
+                }
+
+                //populate user table in admin page
+                cmd = new MySqlCommand("SELECT DISTINCT * FROM payTable WHERE eventID = 67 AND verifiedPaid = \'Y\' AND activeIndicator=\'TRUE\'", new MySqlConnection(UserInfo));
+                cmd.CommandType = System.Data.CommandType.Text;
+
+                cmd.Connection.Open();
+                Reader = cmd.ExecuteReader();
+                AdminUserHTML = new StringBuilder();
+                List<string> usersPaid = new List<string>();
+                while (Reader.Read())
+                {
+                    usersPaid.Add(Reader.GetString("userName"));
+                }
+                Reader.Close();
+
+                foreach (UsersObject user in userlist)
+                {
+                    AdminUserHTML.AppendLine("<tr>");
+                    AdminUserHTML.AppendLine("<td class=\"col-md-1\">").Append(user.Username).Append("</td>");
+
+                    AdminUserHTML.AppendLine("<td class=\"col-md-1\">").Append(user.First).Append("</td>");
+                    AdminUserHTML.AppendLine("<td class=\"col-md-1\">").Append(user.Last).Append("</td>");
+
+                    if (usersPaid.Contains(user.Username))
+                    {
+                        AdminUserHTML.AppendLine("<td class=\"col-md-1\">").Append("<img src=\'/img/Button-Check-icon.png\' height=\"20px\" width=\"20px\"/>").Append("</td>");
+                    }
+                    else
+                        AdminUserHTML.AppendLine("<td class=\"col-md-1\">").Append("<img src=\'/img/Actions-button-cancel-icon.png\' height=\"20px\" width=\"20px\"/>").Append("</td>");
+                    AdminUserHTML.AppendLine("</tr>");
                 }
             }
             catch (Exception)
@@ -109,7 +143,7 @@ namespace KCGameOn.Admin
             List<Users> payment = new List<Users>();
             JavaScriptSerializer json = new JavaScriptSerializer();
             List<String[]> mystring = json.Deserialize<List<string[]>>(data);
-            
+
             String user = mystring.ElementAt(0).ElementAt(0).ToString();
             String first = mystring.ElementAt(0).ElementAt(1).ToString().Split(' ').ElementAt(0);
             String last = mystring.ElementAt(0).ElementAt(1).ToString().Split(' ').ElementAt(1);
