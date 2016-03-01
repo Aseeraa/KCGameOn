@@ -41,7 +41,7 @@
     </style>
     <script>
         function myFunction() {
-            //document.getElementById("demo").innerHTML = "For now, log into website and seat yourself on the map";
+            <!-- document.getElementById("demo").innerHTML = "For now, log into website and seat yourself on the map"; -->
 		window.location.href = "https://kcgameon.com/EventRegistration.aspx";
         }
 
@@ -146,10 +146,11 @@
 
         </div>
         <div class="span5">
-            <div class="scrollable">
+            <!--<div class="scrollable">
                 <table class="tbody" id="table_feed" runat="server">
                 </table>
-            </div>
+            </div>-->
+			<iframe src="https://discordapp.com/widget?id=143552833805877248&theme=dark" width="470" height="270" allowtransparency="true" frameborder="0"></iframe>
             <%--<a data-toggle="modal" href="#myModal" >
 		<img src="/img/GameOn.jpg"style="width:389px;height:235px;width:100%"/></a>--%>
 <%--            <div class="modal hide" id="myModal">
@@ -165,12 +166,12 @@
             <br />
 
             <form class="well form-inline">
-                <h3>Announcing the 66th Cerner LAN - Dec 5, 2015!</h3>
+                <h3>Announcing the 67th Cerner LAN - Feb 20, 2016!</h3>
                 <br />
                 <div class="control-group">
                     <div class="controls">
                         <div class="input-append">
-                <button id="Button1" type="button" class="btn btn-inverse" style="padding-left: 13px" onclick="myFunction()" runat="server">Registration for #66!</button>
+                <button id="Button1" type="button" class="btn btn-inverse" style="padding-left: 13px" onclick="myFunction()" runat="server">Registration for #67!</button>
                             <!-- <p id="demo"></p> -->
                         </div>
                     </div>
@@ -181,9 +182,9 @@
             <br />
                     <b style="color: #0099cc;">Where:</b> 2702 Rockcreek Parkway, the entire lower level of the building.
             <br />
-                    <b style="color: #0099cc;">Cost:</b> $15 if you pre-pay, $20 dollars at the door.  You can pay using paypal via payments@kcgameon.com, bitcoin OR by cash.
-			<br />
-					<b style="color: #0099cc;">For more poster submission information, click <a href="https://kcgameon.com/Postersubmission.aspx">HERE.</a>
+                    <b style="color: #0099cc;">Cost:</b> $15 if you pre-pay, $20 dollars at the door.  You can pay using paypal via <a href="https://kcgameon.com/EventRegistration.aspx">registration</a> page, bitcoin OR by cash.
+			<%--<br />
+					<b style="color: #0099cc;">For more poster submission information, click <a href="https://kcgameon.com/Postersubmission.aspx">HERE.</a>--%>
             </form>
 
         </div>

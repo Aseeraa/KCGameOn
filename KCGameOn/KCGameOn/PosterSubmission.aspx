@@ -26,7 +26,7 @@
  <p></p><hr>
 <p>2016 event dates (officially locked in):</p>
  
-<p>Feb 20, Apr 23, June 11, July 31, Oct 8, Dec 3</p></li>
+<p>Feb 20, Apr 23, June 11, July 30, Oct 8, Dec 3</p></li>
  
 <li> We will print this on 8.5 x 14" paper (landscape on your photo editing apps).  Please design your poster to fit 4:3 AND 16:9.  I will also use this poster on standard and wide screen monitors across KC Cerner Campuses.</li>
 <li> Do your best to incorporate all types of gaming (board games, pc and console).</li>
