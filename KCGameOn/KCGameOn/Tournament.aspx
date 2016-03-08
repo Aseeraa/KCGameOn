@@ -234,8 +234,8 @@
 					<p>Tournament Draft</p>
 					</div>
 					<div class="col-md-3">
-						<iframe src="https://battlefy.com/embeds/join/56b2d7647c6f7c050300654e" title="KCGameOn #67 League of Legends" width="186" height="80" scrolling="no" frameborder="0"></iframe>
-						<a href="http://events.na.leagueoflegends.com/en/events/171342#info"><img src="/img/registerlol.png" height="34" width="170"></a>
+						<iframe src="https://battlefy.com/embeds/join/56de42d84758808912471592" title="League of Legends - KCGameOn #68" width="186" height="80" scrolling="no" frameborder="0"></iframe>
+						<a href="http://events.na.leagueoflegends.com/events/182685#info"><img src="/img/registerlol.png" height="34" width="170"></a>
 					</div>			
                 </div>
                 <div class="lolcontentmain">
@@ -294,7 +294,7 @@ If a team that is registered fails to show up to check-in, a substitute team tha
 					<p>Contact nick@kcgameon for any questions</p>
 					
 					<br />
-					<iframe src="https://battlefy.com/embeds/teams/56b2d7647c6f7c050300654e" title="Battlefy Tournament Teams" width="100%" height="500" scrolling="yes" frameborder="0"></iframe>
+					<iframe src="https://battlefy.com/embeds/teams/56de42d84758808912471592" title="Battlefy Tournament Teams" width="100%" height="500" scrolling="yes" frameborder="0"></iframe>
                 </div>
             </div>
       </div>
@@ -321,7 +321,7 @@ If a team that is registered fails to show up to check-in, a substitute team tha
 					<p><h2>Random 3v3 map</h2></p>
 					</div>
 					<div class="col-md-3">
-						<iframe src="https://battlefy.com/embeds/join/56b6c434fe20a03b03a0c49a" title="Rocket League -  KCGameOn #67" width="186" height="80" scrolling="no" frameborder="0"></iframe>
+						<iframe src="https://battlefy.com/embeds/join/56de45fda4f1898a125571b6" title="Rocket League - KCGameOn #68" width="186" height="80" scrolling="no" frameborder="0"></iframe>
 					</div>	
                 </div>
                 <div class="rlcontentmain">
@@ -366,7 +366,7 @@ If a team that is registered fails to show up to check-in, a substitute team tha
 					<p>etc</p>
 					<p><h2>Questions</h2></p>
 					<p>Contact nick@kcgameon for any questions</p>
-					<iframe src="https://battlefy.com/embeds/teams/56b6c434fe20a03b03a0c49a" title="Battlefy Tournament Teams" width="100%" height="500" scrolling="yes" frameborder="0"></iframe>
+					<iframe src="https://battlefy.com/embeds/teams/56de45fda4f1898a125571b6" title="Battlefy Tournament Teams" width="100%" height="500" scrolling="yes" frameborder="0"></iframe>
                 </div>
             </div>
       </div>
@@ -488,7 +488,7 @@ If a team that is registered fails to show up to check-in, a substitute team tha
 					<p><h2>Random 5v5 map</h2></p>
 					</div>
 					<div class="col-md-3">
-						<iframe src="https://battlefy.com/embeds/join/56baa6131f485a1f03b65853" title="Heroes of the Storm - KCGameOn #67" width="186" height="80" scrolling="no" frameborder="0"></iframe>
+						<iframe src="https://battlefy.com/embeds/join/56de470a6d41378f12b4b977" title="Heroes of the Storm - KCGameOn #68" width="186" height="80" scrolling="no" frameborder="0"></iframe>
 					</div>	
                 </div>
 						<div class="heroescontentmain">
@@ -533,7 +533,7 @@ If a team that is registered fails to show up to check-in, a substitute team tha
 					<p>etc</p>
 					<p><h2>Questions</h2></p>
 					<p>Contact nick@kcgameon for any questions</p>
-					<iframe src="https://battlefy.com/embeds/teams/56baa6131f485a1f03b65853" title="Battlefy Tournament Teams" width="100%" height="500" scrolling="yes" frameborder="0"></iframe>
+					<iframe src="https://battlefy.com/embeds/teams/56de470a6d41378f12b4b977" title="Battlefy Tournament Teams" width="100%" height="500" scrolling="yes" frameborder="0"></iframe>
                 </div>
 			  </div>
     </div>
