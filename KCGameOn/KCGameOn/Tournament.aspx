@@ -217,7 +217,7 @@
                 <div class="lolcontenttop row">
 					<div class="col-md-3">
 						<p>Date & Time</p>
-						<p><h2>Feb 20, 2016 @230p</h2></p>
+						<p><h2>Apr 16, 2016 @230p</h2></p>
 						Please register with both battlefy and the LoL website or you will not be eligible for prizing.
 						
 					</div>
@@ -305,7 +305,7 @@ If a team that is registered fails to show up to check-in, a substitute team tha
                 <div class="rlcontenttop">
                     <div class="col-md-3">
 						<p>Date & Time</p>
-						<p><h2>Feb 20, 2016 @630p</h2></p>
+						<p><h2>Apr 16, 2016 @800p</h2></p>
 						Please register with battlefy or you will not be eligible for prizing.
 						
 					</div>
@@ -410,24 +410,24 @@ If a team that is registered fails to show up to check-in, a substitute team tha
 						<div class="smashcontenttop">
 							<div class="col-md-3">
 								<p>Date & Time</p>
-								<p><h2>Feb 20, 2016 @2:30p</h2></p>
+								<p><h2>April 16, 2016 @2:30p</h2></p>
 								PM Doubles
 							</div>
 					
 							<div class="col-md-3">
 								<p>Date & Time</p>
-								<p><h2>Feb 20, 2016 @3:30p</h2></p>
+								<p><h2>April 16, 2016 @3:30p</h2></p>
 								Smash 4
 							</div>
 					
 							<div class="col-md-3">
 								<p>Date & Time</p>
-								<p><h2>Feb 20, 2016 @5:30p</h2></p>
+								<p><h2>April 16, 2016 @5:30p</h2></p>
 								PM Singles
 							</div>
 							<div class="col-md-3">
 								<p>Date & Time</p>
-								<p><h2>Feb 20, 2016 @7:30p</h2></p>
+								<p><h2>April 16, 2016 @7:30p</h2></p>
 								Smash Melee
 							</div>
 						</div>
@@ -472,7 +472,7 @@ If a team that is registered fails to show up to check-in, a substitute team tha
 						<div class="heroescontenttop">
                     <div class="col-md-3">
 						<p>Date & Time</p>
-						<p><h2>Feb 20, 2016 @400p</h2></p>
+						<p><h2>Apr 16, 2016 @330p</h2></p>
 						Please register with battlefy or you will not be eligible for prizing.
 						
 					</div>
@@ -528,8 +528,8 @@ If a team that is registered fails to show up to check-in, a substitute team tha
 						Free KCGameOn #68 attendance w/8 or more teams competing.</p>
 
 					<p><h2>Schedule</h2></p>
-					<p>4:00 PM</p>
-					<p>5:00</p>
+					<p>3:30 PM</p>
+					<p>4:30</p>
 					<p>etc</p>
 					<p><h2>Questions</h2></p>
 					<p>Contact nick@kcgameon for any questions</p>
