@@ -15,7 +15,7 @@
 	<meta http-equiv="Cache-control" content="public">
 
 	<!-- Le styles -->
-	<link rel="shortcut icon" type="image/x-icon" href="~/favicon.ico" />
+	<link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico" />
 	<link href="/css/bootstrap.css?v=1.0" rel="stylesheet">
     <link id="switch_style" href="/css/black/bootstrap.min.css?v=1.0" rel="stylesheet">
 	<%--<link href="/css/bootstrap-responsive.css" rel="stylesheet">--%>
@@ -88,7 +88,13 @@
 	</div>
 	<div class="pull-right">
 	<a href="https://www.twitter.com/KCGameOn"  original-title="twitter"><img src="/icon/twitter.png"  alt="twitter"></a>
-	</div>	
+	</div>
+	<div class="pull-right">
+	<a href="https://www.twitch.tv/kcgameon"  original-title="Flickr"><img src="/icon/twitch.png"  alt="flickr"></a>
+	</div>
+	<div class="pull-right">
+	<a href="https://discord.gg/0niKh6Z6IC5jOTGA"  original-title="Flickr"><img src="/icon/discord.png"  alt="flickr"></a>
+	</div>
 	</div>
 </div>
 
