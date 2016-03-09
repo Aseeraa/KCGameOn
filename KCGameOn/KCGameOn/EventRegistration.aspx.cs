@@ -50,7 +50,26 @@ namespace KCGameOn
             MySqlDataReader Reader = null;
             MySqlCommand cmd = null;
             MySqlConnection conn = null;
-            
+            try
+            {
+
+                cmd = new MySqlCommand("SELECT BlockPayments FROM AdminProperties", new MySqlConnection(UserInfo));
+                cmd.Connection.Open();
+                cmd.CommandType = System.Data.CommandType.Text;
+                string blocked = cmd.ExecuteScalar().ToString();
+                if (blocked.Equals("TRUE"))
+                    if (SessionVariables.UserAdmin == 0)
+                        SessionVariables.registrationBlocked = true;
+            }
+            catch (Exception)
+            {
+
+            }
+            finally
+            {
+                if (cmd.Connection != null)
+                    cmd.Connection.Close();
+            }
             try
             {
                 conn = new MySqlConnection(UserInfo);

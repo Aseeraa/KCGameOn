@@ -34,6 +34,27 @@ namespace KCGameOn
             if (Request.UrlReferrer != null && Request.UrlReferrer.ToString().ToLower().Contains("checkin.aspx"))
             { previousPage.Text = "Click <a href=\"./Checkin.aspx\">here</a> to continue the check in process after selecting a seat!"; }
             checkPayPal();
+
+            try
+            {
+
+                cmd = new MySqlCommand("SELECT BlockPayments FROM AdminProperties", new MySqlConnection(UserInfo));
+                cmd.Connection.Open();
+                cmd.CommandType = System.Data.CommandType.Text;
+                string blocked = cmd.ExecuteScalar().ToString();
+                if (blocked.Equals("TRUE"))
+                    if (SessionVariables.UserAdmin == 0)
+                        SessionVariables.registrationBlocked = true;
+            }
+            catch (Exception)
+            {
+
+            }
+            finally
+            {
+                if (cmd.Connection != null)
+                    cmd.Connection.Close();
+            }
             try
             {
                 count = 0;
