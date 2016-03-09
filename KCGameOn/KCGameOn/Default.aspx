@@ -166,12 +166,12 @@
             <br />
 
             <form class="well form-inline">
-                <h3>Announcing the 67th Cerner LAN - Feb 20, 2016!</h3>
+                <h3>Announcing the 68th Cerner LAN - Apr 16, 2016!</h3>
                 <br />
                 <div class="control-group">
                     <div class="controls">
                         <div class="input-append">
-                <button id="Button1" type="button" class="btn btn-inverse" style="padding-left: 13px" onclick="myFunction()" runat="server">Registration for #67!</button>
+                <button id="Button1" type="button" class="btn btn-inverse" style="padding-left: 13px" onclick="myFunction()" runat="server">Registration for #68!</button>
                             <!-- <p id="demo"></p> -->
                         </div>
                     </div>

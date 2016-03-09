@@ -246,9 +246,10 @@
         <%} %>
         <%else
         { %>
-
+		<div align=center><br /><br /><br />
         <h2>There are currently no events available for registration, please check back closer to the event date or when the announcement email has been sent.</h2>
-        <br />
+        </div>
+		
         <%} %>
 </asp:Content>
 

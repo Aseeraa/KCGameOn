@@ -64,6 +64,7 @@
     </style>
     <script>
         var amount = 15.00;
+        var checkIn = <%= checkInDay%>
         function calculateSum() {
             var sum = 0;
             // iterate through each td based on class and add the values
@@ -76,13 +77,8 @@
             //});
 
             $('.fullyear').find('input[type="checkbox"]').each(function () {
-                if ('<%= checkInDay%>' == 'true') {
-                    amount = 20.00;
-                }
-                else
-                    amount = 15.00;
                 if ($(this).prop('checked') == true) {
-                    sum += amount + (15.00 * (remainingEvents-1));
+                    sum += amount + 15 * (remainingEvents-1);
                 }
                 else {
                     sum += amount;
@@ -129,9 +125,6 @@
                 });
             });
 
-            
-
-
             function loadDropdowns() {
                 for (i = 0; i < users.length; i++) {
                     $('<option/>').val(users[i]).html(users[i]).appendTo('#userDropdown.dropdown');
@@ -151,7 +144,9 @@
                 }
             }
 
-            function buttonToggle() {
+            $('#delete_row').click(function (event) {
+                event.preventDefault();
+                deleterow('registrationTable');
                 if ($('#registrationTable tr').size() > 1) {
                     $('#pay').removeAttr('disabled');
                 }
@@ -165,28 +160,19 @@
                 else {
                     $('#delete_row').removeAttr('disabled');
                 }
-            }
 
-            $('#delete_row').click(function (event) {
-                event.preventDefault();
-                deleterow('registrationTable');
-                buttonToggle()
             });
 
             $('#add').click(function (event) {
                 event.preventDefault();
-                debugger;
                 var user = $('#userDropdown').val();
                 var name = $('#nameDropdown').val();
                 var split = name.split(" ");
                 var first = split[0];
-                var num = 15.00;
                 var last = split[1];
-                if ('<%= checkInDay%>' == 'true') {
-                    num = 20.00;
+                if (checkIn == true) {
+                    amount = 20.00
                 }
-                else
-                    num = 15.00;
                 if (user != "None" && name != "None") {
                     if ($('#registrationTable tr > td:contains(' + user + ') + td:contains(' + first + ') + td:contains(' + last + ')').length) {
                         //bootbox.alert("User is already in the table.", function () {
@@ -194,12 +180,24 @@
                         $("#userInTable").modal('show');
                     }
                     else {
-                        var newRow = $('<tr><td>' + user + '</td><td>' + first + '</td><td>' + last + '</td><td class = "price">' + num.toFixed(2) + '</td><td class="fullyear">' + '<input type="checkbox" value="checked" onclick="calculateSum();">' + '</tr>');
+                        var newRow = $('<tr><td>' + user + '</td><td>' + first + '</td><td>' + last + '</td><td class = "price">' + amount.toFixed(2) + '</td><td class="fullyear">' + '<input type="checkbox" value="checked" onclick="calculateSum();">' + '</tr>');
                         $('#registrationTable').append(newRow);
                         calculateSum();
                     }
                 }
-                buttonToggle()
+                if ($('#registrationTable tr').size() > 1) {
+                    $('#pay').removeAttr('disabled');
+                }
+                else {
+                    $('#pay').attr('disabled', 'disabled');
+                }
+                if ($('#registrationTable tr').size() == 1) {
+                    $('#delete_row').attr('disabled', 'disabled');
+                    $('#result').text("");
+                }
+                else {
+                    $('#delete_row').removeAttr('disabled');
+                }
             });
             $(".Content").hide();
             //$(calculateSum);
@@ -241,7 +239,6 @@
     </script>
 </asp:Content>
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
-     
     <!-- Success modal-->
     <div class="modal" id="failure" tabindex="-1" role="dialog">
         <div class="modal-dialog">
@@ -325,8 +322,9 @@
     <%} %>
     <%else
     { %>
-    
-        <h2>There are currently no events available for registration, please check back closer to the event date or when the announcement email has been sent.</h2>
-        <br />
+		<div align=center>
+			<h2>There are currently no events available for registration, please check back closer to the event date or when the announcement email has been sent.</h2>
+			<br />
+		</div>
         <%} %>
 </asp:Content>
