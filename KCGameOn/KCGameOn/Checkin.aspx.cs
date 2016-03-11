@@ -4,61 +4,97 @@ using MySql.Data.MySqlClient;
 using System.Configuration;
 using System.Text;
 using System.Web.Security;
+using System.Web.UI;
+using Zen.Barcode;
+using System.IO;
 
 namespace KCGameOn
 {
-    public partial class Checkin : System.Web.UI.Page
+    public partial class Checkin : System.Web.UI.Page, IPostBackEventHandler
     {
-        public static int count;
         public static String hasPaid;
         public static String hasCheckedIn;
         public static Int32 getEventID;
 
         private string errorString;
-        string UserInfo = ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString;
-        MySqlDataReader reader = null;
         public string ErrorString
         {
             get { return errorString; }
             set { errorString = value; }
         }
 
-        String connectionString = ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString;
+        String conn = ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString;
+
+        public void RaisePostBackEvent(string eventArgument)
+        {
+            MySqlCommand cmd9 = new MySqlCommand("SELECT Username FROM payTable WHERE Barcode = " + eventArgument + "; ", new MySqlConnection(conn));
+            cmd9.Connection.Open();
+            cmd9.CommandType = System.Data.CommandType.Text;
+
+            if (cmd9.ExecuteScalar() != null)
+            {
+                SessionVariables.UserName = (String)cmd9.ExecuteScalar();
+                SessionVariables.UserAdmin = 0;
+            }
+            cmd9.Connection.Close();
+            Response.Redirect("~/Checkin.aspx");
+        }
+
+        private string getBarcode(string barcode)
+        {
+            BarcodeSymbology s = BarcodeSymbology.Code39NC;
+            BarcodeDraw drawObject = BarcodeDrawFactory.GetSymbology(s);
+            var metrics = drawObject.GetDefaultMetrics(45);
+            metrics.Scale = 1;
+            var barcodeImage = drawObject.Draw(barcode, metrics);
+
+            using (MemoryStream ms = new MemoryStream())
+            {
+                barcodeImage.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                byte[] imageBytes = ms.ToArray();
+
+                return Convert.ToBase64String(imageBytes);
+            }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            
             try
             {
-                MySqlCommand cmd = new MySqlCommand("SELECT EventID FROM kcgameon.schedule WHERE Active = 1 order by ID LIMIT 1;", new MySqlConnection(connectionString));
-                cmd.Connection.Open();
+
+                // Setting image to barcode based on defined string
+                //barc.Attributes["src"] = ResolveUrl("data:image/png;base64," + getBarcode("412672016012240"));
+
+
+                //Create Command
+                MySqlCommand cmd = new MySqlCommand("SELECT pay.idpayTable, pay.username, pay.EventID, sea.checkedin, pay.verifiedPaid FROM payTable AS pay LEFT JOIN (SELECT username, checkedin FROM seatingchart WHERE username = \"" + SessionVariables.UserName + "\" AND EventID = (SELECT EventID FROM kcgameon.schedule WHERE Active = 1 order by ID LIMIT 1)) sea on pay.username = sea.username WHERE pay.username = \"" + SessionVariables.UserName + "\" AND pay.EventID = (SELECT EventID FROM kcgameon.schedule WHERE Active = 1 order by ID LIMIT 1) AND pay.verifiedPaid = \"Y\"", new MySqlConnection(conn));
                 cmd.CommandType = System.Data.CommandType.Text;
-                getEventID = (Int32)cmd.ExecuteScalar();
+                cmd.Connection.Open();
+
+                //Bind command to reader
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    //read each row
+                    while (reader.Read())
+                    {
+                        //associate variables
+                        getEventID = (Int32)reader["EventID"] - 1;
+                        hasCheckedIn = reader["checkedin"].ToString();
+                        SessionVariables.verifiedPaid = reader["verifiedPaid"].ToString();
+                    }
+                    // Call Close when done reading.
+                    reader.Close();
+                }
+
                 cmd.Connection.Close();
 
-                MySqlCommand cmd2 = new MySqlCommand("SELECT checkedin FROM seatingchart WHERE username = \'" + SessionVariables.UserName + "\' AND EventID = " + getEventID, new MySqlConnection(connectionString));
-                cmd2.Connection.Open();
-                cmd2.CommandType = System.Data.CommandType.Text;
-                hasCheckedIn = Convert.ToString(cmd2.ExecuteScalar());
-                if (hasCheckedIn.Equals(""))
+                if (hasCheckedIn != "True" && hasPaid == "Y")
                 {
-                    CheckoutButton.Enabled = false;
-                    checkoutLabel.Text = "You must go to the map and select a seat before finishing.";
-                }
-                cmd2.Connection.Close();
-
-                MySqlCommand cmd1 = new MySqlCommand("SELECT verifiedPaid FROM payTable WHERE username = \'" + SessionVariables.UserName + "\' AND EventID = " + getEventID + " AND verifiedPaid = \'Y\'", new MySqlConnection(connectionString));
-                cmd1.Connection.Open();
-                cmd1.CommandType = System.Data.CommandType.Text;
-                hasPaid = (String)cmd1.ExecuteScalar();
-                cmd1.Connection.Close();
-
-                if (hasCheckedIn == "False" && hasPaid == "Y")
-                {
-                    MySqlCommand cmd3 = new MySqlCommand("UPDATE seatingchart SET checkedin = true, checkedin_time = CURRENT_TIMESTAMP() WHERE Username = \'" + SessionVariables.UserName + "\' AND EventID = " + getEventID, new MySqlConnection(connectionString));
-                    cmd3.Connection.Open();
-                    cmd3.CommandType = System.Data.CommandType.Text;
-                    cmd3.ExecuteNonQuery();
-                    cmd3.Connection.Close();
+                    cmd = new MySqlCommand("UPDATE seatingchart SET checkedin = true, checkedin_time = CURRENT_TIMESTAMP() WHERE Username = \'" + SessionVariables.UserName + "\' AND EventID = " + getEventID, new MySqlConnection(conn));
+                    cmd.Connection.Open();
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.ExecuteNonQuery();
+                    cmd.Connection.Close();
                     //checkinLabel.Text = "You have successfully checked yourself in.";
                 }
                 else
@@ -84,28 +120,13 @@ namespace KCGameOn
             Response.Cookies.Add(cookie2);
             Response.Redirect("~/Checkin.aspx");
             //FormsAuthentication.RedirectToLoginPage();
-
-            //try
-            //{
-            //    MySqlCommand cmd = new MySqlCommand("UPDATE seatingchart SET checkedin = false, checkedin_time = null WHERE Username = \'" + SessionVariables.UserName + "\' AND EventID = " + getEventID, new MySqlConnection(connectionString));
-            //    cmd.Connection.Open();
-            //    cmd.CommandType = System.Data.CommandType.Text;
-            //    cmd.ExecuteNonQuery();
-            //    cmd.Connection.Close();
-            //    checkoutLabel.Text = "You have successfully checked yourself out.";
-            //    CheckoutButton.Visible = false;
-            //}
-            //catch
-            //{
-            //    checkoutLabel.Text = "An error occured.  Sorry please try again.";
-            //}
         }
 
         protected void MapButton_Click(object sender, EventArgs e)
         {
             try
             {
-                Response.Redirect("~/Map.aspx");
+                Response.Redirect("/Map.aspx");
             }
             catch
             {
@@ -116,7 +137,7 @@ namespace KCGameOn
         {
             try
             {
-                Response.Redirect("~/Tournament.aspx");
+                Response.Redirect("/Tournament.aspx");
             }
             catch
             {
@@ -126,7 +147,7 @@ namespace KCGameOn
         {
             try
             {
-                Response.Redirect("~/Checkin.aspx");
+                Response.Redirect("/Checkin.aspx");
             }
             catch
             {
@@ -147,9 +168,6 @@ namespace KCGameOn
             String UserName = Request.Form["ctl00$MainContent$UserName"];
             String Password = Request.Form["ctl00$MainContent$Password"];
 
-            //Set Connection String to MySql.
-            String UserInfo = ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString;
-
             if (UserName != null && Password != null)
             {
 
@@ -162,7 +180,7 @@ namespace KCGameOn
 
                 try
                 {
-                    cmd = new MySqlCommand("checkUser", new MySqlConnection(UserInfo));
+                    cmd = new MySqlCommand("checkUser", new MySqlConnection(conn));
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
                     cmd.Parameters.AddWithValue("Username", UserName);
@@ -202,7 +220,7 @@ namespace KCGameOn
                 try
                 {
 
-                    cmd = new MySqlCommand("SELECT BlockPayments FROM AdminProperties", new MySqlConnection(UserInfo));
+                    cmd = new MySqlCommand("SELECT BlockPayments FROM AdminProperties", new MySqlConnection(conn));
                     cmd.Connection.Open();
                     cmd.CommandType = System.Data.CommandType.Text;
                     string blocked = cmd.ExecuteScalar().ToString();
@@ -222,9 +240,11 @@ namespace KCGameOn
 
                 if (SessionVariables.UserName != null)
                 {
+                    MySqlDataReader reader = null;
                     try
                     {
-                        cmd = new MySqlCommand("SELECT paymentKey,verifiedPaid FROM payTable WHERE paidDate = (SELECT MAX(paidDate) FROM payTable where userName = \'" + SessionVariables.UserName.ToLower() + "\')", new MySqlConnection(UserInfo));
+                        
+                        cmd = new MySqlCommand("SELECT paymentKey,verifiedPaid FROM payTable WHERE paidDate = (SELECT MAX(paidDate) FROM payTable where userName = \'" + SessionVariables.UserName.ToLower() + "\')", new MySqlConnection(conn));
                         cmd.CommandType = System.Data.CommandType.Text;
                         cmd.Connection.Open();
                         IAsyncResult result = cmd.BeginExecuteReader();

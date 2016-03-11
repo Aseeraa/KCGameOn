@@ -16,6 +16,10 @@ using System.Web.Helpers;
 using System.Web.Mvc;
 using PayPal.AdaptivePayments.Model;
 using PayPal.AdaptivePayments;
+using System.Net.Mime;
+using System.Net.Mail;
+using System.IO;
+using Zen.Barcode;
 
 namespace KCGameOn
 {
@@ -258,6 +262,23 @@ namespace KCGameOn
             return false;
         }
 
+        private static string getBarcode(string barcode)
+        {
+            BarcodeSymbology s = BarcodeSymbology.Code39NC;
+            BarcodeDraw drawObject = BarcodeDrawFactory.GetSymbology(s);
+            var metrics = drawObject.GetDefaultMetrics(45);
+            metrics.Scale = 1;
+            var barcodeImage = drawObject.Draw(barcode, metrics);
+
+            using (MemoryStream ms = new MemoryStream())
+            {
+                barcodeImage.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                byte[] imageBytes = ms.ToArray();
+
+                return Convert.ToBase64String(imageBytes);
+            }
+        }
+
         private static void updatePayTable()
         {
             string UserInfo = ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString;
@@ -324,6 +345,57 @@ namespace KCGameOn
                         cmd.Connection.Close();
                     }
                 }
+
+                //Create Command
+                cmd = new MySqlCommand("SELECT ua.Email,pt.Barcode FROM payTable pt LEFT JOIN useraccount ua on pt.username = ua.username WHERE pt.Username = \'" + SessionVariables.UserName + "\' AND pt.Barcode IS NOT NULL AND eventID = (SELECT min(schedule.EventID) FROM schedule WHERE schedule.Active = 1)  LIMIT 1", new MySqlConnection(UserInfo));
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Connection.Open();
+
+                //Bind command to reader
+                using (reader = cmd.ExecuteReader())
+                {
+                    //read each row
+                    while (reader.Read())
+                    {
+                        //associate variables
+                        string toEmail = reader["Email"].ToString();
+                        string barcode = reader["Barcode"].ToString();
+                        MailMessage mail = new MailMessage();
+                        SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+
+                        mail.From = new MailAddress(ConfigurationManager.ConnectionStrings["FromEmail"].ConnectionString);
+                        mail.To.Add(toEmail);
+                        mail.Subject = "KcGameOn Account: Quick Check-In Barcode";
+                        mail.IsBodyHtml = true;
+
+                        var imageData = Convert.FromBase64String(getBarcode(barcode));
+
+                        var contentId = Guid.NewGuid().ToString();
+                        var linkedResource = new LinkedResource(new MemoryStream(imageData), "image/jpeg");
+                        linkedResource.ContentId = contentId;
+                        linkedResource.TransferEncoding = TransferEncoding.Base64;
+
+                        var body = "Behold, ";
+                        body += "<br /><br />This is your ticket to the lan, keep it safe!.";
+                        body += "<br /><br /><b>" + SessionVariables.UserName + "</b>";
+                        body += string.Format("<br /><br /><img src=\"cid:{0}\" />", contentId);
+                        body += "<br /><br />Thanks,";
+                        body += "<br />KcGameOn Team!";
+                        var htmlView = AlternateView.CreateAlternateViewFromString(body, null, "text/html");
+                        htmlView.LinkedResources.Add(linkedResource);
+                        mail.AlternateViews.Add(htmlView);
+
+                        SmtpServer.Port = 587;
+                        SmtpServer.Credentials = new System.Net.NetworkCredential(ConfigurationManager.ConnectionStrings["FromEmail"].ConnectionString, ConfigurationManager.ConnectionStrings["FromEmailPass"].ConnectionString);
+                        SmtpServer.EnableSsl = true;
+
+                        SmtpServer.Send(mail);
+                    }
+                    // Call Close when done reading.
+                    reader.Close();
+                }
+
+                cmd.Connection.Close();
             }
         }
 
