@@ -347,7 +347,7 @@ namespace KCGameOn
                 }
 
                 //Create Command
-                cmd = new MySqlCommand("SELECT ua.Email,pt.Barcode FROM payTable pt LEFT JOIN useraccount ua on pt.username = ua.username WHERE pt.Username = \'" + SessionVariables.UserName + "\' AND pt.Barcode IS NOT NULL AND eventID = (SELECT min(schedule.EventID) FROM schedule WHERE schedule.Active = 1)  LIMIT 1", new MySqlConnection(UserInfo));
+                cmd = new MySqlCommand("SELECT us.username, ua.Email,pt.Barcode FROM payTable pt LEFT JOIN useraccount ua on pt.username = ua.username WHERE pt.PaymentKey = \'" + paymentkey + "\' AND pt.Barcode IS NOT NULL AND pt.verifiedPaid = 'Y' AND eventID = (SELECT min(schedule.EventID) FROM schedule WHERE schedule.Active = 1)", new MySqlConnection(UserInfo));
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Connection.Open();
 
@@ -360,6 +360,7 @@ namespace KCGameOn
                         //associate variables
                         string toEmail = reader["Email"].ToString();
                         string barcode = reader["Barcode"].ToString();
+                        string user = reader["username"].ToString();
                         MailMessage mail = new MailMessage();
                         SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
 
@@ -377,7 +378,7 @@ namespace KCGameOn
 
                         var body = "Behold, ";
                         body += "<br /><br />This is your ticket to the lan, keep it safe!.";
-                        body += "<br /><br /><b>" + SessionVariables.UserName + "</b>";
+                        body += "<br /><br /><b>" + user + "</b>";
                         body += string.Format("<br /><br /><img src=\"cid:{0}\" />", contentId);
                         body += "<br /><br />Thanks,";
                         body += "<br />KcGameOn Team!";
