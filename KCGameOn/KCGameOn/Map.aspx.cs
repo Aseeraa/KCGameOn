@@ -347,7 +347,7 @@ namespace KCGameOn
                 }
 
                 //Create Command
-                cmd = new MySqlCommand("SELECT us.username, ua.Email,pt.Barcode FROM payTable pt LEFT JOIN useraccount ua on pt.username = ua.username WHERE pt.PaymentKey = \'" + paymentkey + "\' AND pt.Barcode IS NOT NULL AND pt.verifiedPaid = 'Y' AND eventID = (SELECT min(schedule.EventID) FROM schedule WHERE schedule.Active = 1)", new MySqlConnection(UserInfo));
+                cmd = new MySqlCommand("SELECT ua.username, ua.Email, pt.Barcode FROM payTable pt LEFT JOIN useraccount ua on pt.username = ua.username WHERE pt.PaymentKey = \'" + paymentkey + "\' AND pt.Barcode IS NOT NULL AND eventID = (SELECT min(schedule.EventID) FROM schedule WHERE schedule.Active = 1)", new MySqlConnection(UserInfo));
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Connection.Open();
 

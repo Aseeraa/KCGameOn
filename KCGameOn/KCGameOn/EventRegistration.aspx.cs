@@ -229,6 +229,7 @@ namespace KCGameOn
             }
             if (tableValid)
             {
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
                 PayRequest requestPay = Payment(quantity);
                 PayResponse responsePay = PayAPIOperations(requestPay);
                 RedirectURL = "https://www.paypal.com/cgi-bin/webscr?cmd=_ap-payment&paykey=" + responsePay.payKey;
