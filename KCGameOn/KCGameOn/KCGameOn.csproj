@@ -210,7 +210,9 @@
     <Content Include="Images\bullet.png" />
     <Content Include="Images\GameOnKC_WebsiteLogo_blue.png" />
     <Content Include="Images\heroAccent.png" />
+    <Content Include="Images\hotsPoster.jpg" />
     <Content Include="Images\logo.png" />
+    <Content Include="Images\lolPoster.png" />
     <Content Include="Images\orderedList0.png" />
     <Content Include="Images\orderedList1.png" />
     <Content Include="Images\orderedList2.png" />
@@ -224,6 +226,8 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Images\rlPoster.png" />
+    <Content Include="Images\smashPoster.png" />
     <Content Include="img\Actions-button-cancel-icon.png" />
     <Content Include="img\Button-Check-icon.png" />
     <Content Include="img\glyphicons-halflings-white.png" />
