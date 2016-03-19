@@ -55,19 +55,19 @@
                         <tr>
                             <td>
                                 <a href="https://kcgameon.com/Tournament.aspx">
-                                    <img src="Images/lolPoster.png" alt="League of Legends" height="350" width="193" /></a>
+                                    <img src="img/lolPoster.png" alt="League of Legends" height="350" width="193" /></a>
                             </td>
                             <td>
                                 <a href="https://kcgameon.com/Tournament.aspx">
-                                    <img src="Images/rlPoster.png" alt="Rocket League" height="350" width="193" /></a>
+                                    <img src="img/rlPoster.png" alt="Rocket League" height="350" width="193" /></a>
                             </td>
                             <td>
                                 <a href="https://kcgameon.com/Tournament.aspx">
-                                    <img src="Images/smashPoster.png" alt="Super Smash Bros." height="350" width="193" /></a>
+                                    <img src="img/smashPoster.png" alt="Super Smash Bros." height="350" width="193" /></a>
                             </td>
                             <td>
                                 <a href="https://kcgameon.com/Tournament.aspx">
-                                    <img src="Images/hotsPoster.jpg" alt="Heroes of the Storm" height="350" width="193" /></a>
+                                    <img src="img/hotsPoster.jpg" alt="Heroes of the Storm" height="350" width="193" /></a>
                             </td>
                         </tr>
                     </table>
