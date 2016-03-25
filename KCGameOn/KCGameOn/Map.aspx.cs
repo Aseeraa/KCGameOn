@@ -139,7 +139,7 @@ namespace KCGameOn
                 string UserInfo = ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString;
                 try
                 {
-                    cmd = new MySqlCommand("SELECT paymentKey,verifiedPaid FROM payTable WHERE paidDate = (SELECT MAX(paidDate) FROM payTable where userName = \'" + SessionVariables.UserName.ToLower() + "\' AND ActiveIndicator = \'TRUE\')", new MySqlConnection(UserInfo));
+                    cmd = new MySqlCommand("SELECT paymentKey,verifiedPaid FROM payTable WHERE paidDate = (SELECT MAX(paidDate) FROM payTable where userName = \'" + SessionVariables.UserName.ToLower() + "\' AND ActiveIndicator = \'TRUE\') AND userName = \'" + SessionVariables.UserName.ToLower() + "\'", new MySqlConnection(UserInfo));
                     cmd.CommandType = System.Data.CommandType.Text;
                     cmd.Connection.Open();
                     IAsyncResult result = cmd.BeginExecuteReader();
@@ -371,7 +371,7 @@ namespace KCGameOn
                         mail.IsBodyHtml = true;
 
                         var imageData = Convert.FromBase64String(getBarcode(barcode));
-
+                            
                         var contentId = Guid.NewGuid().ToString();
                         var linkedResource = new LinkedResource(new MemoryStream(imageData), "image/jpeg");
                         linkedResource.ContentId = contentId;
