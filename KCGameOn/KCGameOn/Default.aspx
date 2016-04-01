@@ -178,7 +178,7 @@
                 </div>
                 <p style="text-align: justify">
 
-                    <b style="color: #0099cc;">Who we are:</b> Cerner associates putting on a team building and networking event for Cerner associates and your friends.
+                    <b style="color: #0099cc;">Who we are:</b> Cerner associates putting on a team building and networking event for Cerner associates and beyond.
             <br />
                     <b style="color: #0099cc;">Where:</b> 2702 Rockcreek Parkway, the entire lower level of the building.
             <br />
@@ -194,7 +194,9 @@
         <div class="span4">
             <center>
                 
-                    <img src="img/shinra.png" /><p>
+                    <a href="http://www.collectorscache.com">
+					<img src="img/collectorscache.png" /></a><p>
+					<img src="img/shinra.png" /><p>
 		<!-- <p><a href="http://www.cerner.com"> -->
                         <!-- <img src="img/cernerlogo2.png" /></a></p> -->
                 <br />
@@ -222,7 +224,7 @@
 
         <div class="span4">
             <center>
-                <a href="/sponsors.aspx">
+                <a href="http://www.soprogaming.com">
                     <img src="img/soprogaming-2.png" /></a>
                 <br />
                 <br />
