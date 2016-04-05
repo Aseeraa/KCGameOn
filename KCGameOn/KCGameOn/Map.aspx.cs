@@ -139,7 +139,7 @@ namespace KCGameOn
                 string UserInfo = ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString;
                 try
                 {
-                    cmd = new MySqlCommand("SELECT paymentKey,verifiedPaid FROM payTable WHERE paidDate = (SELECT MAX(paidDate) FROM payTable where userName = \'" + SessionVariables.UserName.ToLower() + "\' AND ActiveIndicator = \'TRUE\')", new MySqlConnection(UserInfo));
+                    cmd = new MySqlCommand("SELECT paymentKey,verifiedPaid FROM payTable WHERE paidDate = (SELECT MAX(paidDate) FROM payTable where userName = \'" + SessionVariables.UserName.ToLower() + "\' AND ActiveIndicator = \'TRUE\') AND userName = \'" + SessionVariables.UserName.ToLower() + "\'", new MySqlConnection(UserInfo));
                     cmd.CommandType = System.Data.CommandType.Text;
                     cmd.Connection.Open();
                     IAsyncResult result = cmd.BeginExecuteReader();
@@ -347,7 +347,7 @@ namespace KCGameOn
                 }
 
                 //Create Command
-                cmd = new MySqlCommand("SELECT ua.username, ua.Email, pt.Barcode FROM payTable pt LEFT JOIN useraccount ua on pt.username = ua.username WHERE pt.PaymentKey = \'" + paymentkey + "\' AND pt.Barcode IS NOT NULL AND eventID = (SELECT min(schedule.EventID) FROM schedule WHERE schedule.Active = 1)", new MySqlConnection(UserInfo));
+                cmd = new MySqlCommand("SELECT ua.username, ua.Email, pt.Barcode, pt.EventID FROM payTable pt LEFT JOIN useraccount ua on pt.username = ua.username WHERE pt.PaymentKey = \'" + paymentkey + "\' AND pt.Barcode IS NOT NULL AND pt.eventID = (SELECT min(schedule.EventID) FROM schedule WHERE schedule.Active = 1)", new MySqlConnection(UserInfo));
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Connection.Open();
 
@@ -361,23 +361,24 @@ namespace KCGameOn
                         string toEmail = reader["Email"].ToString();
                         string barcode = reader["Barcode"].ToString();
                         string user = reader["username"].ToString();
+                        string eid = reader["EventID"].ToString();
                         MailMessage mail = new MailMessage();
                         SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
 
                         mail.From = new MailAddress(ConfigurationManager.ConnectionStrings["FromEmail"].ConnectionString);
                         mail.To.Add(toEmail);
-                        mail.Subject = "KcGameOn Account: Quick Check-In Barcode";
+                        mail.Subject = "KcGameOn Account: Quick Check-In Barcode for Event #" + eid;
                         mail.IsBodyHtml = true;
 
                         var imageData = Convert.FromBase64String(getBarcode(barcode));
-
+                            
                         var contentId = Guid.NewGuid().ToString();
                         var linkedResource = new LinkedResource(new MemoryStream(imageData), "image/jpeg");
                         linkedResource.ContentId = contentId;
                         linkedResource.TransferEncoding = TransferEncoding.Base64;
 
                         var body = "Behold, ";
-                        body += "<br /><br />This is your ticket to the lan, keep it safe!.";
+                        body += "<br /><br />This is your ticket to the lan event #" + eid + ", keep it safe!.";
                         body += "<br /><br /><b>" + user + "</b>";
                         body += string.Format("<br /><br /><img src=\"cid:{0}\" />", contentId);
                         body += "<br /><br />Thanks,";

@@ -39,6 +39,12 @@
 			</td>
 		</tr>
 		<tr>
+			<td><p><a href="http://www.collectorscache.com"><img src="/img/collectorscache.png" height="65"></a></p>
+			</td>
+			<td><p>Established in 1988, Collector's Cache has been a symbol of quality cards, toys, and other various collectibles. We have been serving Kansas City collectors for 25 years and our worldwide mail order customers for nearly 15 years. You can expect professional, fast, courteous, and competitive service. Our goal is to treat you like a valued customer, not just another number. We want to earn your business and want to be your one stop shop for all your collectible needs.</p>
+			</td>
+		</tr>
+		<tr>
 			<td><p><a href="http://www.shinra.com"><img src="/img/shinra.png" height="65"></a></p>
 			</td>
 			<td><p>Shinra Technologies, Inc. is a supercomputer gaming company that uses its patented remote rendering technology to enable the creation of bold, new gaming experiences that are not possible on any other platform. Applications for Shinra’s summer US beta test will open on June 11 for Google Fiber users, starting with Kansas City!</p>

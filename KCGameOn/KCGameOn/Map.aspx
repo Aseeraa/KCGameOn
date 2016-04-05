@@ -11,9 +11,18 @@
             margin-bottom: 10px;
         }
 
-        .modal-content, .modal-dialog, .modal-footer {
+        .modal-content, .modal-footer {
             background: #282828;
         }
+		
+		.modal-dialog {
+			width: 64%; /* desired relative width */
+			left: 0%; /* (100%-width)/2 */
+			/* place center */
+			margin-left:auto;
+			margin-right:auto; 
+			background: #282828;
+		}
 
         h3 {
             color: #33b5e5;
@@ -49,8 +58,8 @@
                     <h4 class="modal-title">Success</h4>
                 </div>
                 <div class="modal-body" id="successMessage">
-                    <p>You have been successfully seated.</p>
-                    <table width="772">
+                    <p>You have been successfully seated.  If you are interested in tournaments, please sign up below.</p>
+                    <table width="1050">
                         <!-- Tournament Posters -->
                         <tr>
                             <td>
@@ -61,13 +70,21 @@
                                 <a href="https://kcgameon.com/Tournament.aspx">
                                     <img src="img/rlPoster.png" alt="Rocket League" height="350" width="193" /></a>
                             </td>
-                            <td>
+							<td>
+                                <a href="https://kcgameon.com/Tournament.aspx">
+                                    <img src="img/dota2Poster.png" alt="Dota 2" height="350" width="193" /></a>
+                            </td>
+                       <!-- <td>
                                 <a href="https://kcgameon.com/Tournament.aspx">
                                     <img src="img/smashPoster.png" alt="Super Smash Bros." height="350" width="193" /></a>
-                            </td>
+                            </td> -->
                             <td>
                                 <a href="https://kcgameon.com/Tournament.aspx">
                                     <img src="img/hotsPoster.jpg" alt="Heroes of the Storm" height="350" width="193" /></a>
+                            </td>
+							<td>
+                                <a href="https://kcgameon.com/Tournament.aspx">
+                                    <img src="img/magicposter.jpg" alt="Magic: The Gathering" height="350" width="193" /></a>
                             </td>
                         </tr>
                     </table>

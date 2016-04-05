@@ -15,7 +15,7 @@
                 margin: 0px;
             }
 
-            .csdiv, .hsdiv, .loldiv, .rldiv, .smashdiv, .heroesdiv {
+            .csdiv, .hsdiv, .loldiv, .rldiv, .smashdiv, .heroesdiv, .dota2div {
                 padding: 20px;
                 height: 1080px;
                 width: 1140px;
@@ -23,7 +23,7 @@
                 background-size: cover;
             }
 
-            .cscontentmain, .hscontentmain, .lolcontentmain, .rlcontentmain, .smashcontentmain, .heroescontentmain {
+            .cscontentmain, .hscontentmain, .lolcontentmain, .rlcontentmain, .smashcontentmain, .heroescontentmain, .dota2contentmain {
 				padding: 10px;
                 background-color: rgba(0, 0, 0, 0.85);
 				overflow-y: auto;
@@ -37,7 +37,7 @@
                 right: 25%;
             }
 
-            .cscontentleft, .hscontentleft, .rlcontentleft, .lolcontentleft, .smashcontentleft, .heroescontentleft {
+            .cscontentleft, .hscontentleft, .rlcontentleft, .lolcontentleft, .smashcontentleft, .heroescontentleft, .dota2contentleft {
 				padding: 10px;
                 background-color: rgba(0, 0, 0, 0.85);
 				overflow-y: auto;
@@ -51,7 +51,7 @@
                 right: 75%;
             }
 
-            .cscontentright, .hscontentright, .rlcontentright, .lolcontentright, .smashcontentright, .heroescontentright {
+            .cscontentright, .hscontentright, .rlcontentright, .lolcontentright, .smashcontentright, .heroescontentright, .dota2contentright {
 				padding: 10px;
                 background-color: rgba(0, 0, 0, 0.85);
 				overflow-y: auto;
@@ -65,7 +65,7 @@
                 left: 70%;
             }
 			
-			.cscontenttop, .hscontenttop, .rlcontenttop, .lolcontenttop, .smashcontenttop, .heroescontenttop {
+			.cscontenttop, .hscontenttop, .rlcontenttop, .lolcontenttop, .smashcontenttop, .heroescontenttop, .dota2contenttop {
 				padding: 10px;
                 background-color: rgba(0, 0, 0, 0.85);
                 height: 150px;
@@ -78,7 +78,7 @@
                 right: 0;
             }
 
-            .csbracket, .hsbracket, .lolbracket, .rlbracket, .smashbracket, .heroesbracket
+            .csbracket, .hsbracket, .lolbracket, .rlbracket, .smashbracket, .heroesbracket, .dota2bracket
             {
                 position:absolute;
                 bottom:0;
@@ -106,6 +106,10 @@
 			
 			.heroesdiv {
                 background-image: url("img/HeroesTourny.png");
+            }
+			
+			.dota2div {
+                background-image: url("img/dota2tourny.png");
             }
         </style>
         <script type="text/javascript">
@@ -143,6 +147,9 @@
                 });
 				$("#smash").click(function () {
                     scrollToAnchor('smashpage');
+                });
+				$("#Dota2").click(function () {
+                    scrollToAnchor('dota2');
                 });
 
                 var doubleEliminationData = {
@@ -196,9 +203,13 @@
           <%--<i class="fa fa-user"></i>--%> Hearthstone
           </a>
       </li>
-	--> 
 	  <li><a href="#SMASH" role="tab" data-toggle="tab">
           <%--<i class="fa fa-user"></i>--%> <img src="/img/smashsticker.png">
+          </a>
+      </li>
+	  -->
+	  <li><a href="#Dota2" role="tab" data-toggle="tab">
+          <%--<i class="fa fa-user"></i>--%> <img src="/img/Dota2sticker.png">
           </a>
       </li>
 	  <li><a href="#HEROES" role="tab" data-toggle="tab">
@@ -330,10 +341,10 @@ If a team that is registered fails to show up to check-in, a substitute team tha
 
 <p><h2>Registration Rules</h2></p>
 
-<p>We only accept serious registrations. If you do register for a League of Legends tournament, we ask that you follow through and show up on game day. If your team is not present at the proper time, you may face a ban from future tournaments.
+<p>We only accept serious registrations. If you do register for a Rocket League tournament, we ask that you follow through and show up on game day. If your team is not present at the proper time, you may face a ban from future tournaments.
 You may only register one team at a time. Please do not try to register more than once as it will not increase your chances of participating.
 If you have any questions or inquiries about a current registration, please email us at webmaster@kcgameon.com
-The registration period ends at 5:30 PM CST on the day of the tournament. Make sure you fill up the slots or they will be filled with BYEs.</p>
+The registration period ends at 7:30 PM CST on the day of the tournament. Make sure you fill up the slots or they will be filled with BYEs.</p>
 <p><h2>Player/Team Eligibility</h2></p>
 
 <p>In order to compete, your steam/ps4 name must be included with the team's initial registration.
@@ -357,8 +368,8 @@ If a team that is registered fails to show up to check-in, a substitute team tha
                 </div>
                 <div class="rlcontentright">
                                         <p><h2>Prizes</h2></p>
-						<p>FIRST PLACE INDIVIDUALS
-						Free KCGameOn #68 attendance w/8 or more teams competing.</p>
+						<p>FIRST PLACE INDIVIDUALS <br />
+						Free KCGameOn #69 attendance w/8 or more teams competing.</p>
 
 					<p><h2>Schedule</h2></p>
 					<p>6:30 PM</p>
@@ -403,9 +414,80 @@ If a team that is registered fails to show up to check-in, a substitute team tha
             </div>
       </div> 
 -->
-		<%-- SMASH --%>
+		<%-- Dota2 --%>
+      <div class="tab-pane fade" id="Dota2">
+          <div class="dota2div">
+                <div class="dota2contenttop">
+                    <div class="col-md-3">
+						<p>Date & Time</p>
+						<p><h2>Apr 16, 2016 @100p</h2></p>
+						Please register with battlefy or you will not be eligible for prizing.
+						
+					</div>
+					
+					<div class="col-md-3">
+					<p>Format</p>
+					<p><h2>Captains mode 5v5</h2></p>
+					double elimination
+					</div>
+					
+					<div class="col-md-3">
+					<p>Game Map & Type</p>
+					<p><h2>Aeon of Strife</h2></p>
+					</div>
+					<div class="col-md-3">
+						<iframe src="https://battlefy.com/embeds/join/56f0a7a1b85b5a8d12d69651" title="DOTA 2 - KCGameOn #68" width="186" height="50" scrolling="no" frameborder="0"></iframe>
+					</div>	
+                </div>
+                <div class="dota2contentmain">
+                    <p><h2>Rules</h2></p>
+					Note: Please report your team's score after each given match.<br />
+
+<p><h2>Registration Rules</h2></p>
+
+<p>We only accept serious registrations. If you do register for a Dota2 tournament, we ask that you follow through and show up on game day. If your team is not present at the proper time, you may face a ban from future tournaments.
+You may only register one team at a time. Please do not try to register more than once as it will not increase your chances of participating.
+If you have any questions or inquiries about a current registration, please email us at webmaster@kcgameon.com
+The registration period ends at 12:30 PM CST on the day of the tournament. Make sure you fill up the slots or they will be filled with BYEs.</p>
+<p><h2>Player/Team Eligibility</h2></p>
+
+<p>In order to compete, your steam name must be included with the team's initial registration.
+Once a Dota2 tournament begins, no roster swapping will be allowed. Only the original 5 members may compete.</p>
+
+<p><h2>Game Conduct</h2></p>
+
+<p>Please be respectful to other teams and participants. Refrain from using vulgar language or racial/sexist slurs in "All Chat" or you will be disqualified immediately.
+You may use an approved third-party communication program to coordinate and speak with your team, however, there is zero-tolerance for the use of a hack or cheat. Players accused and proved of hacking are immediately disqualified.
+If a team is found intentionally feeding or throwing the game, they will be disqualified and possibly banned from our future tournaments.</p>
+
+<p><h2>Tournament Check-In</h2></p>
+
+<p>We require that all registered teams check-in no later than 10 minutes before the tournament start.
+A reminder will be sent to the Team Captain prior to check-in.
+All 5 members on your team must be present at check-in or else it will not qualify.
+If a team that is registered fails to show up to check-in, a substitute team that is checked in will take their place.</p>
+
+<p>Captains can report their own score.</p>		
+                    <div class="dota2bracket"></div>
+                </div>
+                <div class="dota2contentright">
+                                        <p><h2>Prizes</h2></p>
+						<p>FIRST PLACE INDIVIDUALS <br />
+						Free KCGameOn #69 attendance w/8 or more teams competing.</p>
+
+					<p><h2>Schedule</h2></p>
+					<p>1:00 PM</p>
+					<p>2:00</p>
+					<p>etc</p>
+					<p><h2>Questions</h2></p>
+					<p>Contact nick@kcgameon for any questions</p>
+					<iframe src="https://battlefy.com/embeds/teams/56f0a7a1b85b5a8d12d69651" title="Battlefy Tournament Teams" width="100%" height="500" scrolling="yes" frameborder="0"></iframe>
+                </div>
+            </div>
+      </div>
+<!--			<%-- SMASH --%>
 			  <div class="tab-pane fade" id="SMASH">
-			<!--	  <h2>Smash Bros</h2>-->
+			
 				  <div class="smashdiv">
 						<div class="smashcontenttop">
 							<div class="col-md-3">
@@ -465,7 +547,8 @@ If a team that is registered fails to show up to check-in, a substitute team tha
 						</div>
 					</div>
 			  </div>	
-		<%-- HEROES --%>
+-->
+			  <%-- HEROES --%>
 			  <div class="tab-pane fade" id="HEROES">
 			<!--	  <h2>Heroes of the Storm</h2>-->
 				  <div class="heroesdiv">
@@ -488,7 +571,7 @@ If a team that is registered fails to show up to check-in, a substitute team tha
 					<p><h2>Random 5v5 map</h2></p>
 					</div>
 					<div class="col-md-3">
-						<iframe src="https://battlefy.com/embeds/join/56de470a6d41378f12b4b977" title="Heroes of the Storm - KCGameOn #68" width="186" height="80" scrolling="no" frameborder="0"></iframe>
+						<iframe src="https://battlefy.com/embeds/join/56de470a6d41378f12b4b977" title="Heroes of the Storm - KCGameOn #68" width="186" height="50" scrolling="no" frameborder="0"></iframe>
 					</div>	
                 </div>
 						<div class="heroescontentmain">
@@ -524,8 +607,8 @@ If a team that is registered fails to show up to check-in, a substitute team tha
 						</div>
 						<div class="heroescontentright">
 							        <p><h2>Prizes</h2></p>
-						<p>FIRST PLACE INDIVIDUALS
-						Free KCGameOn #68 attendance w/8 or more teams competing.</p>
+						<p>FIRST PLACE INDIVIDUALS <br />
+						Free KCGameOn #69 attendance w/8 or more teams competing.</p>
 
 					<p><h2>Schedule</h2></p>
 					<p>3:30 PM</p>
@@ -543,6 +626,7 @@ If a team that is registered fails to show up to check-in, a substitute team tha
 			<li><a id="csgo" href="#" class="brand">Counter-Strike: Global Offensive</a></li>
             <li><a id="hs" href="#" class="brand">Hearthstone</a></li>
 			<li><a id="smash"" href="#" class="brand">Smash Bros</a></li>
+			<li><a id="Dota2"" href="#" class="brand">Dota 2</a></li>
         </ul>--%>
 
         <%--<form class="well form-inline">--%>
@@ -555,6 +639,8 @@ If a team that is registered fails to show up to check-in, a substitute team tha
             <%--<a name="rocketleaguepage"></a>--%>
 			
 			<%--<a name="smashbros"></a>--%>
+			
+			<%--<a name="Dota 2"></a>--%>
             
         <%--</form>--%>
     </div>
