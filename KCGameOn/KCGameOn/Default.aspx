@@ -81,7 +81,7 @@
                     </div>
                     
                     <div class="item">
-                        <img src="/img/League-of-Legends.png" style="width: 100%" />
+                        <img src="/img/lol.png" style="width: 100%" />
                         <div class="carousel-caption">
                             
                             <p>Our most popular game</p>

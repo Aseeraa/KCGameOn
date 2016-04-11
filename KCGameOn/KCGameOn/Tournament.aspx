@@ -15,7 +15,7 @@
                 margin: 0px;
             }
 
-            .csdiv, .hsdiv, .loldiv, .rldiv, .smashdiv, .heroesdiv, .dota2div {
+            .csdiv, .hsdiv, .loldiv, .rldiv, .smashdiv, .heroesdiv, .dota2div, .magicdiv {
                 padding: 20px;
                 height: 1080px;
                 width: 1140px;
@@ -23,7 +23,7 @@
                 background-size: cover;
             }
 
-            .cscontentmain, .hscontentmain, .lolcontentmain, .rlcontentmain, .smashcontentmain, .heroescontentmain, .dota2contentmain {
+            .cscontentmain, .hscontentmain, .lolcontentmain, .rlcontentmain, .smashcontentmain, .heroescontentmain, .dota2contentmain, .magiccontentmain {
 				padding: 10px;
                 background-color: rgba(0, 0, 0, 0.85);
 				overflow-y: auto;
@@ -37,7 +37,7 @@
                 right: 25%;
             }
 
-            .cscontentleft, .hscontentleft, .rlcontentleft, .lolcontentleft, .smashcontentleft, .heroescontentleft, .dota2contentleft {
+            .cscontentleft, .hscontentleft, .rlcontentleft, .lolcontentleft, .smashcontentleft, .heroescontentleft, .dota2contentleft, .magiccontentleft {
 				padding: 10px;
                 background-color: rgba(0, 0, 0, 0.85);
 				overflow-y: auto;
@@ -51,7 +51,7 @@
                 right: 75%;
             }
 
-            .cscontentright, .hscontentright, .rlcontentright, .lolcontentright, .smashcontentright, .heroescontentright, .dota2contentright {
+            .cscontentright, .hscontentright, .rlcontentright, .lolcontentright, .smashcontentright, .heroescontentright, .dota2contentright, .magiccontentright {
 				padding: 10px;
                 background-color: rgba(0, 0, 0, 0.85);
 				overflow-y: auto;
@@ -65,7 +65,7 @@
                 left: 70%;
             }
 			
-			.cscontenttop, .hscontenttop, .rlcontenttop, .lolcontenttop, .smashcontenttop, .heroescontenttop, .dota2contenttop {
+			.cscontenttop, .hscontenttop, .rlcontenttop, .lolcontenttop, .smashcontenttop, .heroescontenttop, .dota2contenttop, .magiccontenttop {
 				padding: 10px;
                 background-color: rgba(0, 0, 0, 0.85);
                 height: 150px;
@@ -78,7 +78,7 @@
                 right: 0;
             }
 
-            .csbracket, .hsbracket, .lolbracket, .rlbracket, .smashbracket, .heroesbracket, .dota2bracket
+            .csbracket, .hsbracket, .lolbracket, .rlbracket, .smashbracket, .heroesbracket, .dota2bracket, .magicbracket
             {
                 position:absolute;
                 bottom:0;
@@ -110,6 +110,10 @@
 			
 			.dota2div {
                 background-image: url("img/dota2tourny.png");
+            }
+			
+			.magicdiv {
+                background-image: url("img/magictourny.png");
             }
         </style>
         <script type="text/javascript">
@@ -214,6 +218,10 @@
       </li>
 	  <li><a href="#HEROES" role="tab" data-toggle="tab">
           <%--<i class="fa fa-user"></i>--%> <img src="/img/heroessticker.png">
+          </a>
+      </li>
+	  <li><a href="#MAGIC" role="tab" data-toggle="tab">
+          <%--<i class="fa fa-user"></i>--%> <img src="/img/mtgsticker.png">
           </a>
       </li>
 	</ul>  
@@ -575,34 +583,34 @@ If a team that is registered fails to show up to check-in, a substitute team tha
 					</div>	
                 </div>
 						<div class="heroescontentmain">
-							<p><h2>Rules</h2></p>
-					Note: Please report your team's score after each given match.<br />
+									<p><h2>Rules</h2></p>
+							Note: Please report your team's score after each given match.<br />
 
-<p><h2>Registration Rules</h2></p>
+							<p><h2>Registration Rules</h2></p>
 
-<p>We only accept serious registrations. If you do register for a League of Legends tournament, we ask that you follow through and show up on game day. If your team is not present at the proper time, you may face a ban from future tournaments.
-You may only register one team at a time. Please do not try to register more than once as it will not increase your chances of participating.
-If you have any questions or inquiries about a current registration, please email us at webmaster@kcgameon.com
-The registration period ends at 3:30 PM CST on the day of the tournament. Make sure you fill up the slots or they will be filled with BYEs.</p>
-<p><h2>Player/Team Eligibility</h2></p>
+							<p>We only accept serious registrations. If you do register for a Heroes tournament, we ask that you follow through and show up on game day. If your team is not present at the proper time, you may face a ban from future tournaments.
+							You may only register one team at a time. Please do not try to register more than once as it will not increase your chances of participating.
+							If you have any questions or inquiries about a current registration, please email us at webmaster@kcgameon.com
+							The registration period ends at 3:30 PM CST on the day of the tournament. Make sure you fill up the slots or they will be filled with BYEs.</p>
+							<p><h2>Player/Team Eligibility</h2></p>
 
-<p>Players must be present at the event.  In order to compete, your summoner name must be included with the team's initial registration.
-Once the Heroes tournament begins, no roster swapping will be allowed. Only the original 5 members may compete.</p>
+							<p>Players must be present at the event.  In order to compete, your summoner name must be included with the team's initial registration.
+							Once the Heroes tournament begins, no roster swapping will be allowed. Only the original 5 members may compete.</p>
 
-<p><h2>Game Conduct</h2></p>
+							<p><h2>Game Conduct</h2></p>
 
-<p>Please be respectful to other teams and participants. Refrain from using vulgar language or racial/sexist slurs in "All Chat" or you will be disqualified immediately.
-You may use an approved third-party communication program to coordinate and speak with your team, however, there is zero-tolerance for the use of a hack or cheat. Players accused and proved of hacking are immediately disqualified.
-If a team is found intentionally feeding or throwing the game, they will be disqualified and possibly banned from our future League of Legends tournaments.</p>
+							<p>Please be respectful to other teams and participants. Refrain from using vulgar language or racial/sexist slurs in "All Chat" or you will be disqualified immediately.
+							You may use an approved third-party communication program to coordinate and speak with your team, however, there is zero-tolerance for the use of a hack or cheat. Players accused and proved of hacking are immediately disqualified.
+							If a team is found intentionally feeding or throwing the game, they will be disqualified and possibly banned from our future tournaments.</p>
 
-<p><h2>Tournament Check-In</h2></p>
+							<p><h2>Tournament Check-In</h2></p>
 
-<p>We require that all registered teams check-in no later than 10 minutes before the tournament start.
-A reminder will be sent to the Team Captain prior to check-in.
-All 5 members on your team must be present at check-in or else it will not qualify.
-If a team that is registered fails to show up to check-in, a substitute team that is checked in will take their place.</p>
+							<p>We require that all registered teams check-in no later than 10 minutes before the tournament start.
+							A reminder will be sent to the Team Captain prior to check-in.
+							All 5 members on your team must be present at check-in or else it will not qualify.
+							If a team that is registered fails to show up to check-in, a substitute team that is checked in will take their place.</p>
 
-<p>Captains can report their own score.</p>	
+							<p>Captains can report their own score.</p>	
 							<div class="heroesbracket"></div>
 						</div>
 						<div class="heroescontentright">
@@ -620,6 +628,80 @@ If a team that is registered fails to show up to check-in, a substitute team tha
                 </div>
 			  </div>
     </div>
+	
+	<%-- Magic --%>
+			  <div class="tab-pane fade" id="MAGIC">
+			<!--	  <h2>MTG</h2>-->
+				  <div class="magicdiv">
+						<div class="magiccontenttop">
+                    <div class="col-md-3">
+						<p>Date & Time</p>
+						<p><h2>Apr 16, 2016 @2p</h2></p>
+						<!-- Fill out the form <a href="https://goo.gl/vps01p">HERE</a> to register for the MTG tournaments. -->
+						<a href="https://goo.gl/vps01p"><img src="/img/registerlol.png" height="34" width="170"></a>
+					</div>
+					
+					<div class="col-md-3">
+					<p>Format</p>
+						<p><h2><a href="https://en.wikipedia.org/wiki/Magic:_The_Gathering#Limited">Booster Draft (3 FREE packs)</a></h2></p>
+						4 Round <a href="https://en.wikipedia.org/wiki/Swiss-system_tournament">Swiss</a>
+					</div>
+					
+					<div class="col-md-3">
+						<p>Date & Time</p>
+						<p><h2>Apr 16, 2016 @7p</h2></p>
+						<a href="https://goo.gl/vps01p"><img src="/img/registerlol.png" height="34" width="170"></a>
+					</div>
+					<div class="col-md-3">
+					<p>Format</p>
+						<p><h2><a href="https://en.wikipedia.org/wiki/Magic:_The_Gathering#Limited">Sealed Deck (6 FREE packs)</a></h2></p>
+						4 Round <a href="https://en.wikipedia.org/wiki/Swiss-system_tournament">Swiss</a>			
+					</div>	
+                </div>
+						<div class="magiccontentmain">
+									<p><h2>Rules</h2></p>
+							Note: Winner of each match, please report your score to the judge after each given match.<br />
+
+							<p><h2>Registration Rules</h2></p>
+
+							<p>We only accept serious registrations. If you do register for a MTG tournament, we ask that you follow through and show up on game day. If you are not present at the proper time, you may face a ban from future tournaments.
+							You may only register yourself once for each tournament. Please do not try to register more than once as it will not increase your chances of participating.
+							If you have any questions or inquiries about a current registration, please email us at webmaster@kcgameon.com
+							The registration period ends at 1:30 PM CST on the day of the tournament. Make sure you fill up the slots or they will be filled with BYEs.</p>
+							
+							<p><h2>Player Eligibility</h2></p>
+
+							<p>Players must be present at the event.  In order to compete, you must use your real name must be used in the registration.
+							Once the MTG tournament begins, no player swapping will be allowed. Only the original member may compete.</p>
+
+							<p><h2>Game Conduct</h2></p>
+
+							<p>Please be respectful to other teams and participants. Refrain from using vulgar language or racial/sexist slurs or you will be disqualified immediately.
+							There is zero-tolerance for cheating. If you have any questions at all, please contact the tournament judge.</p>
+
+							<p><h2>Tournament Check-In</h2></p>
+
+							<p>We require that all registered player check-in no later than 10 minutes before the tournament start.
+							
+							If a player that is registered fails to show up to check-in, a substitute player that is checked in will take their place.</p>
+
+							<div class="magicbracket"></div>
+						</div>
+						<div class="magiccontentright">
+							        <p><h2>Prizes</h2></p>
+						<p>FIRST PLACE INDIVIDUALS <br />
+						Free KCGameOn #69 attendance w/8 or more teams competing.  If extra packs are available, we can pontentially use those as prizes as well.</p>
+
+					<p><h2>Schedule</h2></p>
+					<p>2 PM</p>
+					<p>3 PM</p>
+					<p>etc</p>
+					<p><h2>Questions</h2></p>
+					<p>Contact nick@kcgameon for any questions</p>
+					
+						</div>
+					  </div>
+			</div>
         <%--<ul class="list-inline">
             <li><a id="lol" href="#" class="brand">League of Legends</a></li>
             <li><a id="rl" href="#" class="brand">Rocket League</a></li>
@@ -627,6 +709,7 @@ If a team that is registered fails to show up to check-in, a substitute team tha
             <li><a id="hs" href="#" class="brand">Hearthstone</a></li>
 			<li><a id="smash"" href="#" class="brand">Smash Bros</a></li>
 			<li><a id="Dota2"" href="#" class="brand">Dota 2</a></li>
+			<li><a id="magic"" href="#" class="brand">Magic: The Gathering</a></li>
         </ul>--%>
 
         <%--<form class="well form-inline">--%>
@@ -641,6 +724,8 @@ If a team that is registered fails to show up to check-in, a substitute team tha
 			<%--<a name="smashbros"></a>--%>
 			
 			<%--<a name="Dota 2"></a>--%>
+			
+			<%--<a name="magic"></a>--%>
             
         <%--</form>--%>
     </div>
