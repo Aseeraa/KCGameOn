@@ -13,6 +13,8 @@ using Zen.Barcode;
 using System.IO;
 using System.Net.Mail;
 using System.Net.Mime;
+using PayPal.AdaptivePayments.Model;
+using PayPal.AdaptivePayments;
 
 namespace KCGameOn.Admin
 {
@@ -155,6 +157,189 @@ namespace KCGameOn.Admin
 
                 return Convert.ToBase64String(imageBytes);
             }
+        }
+        [WebMethod]
+        public static bool validateKeys(string data)
+        {
+            String UserInfo = ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString;
+            List<Users> payment = new List<Users>();
+            JavaScriptSerializer json = new JavaScriptSerializer();
+            List<String[]> mystring = json.Deserialize<List<string[]>>(data);
+            List<string> paypalKeys = new List<string>();
+            String user = mystring.ElementAt(0).ElementAt(0).ToString();
+            String first = mystring.ElementAt(0).ElementAt(1).ToString().Split(' ').ElementAt(0);
+            String last = mystring.ElementAt(0).ElementAt(1).ToString().Split(' ').ElementAt(1);
+
+            MySqlCommand cmd = null;
+            MySqlConnection conn = null;
+            MySqlDataReader reader = null;
+            string key = null;
+            conn = new MySqlConnection(UserInfo);
+            try
+            {
+
+                conn.Open();
+
+                cmd = new MySqlCommand("spRetrieveKeys", conn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("UserName", user);
+
+                reader = cmd.ExecuteReader();
+                while(reader.Read())
+                {
+                    paypalKeys.Add(reader[0].ToString());
+                }
+                reader.Close();
+                conn.Close();
+
+                validateKeys(paypalKeys);
+            }
+            catch (Exception)
+            {
+                //return "An internal error has occurred, please contact an administrator.";
+                return false;
+            }
+            finally
+            {
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+                reader.Close();
+            }
+            return true;
+        }
+
+        private static void validateKeys(List<string> paypalKeys)
+        {
+            foreach(string key in paypalKeys)
+            {
+                PaymentDetailsResponse responsePaymentDetails = new PaymentDetailsResponse();
+
+                try
+                {
+                    // # PaymentDetailsRequest
+                    // The code for the language in which errors are returned
+                    RequestEnvelope envelopeRequest = new RequestEnvelope();
+                    envelopeRequest.errorLanguage = "en_US";
+
+                    // PaymentDetailsRequest which takes,
+                    // `Request Envelope` - Information common to each API operation, such
+                    // as the language in which an error message is returned.
+                    PaymentDetailsRequest requestPaymentDetails = new PaymentDetailsRequest(envelopeRequest);
+
+                    // You must specify either,
+                    //
+                    // * `Pay Key` - The pay key that identifies the payment for which you want to retrieve details. This is the pay key returned in the PayResponse message.
+                    // * `Transaction ID` - The PayPal transaction ID associated with the payment. The IPN message associated with the payment contains the transaction ID.
+                    // `payDetailsRequest.transactionId = transactionId`
+                    // * `Tracking ID` - The tracking ID that was specified for this payment in the PayRequest message.
+                    // `requestPaymentDetails.trackingId = trackingId`
+                    requestPaymentDetails.payKey = key;
+
+                    // Create the service wrapper object to make the API call
+                    AdaptivePaymentsService service = new AdaptivePaymentsService();
+
+                    // # API call
+                    // Invoke the PaymentDetails method in service wrapper object
+                    responsePaymentDetails = service.PaymentDetails(requestPaymentDetails);
+
+                    if (responsePaymentDetails != null)
+                    {
+                        // Response envelope acknowledgement
+                        string acknowledgement = "PaymentDetails API Operation - ";
+                        acknowledgement += responsePaymentDetails.responseEnvelope.ack.ToString();
+                        Console.WriteLine(acknowledgement + "\n");
+
+                        // # Success values
+                        if (responsePaymentDetails.responseEnvelope.ack.ToString().Trim().ToUpper().Equals("SUCCESS"))
+                        {
+                            // The status of the payment. Possible values are:
+                            //
+                            // * CREATED - The payment request was received; funds will be
+                            // transferred once the payment is approved
+                            // * COMPLETED - The payment was successful
+                            // * INCOMPLETE - Some transfers succeeded and some failed for a
+                            // parallel payment or, for a delayed chained payment, secondary
+                            // receivers have not been paid
+                            // * ERROR - The payment failed and all attempted transfers failed
+                            // or all completed transfers were successfully reversed
+                            // * REVERSALERROR - One or more transfers failed when attempting
+                            // to reverse a payment
+                            // * PROCESSING - The payment is in progress
+                            // * PENDING - The payment is awaiting processing
+                            if (responsePaymentDetails.status == "COMPLETED")
+                            {
+                                validatePayment(key, true);
+                                return;
+                            }
+                        }
+                        // # Error Values
+                        else
+                        {
+                            validatePayment(key, false);
+                            return;
+                            //List<ErrorData> errorMessages = responsePaymentDetails.error;
+                            //foreach (ErrorData error in errorMessages)
+                            //{
+                            //}
+                        }
+                    }
+                }
+                // # Exception log    
+                catch (System.Exception ex)
+                {
+                    return;
+                    // Log the exception message
+                }
+            }
+        }
+
+        private static void validatePayment(string key, bool validKey)
+        {
+            MySqlCommand cmd = null;
+            string UserInfo = ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString;
+            if (validKey)
+            {
+                try
+                {
+                    cmd = new MySqlCommand("UPDATE payTable SET verifiedPaid = 'Y' WHERE paymentKey = \'" + key + "\'", new MySqlConnection(UserInfo));
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.Connection.Open();
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception)
+                {
+                }
+                finally
+                {
+                    if (cmd != null)
+                    {
+                        cmd.Connection.Close();
+                    }
+                }
+            }
+            else
+            {
+                try
+                {
+                    cmd = new MySqlCommand("UPDATE payTable SET activeIndicator = 'FALSE' WHERE paymentKey = \'" + key + "\'", new MySqlConnection(UserInfo));
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.Connection.Open();
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception)
+                {
+                }
+                finally
+                {
+                    if (cmd != null)
+                    {
+                        cmd.Connection.Close();
+                    }
+                }
+            }
+            
         }
 
         [WebMethod]
