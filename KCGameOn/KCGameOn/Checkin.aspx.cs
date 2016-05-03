@@ -78,7 +78,7 @@ namespace KCGameOn
                     while (reader.Read())
                     {
                         //associate variables
-                        getEventID = (Int32)reader["EventID"] - 1;
+                        getEventID = (Int32)reader["EventID"];
                         hasCheckedIn = reader["checkedin"].ToString();
                         SessionVariables.verifiedPaid = reader["verifiedPaid"].ToString();
                     }
@@ -87,6 +87,12 @@ namespace KCGameOn
                 }
 
                 cmd.Connection.Close();
+
+                if (hasCheckedIn == "")
+                {
+                    CheckoutButton.Enabled = false;
+                    checkoutLabel.Text = "You must go to the map and select a seat before finishing.";
+                }
 
                 if (hasCheckedIn != "True" && hasPaid == "Y")
                 {

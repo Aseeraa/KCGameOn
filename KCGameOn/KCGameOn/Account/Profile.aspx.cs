@@ -12,53 +12,89 @@ namespace KCGameOn.Account
 {
     public partial class Profile : System.Web.UI.Page
     {
-        MySqlDataReader Reader = null;
         public static String FirstName = null;
         public static String LastName = null;
         public static String Email = null;
-        public static String Sponsor = "None";
-        public static String Joined = "Unknown";
-        public static String LastSeen = "Unknown";
-        public static String GamerInitials = "N/A";
-        public static String GamingGroup = "N/A";
-        public static String PCTags = "N/A;N/A;N/A";
-        public static String consoleTags = "N/A;N/A";
+        public static String Sponsor = null;
+        public static String Joined = null;
         public static Boolean isActive = false;
-        private String HashedPasswordFromDB = null;
+
+        public static String SteamHandle = null;
+        public static String BattleHandle = null;
+        public static String OriginHandle = null;
+        public static String TwitterHandle = null;
+        public static String AboutMe = null;
+
+        public static String HashedPasswordFromDB = null;
+        
         protected void Page_Load(object sender, EventArgs e)
         {
+            // On first load get the values for the user logged in
+            if (!IsPostBack)
+            {
                 using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM useraccount WHERE useraccount.Username = \'" + SessionVariables.UserName + "\'", new MySqlConnection(ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString)))
                 {
+                    MySqlDataReader Reader = null;
                     cmd.CommandType = System.Data.CommandType.Text;
                     cmd.Connection.Open();
                     Reader = cmd.ExecuteReader();
                     while (Reader.Read())
                     {
-                        usernameText.Text = SessionVariables.UserName;
-                        FirstName = Reader.GetString("FirstName").ToString();
-                        firstNameText.Text = FirstName;
-                        LastName = Reader.GetString("LastName").ToString();
-                        lastNameText.Text = LastName;
-                        Email = Reader.GetString("Email").ToString();
-                        isActive = Reader.GetBoolean("Active");
-                        if (!IsPostBack)
-                        {
-                            emailInput.Text = Email;
-                            ActiveCheckbox.Checked = isActive;
-                        }
-                        
-                        if (!Reader.IsDBNull(10))
-                        {
-                            Sponsor = Reader.GetString("Cerner").ToString();
-                            sponsorText.Text = Sponsor;
-                        }
+                        // Get current password
+                        HashedPasswordFromDB = Reader.GetString("Password").ToString();
 
+                        // Set the firstname
+                        FirstName = Reader.GetString("FirstName").ToString();
+
+                        // Set the lastname
+                        LastName = Reader.GetString("LastName").ToString();
+
+                        // Set the email
+                        Email = Reader.GetString("Email").ToString();
+
+                        // Set the sponsor
+                        Sponsor = Reader.GetString("Cerner").ToString();
+
+                        // Set active
+                        isActive = Reader.GetBoolean("Active");
+
+                        // Set joined date
                         Joined = Reader.GetString("Submission_Date").ToString();
-                        joinedDateText.Text = Joined;
+
+                        SteamHandle = Reader.GetString("SteamHandle").ToString();
+
+                        BattleHandle = Reader.GetString("BattleHandle").ToString();
+
+                        OriginHandle = Reader.GetString("OriginHandle").ToString();
+
+                        TwitterHandle = Reader.GetString("TwitterHandle").ToString();
+
                     }
                     cmd.Connection.Close();
                 }
+            }
+
+            UpdateFields();
         }
+
+        protected void UpdateFields()
+        {
+            // Set the textbox values
+            usernameText.Text = SessionVariables.UserName;
+            firstNameText.Text = FirstName;
+            lastNameText.Text = LastName;
+            emailInput.Value = Email;
+            sponsorText.Value = Sponsor;
+            joinedDateText.Text = Joined;
+            ActiveCheckbox.Checked = isActive;
+
+            SteamHandleTB.Value = SteamHandle;
+            BattleHandleTB.Value = BattleHandle;
+            OriginHandleTB.Value = OriginHandle;
+            TwitterHandleTB.Value = TwitterHandle;
+
+        }
+
         protected void ChangeProfile_Click(object sender, EventArgs e)
         {
             String OrigPassword = Request.Form["ctl00$MainContent$CurrentPassword"].ToString().Trim();
@@ -67,69 +103,45 @@ namespace KCGameOn.Account
             PasswordHash PasswordHasher = new PasswordHash();
             String Salt = PasswordHasher.CreateSalt(SessionVariables.UserName.ToLower());
             String OrigHashedPassword = PasswordHasher.HashPassword(Salt, OrigPassword);
-            using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM useraccount WHERE useraccount.Username = \'" + SessionVariables.UserName + "\'", new MySqlConnection(ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString)))
-            {
-                cmd.CommandType = System.Data.CommandType.Text;
-                cmd.Connection.Open();
-                Reader = cmd.ExecuteReader();
-                while (Reader.Read())
-                {
-                    HashedPasswordFromDB = Reader.GetString("Password").ToString();
-                }
-                cmd.Connection.Close();
-            }
 
             if (OrigHashedPassword == HashedPasswordFromDB)
             {
-                if (emailInput.Text != Email)
+                String NewHashedPassword = HashedPasswordFromDB;
+                // Set our variables to the new inputs
+                Email = Request.Form["ctl00$MainContent$emailInput"].ToString();
+                Sponsor = Request.Form["ctl00$MainContent$sponsorText"].ToString();
+                SteamHandle = Request.Form["ctl00$MainContent$SteamHandleTB"].ToString();
+                BattleHandle = Request.Form["ctl00$MainContent$BattleHandleTB"].ToString();
+                OriginHandle = Request.Form["ctl00$MainContent$OriginHandleTB"].ToString();
+                TwitterHandle = Request.Form["ctl00$MainContent$TwitterHandleTB"].ToString();
+
+                if (Request.Form["ctl00$MainContent$ActiveCheckbox"] == "on")
                 {
-                    using (MySqlCommand cmd = new MySqlCommand("UPDATE useraccount SET Email = \'" + emailInput.Text + "\' WHERE useraccount.Username = \'" + SessionVariables.UserName + "\'", new MySqlConnection(ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString)))
-                    {
-                        cmd.CommandType = System.Data.CommandType.Text;
-                        cmd.Connection.Open();
-                        cmd.ExecuteNonQuery();
-                        cmd.Connection.Close();
-                        Email = emailInput.Text;
-                        ProfileUpdateMessage.Text = "Profile Successfully Updated!";
-                    }
+                    isActive = true;
                 }
                 else
                 {
+                    isActive = false;
+
                 }
-                if (ActiveCheckbox.Checked != isActive)
-                {
-                    using (MySqlCommand cmd = new MySqlCommand("UPDATE useraccount SET Active = " + ActiveCheckbox.Checked + " WHERE useraccount.Username = \'" + SessionVariables.UserName + "\'", new MySqlConnection(ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString)))
-                    {
-                        cmd.CommandType = System.Data.CommandType.Text;
-                        cmd.Connection.Open();
-                        cmd.ExecuteNonQuery();
-                        cmd.Connection.Close();
-                        isActive = ActiveCheckbox.Checked;
-                        ProfileUpdateMessage.Text = "Profile Successfully Updated!";
-                    }
-                }
-                else
-                {
-                    
-                }
+
+                UpdateFields();
+
                 if (Request.Form["ctl00$MainContent$NewPassword"].ToString() != "" && Request.Form["ctl00$MainContent$NewPasswordConfirm"].ToString() != "")
                 {
                     String NewPassword = Request.Form["ctl00$MainContent$NewPassword"].ToString().Trim();
                     Match matchNew = regex.Match(NewPassword);
-                    String HashedPassword = PasswordHasher.HashPassword(Salt, NewPassword);
-                    using (MySqlCommand cmd = new MySqlCommand("UPDATE useraccount SET Password = \'" + HashedPassword + "\' WHERE useraccount.Username = \'" + SessionVariables.UserName + "\'", new MySqlConnection(ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString)))
-                    {
-                        cmd.CommandType = System.Data.CommandType.Text;
-                        cmd.Connection.Open();
-                        cmd.ExecuteNonQuery();
-                        cmd.Connection.Close();
-                        ProfileUpdateMessage.Text = "Profile Successfully Updated!";
-                    }
+                    NewHashedPassword = PasswordHasher.HashPassword(Salt, NewPassword);
                 }
-                else
+
+                using (MySqlCommand cmd = new MySqlCommand("UPDATE useraccount SET Email = \'" + Email + "\', Cerner = \'" + Sponsor + "\', Active = " + isActive + ", Password = \'" + NewHashedPassword + "\', SteamHandle = \'" + SteamHandle + "\', BattleHandle = \'" + BattleHandle + "\', OriginHandle = \'" + OriginHandle + "\', TwitterHandle = \'" + TwitterHandle + "\' WHERE useraccount.Username = \'" + SessionVariables.UserName + "\'", new MySqlConnection(ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString)))
                 {
-                }
-                
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.Connection.Open();
+                    cmd.ExecuteNonQuery();
+                    cmd.Connection.Close();
+                    ProfileUpdateMessage.Text = "Profile Successfully Updated!";
+                }                
             }
             else
             {

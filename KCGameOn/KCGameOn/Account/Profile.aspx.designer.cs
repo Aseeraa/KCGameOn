@@ -55,7 +55,7 @@ namespace KCGameOn.Account {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox emailInput;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText emailInput;
         
         /// <summary>
         /// sponsorText control.
@@ -64,7 +64,7 @@ namespace KCGameOn.Account {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal sponsorText;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText sponsorText;
         
         /// <summary>
         /// joinedDateText control.
@@ -82,7 +82,7 @@ namespace KCGameOn.Account {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox ActiveCheckbox;
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox ActiveCheckbox;
         
         /// <summary>
         /// CurrentPassword control.
@@ -110,6 +110,51 @@ namespace KCGameOn.Account {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputPassword NewPasswordConfirm;
+        
+        /// <summary>
+        /// SteamHandleTB control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText SteamHandleTB;
+        
+        /// <summary>
+        /// BattleHandleTB control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText BattleHandleTB;
+        
+        /// <summary>
+        /// OriginHandleTB control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText OriginHandleTB;
+        
+        /// <summary>
+        /// TwitterHandleTB control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText TwitterHandleTB;
+        
+        /// <summary>
+        /// AboutMeTB control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea AboutMeTB;
         
         /// <summary>
         /// ProfileUpdateMessage control.

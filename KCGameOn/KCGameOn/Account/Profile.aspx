@@ -53,6 +53,7 @@
         <%if (!String.IsNullOrEmpty(SessionVariables.UserName))
           {%>
     <form class="well form-horizontal" runat="server" id="updatepassword">
+    <div id="ProfileUpdateLeftPane" style="width:40%;float:left;">
     <h2>Welcome, <asp:Literal runat="server" id="usernameText" EnableViewState="false" />!</h2>
     <div class="control-group">
         <label class="control-label">Name</label>
@@ -62,15 +63,15 @@
     </div>
     <div class="control-group">
         <label class="control-label" for="emailInput">Email</label>
-        <div class="controls">
-            <asp:TextBox id="emailInput" class="emailInput" runat="server" value="" onkeyup="checkValidInputs();" placeholder="E.g. Nick@KcGameOn.com" type="text" required="true" />
+        <div class="controls" style="margin-top: 5px;">
+            <input id="emailInput" class="emailInput" runat="server" value="" onkeyup="checkValidInputs();" placeholder="E.g. Nick@KcGameOn.com" type="text" required="true" />
             <img id="EmailMatch" style="visibility:hidden" src="../img/Actions-button-cancel-icon.png" />
         </div>
     </div>
     <div class="control-group">
         <label class="control-label">Sponsor</label>
         <label class="controls" style="margin-top: 5px;">
-            <asp:Literal runat="server" id="sponsorText" EnableViewState="false" />
+            <input id="sponsorText" class="CurrentPassword" runat="server" value="" onkeyup="" placeholder="ab0000000" type="text" required="true" />
         </label>
     </div>
     <div class="control-group">
@@ -82,7 +83,7 @@
         <div class="control-group">
         <label class="control-label">Subscribed</label>
         <label class="controls" style="margin-top: 5px;">
-            <asp:CheckBox ID="ActiveCheckbox" runat="server" />
+            <input type="checkbox" id="ActiveCheckbox" runat="server" />
         </label>
     </div>
     <div class="control-group">
@@ -114,6 +115,40 @@
         </div>
         <p id="PassError"></p>
     </div>    
+    </div>
+    <div id="ProfileUpdateRightPane" style="width:60%;float:right;">
+    <h2>Optional Information</h2>
+    <div class="control-group">
+        <label class="control-label">Steam Handle</label>
+        <div class="controls" style="margin-top: 5px;">
+            <input id="SteamHandleTB" class="" runat="server" value="" onkeyup="" placeholder="" type="text" />
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Battle.net Handle</label>
+        <label class="controls" style="margin-top: 5px;">
+            <input id="BattleHandleTB" class="" runat="server" value="" onkeyup="" placeholder="" type="text" />
+        </label>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Origin Handle</label>
+        <div class="controls" style="margin-top: 5px;">
+            <input id="OriginHandleTB" class="" runat="server" value="" onkeyup="" placeholder="" type="text" />
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Twitter Handle</label>
+        <label class="controls" style="margin-top: 5px;">
+            <input id="TwitterHandleTB" class="" runat="server" value="" onkeyup="" placeholder="" type="text" />
+        </label>
+    </div>
+    <div class="control-group">
+        <label class="control-label">About Me</label>
+        <label class="controls" style="margin-top: 5px;">
+            <textarea id="AboutMeTB" class="" runat="server" value="" onkeyup="" placeholder="" type="text"></textarea>
+        </label>
+    </div>
+    </div>
     <div class="control-group">
         <asp:Literal runat="server" id="ProfileUpdateMessage" EnableViewState="false" />
     </div>
