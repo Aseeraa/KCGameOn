@@ -43,6 +43,8 @@
             var users = <%= new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(usernames)%>
                 namelist = <%= new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(names)%>
                 ulist = <%= new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(userlist)%>
+                
+                
 
             $(loadDropdowns);
 
@@ -139,6 +141,48 @@
                         alert("Unable to add user payment to the database, contact Dan (or applicable engineer).");
                     });
             });
+
+
+            /* Generate a random number for raffle drawing */
+            $('#randNum').click(function (event) {
+                event.preventDefault();
+                $.ajax({
+                    type: "POST",
+                    url: "Admin.aspx/getRaffleWinner",
+                    data: "{'data':''}",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "text"
+                })
+                        .done(function (winner) {
+                            var winnerName = JSON.parse(winner);
+                            document.getElementById('winner').innerHTML = "Winner: " + winnerName.d;
+                        })
+                        .fail(function () {
+                            alert("We messed up.  It didn't work.  Etc.");
+                        });
+            });
+
+            /* Generate a random number for raffle drawing */
+            $('#randRepick').click(function (event) {
+                event.preventDefault();
+                $.ajax({
+                    type: "POST",
+                    url: "Admin.aspx/getRaffleWinner",
+                    data: "{'data':'repick'}",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "text"
+                })
+                        .done(function (winner) {
+                            var winnerName = JSON.parse(winner);
+                            document.getElementById('winner').innerHTML = "" + winnerName.d;
+                            alert("Previous winner removed, and we're ready to pick another!");
+                        })
+                        .fail(function () {
+                            //$("#failure").modal('show');
+                            alert("We messed up.  It didn't work.  Etc.");
+                        });
+            });
+            
         });
 
         /* Default class modification */
@@ -294,47 +338,56 @@
           if (SessionVariables.UserAdmin == 1)
           {%>
     <div class="container">
-        <div class="row pull-left col-lg-12">
-            <hr />
-            <h3>Block/Unblock Payments
-            </h3>
-            <div class="pull-left">
-                <button id="blockRegistration" class="btn pull-left btn-danger" onclick="registrationAllowances">Block Registration</button>
-                <button id="unblockRegistration" class="btn pull-left btn-success" onclick="registrationAllowances">Unblock Registration</button>
+        <div class="column">
+            <div class="row pull-left col-lg-12">
+                <hr />
+                <h3>Block/Unblock Payments
+                </h3>
+                <div class="pull-left">
+                    <button id="blockRegistration" class="btn pull-left btn-danger" onclick="registrationAllowances">Block Registration</button>
+                    <button id="unblockRegistration" class="btn pull-left btn-success" onclick="registrationAllowances">Unblock Registration</button>
+                </div>
             </div>
-        </div>
-        <div class="row pull-left col-lg-12">
-            <hr />
-            <h3>Archive Event
-            </h3>
-            <div class="pull-left">
-                <label>Unarchived Events:</label>
-                <select id="eventDropdown" class="pull-left dropdown col-lg-12">
-                    <option selected="selected">None</option>
-                </select>
-                <button id="archiveEvent" class="btn pull-left btn-danger">Archive Event</button>
+            <div class="row pull-left col-lg-12">
+                <hr />
+                <h3>Archive Event
+                </h3>
+                <div class="pull-left">
+                    <label>Unarchived Events:</label>
+                    <select id="eventDropdown" class="pull-left dropdown col-lg-12">
+                        <option selected="selected">None</option>
+                    </select>
+                    <button id="archiveEvent" class="btn pull-left btn-danger">Archive Event</button>
+                </div>
             </div>
-        </div>
-        <div class="row pull-left col-lg-12">
-            <hr />
-            <div class="pull-left">
-                <h3>Add User Payment:</h3>
-                <label>Username:</label>
-                <select id="userDropdown" class="dropdown">
-                    <option selected="selected">None</option>
-                </select>
-                <label>Name:</label>
-                <select id="nameDropdown" class="dropdown">
-                    <option selected="selected">None</option>
-                </select>
-                <br />
-                <button id="cash" class="btn btn-default pull-left">Paid Cash</button>
-                <button id="other" class="btn btn-default pull-left">Paid Online</button>
+            <div class="row pull-left col-lg-12">
+                <hr />
+                <div class="pull-left">
+                    <h3>Add User Payment:</h3>
+                    <label>Username:</label>
+                    <select id="userDropdown" class="dropdown">
+                        <option selected="selected">None</option>
+                    </select>
+                    <label>Name:</label>
+                    <select id="nameDropdown" class="dropdown">
+                        <option selected="selected">None</option>
+                    </select>
+                    <br />
+                    <button id="cash" class="btn btn-default pull-left">Paid Cash</button>
+                    <button id="other" class="btn btn-default pull-left">Paid Online</button>
+                </div>
             </div>
-        </div>
-        <div class="row pull-left col-lg-12">
-            <hr />
-            <h3>User Payment Verification:</h3>
+
+            <div class="row pull-left col-lg-12">
+                <hr />
+                <h3>Digital Raffle Drawing</h3>
+                <div id="winner"></div>
+                <button id="randNum" class="btn btn-default pull-left">Pick a winner</button>
+                <button id="randRepick" class="btn btn-default pull-left">Repick</button>
+            </div>
+            <div class="row pull-left col-lg-12">
+                <hr />
+                <h3>User Payment Verification:</h3>
                 <table cellpadding="0" cellspacing="0" border="0" class="bordered-table zebra-striped" id="adminusertable">
                     <thead>
                         <tr>
@@ -348,6 +401,7 @@
                         <%= AdminUserHTML%>
                     </tbody>
                 </table>
+            </div>
         </div>
     </div>
     <%}
