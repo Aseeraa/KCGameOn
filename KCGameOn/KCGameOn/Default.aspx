@@ -166,23 +166,25 @@
             <br />
 
             <form class="well form-inline">
-                <h3>Announcing the 68th Cerner LAN - Apr 16, 2016!</h3>
+                <h3>KCGameOn Event #69 - June 11th, 2016!</h3>
                 <br />
                 <div class="control-group">
                     <div class="controls">
                         <div class="input-append">
-                <button id="Button1" type="button" class="btn btn-inverse" style="padding-left: 13px" onclick="myFunction()" runat="server">Registration for #68!</button>
+                <button id="Button1" type="button" class="btn btn-inverse" style="padding-left: 13px" onclick="myFunction()" runat="server">Registration for #69!</button>
+				
                             <!-- <p id="demo"></p> -->
                         </div>
                     </div>
                 </div>
+				<!-- Please bear with us while we set up for the next event. <br /> -->
                 <p style="text-align: justify">
 
-                    <b style="color: #0099cc;">Who we are:</b> Cerner associates putting on a team building and networking event for Cerner associates and beyond.
+                    <b style="color: #0099cc;">Who we are:</b> Gamers putting on a gaming event for YOU and your friends.  PC, Console, Board Games and Card games welcome!
             <br />
-                    <b style="color: #0099cc;">Where:</b> 2702 Rockcreek Parkway, the entire lower level of the building.
+                    <b style="color: #0099cc;">Where:</b> 2702 Rockcreek Parkway, North Kansas City, MO 64117.
             <br />
-                    <b style="color: #0099cc;">Cost:</b> $15 if you pre-pay, $20 dollars at the door.  You can pay using paypal via <a href="https://kcgameon.com/EventRegistration.aspx">registration</a> page, bitcoin OR by cash.
+                    <b style="color: #0099cc;">Cost:</b> $15/pre-pay or $20@door <!-- You can pay using paypal via <a href="https://kcgameon.com/EventRegistration.aspx">registration</a> page, bitcoin OR by cash.-->
 			<%--<br />
 					<b style="color: #0099cc;">For more poster submission information, click <a href="https://kcgameon.com/Postersubmission.aspx">HERE.</a>--%>
             </form>
@@ -196,8 +198,8 @@
                 
                     <a href="http://www.collectorscache.com">
 					<img src="img/collectorscache.png" /></a><p>
-					<img src="img/shinra.png" /><p>
-		<!-- <p><a href="http://www.cerner.com"> -->
+					<!-- <img src="img/shinra.png" /><p>
+		<p><a href="http://www.cerner.com"> -->
                         <!-- <img src="img/cernerlogo2.png" /></a></p> -->
                 <br />
                 <br />
@@ -224,8 +226,10 @@
 
         <div class="span4">
             <center>
-                <a href="http://www.soprogaming.com">
-                    <img src="img/soprogaming-2.png" /></a>
+                <!-- <a href="http://www.soprogaming.com">
+                    <img src="img/soprogaming-2.png" /></a> -->
+					<a href="http://www.kcgameon.com/howtohelp.aspx">
+                    <img src="img/sponsor.jpg" /></a>
                 <br />
                 <br />
             </center>

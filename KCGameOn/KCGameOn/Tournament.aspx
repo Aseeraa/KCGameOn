@@ -15,7 +15,7 @@
                 margin: 0px;
             }
 
-            .csdiv, .hsdiv, .loldiv, .rldiv, .smashdiv, .heroesdiv, .dota2div, .magicdiv {
+            .csdiv, .hsdiv, .loldiv, .rldiv, .smashdiv, .heroesdiv, .dota2div, .magicdiv, .sfvdiv, .overwatchdiv {
                 padding: 20px;
                 height: 1080px;
                 width: 1140px;
@@ -23,7 +23,7 @@
                 background-size: cover;
             }
 
-            .cscontentmain, .hscontentmain, .lolcontentmain, .rlcontentmain, .smashcontentmain, .heroescontentmain, .dota2contentmain, .magiccontentmain {
+            .cscontentmain, .hscontentmain, .lolcontentmain, .rlcontentmain, .smashcontentmain, .heroescontentmain, .dota2contentmain, .magiccontentmain, .sfvcontentmain, .overwatchcontentmain {
 				padding: 10px;
                 background-color: rgba(0, 0, 0, 0.85);
 				overflow-y: auto;
@@ -37,7 +37,7 @@
                 right: 25%;
             }
 
-            .cscontentleft, .hscontentleft, .rlcontentleft, .lolcontentleft, .smashcontentleft, .heroescontentleft, .dota2contentleft, .magiccontentleft {
+            .cscontentleft, .hscontentleft, .rlcontentleft, .lolcontentleft, .smashcontentleft, .heroescontentleft, .dota2contentleft, .magiccontentleft, .sfvcontentleft, .overwatchcontentleft {
 				padding: 10px;
                 background-color: rgba(0, 0, 0, 0.85);
 				overflow-y: auto;
@@ -51,7 +51,7 @@
                 right: 75%;
             }
 
-            .cscontentright, .hscontentright, .rlcontentright, .lolcontentright, .smashcontentright, .heroescontentright, .dota2contentright, .magiccontentright {
+            .cscontentright, .hscontentright, .rlcontentright, .lolcontentright, .smashcontentright, .heroescontentright, .dota2contentright, .magiccontentright, .sfvcontentright, .overwatchcontentright {
 				padding: 10px;
                 background-color: rgba(0, 0, 0, 0.85);
 				overflow-y: auto;
@@ -65,7 +65,7 @@
                 left: 70%;
             }
 			
-			.cscontenttop, .hscontenttop, .rlcontenttop, .lolcontenttop, .smashcontenttop, .heroescontenttop, .dota2contenttop, .magiccontenttop {
+			.cscontenttop, .hscontenttop, .rlcontenttop, .lolcontenttop, .smashcontenttop, .heroescontenttop, .dota2contenttop, .magiccontenttop, .sfvcontenttop, .overwatchcontenttop {
 				padding: 10px;
                 background-color: rgba(0, 0, 0, 0.85);
                 height: 150px;
@@ -78,7 +78,7 @@
                 right: 0;
             }
 
-            .csbracket, .hsbracket, .lolbracket, .rlbracket, .smashbracket, .heroesbracket, .dota2bracket, .magicbracket
+            .csbracket, .hsbracket, .lolbracket, .rlbracket, .smashbracket, .heroesbracket, .dota2bracket, .magicbracket, .sfvbracket, .overwatchbracket
             {
                 position:absolute;
                 bottom:0;
@@ -114,6 +114,14 @@
 			
 			.magicdiv {
                 background-image: url("img/magictourny.png");
+            }
+			
+			.sfvdiv {
+                background-image: url("img/sfv.jpg");
+            }
+			
+			.overwatchdiv {
+                background-image: url("img/overwatchtourny.png");
             }
         </style>
         <script type="text/javascript">
@@ -154,6 +162,9 @@
                 });
 				$("#Dota2").click(function () {
                     scrollToAnchor('dota2');
+                });
+				$("#sfv").click(function () {
+                    scrollToAnchor('sfv');
                 });
 
                 var doubleEliminationData = {
@@ -197,6 +208,16 @@
               <%--<i class="fa fa-cog"></i>--%> <img src="/img/rocketsticker.png">
           </a>
       </li>
+	  <li>
+		  <a href="#sfv" role="tab" data-toggle="tab">
+			<%--<i class="fa fa-user"></i>--%> <img src="/img/sfvsticker.png">
+          </a>
+      </li>
+	  <li>
+		  <a href="#overwatch" role="tab" data-toggle="tab">
+			<%--<i class="fa fa-user"></i>--%> <img src="/img/overwatchsticker.png">
+          </a>
+      </li>
     <!--
 	  <li>
           <a href="#CSGO" role="tab" data-toggle="tab">
@@ -211,7 +232,7 @@
           <%--<i class="fa fa-user"></i>--%> <img src="/img/smashsticker.png">
           </a>
       </li>
-	  -->
+	  
 	  <li><a href="#Dota2" role="tab" data-toggle="tab">
           <%--<i class="fa fa-user"></i>--%> <img src="/img/Dota2sticker.png">
           </a>
@@ -224,6 +245,7 @@
           <%--<i class="fa fa-user"></i>--%> <img src="/img/mtgsticker.png">
           </a>
       </li>
+	  -->
 	</ul>  
       
     
@@ -236,7 +258,7 @@
                 <div class="lolcontenttop row">
 					<div class="col-md-3">
 						<p>Date & Time</p>
-						<p><h2>Apr 16, 2016 @230p</h2></p>
+						<p><h2>Jun 11, 2016 @230p</h2></p>
 						Please register with both battlefy and the LoL website or you will not be eligible for prizing.
 						
 					</div>
@@ -253,8 +275,8 @@
 					<p>Tournament Draft</p>
 					</div>
 					<div class="col-md-3">
-						<iframe src="https://battlefy.com/embeds/join/56de42d84758808912471592" title="League of Legends - KCGameOn #68" width="186" height="80" scrolling="no" frameborder="0"></iframe>
-						<a href="http://events.na.leagueoflegends.com/events/182685#info"><img src="/img/registerlol.png" height="34" width="170"></a>
+						<iframe src="https://battlefy.com/embeds/join/573b91714973e582122def85" title="League of Legends - KCGameOn #69  (gold and under only)" width="186" height="50" scrolling="no" frameborder="0"></iframe>
+						<a href="http://events.na.leagueoflegends.com/events/197052"><img src="/img/registerlol.png" height="34" width="170"></a>
 					</div>			
                 </div>
                 <div class="lolcontentmain">
@@ -313,7 +335,7 @@ If a team that is registered fails to show up to check-in, a substitute team tha
 					<p>Contact nick@kcgameon for any questions</p>
 					
 					<br />
-					<iframe src="https://battlefy.com/embeds/teams/56de42d84758808912471592" title="Battlefy Tournament Teams" width="100%" height="500" scrolling="yes" frameborder="0"></iframe>
+					<iframe src="https://battlefy.com/embeds/teams/573b91714973e582122def85" title="Battlefy Tournament Teams" width="100%" height="500" scrolling="yes" frameborder="0"></iframe>
                 </div>
             </div>
       </div>
@@ -324,7 +346,7 @@ If a team that is registered fails to show up to check-in, a substitute team tha
                 <div class="rlcontenttop">
                     <div class="col-md-3">
 						<p>Date & Time</p>
-						<p><h2>Apr 16, 2016 @800p</h2></p>
+						<p><h2>Jun 11, 2016 @800p</h2></p>
 						Please register with battlefy or you will not be eligible for prizing.
 						
 					</div>
@@ -340,7 +362,7 @@ If a team that is registered fails to show up to check-in, a substitute team tha
 					<p><h2>Random 3v3 map</h2></p>
 					</div>
 					<div class="col-md-3">
-						<iframe src="https://battlefy.com/embeds/join/56de45fda4f1898a125571b6" title="Rocket League - KCGameOn #68" width="186" height="80" scrolling="no" frameborder="0"></iframe>
+						<iframe src="https://battlefy.com/embeds/join/573b947e35810f821203b574" title="Rocket League - KCGameOn #69 3v3" width="186" height="50" scrolling="no" frameborder="0"></iframe>
 					</div>	
                 </div>
                 <div class="rlcontentmain">
@@ -377,7 +399,7 @@ If a team that is registered fails to show up to check-in, a substitute team tha
                 <div class="rlcontentright">
                                         <p><h2>Prizes</h2></p>
 						<p>FIRST PLACE INDIVIDUALS <br />
-						Free KCGameOn #69 attendance w/8 or more teams competing.</p>
+						Free KCGameOn #70 attendance w/8 or more teams competing.</p>
 
 					<p><h2>Schedule</h2></p>
 					<p>6:30 PM</p>
@@ -385,10 +407,158 @@ If a team that is registered fails to show up to check-in, a substitute team tha
 					<p>etc</p>
 					<p><h2>Questions</h2></p>
 					<p>Contact nick@kcgameon for any questions</p>
-					<iframe src="https://battlefy.com/embeds/teams/56de45fda4f1898a125571b6" title="Battlefy Tournament Teams" width="100%" height="500" scrolling="yes" frameborder="0"></iframe>
+					<iframe src="https://battlefy.com/embeds/teams/573b947e35810f821203b574" title="Battlefy Tournament Teams" width="100%" height="500" scrolling="yes" frameborder="0"></iframe>
                 </div>
             </div>
       </div>
+	  
+	<%-- sfv --%>
+      <div class="tab-pane fade" id="sfv">
+          <div class="sfvdiv">
+                <div class="sfvcontenttop">
+                    <div class="col-md-3">
+						<p>Date & Time</p>
+						<p><h2>Jun 11, 2016 @300p</h2></p>
+						Please register with Challonge or you will not be eligible for prizing.
+						
+					</div>
+					
+					<div class="col-md-3">
+					<p>Format</p>
+					<p><h2>2/3 sets</p>
+					<p>Double Elimination</h2></p>
+					
+					</div>
+					
+					<div class="col-md-3">
+					<p>Finals</p>
+					<p><h2>3/5 sets</h2></p>
+					</div>
+					<div class="col-md-3">
+					<p><h2>Entry Fee: $10</h2></p>
+					<p>paid to TO prior to start of tournament</p>
+						<a href="http://ko.challonge.com/KCGO69/"><img src="/img/registerlol.png" height="34" width="170"></a>
+					</div>	
+                </div>
+                <div class="sfvcontentmain">
+                    <p><h2>Rules</h2></p>
+					Note: Please report your team's score after each given match.<br />
+
+<p><h2>Registration Rules</h2></p>
+
+<p>We only accept serious registrations. If you do register for a SFV tournament, we ask that you follow through and show up on game day. If your team is not present at the proper time, you may face a ban from future tournaments.
+You may only register one team at a time. Please do not try to register more than once as it will not increase your chances of participating.
+If you have any questions or inquiries about a current registration, please email us at webmaster@kcgameon.com
+The registration period ends at 2:30 PM CST on the day of the tournament. Make sure you fill up the slots or they will be filled with BYEs.</p>
+<p><h2>Player/Team Eligibility</h2></p>
+
+<p>In order to compete, your gametag name must be included with the team's initial registration.
+Once a SFV tournament begins, no roster swapping will be allowed. Only the original 5 members may compete.</p>
+
+<p><h2>Game Conduct</h2></p>
+
+<p>Please be respectful to other players and participants. Refrain from using vulgar language or racial/sexist slurs in "All Chat" or you will be disqualified immediately.
+You may use an approved third-party communication program to coordinate and speak with your team, however, there is zero-tolerance for the use of a hack or cheat. Players accused and proved of hacking are immediately disqualified.
+If a team is found intentionally feeding or throwing the game, they will be disqualified and possibly banned from our future tournaments.</p>
+
+<p><h2>Tournament Check-In</h2></p>
+
+<p>We require that all registered players check-in no later than 10 minutes before the tournament start.
+
+If a player that is registered fails to show up to check-in, a substitute player that is checked in will take their place.</p>
+
+<p>Captains can report their own score.</p>		
+                    <div class="sfvbracket"></div>
+                </div>
+                <div class="sfvcontentright">
+                                        <p><h2>Prizes</h2></p>
+						<p>1st place - Free entry to KCGameOn #70 w/8 or more players</p><br />
+						<p>Cash payouts: 70/20/10% of total cash pot</p>
+
+					<p><h2>Schedule</h2></p>
+					<p>3:00 PM</p>
+					<p>3:15</p>
+					<p>etc</p>
+					<p><h2>Questions</h2></p>
+					<p>Contact nick@kcgameon for any questions</p>
+					
+                </div>
+            </div>
+      </div>
+	    
+		 <%-- overwatch --%>
+			  <div class="tab-pane fade" id="overwatch">
+			
+				  <div class="overwatchdiv">
+						<div class="overwatchcontenttop">
+                    <div class="col-md-3">
+						<p>Date & Time</p>
+						<p><h2>Jun 11, 2016 @400p</h2></p>
+						Please register with battlefy or you will not be eligible for prizing.
+						
+					</div>
+					
+					<div class="col-md-3">
+					<p>Format</p>
+					<p><h2>6v6</h2></p>
+					double elimination
+					</div>
+					
+					<div class="col-md-3">
+					<p>Game Map & Type</p>
+					<p><h2>Random 6v6 map</h2></p>
+					</div>
+					<div class="col-md-3">
+						<iframe src="https://battlefy.com/embeds/join/573b951e66404d8512e49c07" title="Overwatch - KCGameOn #69" width="186" height="50" scrolling="no" frameborder="0"></iframe>
+					</div>	
+                </div>
+						<div class="overwatchcontentmain">
+									<p><h2>Rules</h2></p>
+							Note: Please report your team's score after each given match.<br />
+
+							<p><h2>Registration Rules</h2></p>
+
+							<p>We only accept serious registrations. If you do register for a Overwatch tournament, we ask that you follow through and show up on game day. If your team is not present at the proper time, you may face a ban from future tournaments.
+							You may only register one team at a time. Please do not try to register more than once as it will not increase your chances of participating.
+							If you have any questions or inquiries about a current registration, please email us at webmaster@kcgameon.com
+							The registration period ends at 3:30 PM CST on the day of the tournament. Make sure you fill up the slots or they will be filled with BYEs.</p>
+							<p><h2>Player/Team Eligibility</h2></p>
+
+							<p>Players must be present at the event.  In order to compete, your summoner name must be included with the team's initial registration.
+							Once the Overwatch tournament begins, no roster swapping will be allowed. Only the original 6 members may compete.</p>
+
+							<p><h2>Game Conduct</h2></p>
+
+							<p>Please be respectful to other teams and participants. Refrain from using vulgar language or racial/sexist slurs in "All Chat" or you will be disqualified immediately.
+							You may use an approved third-party communication program to coordinate and speak with your team, however, there is zero-tolerance for the use of a hack or cheat. Players accused and proved of hacking are immediately disqualified.
+							If a team is found intentionally feeding or throwing the game, they will be disqualified and possibly banned from our future tournaments.</p>
+
+							<p><h2>Tournament Check-In</h2></p>
+
+							<p>We require that all registered teams check-in no later than 10 minutes before the tournament start.
+							A reminder will be sent to the Team Captain prior to check-in.
+							All 6 members on your team must be present at check-in or else it will not qualify.
+							If a team that is registered fails to show up to check-in, a substitute team that is checked in will take their place.</p>
+
+							<p>Captains can report their own score.</p>	
+							<div class="overwatchbracket"></div>
+						</div>
+						<div class="overwatchcontentright">
+							        <p><h2>Prizes</h2></p>
+						<p>FIRST PLACE INDIVIDUALS <br />
+						Free KCGameOn #70 attendance w/8 or more teams competing.</p>
+
+					<p><h2>Schedule</h2></p>
+					<p>4:00 PM</p>
+					<p>5:00</p>
+					<p>etc</p>
+					<p><h2>Questions</h2></p>
+					<p>Contact nick@kcgameon for any questions</p>
+					<iframe src="https://battlefy.com/embeds/teams/573b951e66404d8512e49c07" title="Battlefy Tournament Teams" width="100%" height="500" scrolling="yes" frameborder="0"></iframe>
+                </div>
+			  </div>
+    </div>
+	  
 <!--	  <%-- CS:GO --%>
       <div class="tab-pane fade" id="CSGO">
           <h2>Counter-Strike: Global Offensive</h2>
@@ -421,7 +591,7 @@ If a team that is registered fails to show up to check-in, a substitute team tha
                 </div>
             </div>
       </div> 
--->
+
 		<%-- Dota2 --%>
       <div class="tab-pane fade" id="Dota2">
           <div class="dota2div">
@@ -493,7 +663,8 @@ If a team that is registered fails to show up to check-in, a substitute team tha
                 </div>
             </div>
       </div>
-<!--			<%-- SMASH --%>
+	  
+			<%-- SMASH --%>
 			  <div class="tab-pane fade" id="SMASH">
 			
 				  <div class="smashdiv">
@@ -555,10 +726,10 @@ If a team that is registered fails to show up to check-in, a substitute team tha
 						</div>
 					</div>
 			  </div>	
--->
+
 			  <%-- HEROES --%>
 			  <div class="tab-pane fade" id="HEROES">
-			<!--	  <h2>Heroes of the Storm</h2>-->
+			
 				  <div class="heroesdiv">
 						<div class="heroescontenttop">
                     <div class="col-md-3">
@@ -631,13 +802,13 @@ If a team that is registered fails to show up to check-in, a substitute team tha
 	
 	<%-- Magic --%>
 			  <div class="tab-pane fade" id="MAGIC">
-			<!--	  <h2>MTG</h2>-->
+			
 				  <div class="magicdiv">
 						<div class="magiccontenttop">
                     <div class="col-md-3">
 						<p>Date & Time</p>
 						<p><h2>Apr 16, 2016 @2p</h2></p>
-						<!-- Fill out the form <a href="https://goo.gl/vps01p">HERE</a> to register for the MTG tournaments. -->
+						
 						<a href="https://goo.gl/vps01p"><img src="/img/registerlol.png" height="34" width="170"></a>
 					</div>
 					
@@ -701,7 +872,7 @@ If a team that is registered fails to show up to check-in, a substitute team tha
 					
 						</div>
 					  </div>
-			</div>
+			</div> -->
         <%--<ul class="list-inline">
             <li><a id="lol" href="#" class="brand">League of Legends</a></li>
             <li><a id="rl" href="#" class="brand">Rocket League</a></li>
@@ -710,6 +881,7 @@ If a team that is registered fails to show up to check-in, a substitute team tha
 			<li><a id="smash"" href="#" class="brand">Smash Bros</a></li>
 			<li><a id="Dota2"" href="#" class="brand">Dota 2</a></li>
 			<li><a id="magic"" href="#" class="brand">Magic: The Gathering</a></li>
+			<li><a id="sfv"" href="#" class="brand">Street Fighter V</a></li>
         </ul>--%>
 
         <%--<form class="well form-inline">--%>
@@ -726,6 +898,8 @@ If a team that is registered fails to show up to check-in, a substitute team tha
 			<%--<a name="Dota 2"></a>--%>
 			
 			<%--<a name="magic"></a>--%>
+			
+			<%--<a name="sfv"></a>--%>
             
         <%--</form>--%>
     </div>

@@ -72,12 +72,20 @@
                             </td>
 							<td>
                                 <a href="https://kcgameon.com/Tournament.aspx">
+                                    <img src="img/sfvPoster.png" alt="Street Fighter V" height="350" width="193" /></a>
+                            </td>
+							<td>
+                                <a href="https://kcgameon.com/Tournament.aspx">
+                                    <img src="img/overwatchPoster.jpg" alt="Overwatch" height="350" width="193" /></a>
+                            </td>
+							<!--<td>
+                                <a href="https://kcgameon.com/Tournament.aspx">
                                     <img src="img/dota2Poster.png" alt="Dota 2" height="350" width="193" /></a>
                             </td>
-                       <!-- <td>
+							<td>
                                 <a href="https://kcgameon.com/Tournament.aspx">
                                     <img src="img/smashPoster.png" alt="Super Smash Bros." height="350" width="193" /></a>
-                            </td> -->
+                            </td>
                             <td>
                                 <a href="https://kcgameon.com/Tournament.aspx">
                                     <img src="img/hotsPoster.jpg" alt="Heroes of the Storm" height="350" width="193" /></a>
@@ -85,7 +93,7 @@
 							<td>
                                 <a href="https://kcgameon.com/Tournament.aspx">
                                     <img src="img/magicposter.jpg" alt="Magic: The Gathering" height="350" width="193" /></a>
-                            </td>
+                            </td> -->
                         </tr>
                     </table>
                 </div>
