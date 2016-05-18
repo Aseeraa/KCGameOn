@@ -27,6 +27,9 @@ namespace KCGameOn.Admin
         public static List<String> names = new List<String>();
         public static UsersObject current = new UsersObject("", "", "");
         public static StringBuilder AdminUserHTML;
+        public static List<string> usersPaid = new List<string>();
+        public static List<string> usersCheckedIn = new List<string>();
+        public static UsersObject raffleWinner = new UsersObject("", "", "");
         protected void Page_Load(object sender, EventArgs e)
         {
             userlist = new List<UsersObject>();
@@ -101,7 +104,7 @@ namespace KCGameOn.Admin
                 cmd.Connection.Open();
                 Reader = cmd.ExecuteReader();
                 AdminUserHTML = new StringBuilder();
-                List<string> usersPaid = new List<string>();
+                
                 while (Reader.Read())
                 {
                     usersPaid.Add(Reader.GetString("userName"));
@@ -124,6 +127,20 @@ namespace KCGameOn.Admin
                         AdminUserHTML.AppendLine("<td class=\"col-md-1\">").Append("<img src=\'/img/Actions-button-cancel-icon.png\' height=\"20px\" width=\"20px\"/>").Append("</td>");
                     AdminUserHTML.AppendLine("</tr>");
                 }
+
+                //populate checked in users
+                cmd = new MySqlCommand("SELECT DISTINCT * FROM EventArchive WHERE eventID = (SELECT EventID FROM kcgameon.schedule WHERE Active = 1 order by ID LIMIT 1) AND checkedin = 1 AND activeIndicator = 1", new MySqlConnection(UserInfo));
+                cmd.CommandType = System.Data.CommandType.Text;
+
+                cmd.Connection.Open();
+                Reader = cmd.ExecuteReader();
+                AdminUserHTML = new StringBuilder();
+
+                while (Reader.Read())
+                {
+                    usersCheckedIn.Add(Reader.GetString("userName"));
+                }
+                Reader.Close();
             }
             catch (Exception)
             {
@@ -439,6 +456,63 @@ namespace KCGameOn.Admin
 
             cmd.Connection.Close();
             return true;
+        }
+
+        [WebMethod]
+        public static string getRaffleWinner(string data)
+        {
+            if (data.Equals("repick"))
+            {
+                if (dbHelper("UPDATE kcgameon.EventArchive SET wondoor = 0 WHERE Username = \"" + raffleWinner.Username + "\""))
+                    return "Previous winner removed.  Select another.";
+                else
+                    return null;
+            }
+            else {
+                Random randNum = new Random();
+                int randomNumber = randNum.Next(usersCheckedIn.Count);
+                raffleWinner = userlist.Find(user => user.Username.Equals(usersCheckedIn[randomNumber]));
+                string winner = raffleWinner.First + " " + raffleWinner.Last;
+                if (dbHelper("UPDATE kcgameon.EventArchive SET wondoor = 1 WHERE Username = \"" + raffleWinner.Username + "\""))
+                    return winner;
+                else
+                    return null;
+            }
+        }
+
+        protected static bool dbHelper(string command)
+        {
+            String UserInfo = ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString;
+            MySqlDataReader Reader = null;
+            MySqlCommand cmd = null;
+            MySqlConnection conn = null;
+            Boolean successFlag = true;
+            try
+            {
+                cmd = new MySqlCommand(command, new MySqlConnection(UserInfo));
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.CommandText = command;
+                cmd.Connection.Open();
+                cmd.ExecuteNonQuery();
+
+            }
+            catch (Exception e)
+            {
+                successFlag = false;
+            }
+            finally
+            {
+                if (cmd.Connection != null)
+                    cmd.Connection.Close();
+                if (Reader != null)
+                    Reader.Close();
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+            return successFlag;
+
         }
     }
 }

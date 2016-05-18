@@ -266,6 +266,7 @@ namespace KCGameOn
                             {
                                 SessionVariables.paymentKey = reader["paymentKey"].ToString();
                                 SessionVariables.verifiedPaid = reader["verifiedPaid"].ToString();
+                                //TODO ADD TO RAFFLE TABLE HERE?
                             }
                         }
                     }
