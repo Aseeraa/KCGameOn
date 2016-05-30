@@ -5,7 +5,7 @@
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <form class="well form-inline" runat="server">
-        <h2>KcGameOn Login</h2>
+        <h2>KCGameOn Login</h2>
             <p>
         Please enter your username and password.
         <a href="/Account/Register.aspx">Register</a> if you don't have an account.</p>

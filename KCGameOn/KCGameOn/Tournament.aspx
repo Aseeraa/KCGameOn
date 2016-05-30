@@ -117,7 +117,7 @@
             }
 			
 			.sfvdiv {
-                background-image: url("img/sfv.jpg");
+                background-image: url("img/sfv.png");
             }
 			
 			.overwatchdiv {
@@ -276,11 +276,13 @@
 					</div>
 					<div class="col-md-3">
 						<iframe src="https://battlefy.com/embeds/join/573b91714973e582122def85" title="League of Legends - KCGameOn #69  (gold and under only)" width="186" height="50" scrolling="no" frameborder="0"></iframe>
-						<a href="http://events.na.leagueoflegends.com/events/197052"><img src="/img/registerlol.png" height="34" width="170"></a>
+						<a href="http://events.na.leagueoflegends.com/events/197052"><img src="/img/registerlol.png" height="34" width="170"></a></ br>
+						<p>Gold and under only please.</p>
 					</div>			
                 </div>
                 <div class="lolcontentmain">
                     <p><h2>Rules</h2></p>
+					<b>Hearts of Gold tournament - Only gold rank(s) and below are allowed to play.<br /></b>
 					Note: Please report your team's score after each given match.<br />
 
 <p><h2>Registration Rules</h2></p>
@@ -441,8 +443,13 @@ If a team that is registered fails to show up to check-in, a substitute team tha
 					</div>	
                 </div>
                 <div class="sfvcontentmain">
-                    <p><h2>Rules</h2></p>
-					Note: Please report your team's score after each given match.<br />
+                    
+<p><h2><a href="http://tinyurl.com/KO61116">Event page on Facebook</a></h2></p>
+<p><h2>Rules</h2></p>
+Note: Please report your score after each given match.<br />
+For additional rules specific for SFV, please check out <a href="http://http://tinyurl.com/KO61116RULES">this link.</a> 
+
+
 
 <p><h2>Registration Rules</h2></p>
 
@@ -450,11 +457,6 @@ If a team that is registered fails to show up to check-in, a substitute team tha
 You may only register one team at a time. Please do not try to register more than once as it will not increase your chances of participating.
 If you have any questions or inquiries about a current registration, please email us at webmaster@kcgameon.com
 The registration period ends at 2:30 PM CST on the day of the tournament. Make sure you fill up the slots or they will be filled with BYEs.</p>
-<p><h2>Player/Team Eligibility</h2></p>
-
-<p>In order to compete, your gametag name must be included with the team's initial registration.
-Once a SFV tournament begins, no roster swapping will be allowed. Only the original 5 members may compete.</p>
-
 <p><h2>Game Conduct</h2></p>
 
 <p>Please be respectful to other players and participants. Refrain from using vulgar language or racial/sexist slurs in "All Chat" or you will be disqualified immediately.
@@ -467,7 +469,7 @@ If a team is found intentionally feeding or throwing the game, they will be disq
 
 If a player that is registered fails to show up to check-in, a substitute player that is checked in will take their place.</p>
 
-<p>Captains can report their own score.</p>		
+<p>Players can report their own score.</p>		
                     <div class="sfvbracket"></div>
                 </div>
                 <div class="sfvcontentright">
@@ -480,7 +482,7 @@ If a player that is registered fails to show up to check-in, a substitute player
 					<p>3:15</p>
 					<p>etc</p>
 					<p><h2>Questions</h2></p>
-					<p>Contact nick@kcgameon for any questions</p>
+					<p>Contact jspot1n0nly@gmail.com or nick@kcgameon for any questions</p>
 					
                 </div>
             </div>

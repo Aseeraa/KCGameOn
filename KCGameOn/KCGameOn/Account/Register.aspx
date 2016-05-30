@@ -157,7 +157,7 @@
         <div class="control-group">
             <label class="control-label" for="inputEmail">Email</label>
             <div class="controls">
-                <input id="inputEmail" class="inputEmail" runat="server" onkeyup="checkValidInputs();" placeholder="E.g. Nick@KcGameOn.com" type="text" required>
+                <input id="inputEmail" class="inputEmail" runat="server" onkeyup="checkValidInputs();" placeholder="ex. joebob@gmail.com" type="text" required>
                 <img id="EmailMatch" style="visibility:hidden" src="../img/Actions-button-cancel-icon.png" />
             </div>
         </div>
@@ -167,18 +167,26 @@
 
             <div class="controls">
                 <input id="inputEmail1" class="inputEmail1" runat="server" onkeyup="checkValidInputs();" placeholder=
-                "E.g. Nick@KcGameOn.com" type="text" required>
+                "ex. joebob@gmail.com" type="text" required>
                 <img id="EmailConfError" style="visibility:hidden" src="../img/Actions-button-cancel-icon.png" />
             </div>
             <p id="EmailError"></p>
         </div>
 
         <div class="control-group">
-            <label class="control-label" for="inputUser">Username</label>
+            <label class="control-label" for="inputUser">Username/Gamername</label>
 
             <div class="controls">
-                <input id="inputUser" class="inputUser" runat="server" onkeyup="checkValidInputs();" placeholder="KcGameOn Username" type="text" required>
+                <input id="inputUser" class="inputUser" runat="server" onkeyup="checkValidInputs();" placeholder="The name you use in games" type="text" required>
                 <img id="UsernameMatch" style="visibility:hidden" src="../img/Actions-button-cancel-icon.png" />
+            </div>
+        </div>
+		
+		<div class="control-group">
+            <label class="control-label" for="inputCerner">ID/Clan/Groupname</label>
+
+            <div class="controls">
+                <input id="inputCerner" runat="server" placeholder="ex. [cloud9], LoLKC, etc" type="text" required>
             </div>
         </div>
 
@@ -202,13 +210,7 @@
             </div>
             <p id="PassError"></p>
         </div>
-        <div class="control-group">
-            <label class="control-label" for="inputCerner">Cerner ID or Sponsor</label>
-
-            <div class="controls">
-                <input id="inputCerner" runat="server" placeholder="ex. ne013424 or Sponsor name" type="text" required>
-            </div>
-        </div>
+        
         <div class="control-group">
             <label class="control-label" for="inputLast">SecretQuestion</label>
              <div class="controls">
@@ -224,10 +226,10 @@
         </div>
 
         <div class="control-group">
-            <label class="control-label" for="inputLast">Feed me your Answer</label>
+            <label class="control-label" for="inputLast">Answer your secret</label>
 
             <div class="controls">
-                <input id="SecretAnswer" class="SecretAnswer" onkeyup="checkValidInputs();" runat="server" placeholder="E.g. Hegde" type="password" required>
+                <input id="SecretAnswer" class="SecretAnswer" onkeyup="checkValidInputs();" runat="server" placeholder="ex. blue" type="password" required>
             </div>
         </div>
         <!--<div class="control-group">

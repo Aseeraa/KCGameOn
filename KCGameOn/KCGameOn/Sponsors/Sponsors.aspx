@@ -32,24 +32,24 @@
 			<td><p>At Ransom Gaming, we provide a comprehensive gaming service, where you bring the people and we bring the PCs, loaded with great games and the hardware to make them really fun to play.  We handle the setup and take down, so you and your employees, friends, or children can focus on playing games together and having fun.</p>
 			</td>
 		</td>
-		<tr>
+		<!-- <tr>
 			<td><p>SoPro Gaming’s mission is to embrace the social aspects of hard-core gaming by providing the ultimate resource for PC and console gamers throughout the Kansas City area to master their game playing skills.</p>
 			</td>
 			<td><p><a href="http://www.soprogaming.com"><img src="/img/soprogaming-2.png" height="65"></a></p>
 			</td>
-		</tr>
+		</tr> -->
 		<tr>
-			<td><p><a href="http://www.collectorscache.com"><img src="/img/collectorscache.png" height="65"></a></p>
-			</td>
 			<td><p>Established in 1988, Collector's Cache has been a symbol of quality cards, toys, and other various collectibles. We have been serving Kansas City collectors for 25 years and our worldwide mail order customers for nearly 15 years. You can expect professional, fast, courteous, and competitive service. Our goal is to treat you like a valued customer, not just another number. We want to earn your business and want to be your one stop shop for all your collectible needs.</p>
 			</td>
+			<td><p><a href="http://www.collectorscache.com"><img src="/img/collectorscache.png" height="65"></a></p>
+			</td>
 		</tr>
-		<tr>
+		<!-- <tr>
 			<td><p><a href="http://www.shinra.com"><img src="/img/shinra.png" height="65"></a></p>
 			</td>
 			<td><p>Shinra Technologies, Inc. is a supercomputer gaming company that uses its patented remote rendering technology to enable the creation of bold, new gaming experiences that are not possible on any other platform. Applications for Shinra’s summer US beta test will open on June 11 for Google Fiber users, starting with Kansas City!</p>
 			</td>
-		</tr>
+		</tr> -->
 		</table>
 		
 	</form>	

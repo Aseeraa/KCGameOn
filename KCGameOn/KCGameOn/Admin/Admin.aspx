@@ -142,34 +142,6 @@
                     });
             });
 
-<<<<<<< HEAD
-            $('#verifyPayment').click(function (event) {
-                event.preventDefault();
-                var user = $('#userDropdown').val();
-                var name = $('#nameDropdown').val();
-                var userObject = [];
-                var payments = [];
-                userObject.push(user);
-                userObject.push(name);
-                payments.push(userObject);
-                $.ajax({
-                    type: "POST",
-                    url: "Admin.aspx/validateKeys",
-                    data: "{'data':'" + JSON.stringify(payments) + "'}",
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json"
-                })
-                    .done(function () {
-                        //$("#success").modal('show');
-                        alert("Successfully cleared bad API keys and validate user.");
-                    })
-                    .fail(function () {
-                        //$("#failure").modal('show');
-                        alert("Failed to validate API keys.");
-                    });
-            });
-=======
-
             /* Generate a random number for raffle drawing */
             $('#randNum').click(function (event) {
                 event.preventDefault();
@@ -210,7 +182,6 @@
                         });
             });
             
->>>>>>> origin/John
         });
 
         /* Default class modification */
@@ -388,7 +359,7 @@
                     <button id="archiveEvent" class="btn pull-left btn-danger">Archive Event</button>
                 </div>
             </div>
-<<<<<<< HEAD
+
         </div>
         <div class="row pull-left col-lg-12">
             <hr />
@@ -406,25 +377,8 @@
                 <button id="cash" class="btn btn-default pull-left">Paid Cash</button>
                 <button id="other" class="btn btn-default pull-left">Paid Online</button>
                 <button id="verifyPayment" class="btn btn-default pull-left">Clear Bad Keys</button>
-=======
-            <div class="row pull-left col-lg-12">
-                <hr />
-                <div class="pull-left">
-                    <h3>Add User Payment:</h3>
-                    <label>Username:</label>
-                    <select id="userDropdown" class="dropdown">
-                        <option selected="selected">None</option>
-                    </select>
-                    <label>Name:</label>
-                    <select id="nameDropdown" class="dropdown">
-                        <option selected="selected">None</option>
-                    </select>
-                    <br />
-                    <button id="cash" class="btn btn-default pull-left">Paid Cash</button>
-                    <button id="other" class="btn btn-default pull-left">Paid Online</button>
-                </div>
->>>>>>> origin/John
-            </div>
+
+            
 
             <div class="row pull-left col-lg-12">
                 <hr />
