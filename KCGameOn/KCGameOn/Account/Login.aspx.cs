@@ -171,6 +171,8 @@ namespace KCGameOn.Account
                     if (blocked.Equals("TRUE"))
                         if(SessionVariables.UserAdmin == 0 && !SessionVariables.UserName.ToLower().Equals("kctestaccount"))
                             SessionVariables.registrationBlocked = true;
+                        else
+                            SessionVariables.registrationBlocked = false;
                 }
                 catch (Exception)
                 {
