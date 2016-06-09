@@ -12,7 +12,6 @@ namespace KCGameOn
 {
     public partial class Checkin : System.Web.UI.Page, IPostBackEventHandler
     {
-        public static String hasPaid;
         public static String hasCheckedIn;
         public static Int32 getEventID;
 
@@ -67,7 +66,7 @@ namespace KCGameOn
 
 
                 //Create Command
-                MySqlCommand cmd = new MySqlCommand("SELECT pay.idpayTable, pay.username, pay.EventID, sea.checkedin, pay.verifiedPaid FROM payTable AS pay LEFT JOIN (SELECT username, checkedin FROM seatingchart WHERE username = \"" + SessionVariables.UserName + "\" AND EventID = (SELECT EventID FROM kcgameon.schedule WHERE Active = 1 order by ID LIMIT 1)) sea on pay.username = sea.username WHERE pay.username = \"" + SessionVariables.UserName + "\" AND pay.EventID = (SELECT EventID FROM kcgameon.schedule WHERE Active = 1 order by ID LIMIT 1) AND pay.verifiedPaid = \"Y\"", new MySqlConnection(conn));
+                MySqlCommand cmd = new MySqlCommand("SELECT pay.idpaytable, pay.username, pay.EventID, sea.checkedin, pay.verifiedPaid FROM payTable AS pay LEFT JOIN (SELECT username, checkedin FROM seatingchart WHERE username = \"" + SessionVariables.UserName + "\" AND EventID = (SELECT EventID FROM kcgameon.schedule WHERE Active = 1 order by ID LIMIT 1)) sea on pay.username = sea.username WHERE pay.username = \"" + SessionVariables.UserName + "\" AND pay.EventID = (SELECT EventID FROM kcgameon.schedule WHERE Active = 1 order by ID LIMIT 1) AND pay.verifiedPaid = \"Y\"", new MySqlConnection(conn));
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Connection.Open();
 
@@ -94,7 +93,7 @@ namespace KCGameOn
                     checkoutLabel.Text = "You must go to the map and select a seat before finishing.";
                 }
 
-                if (hasCheckedIn != "True" && hasPaid == "Y")
+                if (hasCheckedIn != "True" && SessionVariables.verifiedPaid == "Y")
                 {
                     cmd = new MySqlCommand("UPDATE seatingchart SET checkedin = true, checkedin_time = CURRENT_TIMESTAMP() WHERE Username = \'" + SessionVariables.UserName + "\' AND EventID = " + getEventID, new MySqlConnection(conn));
                     cmd.Connection.Open();
