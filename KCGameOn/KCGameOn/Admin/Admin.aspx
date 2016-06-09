@@ -175,7 +175,7 @@
                         .done(function (winner) {
                             var winnerName = JSON.parse(winner);
                             document.getElementById('winner').innerHTML = "" + winnerName.d;
-                            alert("Previous winner removed, and we're ready to pick another!");
+                            alert("Previous winner marked as a no show, and we're ready to pick another!");
                         })
                         .fail(function () {
                             //$("#failure").modal('show');
