@@ -28,7 +28,7 @@ namespace KCGameOn.Admin
         public static UsersObject current = new UsersObject("", "", "");
         public static StringBuilder AdminUserHTML;
         public static List<string> usersPaid = new List<string>();
-        public static List<string> usersCheckedIn = new List<string>();
+        public static Dictionary<string,int> usersCheckedIn = new Dictionary<string,int>();
         public static UsersObject raffleWinner = new UsersObject("", "", "");
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -128,7 +128,7 @@ namespace KCGameOn.Admin
                     AdminUserHTML.AppendLine("</tr>");
                 }
 
-                //populate checked in users
+                //populate checked in users for raffle
                 cmd = new MySqlCommand("SELECT DISTINCT * FROM EventArchive WHERE eventID = (SELECT EventID FROM kcgameon.schedule WHERE Active = 1 order by ID LIMIT 1) AND checkedin = 1 AND activeIndicator = 1", new MySqlConnection(UserInfo));
                 cmd.CommandType = System.Data.CommandType.Text;
 
@@ -138,7 +138,7 @@ namespace KCGameOn.Admin
 
                 while (Reader.Read())
                 {
-                    usersCheckedIn.Add(Reader.GetString("userName"));
+                    usersCheckedIn.Add(Reader.GetString("userName"), Reader.GetByte("wondoor"));
                 }
                 Reader.Close();
             }
@@ -463,23 +463,34 @@ namespace KCGameOn.Admin
         {
             if (data.Equals("repick"))
             {
-                if (dbHelper("UPDATE kcgameon.EventArchive SET wondoor = 0 WHERE Username = \"" + raffleWinner.Username + "\""))
-                    return "Previous winner removed.  Select another.";
+                if (dbHelper("UPDATE kcgameon.EventArchive SET wondoor = 2 WHERE Username = \"" + raffleWinner.Username + "\""))
+                {
+                    usersCheckedIn[raffleWinner.Username] = 2;//Update the local users list for raffle to Did Not Show
+                    return "Previous winner marked as a no show.  Select another.";
+                }
                 else
                     return null;
             }
             else {
                 Random randNum = new Random();
-                int randomNumber = randNum.Next(usersCheckedIn.Count);
-                raffleWinner = userlist.Find(user => user.Username.Equals(usersCheckedIn[randomNumber]));
-                string winner = raffleWinner.First + " " + raffleWinner.Last;
-                if (dbHelper("UPDATE kcgameon.EventArchive SET wondoor = 1 WHERE Username = \"" + raffleWinner.Username + "\""))
-                    return winner;
-                else
-                    return null;
+                int randomNumber;
+                //temporary user list to enable looping
+                List<string> eligibleUsers = usersCheckedIn.Where(user => user.Value == 0).Select(x => x.Key).ToList();
+                while (eligibleUsers.Count > 0){
+                    randomNumber = randNum.Next(eligibleUsers.Count);
+                    raffleWinner = userlist.Find(user => user.Username.Equals(eligibleUsers.ElementAt(randomNumber)));//Get user's first + last name
+                    usersCheckedIn[eligibleUsers.ElementAt(randomNumber)] = 1;//Update the local users list for raffle
+                    string winner = raffleWinner.First + " " + raffleWinner.Last;
+                    if (dbHelper("UPDATE kcgameon.EventArchive SET wondoor = 1 WHERE Username = \"" + raffleWinner.Username + "\""))
+                        return winner;
+                    else
+                        return null;
+                }
             }
+            return "Ran out of users, probably..."; 
         }
-
+        
+        //Basic database helper to be used for any command that doesn't return data
         protected static bool dbHelper(string command)
         {
             String UserInfo = ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString;
