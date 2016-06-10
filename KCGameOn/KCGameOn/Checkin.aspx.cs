@@ -66,7 +66,7 @@ namespace KCGameOn
 
 
                 //Create Command
-                MySqlCommand cmd = new MySqlCommand("SELECT pay.idpaytable, pay.username, pay.EventID, sea.checkedin, pay.verifiedPaid FROM payTable AS pay LEFT JOIN (SELECT username, checkedin FROM seatingchart WHERE username = \"" + SessionVariables.UserName + "\" AND ActiveIndicator = \"TRUE\") sea on pay.username = sea.username WHERE pay.username = \"" + SessionVariables.UserName + "\" AND pay.EventID = (SELECT EventID FROM kcgameon.schedule WHERE Active = 1 order by ID LIMIT 1) AND pay.verifiedPaid = \"Y\"", new MySqlConnection(conn));
+                MySqlCommand cmd = new MySqlCommand("SELECT pay.idpaytable, pay.username, pay.EventID, sea.checkedin, pay.verifiedPaid, pay.paymentKey FROM payTable AS pay LEFT JOIN (SELECT username, checkedin FROM seatingchart WHERE username = \"" + SessionVariables.UserName + "\" AND ActiveIndicator = \"TRUE\") sea on pay.username = sea.username WHERE pay.username = \"" + SessionVariables.UserName + "\" AND pay.EventID = (SELECT EventID FROM kcgameon.schedule WHERE Active = 1 order by ID LIMIT 1) AND pay.verifiedPaid = \"Y\"", new MySqlConnection(conn));
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Connection.Open();
 
@@ -257,7 +257,7 @@ namespace KCGameOn
                     try
                     {
                         
-                        cmd = new MySqlCommand("SELECT paymentKey,verifiedPaid FROM payTable WHERE paidDate = (SELECT MAX(paidDate) FROM payTable where userName = \'" + SessionVariables.UserName.ToLower() + "\')", new MySqlConnection(conn));
+                        cmd = new MySqlCommand("SELECT pay.idpaytable, pay.username, pay.EventID, sea.checkedin, pay.verifiedPaid, pay.paymentKey FROM payTable AS pay LEFT JOIN(SELECT username, checkedin FROM seatingchart WHERE username = \"" + SessionVariables.UserName + "\" AND ActiveIndicator = \"TRUE\") sea on pay.username = sea.username WHERE pay.username = \"" + SessionVariables.UserName + "\" AND pay.EventID = (SELECT EventID FROM kcgameon.schedule WHERE Active = 1 order by ID LIMIT 1) AND pay.verifiedPaid = \"Y\"", new MySqlConnection(conn));
                         cmd.CommandType = System.Data.CommandType.Text;
                         cmd.Connection.Open();
                         IAsyncResult result = cmd.BeginExecuteReader();
