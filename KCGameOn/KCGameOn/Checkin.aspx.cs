@@ -102,7 +102,7 @@ namespace KCGameOn
                         cmd.ExecuteNonQuery();
                         cmd.Connection.Close();
 
-                        cmd = new MySqlCommand("INSERT INTO EventArchive (Username,eventID,checkedin,prize,activeIndicator,wondoor,wonloyalty) VALUES (\"" + SessionVariables.UserName + "\", (SELECT EventID FROM kcgameon.schedule WHERE Active = 1 order by ID LIMIT 1), 1, \"\", 1, 0, 0); ", new MySqlConnection(conn));
+                        cmd = new MySqlCommand("INSERT IGNORE INTO EventArchive (Username,eventID,checkedin,prize,activeIndicator,wondoor,wonloyalty) VALUES (\"" + SessionVariables.UserName + "\", (SELECT EventID FROM kcgameon.schedule WHERE Active = 1 order by ID LIMIT 1), 1, \"\", 1, 0, 0); ", new MySqlConnection(conn));
                         cmd.Connection.Open();
                         cmd.CommandType = System.Data.CommandType.Text;
                         cmd.ExecuteNonQuery();
