@@ -15,6 +15,7 @@ using System.Net.Mail;
 using System.Net.Mime;
 using PayPal.AdaptivePayments.Model;
 using PayPal.AdaptivePayments;
+using System.Data;
 
 namespace KCGameOn.Admin
 {
@@ -28,7 +29,7 @@ namespace KCGameOn.Admin
         public static UsersObject current = new UsersObject("", "", "");
         public static StringBuilder AdminUserHTML;
         public static List<string> usersPaid = new List<string>();
-        public static Dictionary<string,int> usersCheckedIn = new Dictionary<string,int>();
+        public static Dictionary<string, int> usersCheckedIn = new Dictionary<string, int>();
         public static UsersObject raffleWinner = new UsersObject("", "", "");
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -104,7 +105,7 @@ namespace KCGameOn.Admin
                 cmd.Connection.Open();
                 Reader = cmd.ExecuteReader();
                 AdminUserHTML = new StringBuilder();
-                
+
                 while (Reader.Read())
                 {
                     usersPaid.Add(Reader.GetString("userName"));
@@ -202,7 +203,7 @@ namespace KCGameOn.Admin
                 cmd.Parameters.AddWithValue("UserName", user);
 
                 reader = cmd.ExecuteReader();
-                while(reader.Read())
+                while (reader.Read())
                 {
                     paypalKeys.Add(reader[0].ToString());
                 }
@@ -229,7 +230,7 @@ namespace KCGameOn.Admin
 
         private static void validateKeys(List<string> paypalKeys)
         {
-            foreach(string key in paypalKeys)
+            foreach (string key in paypalKeys)
             {
                 PaymentDetailsResponse responsePaymentDetails = new PaymentDetailsResponse();
 
@@ -356,7 +357,7 @@ namespace KCGameOn.Admin
                     }
                 }
             }
-            
+
         }
 
         [WebMethod]
@@ -378,7 +379,7 @@ namespace KCGameOn.Admin
             conn = new MySqlConnection(UserInfo);
             try
             {
-                
+
                 conn.Open();
 
                 cmd = new MySqlCommand("spAddPayment", conn);
@@ -476,7 +477,8 @@ namespace KCGameOn.Admin
                 int randomNumber;
                 //temporary user list to enable looping
                 List<string> eligibleUsers = usersCheckedIn.Where(user => user.Value == 0).Select(x => x.Key).ToList();
-                while (eligibleUsers.Count > 0){
+                while (eligibleUsers.Count > 0)
+                {
                     randomNumber = randNum.Next(eligibleUsers.Count);
                     raffleWinner = userlist.Find(user => user.Username.Equals(eligibleUsers.ElementAt(randomNumber)));//Get user's first + last name
                     usersCheckedIn[eligibleUsers.ElementAt(randomNumber)] = 1;//Update the local users list for raffle
@@ -487,9 +489,38 @@ namespace KCGameOn.Admin
                         return null;
                 }
             }
-            return "Ran out of users, probably..."; 
+            return "Ran out of users, probably...";
         }
-        
+
+        [WebMethod]
+        public static void blockUnblock(string data)
+        {
+            MySqlCommand cmd = null;
+            using (MySqlConnection connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString))
+            {
+                try {
+                    
+                    
+                    connection.Open();
+                    if (data.ToLower() == "block")
+                    {
+                        cmd = new MySqlCommand("UPDATE AdminProperties SET BlockPayments = \'TRUE\'", connection);
+                    }
+                    else
+                    {
+                        cmd = new MySqlCommand("UPDATE AdminProperties SET BlockPayments = \'FALSE\'", connection);
+                    }
+                    cmd.CommandType = CommandType.Text;
+                    cmd.ExecuteNonQuery();
+                    connection.Close();
+                }
+                catch(Exception e)
+                {
+                    return;
+                }
+            }
+        }
+
         //Basic database helper to be used for any command that doesn't return data
         protected static bool dbHelper(string command)
         {
