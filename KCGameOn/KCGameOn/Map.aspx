@@ -14,15 +14,15 @@
         .modal-content, .modal-footer {
             background: #282828;
         }
-		
-		.modal-dialog {
-			width: 64%; /* desired relative width */
-			left: 0%; /* (100%-width)/2 */
-			/* place center */
-			margin-left:auto;
-			margin-right:auto; 
-			background: #282828;
-		}
+
+        .modal-dialog {
+            width: 64%; /* desired relative width */
+            left: 0%; /* (100%-width)/2 */
+            /* place center */
+            margin-left: auto;
+            margin-right: auto;
+            background: #282828;
+        }
 
         h3 {
             color: #33b5e5;
@@ -37,7 +37,27 @@
             max-width: 450px;
         }
     </style>
+    <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script async src="js/bootbox.js?v=1.0"></script>
+    <script src="js/index.js?v=1.0"></script>
+    <script src="js/index.js?v=1.0"></script>
+    <!-- Nick replace this with the name of your new file-->
     <script>
+        $(document).ready(function () {
+            $(".Menubody-trigger").click(function () {
+                // For Nav Labels
+                if ($(this).hasClass("Menubody-trigger-active")) {
+                    $(this).removeClass("Menubody-trigger-active");
+                    $(this).parent().find('.Content').stop(true, true).slideUp(500);
+                }
+                else {
+                    $(this).addClass("Menubody-trigger-active");
+                    $(this).parent().find('.Content').stop(true, true).slideDown(500);
+                    //$(this).parent().find('.Content2').hide();
+                }
+            });
+        });
+
         $(function () {
             $('#payButton').click(function () {
                 window.location = 'EventRegistration.aspx'
@@ -70,15 +90,15 @@
                                 <a href="https://kcgameon.com/Tournament.aspx">
                                     <img src="img/rlPoster.png" alt="Rocket League" height="350" width="193" /></a>
                             </td>
-							<td>
+                            <td>
                                 <a href="https://kcgameon.com/Tournament.aspx">
                                     <img src="img/sfvPoster.png" alt="Street Fighter V" height="350" width="193" /></a>
                             </td>
-							<td>
+                            <td>
                                 <a href="https://kcgameon.com/Tournament.aspx">
                                     <img src="img/overwatchPoster.jpg" alt="Overwatch" height="350" width="193" /></a>
                             </td>
-							<!--<td>
+                            <!--<td>
                                 <a href="https://kcgameon.com/Tournament.aspx">
                                     <img src="img/dota2Poster.png" alt="Dota 2" height="350" width="193" /></a>
                             </td>
@@ -168,135 +188,200 @@
         <!-- /.modal-dialog -->
     </div>
     <!-- /.modal -->
-    <center><h3 style="color: red;"><asp:Label ID="previousPage" Text="" runat="server" /></h3></center>
-    <div class="">
-        <form class="form-inline pull-left" role="search">
-            <div class="form-inline">
-                <input id="Mapsearch" type="text" placeholder="Username to find" />
-                <button id="Mapsearchbutton" class="btn btn-default " type="button">Search</button>
-            </div>
-        </form>
-        <div class="Count pull-left">
-            <h3>There are currently <%= count %> gamers locked in for the LAN</h3>
-        </div>
-        <div class="btn-group pull-right">
-            <button id="Legend" class="btn btn-default pull-right dropdown-toggle" type="button" data-toggle="dropdown">Legend</button>
-            <ul id="legenddropdown" class="dropdown-menu pull-right" role="menu">
-                <li>Current/Projector seat</br>
+    <center>
+        <h3 style="color: red;">
+            <asp:Label ID="previousPage" Text="" runat="server" /></h3>
+    </center>
+    <div class="container">
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="active">
+                <a href="#FirstFloor" role="tab" data-toggle="tab">
+                    <i class="fa fa-envelope">First Floor Map</i>
+                </a>
+            </li>
+            <li>
+                <a href="#ThirdFloor" role="tab" data-toggle="tab">
+                    <i class="fa fa-cog">Third Floor Map</i>
+                </a>
+            </li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <%-- First Floor Map --%>
+            <div class="tab-pane fade active in" id="FirstFloor">
+                <form class="form-inline pull-left" role="search">
+                    <div class="form-inline">
+                        <input id="Mapsearch" type="text" placeholder="Username to find" />
+                        <button id="Mapsearchbutton" class="btn btn-default " type="button">Search</button>
+                    </div>
+                </form>
+                <div class="Count pull-left">
+                    <h3>There are currently <%= count %> gamers locked in for the LAN</h3>
+                </div>
+                <div class="btn-group pull-right">
+                    <button id="Legend" class="btn btn-default pull-right dropdown-toggle" type="button" data-toggle="dropdown">Legend</button>
+                    <ul id="legenddropdown" class="dropdown-menu pull-right" role="menu">
+                        <li>Current/Projector seat</br>
                             <img src="/img/active.png" />
-                    |
+                            |
                             <img src="/img/active_proj.png" />
-                </li>
-                <li class="divider"></li>
-                <li>Occupied/Projector seat</br>
+                        </li>
+                        <li class="divider"></li>
+                        <li>Occupied/Projector seat</br>
                             <img src="/img/occupied.png" />
-                    |
+                            |
                             <img src="/img/occupied_proj.png" />
-                </li>
-                <li class="divider"></li>
-                <li>Empty/Projector seat</br>
+                        </li>
+                        <li class="divider"></li>
+                        <li>Empty/Projector seat</br>
                             <img src="/img/empty.png" />
-                    |
+                            |
                             <img src="/img/projector.png" />
-                </li>
-                <li class="divider"></li>
-                <li>
-                    <img src="/img/reserved.png" />
-                    Reserved seat</li>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <img src="/img/reserved.png" />
+                            Reserved seat</li>
 
-            </ul>
+                    </ul>
+                </div>
+                <%if (!SessionVariables.registrationBlocked)
+                    {%>
+                <%if (String.IsNullOrEmpty(SessionVariables.UserName))
+                    {%>
+                <div id="viewport">
+                    <script async>
+
+                        var viewport,
+                            currentUser = null
+                        function initialize() {
+                            viewport = new GameOn.SeatingMap(document.getElementById("viewport"), seats, currentUser);
+                            viewport.updateMarkers(people, filtered);
+                        }
+                        google.maps.event.addDomListener(window, "load", initialize);
+                    </script>
+                    <div>
+                        <%} %>
+                        <%else
+                            { %>
+                        <div id="viewport">
+                            <script async>
+                                var viewport,
+                                    currentUser = "<%= SessionVariables.UserName.ToLower() %>"
+                                function initialize() {
+                                    viewport = new GameOn.SeatingMap(document.getElementById("viewport"), seats, currentUser);
+                                    viewport.updateMarkers(people, filtered);
+                                }
+                                google.maps.event.addDomListener(window, "load", initialize);
+                            </script>
+                        </div>
+                        <%} %>
+                    </div>
+                    <%} %>
+                    <%else
+                        { %>
+                    <div align="center">
+                        <br />
+                        <br />
+                        <br />
+                        <h2>There are currently no events available for registration, please check back closer to the event date or when the announcement email has been sent.</h2>
+                    </div>
+
+                    <%} %>
+                </div>
+
+            </div>
+            <%-- Third Floor Map --%>
+            <div class="tab-pane fade" id="ThirdFloor">
+                <%if (!SessionVariables.registrationBlocked)
+                    {%>
+                <%if (String.IsNullOrEmpty(SessionVariables.UserName))
+                    {%>
+                <div id="thirdfoorviewport">
+                    <!-- Nick replace this with the name of your new file-->
+                    <script async>
+
+                        var thirdfoorviewport,
+                            currentUser = null
+                        function initialize() {
+                            thirdfoorviewport = new GameOn.SeatingMap(document.getElementById("viewport"), seats, currentUser);
+                            thirdfoorviewport.updateMarkers(people, filtered);
+                        }
+                        google.maps.event.addDomListener(window, "load", initialize);
+                    </script>
+                    <div>
+                        <%} %>
+                        <%else
+                            { %>
+                        <div id="viewport">
+                            <script async>
+                                var thirdfoorviewport,
+                                    currentUser = "<%= SessionVariables.UserName.ToLower() %>"
+                                function initialize() {
+                                    thirdfoorviewport = new GameOn.SeatingMap(document.getElementById("viewport"), seats, currentUser);
+                                    thirdfoorviewport.updateMarkers(people, filtered);
+                                }
+                                google.maps.event.addDomListener(window, "load", initialize);
+                            </script>
+                        </div>
+                        <%} %>
+                    </div>
+                    <%} %>
+                    <%else
+                        { %>
+                    <div align="center">
+                        <br />
+                        <br />
+                        <br />
+                        <h2>There are currently no events available for registration, please check back closer to the event date or when the announcement email has been sent.</h2>
+                    </div>
+
+                    <%} %>
+                </div>
+            </div>
         </div>
     </div>
-
     <script async>
         var people = <%=people%>
         seats = <%=seats%>
                 filtered = [];
-                $(document).ready(function () {
-                    $('form input').keydown(function (event) {
-                        if (event.keyCode == 13) {
-                            event.preventDefault();
-                            var found = [];
-                            var value = $(this).val().toLowerCase();
-                            $.grep(people, function (n) {
-                                if (value != "") {
-                                    var index = n.title.indexOf(value);
-                                    if (index != -1) {
-                                        //filtered.push(people.get(index));
-                                        found.push(n);
-                                    }
-                                }
-                            });
-                            filtered = found;
-                            viewport.updateMarkers(people, filtered);
+        $(document).ready(function () {
+            $('form input').keydown(function (event) {
+                if (event.keyCode == 13) {
+                    event.preventDefault();
+                    var found = [];
+                    var value = $(this).val().toLowerCase();
+                    $.grep(people, function (n) {
+                        if (value != "") {
+                            var index = n.title.indexOf(value);
+                            if (index != -1) {
+                                //filtered.push(people.get(index));
+                                found.push(n);
+                            }
                         }
                     });
-                    $('#Mapsearchbutton').click(function (event) {
-                        event.preventDefault();
-                        var found = [];
-                        var value = $('#Mapsearch').val().toLowerCase();
-                        $.grep(people, function (n) {
-                            if (value != "") {
-                                var index = n.title.indexOf(value);
-                                if (index != -1) {
-                                    //filtered.push(people.get(index));
-                                    found.push(n);
-                                }
-                            }
-                        });
-                        filtered = found;
-                        viewport.updateMarkers(people, filtered);
-                    });
-                });
-    </script>
-    <%if (!SessionVariables.registrationBlocked)
-    {%>
-      <%if (String.IsNullOrEmpty(SessionVariables.UserName))
-      {%>
-    <div id="viewport">
-
-        <script async src="js/bootbox.js?v=1.0"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
-        <script src="js/index.js?v=1.0"></script>
-        <script async>
-
-            var viewport,
-                currentUser = null
-            function initialize() {
-                viewport = new GameOn.SeatingMap(document.getElementById("viewport"), seats, currentUser);
-                viewport.updateMarkers(people, filtered);
-            }
-            google.maps.event.addDomListener(window, "load", initialize);
-        </script>
-        <div>
-            <%} %>
-            <%else
-            { %>
-            <div id="viewport">
-
-                <script async src="js/bootbox.js?v=1.0"></script>
-                <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
-                <script src="js/index.js?v=1.0"></script>
-                <script async>
-                    var viewport,
-                        currentUser = "<%= SessionVariables.UserName.ToLower() %>"
-                    function initialize() {
-                        viewport = new GameOn.SeatingMap(document.getElementById("viewport"), seats, currentUser);
-                        viewport.updateMarkers(people, filtered);
+                    filtered = found;
+                    viewport.updateMarkers(people, filtered);
+                }
+            });
+            $('#Mapsearchbutton').click(function (event) {
+                event.preventDefault();
+                var found = [];
+                var value = $('#Mapsearch').val().toLowerCase();
+                $.grep(people, function (n) {
+                    if (value != "") {
+                        var index = n.title.indexOf(value);
+                        if (index != -1) {
+                            //filtered.push(people.get(index));
+                            found.push(n);
+                        }
                     }
-                    google.maps.event.addDomListener(window, "load", initialize);
-                </script>
-            </div>
-            <%} %>
-        </div>
-        <%} %>
-        <%else
-        { %>
-		<div align=center><br /><br /><br />
-        <h2>There are currently no events available for registration, please check back closer to the event date or when the announcement email has been sent.</h2>
-        </div>
-		
-        <%} %>
+                });
+                filtered = found;
+                viewport.updateMarkers(people, filtered);
+            });
+        });
+    </script>
 </asp:Content>
 
 
