@@ -69,6 +69,7 @@
                 window.location = '/Account/Login.aspx'
             });
         });
+        
     </script>
     <!-- Success modal-->
     <div class="modal" id="success" tabindex="-1" role="dialog">
@@ -196,12 +197,12 @@
     <div class="container">
         <ul class="nav nav-pills" role="tablist">
             <li class="active">
-                <a href="#FirstFloor" role="tab" data-toggle="tab">
+                <a href="#FirstFloor" id="FirstFloorTab" role="tab" data-toggle="tab">
                     <i class="fa fa-envelope">1st floor map - Tabletop/BYOC/Card games</i>
                 </a>
             </li>
             <li>
-                <a href="#ThirdFloor" role="tab" data-toggle="tab">
+                <a href="#ThirdFloor" id="ThirdFloorTab" role="tab" data-toggle="tab">
                     <i class="fa fa-cog">3rd floor map - Console/$2000 CSGO</i>
                 </a>
             </li>
@@ -290,7 +291,7 @@
 				<%} %>
             </div>
             <%-- Third Floor Map --%>
-            <div class="tab-pane fade active in" id="ThirdFloor">
+            <div class="tab-pane fade" id="ThirdFloor">
                 <%if (String.IsNullOrEmpty(SessionVariables.UserName))
                     {%>
                 <div id="viewport3">
