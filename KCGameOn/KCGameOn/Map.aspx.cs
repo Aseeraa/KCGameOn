@@ -27,7 +27,9 @@ namespace KCGameOn
     {
         public static List<String> seatList = new List<String>();
         public string seats;
+        public string seats3;
         public string people;
+        public string people3;
         public int count;
         public string pp = null;
         private string UserInfo = ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString;
@@ -62,7 +64,7 @@ namespace KCGameOn
             try
             {
                 count = 0;
-                cmd = new MySqlCommand("SELECT * FROM seatcoords", new MySqlConnection(UserInfo));
+                cmd = new MySqlCommand("SELECT * FROM seatcoords WHERE floor = 1", new MySqlConnection(UserInfo));
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Connection.Open();
                 IAsyncResult result = cmd.BeginExecuteReader();
@@ -75,6 +77,23 @@ namespace KCGameOn
                     seats = seats + seat;
                 }
                 seats += "]";
+                reader.Close();
+
+                cmd.Connection.Close();
+
+                cmd = new MySqlCommand("SELECT * FROM seatcoords WHERE floor = 3", new MySqlConnection(UserInfo));
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Connection.Open();
+                result = cmd.BeginExecuteReader();
+                //reader = cmd.ExecuteReader();
+                reader = cmd.EndExecuteReader(result);
+                seats3 += "[";
+                while (reader.Read())
+                {
+                    String seat3 = "{ \"id\": \"" + reader["id"].ToString() + "\", \"title\": \"" + reader["title"] + "\", \"lat\": " + (double)reader["lat"] + ", \"lng\":" + (double)reader["lng"] + " },";
+                    seats3 = seats3 + seat3;
+                }
+                seats3 += "]";
                 reader.Close();
 
                 cmd.Connection.Close();

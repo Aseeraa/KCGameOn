@@ -39,8 +39,9 @@
     </style>
     <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
     <script async src="js/bootbox.js?v=1.0"></script>
+    <script async3 src="js/bootbox.js?v=1.0"></script>
     <script src="js/index.js?v=1.0"></script>
-    <script src="js/thirdfloor.js?v=1.0"></script>
+    <script src="js/index3.js?v=1.0"></script>
     <!-- Nick replace this with the name of your new file-->
     <script>
         $(document).ready(function () {
@@ -262,6 +263,7 @@
                 <div id="viewport">
                     <script async>
 
+
                         var viewport,
                             currentUser = null
                         function initialize() {
@@ -292,12 +294,12 @@
                 <%if (String.IsNullOrEmpty(SessionVariables.UserName))
                     {%>
                 <div id="viewport3">
-                    <script async>
+                    <script async3>
 
                         var viewport3,
                             currentUser = null
                         function initialize3() {
-                            viewport3 = new GameOn3.SeatingMap(document.getElementById("viewport3"), seats, currentUser);
+                            viewport3 = new GameOn3.SeatingMap(document.getElementById("viewport3"), seats3, currentUser);
                             viewport3.updateMarkers(people, filtered);
                         }
                         google.maps.event.addDomListener(window, "load", initialize3);
@@ -307,11 +309,11 @@
                 <%else
                 { %>
 				<div id="viewport3">
-					<script async>
+					<script async3>
 						var viewport3,
 							currentUser = "<%= SessionVariables.UserName.ToLower() %>"
 						function initialize3() {
-							viewport3 = new GameOn3.SeatingMap(document.getElementById("viewport3"), seats, currentUser);
+							viewport3 = new GameOn3.SeatingMap(document.getElementById("viewport3"), seats3, currentUser);
 							viewport3.updateMarkers(people, filtered);
 						}
 						google.maps.event.addDomListener(window, "load", initialize3);
@@ -360,6 +362,46 @@
                 });
                 filtered = found;
                 viewport.updateMarkers(people, filtered);
+            });
+        });
+    </script>
+    <script async3>
+        var seats3 = <%=seats3%>
+                filtered = [];
+        $(document).ready(function () {
+            $('form input').keydown(function (event) {
+                if (event.keyCode == 13) {
+                    event.preventDefault();
+                    var found = [];
+                    var value = $(this).val().toLowerCase();
+                    $.grep(people, function (n) {
+                        if (value != "") {
+                            var index = n.title.indexOf(value);
+                            if (index != -1) {
+                                //filtered.push(people.get(index));
+                                found.push(n);
+                            }
+                        }
+                    });
+                    filtered = found;
+                    viewport3.updateMarkers(people, filtered);
+                }
+            });
+            $('#Mapsearchbutton').click(function (event) {
+                event.preventDefault();
+                var found = [];
+                var value = $('#Mapsearch').val().toLowerCase();
+                $.grep(people, function (n) {
+                    if (value != "") {
+                        var index = n.title.indexOf(value);
+                        if (index != -1) {
+                            //filtered.push(people.get(index));
+                            found.push(n);
+                        }
+                    }
+                });
+                filtered = found;
+                viewport3.updateMarkers(people, filtered);
             });
         });
     </script>

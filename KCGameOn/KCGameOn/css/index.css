@@ -3,6 +3,11 @@
     height: 750px; width: 1170px;
 }
 
+#viewport3 {
+    border: 1px solid #111;
+    height: 750px; width: 1170px;
+}
+
 .gmnoprint, a[title="Click to see this area on Google Maps"] {
     display: none !important;
 }
