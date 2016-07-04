@@ -107,7 +107,7 @@
             var options = {
                 draggable: false,
                 center: new gmaps.LatLng(84.55, -171.5),
-                zoom: 7,
+                zoom: 3,
                 disableDefaultUI: true,
                 backgroundColor: '#DDDDDD'
             };
@@ -228,8 +228,7 @@
 
     // Seating Map
     GameOn.SeatingMap = function (mapDivId, seats, currentUser) {
-		//add projectors below for first floor
-        var projectors = [];
+        var projectors = ["59", "60", "64"];
         //var userFound = found;
         var world = new GameOn.CustomMap(mapDivId);
 

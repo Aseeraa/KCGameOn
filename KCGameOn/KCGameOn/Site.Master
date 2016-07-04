@@ -167,7 +167,7 @@
           { %>
 				    <li><a href="/Account/Login.aspx">Login</a></li>
                     <li><a href="/Account/Profile.aspx">User Profile</a></li>
-				    <li><a href="/Account/Register.aspx">Register</a></li>
+				    <li><a href="/Account/Register.aspx">Create Username</a></li>
 				    <%} %>
 			      </ul>
 			    </li>

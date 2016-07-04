@@ -95,10 +95,10 @@
 						</div>
 					</div>
 					<div class="item">
-                        <img src="/img/dota_2.png" style="width: 100%" />
+                        <img src="/img/overwatch.png" style="width: 100%" />
                         <div class="carousel-caption">
                             
-                            <p>A MOBA favorite at KCGameOn</p>
+                            <p>The new hype at KCGameOn</p>
 						</div>
 					</div>
 					<div class="item">
@@ -166,19 +166,19 @@
             <br />
 
             <form class="well form-inline">
-                <h3>KCGameOn Event #69 - June 11th, 2016!</h3>
+                <h3>KCGameOn Event #70 - July 30th, 2016!</h3>
                 <br />
                 <div class="control-group">
                     <div class="controls">
                         <div class="input-append">
-                <button id="Button1" type="button" class="btn btn-inverse" style="padding-left: 13px" onclick="myFunction()" runat="server">Registration for #69!</button>
+                <button id="Button1" type="button" class="btn btn-inverse" style="padding-left: 13px" onclick="myFunction()" runat="server">Registration for #70!</button>
 				
-                            <!-- <p id="demo"></p> -->
+                            <!-- <p id="demo"></p>  check-in <a href="https://kcgameon.com/checkin.aspx">HERE.</a> -->
                         </div>
                     </div>
                 </div>
 				<!-- Please bear with us while we set up for the next event. <br /> -->
-                <p style="text-align: justify">
+                <p style="text-align: justify"> 
 
                     <b style="color: #0099cc;">Who we are:</b> Gamers putting on a gaming event for YOU and your friends.  PC, Console, Board Games and Card games welcome!
             <br />

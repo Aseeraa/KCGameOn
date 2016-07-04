@@ -69,7 +69,7 @@
         </div>
     </div>
     <div class="control-group">
-        <label class="control-label">Sponsor</label>
+        <label class="control-label">ID/clan/gamergroup</label>
         <label class="controls" style="margin-top: 5px;">
             <input id="sponsorText" class="CurrentPassword" runat="server" value="" onkeyup="" placeholder="ab0000000" type="text" required="true" />
         </label>
