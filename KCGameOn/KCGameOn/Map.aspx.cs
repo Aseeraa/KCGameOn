@@ -161,19 +161,24 @@ namespace KCGameOn
                     cmd = new MySqlCommand("SELECT paymentKey,verifiedPaid FROM payTable WHERE paidDate = (SELECT MAX(paidDate) FROM payTable where userName = \'" + SessionVariables.UserName.ToLower() + "\' AND ActiveIndicator = \'TRUE\') AND userName = \'" + SessionVariables.UserName.ToLower() + "\'", new MySqlConnection(UserInfo));
                     cmd.CommandType = System.Data.CommandType.Text;
                     cmd.Connection.Open();
-                    IAsyncResult result = cmd.BeginExecuteReader();
-                    reader = cmd.EndExecuteReader(result);
-                    result = cmd.BeginExecuteReader();
-                    if (reader == null || !reader.HasRows)
+                    //IAsyncResult result = cmd.BeginExecuteReader();
+                    //result = cmd.BeginExecuteReader();
+                    reader = cmd.ExecuteReader();
+                    while (reader.Read())
                     {
-                        return false;
-                    }
-                    else
-                    {
-                        return true;
+                        if (reader == null && !reader.HasRows)
+                        {
+                            return false;
+                        }
+                        else
+                        {
+                            SessionVariables.paymentKey = reader["paymentKey"].ToString();
+                            SessionVariables.verifiedPaid = reader["verifiedPaid"].ToString();
+                            return true;
+                        }
                     }
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
                 }
                 finally
@@ -310,13 +315,12 @@ namespace KCGameOn
                 cmd = new MySqlCommand("SELECT paymentKey,verifiedPaid FROM payTable WHERE paidDate = (SELECT MAX(paidDate) FROM payTable where userName = \'" + SessionVariables.UserName.ToLower() + "\' AND ActiveIndicator = \'TRUE\')", new MySqlConnection(UserInfo));
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Connection.Open();
-                IAsyncResult result = cmd.BeginExecuteReader();
-                reader = cmd.EndExecuteReader(result);
-                result = cmd.BeginExecuteReader();
-                if (reader == null || !reader.HasRows)
-                {
-                }
-                else
+                //IAsyncResult result = cmd.BeginExecuteReader();
+                //result = cmd.BeginExecuteReader();
+                //reader = cmd.EndExecuteReader(result);
+                reader = cmd.ExecuteReader();
+
+                if (reader != null && reader.HasRows)
                 {
                     reader.Read();
                     paymentkey = reader["paymentKey"].ToString();
@@ -390,7 +394,7 @@ namespace KCGameOn
                         mail.IsBodyHtml = true;
 
                         var imageData = Convert.FromBase64String(getBarcode(barcode));
-                            
+
                         var contentId = Guid.NewGuid().ToString();
                         var linkedResource = new LinkedResource(new MemoryStream(imageData), "image/jpeg");
                         linkedResource.ContentId = contentId;
@@ -450,7 +454,7 @@ namespace KCGameOn
                             paid = true;
                         }
                     }
-                    if(paid != true)
+                    if (paid != true)
                         paid = checkPayPal();
                     return serializer.Serialize(paid);
                 }
