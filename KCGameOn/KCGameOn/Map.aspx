@@ -94,13 +94,22 @@
                             </td>
                             <td>
                                 <a href="https://kcgameon.com/Tournament.aspx">
-                                    <img src="img/sfvPoster.png" alt="Street Fighter V" height="350" width="193" /></a>
+                                    <img src="img/csgoPoster.jpg" alt="CS:GO" height="350" width="193" /></a>
                             </td>
                             <td>
                                 <a href="https://kcgameon.com/Tournament.aspx">
                                     <img src="img/overwatchPoster.jpg" alt="Overwatch" height="350" width="193" /></a>
                             </td>
-                            <!--<td>
+							<td>
+                                <a href="https://kcgameon.com/Tournament.aspx">
+                                    <img src="img/halo5Poster.png" alt="Halo5" height="350" width="193" /></a>
+                            </td>
+                            <!--
+							<td>
+                                <a href="https://kcgameon.com/Tournament.aspx">
+                                    <img src="img/sfvPoster.png" alt="Street Fighter V" height="350" width="193" /></a>
+                            </td>
+							<td>
                                 <a href="https://kcgameon.com/Tournament.aspx">
                                     <img src="img/dota2Poster.png" alt="Dota 2" height="350" width="193" /></a>
                             </td>

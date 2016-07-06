@@ -1,5 +1,5 @@
 
-(function (GameOn3, gmaps) {
+(function (GameOn3, gmaps3) {
     "use strict";
 
     // Custom Map
@@ -21,7 +21,7 @@
             if (isMarkerIdTaken(id))
                 return;
 
-            var marker = new gmaps.Marker({
+            var marker = new gmaps3.Marker({
                 map: map,
                 position: latLng,
                 title: title,
@@ -32,15 +32,15 @@
             markers.push(marker);
 
             if (markerEvents.hasOwnProperty("mouseover"))
-                gmaps.event.addListener(marker, "mouseover", function () { markerEvents.mouseover({ marker: marker }); });
+                gmaps3.event.addListener(marker, "mouseover", function () { markerEvents.mouseover({ marker: marker }); });
             if (markerEvents.hasOwnProperty("mouseout"))
-                gmaps.event.addListener(marker, "mouseout", function () { markerEvents.mouseout({ marker: marker }); });
+                gmaps3.event.addListener(marker, "mouseout", function () { markerEvents.mouseout({ marker: marker }); });
             if (markerEvents.hasOwnProperty("click"))
-                gmaps.event.addListener(marker, "click", function () { markerEvents.click({ marker: marker }); });
+                gmaps3.event.addListener(marker, "click", function () { markerEvents.click({ marker: marker }); });
             if (markerEvents.hasOwnProperty("rightclick"))
-                gmaps.event.addListener(marker, "rightclick", function () { markerEvents.rightclick({ marker: marker }); });
+                gmaps3.event.addListener(marker, "rightclick", function () { markerEvents.rightclick({ marker: marker }); });
             if (markerEvents.hasOwnProperty("dblclick"))
-                gmaps.event.addListener(marker, "dblclick", function () { markerEvents.dblclick({ marker: marker }); });
+                gmaps3.event.addListener(marker, "dblclick", function () { markerEvents.dblclick({ marker: marker }); });
         };
 
         var deleteMarker = function (id) {
@@ -55,15 +55,15 @@
 
         var loadMarkers = function (points) {
             points.forEach(function (point) {
-                addMarker(new gmaps.LatLng(point.lat, point.lng), point.id, point.title);
+                addMarker(new gmaps3.LatLng(point.lat, point.lng), point.id, point.title);
             });
         };
 
         function initIcons() {
             var base = {
-                size: new gmaps.Size(20, 20),
-                origin: new gmaps.Point(0, 0),
-                anchor: new gmaps.Point(12, 15)
+                size: new gmaps3.Size(20, 20),
+                origin: new gmaps3.Point(0, 0),
+                anchor: new gmaps3.Point(12, 15)
             };
             icons.empty = {
                 url: "/img/empty.png",
@@ -95,23 +95,23 @@
             };
             icons.found = {
                 url: "/img/found.png",
-                size: new gmaps.Size(22, 22), origin: base.origin, anchor: base.anchor
+                size: new gmaps3.Size(22, 22), origin: base.origin, anchor: base.anchor
             };
             icons.proj_found = {
                 url: "/img/proj_found.png",
-                size: new gmaps.Size(22, 22), origin: base.origin, anchor: base.anchor
+                size: new gmaps3.Size(22, 22), origin: base.origin, anchor: base.anchor
             };
         }
 
         function createMap() {
             var options = {
                 draggable: false,
-                center: new gmaps.LatLng(84.55, -171.5),
+                center: new gmaps3.LatLng(84.55, -171.5),
                 zoom: 7,
                 disableDefaultUI: true,
                 backgroundColor: '#DDDDDD'
             };
-            map = new gmaps.Map(mapDivId, options);
+            map = new gmaps3.Map(mapDivId, options);
         }
 
         function setCustomMapType() {
@@ -130,11 +130,11 @@
                     //    return imageURL;
                     //}
                 },
-                tileSize: new gmaps.Size(208, 208),
+                tileSize: new gmaps3.Size(208, 208),
                 maxZoom: 7,
                 minZoom: 7
             };
-            map.mapTypes.set("custom", new gmaps.ImageMapType(options));
+            map.mapTypes.set("custom", new gmaps3.ImageMapType(options));
             map.setMapTypeId("custom");
         }
 
@@ -199,7 +199,7 @@
         //        world.deleteMarker(e.marker.id);
         //    }
         //});
-        //gmaps.event.addListener(world.map, "click", function(e) {
+        //gmaps3.event.addListener(world.map, "click", function(e) {
         //    var id = prompt("Seat id:");
         //    if (id == null || id == "")
         //        return;
@@ -228,7 +228,7 @@
 
     // Seating Map
     GameOn3.SeatingMap = function (mapDivId, seats, currentUser) {
-        var projectors = ["59", "60", "64"];
+        var projectors = ["362", "364", "366"];
         //var userFound = found;
         var world = new GameOn3.CustomMap(mapDivId);
 
@@ -251,7 +251,7 @@
         //    infoBoxClearance: new google.maps.Size(1, 1)
         //});
         //infowindow.setContent('<p><button onclick="myFunction()">Reserve</button><p>');
-        gmaps.event.addListener(world.map, "click", function (e) {
+        gmaps3.event.addListener(world.map, "click", function (e) {
             if (currentUser == null) {
                 //bootbox.dialog("Please login to choose a seat.", [
                 //    {
@@ -295,9 +295,9 @@
                         type: "POST",
                         url: "Map.aspx/checkPaid",
                         contentType: "application/json; charset=utf-8",
-                        dataType: "json"
-                    })
-                        .success(function (data) {
+                        dataType: "json"})
+                        .success(function(data)
+                        {
                             debugger;
                             if (data.d == "true") {
                                 world.markers.forEach(function (marker) {
@@ -324,29 +324,31 @@
                                 });
 
                                 //Makes call to set user to the current seat.
-                                if (e.marker.title == currentUser) {
-                                    var user = {};
-                                    user.Username = currentUser;
-                                    user.SeatID = e.marker.id;
-                                    $.ajax({
-                                        type: "POST",
-                                        url: "Map.aspx/SaveUser",
-                                        data: '{user: ' + JSON.stringify(user) + '}',
-                                        contentType: "application/json; charset=utf-8",
-                                        dataType: "json",
-                                    })
-                                    .done(function (data) {
-                                        //successBox();
-                                        $("#success").modal('show');
-                                    })
-                                    .fail(function () {
-                                        //failedBox();
-                                        $("#failure").modal('show');
-                                    });
-                                }
-                                else {
+								if(e.marker.title == currentUser)
+								{
+                                var user = {};
+                                user.Username = currentUser;
+                                user.SeatID = e.marker.id;
+                                $.ajax({
+                                    type: "POST",
+                                    url: "Map.aspx/SaveUser",
+                                    data: '{user: ' + JSON.stringify(user) + '}',
+                                    contentType: "application/json; charset=utf-8",
+                                    dataType: "json",
+                                })
+                                .done(function (data) {
+                                    //successBox();
+                                    $("#success").modal('show');
+                                })
+                                .fail(function () {
+                                    //failedBox();
                                     $("#failure").modal('show');
-                                }
+                                });
+								}
+								else
+								{
+								$("#failure").modal('show');
+								}
                             }
                             else {
                                 $("#payToSit").modal('show');
@@ -371,10 +373,10 @@
                                 //});
                             }
                         })
-                        .fail(function (error) {
+                        .fail(function(error) {
                             alert(error.message);
                         });
-
+                    
                 }
                 else {
                     bootbox.dialog({
