@@ -150,7 +150,7 @@
                 <table class="tbody" id="table_feed" runat="server">
                 </table>
             </div>-->
-			<iframe src="https://discordapp.com/widget?id=143552833805877248&theme=dark" width="470" height="270" allowtransparency="true" frameborder="0"></iframe>
+			
             <%--<a data-toggle="modal" href="#myModal" >
 		<img src="/img/GameOn.jpg"style="width:389px;height:235px;width:100%"/></a>--%>
 <%--            <div class="modal hide" id="myModal">
@@ -161,9 +161,6 @@
                 </div>
             </div>--%>
 
-
-            <br />
-            <br />
 
             <form class="well form-inline">
                 <h3>KCGameOn Event #70 - July 30th, 2016!</h3>
@@ -188,7 +185,7 @@
 			<%--<br />
 					<b style="color: #0099cc;">For more poster submission information, click <a href="https://kcgameon.com/Postersubmission.aspx">HERE.</a>--%>
             </form>
-
+            <iframe src="https://discordapp.com/widget?id=143552833805877248&theme=dark" width="470" height="270" allowtransparency="true" frameborder="0"></iframe>
         </div>
     </div>
 

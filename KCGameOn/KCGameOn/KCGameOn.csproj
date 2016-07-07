@@ -238,6 +238,7 @@
     <Content Include="js\npm.js" />
     <Content Include="js\prettify.js" />
     <Content Include="Map.aspx" />
+    <Content Include="News.aspx" />
     <Content Include="packages.config" />
     <Content Include="icon\Thumbs.db" />
     <Content Include="Schedule.aspx" />
@@ -249,6 +250,7 @@
     <Content Include="Checkin.aspx" />
     <Content Include="Users.aspx" />
     <Content Include="ViewSwitcher.ascx" />
+    <Content Include="Volunteer.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -387,6 +389,13 @@
     <Compile Include="Map.aspx.designer.cs">
       <DependentUpon>Map.aspx</DependentUpon>
     </Compile>
+    <Compile Include="News.aspx.cs">
+      <DependentUpon>News.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="News.aspx.designer.cs">
+      <DependentUpon>News.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Schedule.aspx.cs">
       <DependentUpon>Schedule.aspx</DependentUpon>
@@ -459,6 +468,13 @@
     </Compile>
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Volunteer.aspx.cs">
+      <DependentUpon>Volunteer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Volunteer.aspx.designer.cs">
+      <DependentUpon>Volunteer.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

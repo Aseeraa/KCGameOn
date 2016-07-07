@@ -74,7 +74,8 @@
 
 <div class="row-fluid">
 	<div class="span9"><br/>
-		<img src="/img/logo.png" height="43px" width="295px"/>
+		<img src="/img/logo.png" height="43px" width="295px" style="float:left;"/>
+        <h3 style="float:left; padding:15px 0 0 15px">Next event:<b style="color: #0099cc;"> July 30, 2016</b></h3>
 	</div>
 	<div class="span3"><br/>
 	<div class="pull-right">
@@ -110,14 +111,19 @@
         <div class="nav-collapse collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li><a href="/Default.aspx" class="brand">Home</a></li>
-			    <li><a href="/Map.aspx" class="active">Map</a></li>
+                <li><a href="/EventRegistration.aspx" class="active" style="background:#9933cc">Register</a>
+                </li>
+			    
+
     <%--			<li><a href="/Schedule.aspx" class ="active">Schedule</a></li>
                 <li><a href="/Tournament.aspx" class ="active">Tournaments</a></li>
 			    <li><a href="/GameServers.aspx">Game Servers</a></li>--%>
 
+                  <li><a href="/News.aspx" class="active">News</a></li>
                   <li class="dropdown">
-			      <a data-toggle="dropdown" class="dropdown-toggle" href="#">Event Info<b class="caret"></b></a>
+			      <a data-toggle="dropdown" class="dropdown-toggle" href="#">Event<b class="caret"></b></a>
 			      <ul class="dropdown-menu">
+                    <li><a href="/Map.aspx" class="active">Map</a></li>
 				    <li><a href="/Schedule.aspx" class ="active">Schedule</a></li>
                     <li><a href="/Tournament.aspx" class ="active">Tournaments</a></li>
 			        <li><a href="/GameServers.aspx">Game Servers</a></li>
@@ -126,30 +132,33 @@
 
 			    <%--<li><a href="/forums/index.php?p=/">Forums</a></li>--%>
 			    <li class="dropdown">
-			      <a data-toggle="dropdown" class="dropdown-toggle" href="#">Sponsors<b class="caret"></b></a>
+			      <a data-toggle="dropdown" class="dropdown-toggle" href="#">Sponsors & Exhibitors<b class="caret"></b></a>
 			      <ul class="dropdown-menu">
 				    <li><a href="/Sponsors/Sponsors.aspx">Sponsors</a></li>
 				    <li><a href="/Sponsors/HowToHelp.aspx">How to help</a></li>
 			      </ul>
 			    </li>
-			    <li><a href="https://kcgameon.spreadshirt.com/" target="_blank">Swag</a></li>
+			    
 
 			    <%--			<li><a href="/Staff.aspx">Staff</a></li>
 			    <li><a href="/Users.aspx">Users</a></li>--%>
-            
+               
                 <li class="dropdown">
-			      <a data-toggle="dropdown" class="dropdown-toggle" href="#">Users<b class="caret"></b></a>
+			      <a data-toggle="dropdown" class="dropdown-toggle" href="#">Info<b class="caret"></b></a>
 			      <ul class="dropdown-menu">
-			        <li><a href="/Users.aspx">Users</a></li>
-                    <li><a href="/Staff.aspx">Staff</a></li>
+                    <li><a href="/Staff.aspx">About us</a></li>
+			        <li><a href="/Users.aspx">User list</a></li>
+                    <li><a href="https://kcgameon.spreadshirt.com/" target="_blank">Swag</a></li>
 			      </ul>
 			    </li>
-
+                <li><a href="/Volunteer.aspx">Volunteers</a></li>
 			    <li class="dropdown">
 			      <a data-toggle="dropdown" class="dropdown-toggle" href="#">FAQ<b class="caret"></b></a>
 			      <ul class="dropdown-menu">
-				    <li><a href="/FAQ/FAQ.aspx">FAQ</a></li>
+				    <li><a href="/FAQ/FAQ.aspx">General</a></li>
 				    <li><a href="/FAQ/WhatToBring.aspx">What To Bring</a></li>
+                    <li><a href="/FAQ/Registration.aspx">Registration</a></li>
+                    <li><a href="/FAQ/Travel.aspx">Travel/Venue</a></li>
 			      </ul>
 			    </li>
                 <%if (SessionVariables.UserAdmin == 1)
