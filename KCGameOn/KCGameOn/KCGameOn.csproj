@@ -198,6 +198,8 @@
     <Content Include="ErrorPage\Error.aspx" />
     <Content Include="EventRegistration.aspx" />
     <Content Include="FAQ\FAQ.aspx" />
+    <Content Include="FAQ\GetStarted.aspx" />
+    <Content Include="FAQ\Travel.aspx" />
     <Content Include="FAQ\WhatToBring.aspx" />
     <Content Include="GameServers.aspx" />
     <Content Include="icon\digg.png" />
@@ -364,6 +366,20 @@
     </Compile>
     <Compile Include="FAQ\FAQ.aspx.designer.cs">
       <DependentUpon>FAQ.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FAQ\GetStarted.aspx.cs">
+      <DependentUpon>GetStarted.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FAQ\GetStarted.aspx.designer.cs">
+      <DependentUpon>GetStarted.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FAQ\Travel.aspx.cs">
+      <DependentUpon>Travel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FAQ\Travel.aspx.designer.cs">
+      <DependentUpon>Travel.aspx</DependentUpon>
     </Compile>
     <Compile Include="FAQ\WhatToBring.aspx.cs">
       <DependentUpon>WhatToBring.aspx</DependentUpon>

@@ -34,13 +34,13 @@
         </p>
         <div class="UImenu">
             <div class="UImenuItem">
-                <label class="Menubody-trigger"><strike>192.168.1.241 Counter-Strike:GO</strike></label>
+                <label class="Menubody-trigger">192.168.1.200-208 Counter-Strike:GO</label>
                 <div class="Content">
                     Launch Counter-Strike<p>
                         (enable the console) click options, scroll near the bottom and find 'Enable Developer Console (~)' and set this to YES.  click back<p>
-                            Now, you can click the ~ key and open the console, type: connect 192.168.1.241:27015 and hit enter.<p>
+                            Now, you can click the ~ key and open the console, type: connect 192.168.1.200:27015 and hit enter.<p>
                                 <p>
-                                    Second Option - Play > Browse Community Servers > Favorites > Add A Server > 192.168.1.241:27015 and click 'find games at this address'</span><br />
+                                    Second Option - Play > Browse Community Servers > Favorites > Add A Server > 192.168.1.200:27015 and click 'find games at this address'</span><br />
                 </div>
             </div>
             <div class="UImenuItem">

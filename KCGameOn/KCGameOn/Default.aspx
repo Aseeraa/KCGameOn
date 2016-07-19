@@ -163,21 +163,25 @@
 
 
             <form class="well form-inline">
-                <h3>KCGameOn Event #70 - July 30th, 2016!</h3>
-                <br />
-                <div class="control-group">
+                <h3>Join our KCGameOn Extra-Life team!</h3>
+                
+               <!--  <div class="control-group">
                     <div class="controls">
                         <div class="input-append">
                 <button id="Button1" type="button" class="btn btn-inverse" style="padding-left: 13px" onclick="myFunction()" runat="server">Registration for #70!</button>
 				
-                            <!-- <p id="demo"></p>  check-in <a href="https://kcgameon.com/checkin.aspx">HERE.</a> -->
+                            <p id="demo"></p>  check-in <a href="https://kcgameon.com/checkin.aspx">HERE.</a> 
                         </div>
                     </div>
                 </div>
-				<!-- Please bear with us while we set up for the next event. <br /> -->
+				Please bear with us while we set up for the next event. <br /> -->
                 <p style="text-align: justify"> 
 
-                    <b style="color: #0099cc;">Who we are:</b> Gamers putting on a gaming event for YOU and your friends.  PC, Console, Board Games and Card games welcome!
+                    <img src="/img/extra-lifewhitelogo.png" />
+                    <br />
+                    <p>Our goal for the year is to hit $1000 - <a href="http://extra-life.org/team/kcgameon">come be part of our team</a> and make a difference while you gaming with friends!</p>
+
+            <!--        <b style="color: #0099cc;">Who we are:</b> Gamers putting on a gaming event for YOU and your friends.  PC, Console, Board Games and Card games welcome!
             <br />
                     <b style="color: #0099cc;">Where:</b> 2702 Rockcreek Parkway, North Kansas City, MO 64117.
             <br />

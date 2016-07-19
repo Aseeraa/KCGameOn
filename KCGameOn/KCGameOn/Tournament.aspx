@@ -594,7 +594,8 @@ If a player that is registered fails to show up to check-in, a substitute player
 					
 					<div class="col-md-3">
 					<p>Game Map & Type</p>
-					<p><h2>Random 6v6 map</h2></p>
+					<p><h2>Custom Game</h2></p>
+                    <p>Rules: Competitive</p>
 					</div>
 					<div class="col-md-3">
 						<a href="https://battlefy.com/kcgameon/overwatch-kcgameon-70/5768af54e52f02200cda9c48/join/mixed-join"><img src="/img/join.png"></a>

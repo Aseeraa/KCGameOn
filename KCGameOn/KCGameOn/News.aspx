@@ -85,11 +85,12 @@
                               <tr>
                                 <th>
                                   <h2>Announcements/Notes</h2>
-                                    <p>Hope everyone had a great 4th of July! 'Merica and all that.  We have some big things on deck for this event, so make sure you read it through!</p>
-                                    <p><img src="http://www.kcgameon.com/img/csgosticker.png"></p>
+                                    <p><b>Collector's Cache</b> is back with flights of both draft/sealed deck featuring the latest set, Eldrich Moon - the price is 10 and 20 dollars respectively and we will keep running flights as long as people want to play (min of 8 people per flight).  Please sign up on the <a href="http://goo.gl/forms/uWdzgzcw2jgSefLD3">google doc</a> and let us know if you plan to play so we know how to prepare.</p>
+                                   
 								<p>For the first time, KCGameOn is putting on a <b>$2000* CS:GO tournament</b> for KC and the surrounding area!  Make sure you drop in and check out this tournament on 3rd floor.</p>
-                                
-								  
+                                <p>*based on 8 team entries</p>
+								
+                                <p>A change for the <b>Overwatch Tournament</b> - We are going to run custom games using the competitive rules for this tournament.  My lowly account (under level 25) was able to make a custom game w/competitive rules, which means the level requirement doesn't impact custom games.  Competitive will streamline the rules for us and make the tournament much smoother. This will be the game type we use going forward.</p>
                                     <table class="callout">
                                     <tr>
                                       <th class="callout-inner secondary"><p>We are also continuing our Console tournaments with Halo5 with the help from PDS tournaments!</p>
@@ -147,8 +148,8 @@
 												<td class="menu-item float-center"><b>HotS</b><p>July 30, 2016 @330p <br>5v5 - random map double elim</p></td>
                                                 </tr> -->
 												<tr>
-												<td class="menu-item float-center"><b>Magic:The Gathering</b><p>July 30, 2016 @2p <br> Booster Draft for $10 (below retail price)<br><br>
-														July 30, 2016 @7p <br> Sealed Deck for $20 (below retail price)</p></td>
+												<td class="menu-item float-center"><b>Magic:The Gathering</b><p>July 30, 2016 @1p and/or 7p <br> Booster Draft for $10 (below retail price)<br><br>
+														July 30, 2016 @1 and/or 7p <br> Sealed Deck for $20 (below retail price)</p></td>
                                                 </tr>
 											</table>
                                   <table class="button expand">
@@ -221,8 +222,8 @@
                                                   <th class="menu-item float-center"><b>How much:</b><p>$15 pre-paid reserved seating or $20 at the door GA seating</p></th>
                                                   <th class="menu-item float-center"><b>Where:</b><p><a href="http://goo.gl/maps/icsPf">2702 Rockcreek Parkway, North Kansas City, MO 64117</a></p></th>
                                                   <th class="menu-item float-center"><b>Dinner/Snacks/Pop are provided as part of the venue fee.</b></th>
-                                                  <th class="menu-item float-center"><b>Cerner(our host venue) has 'gone green' and no longer buying cups - if you need to drink your pop with ice in the future, you will need to bring your own cup. Ice is still available.</p></th>
-                                                  <th class="menu-item float-center"><b>Check-in is required</b></th>
+                                                  <th class="menu-item float-center"><b>Cerner (our host venue) has 'gone green' and no longer buying cups - if you need to drink your pop with ice in the future, you will need to bring your own cup. Ice is still available.</p></th>
+                                                  <th class="menu-item float-center"><b>Check-in is required for ALL attendees.  Check your email for a barcode for fast check-in!</b></th>
                                                 </tr>
                                               </table>
                                             </td>
