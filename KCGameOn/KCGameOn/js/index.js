@@ -228,7 +228,8 @@
 
     // Seating Map
     GameOn.SeatingMap = function (mapDivId, seats, currentUser) {
-        var projectors = ["59", "60", "64"];
+		//add projectors below for first floor
+        var projectors = [];
         //var userFound = found;
         var world = new GameOn.CustomMap(mapDivId);
 
@@ -298,6 +299,7 @@
                         dataType: "json"})
                         .success(function(data)
                         {
+                            debugger;
                             if (data.d == "true") {
                                 world.markers.forEach(function (marker) {
                                     if (marker.title == currentUser) {
@@ -323,6 +325,8 @@
                                 });
 
                                 //Makes call to set user to the current seat.
+								if(e.marker.title == currentUser)
+								{
                                 var user = {};
                                 user.Username = currentUser;
                                 user.SeatID = e.marker.id;
@@ -340,8 +344,12 @@
                                 .fail(function () {
                                     //failedBox();
                                     $("#failure").modal('show');
-                                })
-                                ;
+                                });
+								}
+								else
+								{
+								$("#failure").modal('show');
+								}
                             }
                             else {
                                 $("#payToSit").modal('show');

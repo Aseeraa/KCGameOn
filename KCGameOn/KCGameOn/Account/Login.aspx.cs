@@ -188,7 +188,7 @@ namespace KCGameOn.Account
                 {
                     try
                     {
-                        cmd = new MySqlCommand("SELECT pay.idpaytable, pay.username, pay.EventID, sea.checkedin, pay.verifiedPaid, pay.paymentKey FROM payTable AS pay LEFT JOIN (SELECT username, checkedin FROM seatingchart WHERE username = \"" + SessionVariables.UserName + "\" AND ActiveIndicator = \"TRUE\") sea on pay.username = sea.username WHERE pay.username = \"" + SessionVariables.UserName + "\" AND pay.EventID = (SELECT EventID FROM kcgameon.schedule WHERE Active = 1 order by ID LIMIT 1) AND pay.verifiedPaid = \"Y\"", new MySqlConnection(UserInfo));
+                        cmd = new MySqlCommand("SELECT pay.idpaytable, pay.username, pay.EventID, sea.checkedin, pay.verifiedPaid, pay.paymentKey FROM payTable AS pay LEFT JOIN (SELECT username, checkedin FROM seatingchart WHERE username = \"" + SessionVariables.UserName + "\" AND ActiveIndicator = \"TRUE\") sea on pay.username = sea.username WHERE pay.username = \"" + SessionVariables.UserName + "\" AND pay.EventID = (SELECT EventID FROM kcgameon.schedule WHERE Active = 1 order by ID LIMIT 1) AND pay.verifiedPaid = \'Y\'", new MySqlConnection(UserInfo));
                         cmd.CommandType = System.Data.CommandType.Text;
                         cmd.Connection.Open();
                         IAsyncResult result = cmd.BeginExecuteReader();

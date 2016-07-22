@@ -27,7 +27,9 @@ namespace KCGameOn
     {
         public static List<String> seatList = new List<String>();
         public string seats;
+        public string seats3;
         public string people;
+        public string people3;
         public int count;
         public string pp = null;
         private string UserInfo = ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString;
@@ -62,7 +64,7 @@ namespace KCGameOn
             try
             {
                 count = 0;
-                cmd = new MySqlCommand("SELECT * FROM seatcoords", new MySqlConnection(UserInfo));
+                cmd = new MySqlCommand("SELECT * FROM seatcoords WHERE floor = 1", new MySqlConnection(UserInfo));
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Connection.Open();
                 IAsyncResult result = cmd.BeginExecuteReader();
@@ -75,6 +77,23 @@ namespace KCGameOn
                     seats = seats + seat;
                 }
                 seats += "]";
+                reader.Close();
+
+                cmd.Connection.Close();
+
+                cmd = new MySqlCommand("SELECT * FROM seatcoords WHERE floor = 3", new MySqlConnection(UserInfo));
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Connection.Open();
+                result = cmd.BeginExecuteReader();
+                //reader = cmd.ExecuteReader();
+                reader = cmd.EndExecuteReader(result);
+                seats3 += "[";
+                while (reader.Read())
+                {
+                    String seat3 = "{ \"id\": \"" + reader["id"].ToString() + "\", \"title\": \"" + reader["title"] + "\", \"lat\": " + (double)reader["lat"] + ", \"lng\":" + (double)reader["lng"] + " },";
+                    seats3 = seats3 + seat3;
+                }
+                seats3 += "]";
                 reader.Close();
 
                 cmd.Connection.Close();
@@ -142,19 +161,24 @@ namespace KCGameOn
                     cmd = new MySqlCommand("SELECT paymentKey,verifiedPaid FROM payTable WHERE paidDate = (SELECT MAX(paidDate) FROM payTable where userName = \'" + SessionVariables.UserName.ToLower() + "\' AND ActiveIndicator = \'TRUE\') AND userName = \'" + SessionVariables.UserName.ToLower() + "\'", new MySqlConnection(UserInfo));
                     cmd.CommandType = System.Data.CommandType.Text;
                     cmd.Connection.Open();
-                    IAsyncResult result = cmd.BeginExecuteReader();
-                    reader = cmd.EndExecuteReader(result);
-                    result = cmd.BeginExecuteReader();
-                    if (reader == null || !reader.HasRows)
+                    //IAsyncResult result = cmd.BeginExecuteReader();
+                    //result = cmd.BeginExecuteReader();
+                    reader = cmd.ExecuteReader();
+                    while (reader.Read())
                     {
-                        return false;
-                    }
-                    else
-                    {
-                        return true;
+                        if (reader == null && !reader.HasRows)
+                        {
+                            return false;
+                        }
+                        else
+                        {
+                            SessionVariables.paymentKey = reader["paymentKey"].ToString();
+                            SessionVariables.verifiedPaid = reader["verifiedPaid"].ToString();
+                            return true;
+                        }
                     }
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
                 }
                 finally
@@ -291,13 +315,12 @@ namespace KCGameOn
                 cmd = new MySqlCommand("SELECT paymentKey,verifiedPaid FROM payTable WHERE paidDate = (SELECT MAX(paidDate) FROM payTable where userName = \'" + SessionVariables.UserName.ToLower() + "\' AND ActiveIndicator = \'TRUE\')", new MySqlConnection(UserInfo));
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Connection.Open();
-                IAsyncResult result = cmd.BeginExecuteReader();
-                reader = cmd.EndExecuteReader(result);
-                result = cmd.BeginExecuteReader();
-                if (reader == null || !reader.HasRows)
-                {
-                }
-                else
+                //IAsyncResult result = cmd.BeginExecuteReader();
+                //result = cmd.BeginExecuteReader();
+                //reader = cmd.EndExecuteReader(result);
+                reader = cmd.ExecuteReader();
+
+                if (reader != null && reader.HasRows)
                 {
                     reader.Read();
                     paymentkey = reader["paymentKey"].ToString();
@@ -371,7 +394,7 @@ namespace KCGameOn
                         mail.IsBodyHtml = true;
 
                         var imageData = Convert.FromBase64String(getBarcode(barcode));
-                            
+
                         var contentId = Guid.NewGuid().ToString();
                         var linkedResource = new LinkedResource(new MemoryStream(imageData), "image/jpeg");
                         linkedResource.ContentId = contentId;
@@ -381,6 +404,9 @@ namespace KCGameOn
                         body += "<br /><br />This is your ticket to the lan event #" + eid + ", keep it safe!.";
                         body += "<br /><br /><b>" + user + "</b>";
                         body += string.Format("<br /><br /><img src=\"cid:{0}\" />", contentId);
+                        body += "<br /><br />If you are signing up for the $2000* CSGO tournament, your password is 'globalelite' - no space";
+                        body += "<br /><br /><a href=\"https://battlefy.com/kcgameon/kcgameon-70-csgo-2000/5768ad4fcb348b270c2aa5d8/join/password\">Link to CSGO Battlefy page</a>";
+                        body += "<br /><br /><a href=\"http://www.kcgameon.com/Tournament.aspx\">Link for other tournaments (LoL, Overwatch, RocketLeague, Halo5, MTG)</a>";
                         body += "<br /><br />Thanks,";
                         body += "<br />KcGameOn Team!";
                         var htmlView = AlternateView.CreateAlternateViewFromString(body, null, "text/html");
@@ -431,7 +457,7 @@ namespace KCGameOn
                             paid = true;
                         }
                     }
-                    if(paid != true)
+                    if (paid != true)
                         paid = checkPayPal();
                     return serializer.Serialize(paid);
                 }

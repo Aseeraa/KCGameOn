@@ -4183,10 +4183,13 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .tab-content > .tab-pane {
-  display: none;
+  display: block;
+    visibility: hidden;
+    position: absolute;
 }
 .tab-content > .active {
-  display: block;
+  visibility: visible;
+    position: static;
 }
 .nav-tabs .dropdown-menu {
   margin-top: -1px;
