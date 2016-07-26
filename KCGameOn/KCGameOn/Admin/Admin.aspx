@@ -371,31 +371,30 @@
         {
             if (SessionVariables.UserAdmin == 1)
             {%>
-    <div class="container">
-        <div class="column">
-            <div class="row pull-left col-lg-12">
-                <hr />
-                <h3>Block/Unblock Payments
-                </h3>
-                <div class="pull-left">
-                    <button id="blockRegistration" class="btn pull-left btn-danger">Block Registration</button>
-                    <button id="unblockRegistration" class="btn pull-left btn-success">Unblock Registration</button>
-                </div>
-            </div>
-            <div class="row pull-left col-lg-12">
-                <hr />
-                <h3>Archive Event
-                </h3>
-                <div class="pull-left">
-                    <label>Unarchived Events:</label>
-                    <select id="eventDropdown" class="pull-left dropdown col-lg-12">
-                        <option selected="selected">None</option>
-                    </select>
-                    <button id="archiveEvent" class="btn pull-left btn-danger">Archive Event</button>
-                </div>
-            </div>
-
-        </div>
+ 
+    <!-- tab setup -->
+    
+        <ul class="nav nav-pills">
+            <li class="active">
+                <a href="#UserManagement" role="tab" data-toggle="pill">
+                    <i class="fa fa-envelope">User Management</i>
+                </a>
+            </li>
+            <li>
+                <a href="#EventManagement" role="tab" data-toggle="pill">
+                    <i class="fa fa-cog">Event Management</i>
+                </a>
+            </li>
+            <li>
+                <a href="#Raffle" role="tab" data-toggle="pill">
+                    <i class="fa fa-cog">Raffle</i>
+                </a>
+            </li>
+        </ul>
+<div class="tab-content">
+        <!--tab 1 -->
+<!-- <div class="container"> -->
+    <div class="tab-pane fade active in" id="UserManagement">
         <div class="row pull-left col-lg-12">
             <hr />
             <div class="pull-left">
@@ -415,13 +414,7 @@
 
 
 
-                <div class="row pull-left col-lg-12">
-                    <hr />
-                    <h3>Digital Raffle Drawing</h3>
-                    <div id="winner"></div>
-                    <button id="randNum" class="btn btn-default pull-left">Pick a winner</button>
-                    <button id="randRepick" class="btn btn-default pull-left">Repick</button>
-                </div>
+                
                 <div class="row pull-left col-lg-12">
                     <hr />
                     <h3>User Payment Verification:</h3>
@@ -441,6 +434,57 @@
                 </div>
             </div>
         </div>
+    </div>
+<!--</div>
+    <!-- tab2 -->
+    <div class="tab-pane fade" id="EventManagement">
+        <div class="container">
+            <div class="column">
+                <div class="row pull-left col-lg-12">
+                    <hr />
+                    <h3>Block/Unblock Payments
+                    </h3>
+                    <div class="pull-left">
+                        <button id="blockRegistration" class="btn pull-left btn-danger">Block Registration</button>
+                        <button id="unblockRegistration" class="btn pull-left btn-success">Unblock Registration</button>
+                    </div>
+                </div>
+                <div class="row pull-left col-lg-12">
+                    <hr />
+                    <h3>Archive Event
+                    </h3>
+                    <div class="pull-left">
+                        <label>Unarchived Events:</label>
+                        <select id="eventDropdown" class="pull-left dropdown col-lg-12">
+                            <option selected="selected">None</option>
+                        </select>
+                        <button id="archiveEvent" class="btn pull-left btn-danger">Archive Event</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+        <!-- TAB 3 -->
+
+    <div class="tab-pane fade" id="Raffle">
+           <div class="container">
+            <div class="column">
+              <div class="row pull-left col-lg-12">
+                    <div class="row pull-left col-lg-12">
+                        <hr />
+                        <h3>Digital Raffle Drawing</h3>
+                        <div id="winner"></div>
+                        <button id="randNum" class="btn btn-default pull-left">Pick a winner</button>
+                        <button id="randRepick" class="btn btn-default pull-left">Repick</button>
+                    </div>
+                </div>
+              </div>
+            </div>
+    </div>
+</div>
+</div>
         <%}
             else
             {%>
