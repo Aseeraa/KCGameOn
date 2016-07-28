@@ -406,7 +406,7 @@ namespace KCGameOn
                         body += string.Format("<br /><br /><img src=\"cid:{0}\" />", contentId);
                         body += "<br /><br />If you are signing up for the $2000* CSGO tournament, your password is 'globalelite' - no space";
                         body += "<br /><br /><a href=\"https://battlefy.com/kcgameon/kcgameon-70-csgo-2000/5768ad4fcb348b270c2aa5d8/join/password\">Link to CSGO Battlefy page</a>";
-                        body += "<br /><br /><a href=\"http://www.kcgameon.com/Tournament.aspx\">Link for other tournaments (LoL, Overwatch, RocketLeague, Halo5, MTG)</a>";
+                        body += "<br /><br /><a href=\"http://www.kcgameon.com/Tournament.aspx\">Go here for other tournaments (LoL, Overwatch, RocketLeague, Halo5, MTG)</a>";
                         body += "<br /><br />Thanks,";
                         body += "<br />KcGameOn Team!";
                         var htmlView = AlternateView.CreateAlternateViewFromString(body, null, "text/html");

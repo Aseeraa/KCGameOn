@@ -74,35 +74,35 @@
     <!-- Success modal-->
     <div class="modal" id="success" tabindex="-1" role="dialog">
         <div class="modal-dialog">
-            <div class="modal-content">
+            <div class="modal-content" height="90%">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title">Success</h4>
                 </div>
                 <div class="modal-body" id="successMessage">
                     <p>You have been successfully seated.  If you are interested in tournaments, please sign up below.</p>
-                    <table width="1050">
+                    <table width=100% table-layout="fixed">
                         <!-- Tournament Posters -->
                         <tr>
-                            <td>
+                            <td width="20%">
                                 <a href="https://kcgameon.com/Tournament.aspx">
-                                    <img src="img/lolPoster.png" alt="League of Legends" height="350" width="193" /></a>
+                                    <img src="img/lolPoster.png" alt="League of Legends" /></a>
                             </td>
-                            <td>
+                            <td width="20%">
                                 <a href="https://kcgameon.com/Tournament.aspx">
-                                    <img src="img/rlPoster.png" alt="Rocket League" height="350" width="193" /></a>
+                                    <img src="img/rlPoster.png" alt="Rocket League" /></a>
                             </td>
-                            <td>
+                            <td width="20%">
                                 <a href="https://kcgameon.com/Tournament.aspx">
-                                    <img src="img/csgoPoster.jpg" alt="CS:GO" height="350" width="193" /></a>
+                                    <img src="img/csgoPoster.jpg" alt="CS:GO" /></a>
                             </td>
-                            <td>
+                            <td width="20%">
                                 <a href="https://kcgameon.com/Tournament.aspx">
-                                    <img src="img/overwatchPoster.jpg" alt="Overwatch" height="350" width="193" /></a>
+                                    <img src="img/overwatchPoster.jpg" alt="Overwatch" /></a>
                             </td>
-							<td>
+                            <td width="20%">
                                 <a href="https://kcgameon.com/Tournament.aspx">
-                                    <img src="img/halo5Poster.png" alt="Halo5" height="350" width="193" /></a>
+                                    <img src="img/halo5Poster.png" alt="Halo5" /></a>
                             </td>
                             <!--
 							<td>
@@ -212,7 +212,7 @@
             </li>
             <li>
                 <a href="#ThirdFloor" id="ThirdFloorTab" role="tab" data-toggle="tab">
-                    <i class="fa fa-cog">3rd floor map - Console/$2000 CSGO</i>
+                    <i class="fa fa-cog">3rd floor map - Console/$2000 CSGO/BYOC/Halo 5</i>
                 </a>
             </li>
         </ul>

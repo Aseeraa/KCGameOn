@@ -323,7 +323,17 @@ If a team that is registered fails to show up to check-in, a substitute team tha
                 </div>
                 <div class="lolcontentright">
                     <p><h2>Prizes</h2></p>
-						<p>FIRST PLACE INDIVIDUALS
+                        <p>FIRST PLACE INDIVIDUALS</p>
+						<p>1500 RP, Triumphant Ryze, Mystery Icon</p><br />
+
+						<p>SECOND PLACE INDIVIDUALS</p>
+						<p>1000 RP, Mystery Icon</p><br />
+
+						<p>THIRD PLACE - FOURTH PLACE INDIVIDUALS</p>
+						<p>Mystery Icon</p>
+                    <br />
+
+						<!-- <p>FIRST PLACE INDIVIDUALS
 						4200 RP, Ryze, Triumphant Ryze, 10-Win IP Boost</p>
 
 						<p>SECOND PLACE INDIVIDUALS
@@ -336,7 +346,7 @@ If a team that is registered fails to show up to check-in, a substitute team tha
 						1000 RP, 10-Win IP Boost</p>
 
 						<p>FIFTH PLACE INDIVIDUALS–EIGHTH PLACE INDIVIDUALS
-						10-Win IP Boost</p>
+						10-Win IP Boost</p> -->
 					<p><h2>Schedule</h2></p>
 					<p>2:30 PM</p>
 					<p>3:30</p>
@@ -594,7 +604,8 @@ If a player that is registered fails to show up to check-in, a substitute player
 					
 					<div class="col-md-3">
 					<p>Game Map & Type</p>
-					<p><h2>Random 6v6 map</h2></p>
+					<p><h2>Custom Game</h2></p>
+                    <p>Rules: Competitive</p>
 					</div>
 					<div class="col-md-3">
 						<a href="https://battlefy.com/kcgameon/overwatch-kcgameon-70/5768af54e52f02200cda9c48/join/mixed-join"><img src="/img/join.png"></a>

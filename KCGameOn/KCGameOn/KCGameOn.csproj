@@ -198,6 +198,8 @@
     <Content Include="ErrorPage\Error.aspx" />
     <Content Include="EventRegistration.aspx" />
     <Content Include="FAQ\FAQ.aspx" />
+    <Content Include="FAQ\GetStarted.aspx" />
+    <Content Include="FAQ\Travel.aspx" />
     <Content Include="FAQ\WhatToBring.aspx" />
     <Content Include="GameServers.aspx" />
     <Content Include="icon\digg.png" />
@@ -238,6 +240,7 @@
     <Content Include="js\npm.js" />
     <Content Include="js\prettify.js" />
     <Content Include="Map.aspx" />
+    <Content Include="News.aspx" />
     <Content Include="packages.config" />
     <Content Include="icon\Thumbs.db" />
     <Content Include="Schedule.aspx" />
@@ -249,6 +252,7 @@
     <Content Include="Checkin.aspx" />
     <Content Include="Users.aspx" />
     <Content Include="ViewSwitcher.ascx" />
+    <Content Include="Volunteer.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -363,6 +367,20 @@
     <Compile Include="FAQ\FAQ.aspx.designer.cs">
       <DependentUpon>FAQ.aspx</DependentUpon>
     </Compile>
+    <Compile Include="FAQ\GetStarted.aspx.cs">
+      <DependentUpon>GetStarted.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FAQ\GetStarted.aspx.designer.cs">
+      <DependentUpon>GetStarted.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FAQ\Travel.aspx.cs">
+      <DependentUpon>Travel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FAQ\Travel.aspx.designer.cs">
+      <DependentUpon>Travel.aspx</DependentUpon>
+    </Compile>
     <Compile Include="FAQ\WhatToBring.aspx.cs">
       <DependentUpon>WhatToBring.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -386,6 +404,13 @@
     </Compile>
     <Compile Include="Map.aspx.designer.cs">
       <DependentUpon>Map.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="News.aspx.cs">
+      <DependentUpon>News.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="News.aspx.designer.cs">
+      <DependentUpon>News.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Schedule.aspx.cs">
@@ -459,6 +484,13 @@
     </Compile>
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Volunteer.aspx.cs">
+      <DependentUpon>Volunteer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Volunteer.aspx.designer.cs">
+      <DependentUpon>Volunteer.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

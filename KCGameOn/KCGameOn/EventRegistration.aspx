@@ -31,6 +31,17 @@
             margin-right: 15px;
         }
 
+        #bottomtext
+        {
+            width: auto;
+            min-width: 800px;
+            max-width: 800px;
+            margin-bottom: 20px;
+            align-content:center
+            color: red
+            
+        }
+
         #registrationTable
         {
             width: auto;
@@ -239,6 +250,8 @@
     </script>
 </asp:Content>
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
+    <%if (!String.IsNullOrEmpty(SessionVariables.UserName))
+{%>
     <!-- Success modal-->
     <div class="modal" id="failure" tabindex="-1" role="dialog">
         <div class="modal-dialog">
@@ -283,7 +296,7 @@
           {%>
     <div id="field-body">
         <div id="fields" class="pull-left">
-            <h3>Pay for another user:</h3>
+            <h3>Start Here:</h3>
             <label>Username:</label>
             <select id="userDropdown" class="dropdown">
                 <option selected="selected">None</option>
@@ -317,8 +330,17 @@
 
                 <button id="pay" disabled="disabled" class="btn pull-right btn-inverse">Pay Now</button>
             </div>
+            <div id="bottomtext" class="pull-right">
+                <br />
+                <h3>Please add yourself and any other guests you wish to pay for, then click PAY NOW</h3>
+                <h3>After you pay, click the link back to the map and take a seat <b>immediately.</b></h3>
+                <br />
+                <h5>If you pay for more than one ticket, you will need to have that person log in and sit in their seat as well.</h5>
+                <h5>An email with the easy check-in barcode will be sent to your email after you take a seat.</h5>
+            </div>
         </form>
     </div>
+    
     <%} %>
     <%else
     { %>
@@ -327,4 +349,9 @@
 			<br />
 		</div>
         <%} %>
+    <% }
+        else { %>
+    
+    <h2>Please <a href="/Account/Login.aspx">login</a> to start the registration process.</h2>
+    <% } %>
 </asp:Content>
