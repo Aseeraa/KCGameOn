@@ -135,7 +135,7 @@ namespace KCGameOn.Admin
 
                 cmd.Connection.Open();
                 Reader = cmd.ExecuteReader();
-                AdminUserHTML = new StringBuilder();
+                
 
                 while (Reader.Read())
                 {

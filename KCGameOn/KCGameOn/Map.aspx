@@ -212,7 +212,7 @@
             </li>
             <li>
                 <a href="#ThirdFloor" id="ThirdFloorTab" role="tab" data-toggle="tab">
-                    <i class="fa fa-cog">3rd floor map - Console/$2000 CSGO</i>
+                    <i class="fa fa-cog">3rd floor map - Console/$2000 CSGO/BYOC/Halo 5</i>
                 </a>
             </li>
         </ul>

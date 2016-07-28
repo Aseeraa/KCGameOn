@@ -373,7 +373,7 @@
             {%>
  
     <!-- tab setup -->
-    
+ <div class="container">   
         <ul class="nav nav-pills">
             <li class="active">
                 <a href="#UserManagement" role="tab" data-toggle="pill">
@@ -395,7 +395,7 @@
         <!--tab 1 -->
 <!-- <div class="container"> -->
     <div class="tab-pane fade active in" id="UserManagement">
-        <div class="row pull-left col-lg-12">
+        <!-- <div class="row pull-left col-lg-12"> -->
             <hr />
             <div class="pull-left">
                 <h3>Add User Payment:</h3>
@@ -415,8 +415,9 @@
 
 
                 
-                <div class="row pull-left col-lg-12">
-                    <hr />
+               <!-- <div class="row  col-lg-12"> -->
+                
+                <hr />
                     <h3>User Payment Verification:</h3>
                     <table cellpadding="0" cellspacing="0" border="0" class="bordered-table zebra-striped" id="adminusertable">
                         <thead>
@@ -431,8 +432,8 @@
                             <%= AdminUserHTML%>
                         </tbody>
                     </table>
-                </div>
-            </div>
+                
+           <!--     </div> -->
         </div>
     </div>
 <!--</div>
@@ -485,6 +486,7 @@
     </div>
 </div>
 </div>
+
         <%}
             else
             {%>
