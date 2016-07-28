@@ -135,11 +135,15 @@ namespace KCGameOn.Admin
 
                 cmd.Connection.Open();
                 Reader = cmd.ExecuteReader();
-                AdminUserHTML = new StringBuilder();
+
 
                 while (Reader.Read())
                 {
-                    usersCheckedIn.Add(Reader.GetString("userName"), Reader.GetByte("wondoor"));
+                    if (Reader["userName"] != DBNull.Value)
+                    {
+                        if(!usersCheckedIn.ContainsKey(Reader.GetString("userName")))
+                            usersCheckedIn.Add(Reader.GetString("userName"), Reader.GetByte("wondoor"));
+                    }
                 }
                 Reader.Close();
             }
