@@ -466,15 +466,20 @@ namespace KCGameOn.Admin
         [WebMethod]
         public static string getRaffleWinner(string data)
         {
+            string winner = null;
             if (data.Equals("repick"))
             {
-                if (dbHelper("UPDATE kcgameon.EventArchive SET wondoor = 2 WHERE Username = \"" + raffleWinner.Username + "\""))
+                if (raffleWinner != null)
+                    winner = raffleWinner.Username;
+
+                if (dbHelper("UPDATE kcgameon.EventArchive SET wondoor = 2 WHERE Username = \"" + winner + "\""))
                 {
                     usersCheckedIn[raffleWinner.Username] = 2;//Update the local users list for raffle to Did Not Show
                     return "Previous winner marked as a no show.  Select another.";
                 }
                 else
                     return null;
+
             }
             else {
                 Random randNum = new Random();
@@ -485,12 +490,16 @@ namespace KCGameOn.Admin
                 {
                     randomNumber = randNum.Next(eligibleUsers.Count);
                     raffleWinner = userlist.Find(user => user.Username.Equals(eligibleUsers.ElementAt(randomNumber)));//Get user's first + last name
-                    usersCheckedIn[eligibleUsers.ElementAt(randomNumber)] = 1;//Update the local users list for raffle
-                    string winner = raffleWinner.First + " " + raffleWinner.Last;
-                    if (dbHelper("UPDATE kcgameon.EventArchive SET wondoor = 1 WHERE Username = \"" + raffleWinner.Username + "\""))
-                        return winner;
+
+                    if(raffleWinner != null)
+                        winner = raffleWinner.First + " " + raffleWinner.Last;
                     else
-                        return null;
+
+                        winner = eligibleUsers.ElementAt(randomNumber);
+
+                    usersCheckedIn[eligibleUsers.ElementAt(randomNumber)] = 1;//Update the local users list for raffle
+                    dbHelper("UPDATE kcgameon.EventArchive SET wondoor = 1 WHERE Username = \"" + eligibleUsers.ElementAt(randomNumber) + "\"");
+                    return winner;
                 }
             }
             return "Ran out of users, probably...";
