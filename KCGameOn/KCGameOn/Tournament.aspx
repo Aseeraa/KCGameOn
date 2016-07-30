@@ -249,11 +249,11 @@
 	  <li><a href="#HEROES" role="tab" data-toggle="tab">
           <%--<i class="fa fa-user"></i>--%> <img src="/img/heroessticker.png">
           </a>
-      </li> -->
+      </li> 
 	  <li><a href="#MAGIC" role="tab" data-toggle="tab">
           <%--<i class="fa fa-user"></i>--%> <img src="/img/mtgsticker.png">
           </a>
-      </li>
+      </li>-->
 	</ul>  
       
     
