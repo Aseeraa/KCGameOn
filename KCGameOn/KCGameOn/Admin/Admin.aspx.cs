@@ -316,6 +316,69 @@ namespace KCGameOn.Admin
                 }
             }
         }
+        [WebMethod]
+        public static void sendBarcodes()
+        {
+            //Create Command
+            string UserInfo = ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString;
+            MySqlDataReader reader = null;
+            MySqlCommand cmd = null;
+            cmd = new MySqlCommand("SELECT MAX(pt.idpayTable), ua.username, ua.Email, MAX(pt.Barcode), pt.EventID FROM payTable pt LEFT JOIN useraccount ua on pt.username = ua.username WHERE pt.verifiedPaid = 'Y' AND pt.Barcode IS NOT NULL AND pt.eventID = (SELECT min(schedule.EventID) FROM schedule WHERE schedule.Active = 1) GROUP BY pt.username", new MySqlConnection(UserInfo));
+            cmd.CommandType = System.Data.CommandType.Text;
+            cmd.Connection.Open();
+
+            //Bind command to reader
+            using (reader = cmd.ExecuteReader())
+            {
+                //read each row
+                while (reader.Read())
+                {
+                    //associate variables
+                    string toEmail = reader["Email"].ToString();
+                    string barcode = reader["Barcode"].ToString();
+                    string user = reader["username"].ToString();
+                    string eid = reader["EventID"].ToString();
+                    MailMessage mail = new MailMessage();
+                    SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+
+                    mail.From = new MailAddress(ConfigurationManager.ConnectionStrings["FromEmail"].ConnectionString);
+                    mail.To.Add(toEmail);
+                    mail.Subject = "KcGameOn Account: Quick Check-In Barcode for Event #" + eid;
+                    mail.IsBodyHtml = true;
+
+                    var imageData = Convert.FromBase64String(getBarcode(barcode));
+
+                    var contentId = Guid.NewGuid().ToString();
+                    var linkedResource = new LinkedResource(new MemoryStream(imageData), "image/jpeg");
+                    linkedResource.ContentId = contentId;
+                    linkedResource.TransferEncoding = TransferEncoding.Base64;
+
+                    var body = "Behold, ";
+                    body += "<br /><br />This is your ticket to the lan event #" + eid + ", keep it safe!.";
+                    body += "<br /><br /><b>" + user + "</b>";
+                    body += string.Format("<br /><br /><img src=\"cid:{0}\" />", contentId);
+                    body += "<br /><br />If you are signing up for the $2000* CSGO tournament, your password is 'globalelite' - no space";
+                    body += "<br /><br /><a href=\"https://battlefy.com/kcgameon/kcgameon-70-csgo-2000/5768ad4fcb348b270c2aa5d8/join/password\">Link to CSGO Battlefy page</a>";
+                    body += "<br /><br /><a href=\"http://www.kcgameon.com/Tournament.aspx\">Go here for other tournaments (LoL, Overwatch, RocketLeague, Halo5, MTG)</a>";
+                    body += "<br /><br />Thanks,";
+                    body += "<br />KcGameOn Team!";
+                    var htmlView = AlternateView.CreateAlternateViewFromString(body, null, "text/html");
+                    htmlView.LinkedResources.Add(linkedResource);
+                    mail.AlternateViews.Add(htmlView);
+
+                    SmtpServer.Port = 587;
+                    SmtpServer.Credentials = new System.Net.NetworkCredential(ConfigurationManager.ConnectionStrings["FromEmail"].ConnectionString, ConfigurationManager.ConnectionStrings["FromEmailPass"].ConnectionString);
+                    SmtpServer.EnableSsl = true;
+
+                    SmtpServer.Send(mail);
+                }
+                // Call Close when done reading.
+                reader.Close();
+            }
+
+            cmd.Connection.Close();
+            return;
+        }
 
         private static void validatePayment(string key, bool validKey)
         {

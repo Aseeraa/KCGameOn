@@ -200,6 +200,23 @@
                 });
             });
 
+            $('#sendBarcodes').click(function (event) {
+                event.preventDefault();
+                $.ajax({
+                    type: "POST",
+                    url: "Admin.aspx/sendBarcodes",
+                    data: "{'data':''}",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "text"
+                })
+                        .done(function () {
+                            alert("Barcode emails sent.");
+                        })
+                        .fail(function () {
+                            alert("Failed to send barcodes.");
+                        });
+            });
+
             $('#unblockRegistration').click(function (event) {
                 event.preventDefault();
                 $.ajax({
@@ -411,6 +428,7 @@
                 <button id="cash" class="btn btn-default pull-left">Paid Cash</button>
                 <button id="other" class="btn btn-default pull-left">Paid Online</button>
                 <button id="verifyPayment" class="btn btn-default pull-left">Clear Bad Keys</button>
+                <button id="sendBarcodes" class="btn btn-default pull-left">Send Barcodes to All Users</button>
 
 
 
