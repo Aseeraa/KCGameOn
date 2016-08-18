@@ -144,6 +144,9 @@
                 for (i = 0; i < namelist.length; i++) {
                     $('<option/>').val(namelist[i]).html(namelist[i]).appendTo('#nameDropdown.dropdown');
                 }
+                $("#userDropdown").val("<%=SessionVariables.UserName %>");
+                $("#userDropdown").trigger("change");
+                $('#add').trigger("click");
             };
 
             function deleterow(tableID) {
