@@ -95,6 +95,14 @@
                     sum += amount;
                 }
             });
+            $('.extralife').find('input[type="checkbox"]').each(function () {
+                if ($(this).prop('checked') == true) {
+                    sum += + 10;
+                }
+                else {
+                    sum = sum;
+                }
+            });
             $('#result').text("Total cost: $" + sum.toFixed(2));
         };
 
@@ -194,7 +202,7 @@
                         $("#userInTable").modal('show');
                     }
                     else {
-                        var newRow = $('<tr><td>' + user + '</td><td>' + first + '</td><td>' + last + '</td><td class = "price">' + amount.toFixed(2) + '</td><td class="fullyear">' + '<input type="checkbox" value="checked" onclick="calculateSum();">' + '</tr>');
+                        var newRow = $('<tr><td>' + user + '</td><td>' + first + '</td><td>' + last + '</td><td class = "price">' + amount.toFixed(2) + '</td><td class="fullyear">' + '<input type="checkbox" value="checked" onclick="calculateSum();"></td><td class="extralife">' + '<input type="checkbox" value="checked" onclick="calculateSum();"></td>' + '</tr>');
                         $('#registrationTable').append(newRow);
                         calculateSum();
                     }
@@ -319,7 +327,8 @@
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Cost per event</th>
-                        <th>Pay for all remaining 2016 events?</th>
+                        <th>Remaining Year?</th>
+                        <th>Extra Life Donation</th>
                     </tr>
                 </thead>
                 <tbody>
