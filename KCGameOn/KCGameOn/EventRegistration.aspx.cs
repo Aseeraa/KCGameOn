@@ -28,6 +28,7 @@ namespace KCGameOn
         public static List<String> names = new List<String>();
         public List<UsersObject> payments = new List<UsersObject>();
         public static int quantity = 0;
+        public static int extraLife = 0;
         public static UsersObject current = new UsersObject("", "", "");
         public static StringBuilder newRow;
         //private static Page page;
@@ -171,6 +172,7 @@ namespace KCGameOn
             String UserInfo = ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString;
             //Payment paymnt = null;
             quantity = 0;
+            extraLife = 0;
             List<Users> payment = new List<Users>();
             JavaScriptSerializer json = new JavaScriptSerializer();
             List<String[]> mystring = json.Deserialize<List<string[]>>(data);
@@ -203,6 +205,8 @@ namespace KCGameOn
                                 quantity += remainingEvents;
                             else
                                 quantity += 1;
+                            if (mystring.ElementAt(i).ElementAt(7).Equals("True"))
+                                extraLife += 1;
                             break;
                         case -2: // Unsuccessfully validated
                             tableValid = false;
@@ -230,7 +234,7 @@ namespace KCGameOn
             if (tableValid)
             {
                 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-                PayRequest requestPay = Payment(quantity);
+                PayRequest requestPay = Payment(quantity, extraLife);
                 PayResponse responsePay = PayAPIOperations(requestPay);
                 RedirectURL = "https://www.paypal.com/cgi-bin/webscr?cmd=_ap-payment&paykey=" + responsePay.payKey;
                 //RedirectURL = "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_ap-payment&paykey=" + responsePay.payKey;
@@ -293,7 +297,7 @@ namespace KCGameOn
         }
 
         // # Payment
-        public static PayRequest Payment(int quantity)
+        public static PayRequest Payment(int quantity, int extraLife)
         {
             // # PayRequest
             // The code for the language in which errors are returned
@@ -310,7 +314,13 @@ namespace KCGameOn
                 amount += Convert.ToDecimal(20.00);
             }
             else
-                amount = Convert.ToDecimal(quantity * 15.00);
+            {
+                    amount = Convert.ToDecimal(quantity * 15.00);
+            }
+            if (extraLife > 0)
+            {
+                amount += Convert.ToDecimal( 10.00 * extraLife);
+            }
             Receiver receive = new Receiver(amount);
 
             // A receiver's email address

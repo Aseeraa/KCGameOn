@@ -97,7 +97,7 @@
             });
             $('.extralife').find('input[type="checkbox"]').each(function () {
                 if ($(this).prop('checked') == true) {
-                    sum += + 10;
+                    sum += 10;
                 }
                 else {
                     sum = sum;
@@ -229,7 +229,7 @@
                 var payments = []
                 var fullYear = false;
                 $('#registrationTable tbody tr').each(function () {
-                    $(this).find('input[type="checkbox"]').each(function () {
+                    $(this).find('input[type="checkbox"]').eq(0).each(function () {
                         if ($(this).prop('checked') == true) {
 
                             fullYear = true;
@@ -238,11 +238,21 @@
                             fullYear = false;
                         }
                     });
+                    $(this).find('input[type="checkbox"]').eq(1).each(function () {
+                        if ($(this).prop('checked') == true) {
+
+                            extraLife = true;
+                        }
+                        else {
+                            extraLife = false;
+                        }
+                    });
                     var tdArray = []
                     tdArray.push(fullYear);
                     $(this).find('td').each(function () {
                         tdArray.push($(this).text());
                     })
+                    tdArray.push(extraLife);
                     payments.push(tdArray)
                 })
                 $.ajax({
