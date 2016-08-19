@@ -28,7 +28,7 @@ namespace KCGameOn
         public static List<String> names = new List<String>();
         public List<UsersObject> payments = new List<UsersObject>();
         public static int quantity = 0;
-        public static int extraLife = 0;
+        public static Double extraLife = 0.00;
         public static UsersObject current = new UsersObject("", "", "");
         public static StringBuilder newRow;
         //private static Page page;
@@ -172,7 +172,7 @@ namespace KCGameOn
             String UserInfo = ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString;
             //Payment paymnt = null;
             quantity = 0;
-            extraLife = 0;
+            extraLife = 0.00;
             List<Users> payment = new List<Users>();
             JavaScriptSerializer json = new JavaScriptSerializer();
             List<String[]> mystring = json.Deserialize<List<string[]>>(data);
@@ -181,7 +181,8 @@ namespace KCGameOn
                 String user = mystring.ElementAt(i).ElementAt(1).ToString();
                 String first = mystring.ElementAt(i).ElementAt(2).ToString();
                 String last = mystring.ElementAt(i).ElementAt(3).ToString();
-               
+                Double donationAmount = Convert.ToDouble(mystring.ElementAt(i).ElementAt(7));
+
                 MySqlCommand cmd = null;
                 MySqlConnection conn = null;
 
@@ -205,8 +206,8 @@ namespace KCGameOn
                                 quantity += remainingEvents;
                             else
                                 quantity += 1;
-                            if (mystring.ElementAt(i).ElementAt(7).Equals("True"))
-                                extraLife += 1;
+                            if (donationAmount > 0)
+                                extraLife += donationAmount;
                             break;
                         case -2: // Unsuccessfully validated
                             tableValid = false;
@@ -253,6 +254,8 @@ namespace KCGameOn
                         String verfiedPaid = "N";
                         String paymentMethod = "PayPal";
 
+                        Double donationAmount = Convert.ToDouble(mystring.ElementAt(i).ElementAt(7));
+
                         MySqlCommand cmd = null;
                         MySqlConnection conn = null;
 
@@ -268,6 +271,7 @@ namespace KCGameOn
                             cmd.Parameters.AddWithValue("PaidFullYear", fullYear);
                             cmd.Parameters.AddWithValue("PaymentMethod", paymentMethod);
                             cmd.Parameters.AddWithValue("PaymentKey", payKey);
+                            cmd.Parameters.AddWithValue("DonationAmount", donationAmount);
 
                             int userValue = Convert.ToInt32(cmd.ExecuteScalar());
                         }
@@ -297,7 +301,7 @@ namespace KCGameOn
         }
 
         // # Payment
-        public static PayRequest Payment(int quantity, int extraLife)
+        public static PayRequest Payment(int quantity, Double extraLife)
         {
             // # PayRequest
             // The code for the language in which errors are returned
@@ -319,7 +323,7 @@ namespace KCGameOn
             }
             if (extraLife > 0)
             {
-                amount += Convert.ToDecimal( 10.00 * extraLife);
+                amount += Convert.ToDecimal(extraLife);
             }
             Receiver receive = new Receiver(amount);
 

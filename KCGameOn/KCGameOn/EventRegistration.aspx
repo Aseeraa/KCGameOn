@@ -241,10 +241,10 @@
                     $(this).find('input[type="checkbox"]').eq(1).each(function () {
                         if ($(this).prop('checked') == true) {
 
-                            extraLife = true;
+                            extraLife = "10.00";
                         }
                         else {
-                            extraLife = false;
+                            extraLife = "0.00";
                         }
                     });
                     var tdArray = []
