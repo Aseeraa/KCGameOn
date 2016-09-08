@@ -37,6 +37,16 @@
 	<script src="/js/bootstrap-typeahead.js"></script>--%>
 	<script src="/js/application.js?v=1.0"></script>
     <script src="js/bootbox.js?v=1.0"></script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-82775428-1', 'auto');
+  ga('send', 'pageview');
+
+    </script>
 	<asp:ContentPlaceHolder ID="HeadContent" runat="server"></asp:ContentPlaceHolder>
     <style>
         .navbar-default, .navbar-collapse {
@@ -75,7 +85,7 @@
 <div class="row-fluid">
 	<div class="span9"><br/>
 		<img src="/img/logo.png" height="43px" width="295px" style="float:left;"/>
-        <h3 style="float:left; padding:15px 0 0 15px">Next event:<b style="color: #0099cc;"> July 30, 2016</b></h3>
+        <h3 style="float:left; padding:15px 0 0 15px">Next event:<b style="color: #0099cc;"> Oct 8, 2016 - registration currently closed</b></h3>
         <!-- <a href="/Checkin.aspx">Check-in</a> -->
 	</div>
 	<div class="span3"><br/>
@@ -112,7 +122,7 @@
         <div class="nav-collapse collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li><a href="/Default.aspx" class="brand">Home</a></li>
-                <li><a href="/EventRegistration.aspx" class="active" style="background:#9933cc">Register</a>
+                <li><a href="/EventRegistration.aspx" class="active" style="background:#9933cc">Event Registration</a>
                 </li>
 			    
 
@@ -176,8 +186,8 @@
 				    <%if (SessionVariables.UserName == null)
           { %>
 				    <li><a href="/Account/Login.aspx">Login</a></li>
-                    <li><a href="/Account/Profile.aspx">User Profile</a></li>
-				    <li><a href="/Account/Register.aspx">Create Username</a></li>
+                <!--    <li><a href="/Account/Profile.aspx">User Profile</a></li> -->
+				    <li><a href="/Account/Register.aspx">Create Account</a></li>
 				    <%} %>
 			      </ul>
 			    </li>

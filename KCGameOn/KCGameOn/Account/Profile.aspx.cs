@@ -7,6 +7,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using MySql.Data.MySqlClient;
 using System.Text.RegularExpressions;
+using System.Text;
 
 namespace KCGameOn.Account
 {
@@ -26,7 +27,44 @@ namespace KCGameOn.Account
         public static String AboutMe = null;
 
         public static String HashedPasswordFromDB = null;
-        
+        //        public static StringBuilder RaffleHTML;
+
+        //        //raffle-populate user table in admin page
+        //        cmd = new MySqlCommand("select Username, eventID, wondoor, wonloyalty from EventArchive where username = '\'" + SessionVariables.UserName + "\'", new MySqlConnection(UserInfo));
+        //                cmd.CommandType = System.Data.CommandType.Text;
+
+        //                cmd.Connection.Open();
+        //                Reader = cmd.ExecuteReader();
+        //                RaffleHTML = new StringBuilder();
+
+        //                while (Reader.Read())
+        //                {
+        //                    RaffleHTML.AppendLine("<tr>");
+        //                    RaffleHTML.AppendLine("<td class=\"col-md-1\">").Append(Reader.GetString("username")).Append("</td>");
+        //        RaffleHTML.AppendLine("<td class=\"col-md-1\">").Append(Reader.GetString("FirstName")).Append("</td>");
+        //        RaffleHTML.AppendLine("<td class=\"col-md-1\">").Append(Reader.GetString("LastName")).Append("</td>");
+        //        RaffleHTML.AppendLine("<td class=\"col-md-1\">").Append(Reader.GetString("eventID")).Append("</td>");
+        //        RaffleHTML.AppendLine("<td class=\"col-md-1\">").Append(Reader.GetString("wondoor")).Append("</td>");
+        //        RaffleHTML.AppendLine("<td class=\"col-md-1\">").Append(Reader.GetString("wonloyalty")).Append("</td>");
+        //        RaffleHTML.AppendLine("</tr>");
+        //                }
+        //    Reader.Close();
+
+        //                foreach (UsersObject user in userlist)
+        //                {
+        //                    RaffleHTML.AppendLine("<tr>");
+        //                    RaffleHTML.AppendLine("<td class=\"col-md-1\">").Append(Reader.GetString("username")).Append("</td>");
+        //    RaffleHTML.AppendLine("<td class=\"col-md-1\">").Append(Reader.GetString("FirstName")).Append("</td>");
+        //    RaffleHTML.AppendLine("<td class=\"col-md-1\">").Append(Reader.GetString("LastName")).Append("</td>");
+        //    RaffleHTML.AppendLine("<td class=\"col-md-1\">").Append(Reader.GetString("eventID")).Append("</td>");
+        //    RaffleHTML.AppendLine("<td class=\"col-md-1\">").Append(Reader.GetString("wondoor")).Append("</td>");
+        //    RaffleHTML.AppendLine("<td class=\"col-md-1\">").Append(Reader.GetString("wonloyalty")).Append("</td>");
+        //    RaffleHTML.AppendLine("</tr>");
+        //                    //copyall the way up to foreach after rebuilding get string for everything you want.
+        //                }
+
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
             // On first load get the values for the user logged in
@@ -76,6 +114,7 @@ namespace KCGameOn.Account
 
             UpdateFields();
         }
+
 
         protected void UpdateFields()
         {
@@ -141,7 +180,7 @@ namespace KCGameOn.Account
                     cmd.ExecuteNonQuery();
                     cmd.Connection.Close();
                     ProfileUpdateMessage.Text = "Profile Successfully Updated!";
-                }                
+                }
             }
             else
             {

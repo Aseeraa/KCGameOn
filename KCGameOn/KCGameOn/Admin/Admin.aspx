@@ -43,6 +43,7 @@
             var users = <%= new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(usernames)%>
                 namelist = <%= new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(names)%>
                 ulist = <%= new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(userlist)%>
+                eventids = <%= new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(eventids)%>
 
 
 
@@ -85,6 +86,10 @@
 
                 for (i = 0; i < namelist.length; i++) {
                     $('<option/>').val(namelist[i]).html(namelist[i]).appendTo('#nameDropdown.dropdown');
+                }
+
+                for (i = 0; i < eventids.length; i++) {
+                    $('<option/>').val(eventids[i]).html(eventids[i]).appendTo('#eventDropdown.dropdown');
                 }
             };
 
@@ -139,6 +144,54 @@
                     .fail(function () {
                         //$("#failure").modal('show');
                         alert("Unable to add user payment to the database, contact Dan (or applicable engineer).");
+                    });
+            });
+            
+            $('#archiveEvent').click(function (event) {
+                event.preventDefault();
+                var event = $('#eventDropdown').val();
+             
+                $.ajax({
+                    type: "POST",
+                    url: "Admin.aspx/archiveEvent",
+                    data: "{'data':'" + JSON.stringify(event) + "'}",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json"
+                })
+                    .done(function () {
+                        //$("#success").modal('show');
+                        alert("Successfully archived event like a boss!");
+                    })
+                    .fail(function () {
+                        //$("#failure").modal('show');
+                        alert("You lose, contact Dan (or applicable engineer).");
+                    });
+            });
+
+            $('#addraffle').click(function (event) {
+                event.preventDefault();
+                var user = $('#userDropdown').val();
+                var name = $('#nameDropdown').val();
+                var userObject = [];
+                var payments = [];
+                userObject.push(user);
+                userObject.push(name);
+                userObject.push("Cash");
+                payments.push(userObject);
+                $.ajax({
+                    type: "POST",
+                    url: "Admin.aspx/addPayment",
+                    data: "{'data':'" + JSON.stringify(payments) + "'}",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json"
+                })
+                    .done(function () {
+                        //$("#success").modal('show');
+                        alert("Added the user raffle to the database like a boss!");
+                    })
+                    .fail(function () {
+                        //$("#failure").modal('show');
+                        alert("Unable to add user raffle to the database, contact Dan (or applicable engineer).");
                     });
             });
 
@@ -216,6 +269,8 @@
                             alert("Failed to send barcodes.");
                         });
             });
+
+           
 
             $('#unblockRegistration').click(function (event) {
                 event.preventDefault();
@@ -428,7 +483,8 @@
                 <button id="cash" class="btn btn-default pull-left">Paid Cash</button>
                 <button id="other" class="btn btn-default pull-left">Paid Online</button>
                 <button id="verifyPayment" class="btn btn-default pull-left">Clear Bad Keys</button>
-                <button id="sendBarcodes" class="btn btn-default pull-left">Send Barcodes to All Users</button>
+                
+                <button id="addraffle" class="btn btn-default pull-left">Add raffle ticket</button>
 
 
 
@@ -459,16 +515,17 @@
     <div class="tab-pane fade" id="EventManagement">
         <div class="container">
             <div class="column">
-                <div class="row pull-left col-lg-12">
+                <!-- <div class="row pull-left col-lg-12"> -->
                     <hr />
                     <h3>Block/Unblock Payments
                     </h3>
                     <div class="pull-left">
                         <button id="blockRegistration" class="btn pull-left btn-danger">Block Registration</button>
                         <button id="unblockRegistration" class="btn pull-left btn-success">Unblock Registration</button>
+                        <button id="sendBarcodes" class="btn btn-default pull-left">Send Barcodes to All Users</button>
                     </div>
-                </div>
-                <div class="row pull-left col-lg-12">
+               <!-- </div> 
+                <div class="row pull-left col-lg-12"> -->
                     <hr />
                     <h3>Archive Event
                     </h3>
@@ -479,7 +536,7 @@
                         </select>
                         <button id="archiveEvent" class="btn pull-left btn-danger">Archive Event</button>
                     </div>
-                </div>
+               <!-- </div> -->
 
             </div>
         </div>
@@ -490,15 +547,32 @@
     <div class="tab-pane fade" id="Raffle">
            <div class="container">
             <div class="column">
-              <div class="row pull-left col-lg-12">
-                    <div class="row pull-left col-lg-12">
+              <!--<div class="row pull-left col-lg-12">
+                    <div class="row pull-left col-lg-12">-->
                         <hr />
                         <h3>Digital Raffle Drawing</h3>
                         <div id="winner"></div>
                         <button id="randNum" class="btn btn-default pull-left">Pick a winner</button>
                         <button id="randRepick" class="btn btn-default pull-left">Repick</button>
-                    </div>
-                </div>
+                    <!--</div>-->
+                  <hr />
+                  <h3>Raffle Verification:</h3>
+                    <table cellpadding="0" cellspacing="0" border="0" class="bordered-table zebra-striped" id="adminusertable">
+                        <thead>
+                            <tr>
+                                <th>UserName</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>EventID</th>
+                                <th>Wondoor</th>
+                                <th>Wonloyalty</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <%= RaffleHTML%>
+                        </tbody>
+                    </table>
+                <!--</div>-->
               </div>
             </div>
     </div>

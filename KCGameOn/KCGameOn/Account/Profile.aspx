@@ -47,6 +47,14 @@
                 return true;
             }
         }
+        /* Table initialisation */
+        $(document).ready(function () {
+            $('#adminusertable').dataTable({
+                "sDom": "<'row'<'col-md-12'><'col-md-12'f>r>t<'row'<'col-md-12'i><'col-md-12'p>>",
+                "sPaginationType": "bootstrap",
+                "bLengthChange": false
+            });
+        });
     </script>
 </asp:content>
 <asp:content id="BodyContent" runat="server" contentplaceholderid="MainContent">
@@ -148,6 +156,22 @@
             <textarea id="AboutMeTB" class="" runat="server" value="" onkeyup="" placeholder="" type="text"></textarea>
         </label>
     </div>
+
+        <h3>Raffle Verification:</h3>
+                    <table cellpadding="0" cellspacing="0" border="0" class="bordered-table zebra-striped" id="adminusertable">
+                        <thead>
+                            <tr>
+                                <th>UserName</th>
+                                <th>EventID</th>
+                                <th>Wondoor</th>
+                                <th>Wonloyalty</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                           <%-- <%= RaffleHTML%>--%>
+                        </tbody>
+                    </table>
+
     </div>
     <div class="control-group">
         <asp:Literal runat="server" id="ProfileUpdateMessage" EnableViewState="false" />
