@@ -25,43 +25,10 @@ namespace KCGameOn.Account
         public static String OriginHandle = null;
         public static String TwitterHandle = null;
         public static String AboutMe = null;
+        public static StringBuilder RaffleHTML;
 
         public static String HashedPasswordFromDB = null;
-        //        public static StringBuilder RaffleHTML;
 
-        //        //raffle-populate user table in admin page
-        //        cmd = new MySqlCommand("select Username, eventID, wondoor, wonloyalty from EventArchive where username = '\'" + SessionVariables.UserName + "\'", new MySqlConnection(UserInfo));
-        //                cmd.CommandType = System.Data.CommandType.Text;
-
-        //                cmd.Connection.Open();
-        //                Reader = cmd.ExecuteReader();
-        //                RaffleHTML = new StringBuilder();
-
-        //                while (Reader.Read())
-        //                {
-        //                    RaffleHTML.AppendLine("<tr>");
-        //                    RaffleHTML.AppendLine("<td class=\"col-md-1\">").Append(Reader.GetString("username")).Append("</td>");
-        //        RaffleHTML.AppendLine("<td class=\"col-md-1\">").Append(Reader.GetString("FirstName")).Append("</td>");
-        //        RaffleHTML.AppendLine("<td class=\"col-md-1\">").Append(Reader.GetString("LastName")).Append("</td>");
-        //        RaffleHTML.AppendLine("<td class=\"col-md-1\">").Append(Reader.GetString("eventID")).Append("</td>");
-        //        RaffleHTML.AppendLine("<td class=\"col-md-1\">").Append(Reader.GetString("wondoor")).Append("</td>");
-        //        RaffleHTML.AppendLine("<td class=\"col-md-1\">").Append(Reader.GetString("wonloyalty")).Append("</td>");
-        //        RaffleHTML.AppendLine("</tr>");
-        //                }
-        //    Reader.Close();
-
-        //                foreach (UsersObject user in userlist)
-        //                {
-        //                    RaffleHTML.AppendLine("<tr>");
-        //                    RaffleHTML.AppendLine("<td class=\"col-md-1\">").Append(Reader.GetString("username")).Append("</td>");
-        //    RaffleHTML.AppendLine("<td class=\"col-md-1\">").Append(Reader.GetString("FirstName")).Append("</td>");
-        //    RaffleHTML.AppendLine("<td class=\"col-md-1\">").Append(Reader.GetString("LastName")).Append("</td>");
-        //    RaffleHTML.AppendLine("<td class=\"col-md-1\">").Append(Reader.GetString("eventID")).Append("</td>");
-        //    RaffleHTML.AppendLine("<td class=\"col-md-1\">").Append(Reader.GetString("wondoor")).Append("</td>");
-        //    RaffleHTML.AppendLine("<td class=\"col-md-1\">").Append(Reader.GetString("wonloyalty")).Append("</td>");
-        //    RaffleHTML.AppendLine("</tr>");
-        //                    //copyall the way up to foreach after rebuilding get string for everything you want.
-        //                }
 
 
 
@@ -109,11 +76,34 @@ namespace KCGameOn.Account
 
                     }
                     cmd.Connection.Close();
+                    //raffle-populate user table in admin page
+                    //cmd.CommandText = "select Username, eventID, wondoor, wonloyalty from EventArchive where username = @User";
+                    //cmd.Parameters.AddWithValue("User", SessionVariables.UserName);
+                    cmd.CommandText = "select Username, eventID, wondoor, wonloyalty from EventArchive where username = \'" + SessionVariables.UserName + "\'";
+
+                    cmd.Connection.Open();
+                    Reader = cmd.ExecuteReader();
+                    RaffleHTML = new StringBuilder();
+
+                    while (Reader.Read())
+                    {
+                        RaffleHTML.AppendLine("<tr>");
+                        RaffleHTML.AppendLine("<td class=\"col-md-1\">").Append(Reader.GetString("username")).Append("</td>");
+                        //RaffleHTML.AppendLine("<td class=\"col-md-1\">").Append(Reader.GetString("FirstName")).Append("</td>");
+                        //RaffleHTML.AppendLine("<td class=\"col-md-1\">").Append(Reader.GetString("LastName")).Append("</td>");
+                        RaffleHTML.AppendLine("<td class=\"col-md-1\">").Append(Reader.GetString("eventID")).Append("</td>");
+                        RaffleHTML.AppendLine("<td class=\"col-md-1\">").Append(Reader.GetString("wondoor")).Append("</td>");
+                        RaffleHTML.AppendLine("<td class=\"col-md-1\">").Append(Reader.GetString("wonloyalty")).Append("</td>");
+                        RaffleHTML.AppendLine("</tr>");
+                    }
+                    Reader.Close();
+
+                    UpdateFields();
+                    cmd.Connection.Close();
                 }
             }
-
-            UpdateFields();
         }
+
 
 
         protected void UpdateFields()

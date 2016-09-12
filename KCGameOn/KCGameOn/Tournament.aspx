@@ -24,9 +24,9 @@
             }
 
             .cscontentmain, .hscontentmain, .lolcontentmain, .rlcontentmain, .smashcontentmain, .heroescontentmain, .dota2contentmain, .magiccontentmain, .sfvcontentmain, .overwatchcontentmain, .halo5contentmain {
-				padding: 10px;
+                padding: 10px;
                 background-color: rgba(0, 0, 0, 0.85);
-				overflow-y: auto;
+                overflow-y: auto;
                 height: 700px;
                 width: 750px;
                 margin: auto;
@@ -38,9 +38,9 @@
             }
 
             .cscontentleft, .hscontentleft, .rlcontentleft, .lolcontentleft, .smashcontentleft, .heroescontentleft, .dota2contentleft, .magiccontentleft, .sfvcontentleft, .overwatchcontentleft, .halo5contentleft {
-				padding: 10px;
+                padding: 10px;
                 background-color: rgba(0, 0, 0, 0.85);
-				overflow-y: auto;
+                overflow-y: auto;
                 height: 700px;
                 width: 250px;
                 margin: auto;
@@ -52,9 +52,9 @@
             }
 
             .cscontentright, .hscontentright, .rlcontentright, .lolcontentright, .smashcontentright, .heroescontentright, .dota2contentright, .magiccontentright, .sfvcontentright, .overwatchcontentright, .halo5contentright {
-				padding: 10px;
+                padding: 10px;
                 background-color: rgba(0, 0, 0, 0.85);
-				overflow-y: auto;
+                overflow-y: auto;
                 height: 700px;
                 width: 300px;
                 margin: auto;
@@ -64,9 +64,9 @@
                 bottom: 0;
                 left: 70%;
             }
-			
-			.cscontenttop, .hscontenttop, .rlcontenttop, .lolcontenttop, .smashcontenttop, .heroescontenttop, .dota2contenttop, .magiccontenttop, .sfvcontenttop, .overwatchcontenttop, .halo5contenttop {
-				padding: 10px;
+
+            .cscontenttop, .hscontenttop, .rlcontenttop, .lolcontenttop, .smashcontenttop, .heroescontenttop, .dota2contenttop, .magiccontenttop, .sfvcontenttop, .overwatchcontenttop, .halo5contenttop {
+                padding: 10px;
                 background-color: rgba(0, 0, 0, 0.85);
                 height: 150px;
                 width: 1025px;
@@ -78,10 +78,9 @@
                 right: 0;
             }
 
-            .csbracket, .hsbracket, .lolbracket, .rlbracket, .smashbracket, .heroesbracket, .dota2bracket, .magicbracket, .sfvbracket, .overwatchbracket, .halo5bracket
-            {
-                position:absolute;
-                bottom:0;
+            .csbracket, .hsbracket, .lolbracket, .rlbracket, .smashbracket, .heroesbracket, .dota2bracket, .magicbracket, .sfvbracket, .overwatchbracket, .halo5bracket {
+                position: absolute;
+                bottom: 0;
             }
 
             .rldiv {
@@ -99,31 +98,32 @@
             .loldiv {
                 background-image: url("img/LoLTourny.png");
             }
-			
-			.smashdiv {
+
+            .smashdiv {
                 background-image: url("img/SmashTourny.png");
             }
-			
-			.heroesdiv {
+
+            .heroesdiv {
                 background-image: url("img/HeroesTourny.png");
             }
-			
-			.dota2div {
+
+            .dota2div {
                 background-image: url("img/dota2tourny.png");
             }
-			
-			.magicdiv {
+
+            .magicdiv {
                 background-image: url("img/magictourny.png");
             }
-			
-			.sfvdiv {
+
+            .sfvdiv {
                 background-image: url("img/sfv.png");
             }
-			
-			.halo5div {
+
+            .halo5div {
                 background-image: url("img/halo5tourney.jpg");
             }
-			.overwatchdiv {
+
+            .overwatchdiv {
                 background-image: url("img/overwatchtourny.png");
             }
         </style>
@@ -160,13 +160,13 @@
                 $("#hs").click(function () {
                     scrollToAnchor('hearthstonepage');
                 });
-				$("#smash").click(function () {
+                $("#smash").click(function () {
                     scrollToAnchor('smashpage');
                 });
-				$("#Dota2").click(function () {
+                $("#Dota2").click(function () {
                     scrollToAnchor('dota2');
                 });
-				$("#sfv").click(function () {
+                $("#sfv").click(function () {
                     scrollToAnchor('sfv');
                 });
 
@@ -195,44 +195,53 @@
             });
         </script>
     </head>
-    <center><h3 style="color: red;"><asp:Label ID="previousPage" Text="" runat="server" /></h3></center>
+    <center>
+        <h3 style="color: red;">
+            <asp:Label ID="previousPage" Text="" runat="server" /></h3>
+    </center>
     <h2>Event Tournaments</h2>
     <h4>If you want to request a tournament for a particular game, please let us know and we will work on getting one set up!</h4>
     <div class="container">
         <!-- Nav tabs -->
-    <ul class="nav nav-tabs" role="tablist">
-      <li class="active">
-          <a href="#LoL" role="tab" data-toggle="tab">
-              <%--<i class="fa fa-envelope"></i>--%> <img src="/img/lolsticker.png">
-          </a>
-      </li>
-      <li>
-          <a href="#RL" role="tab" data-toggle="tab">
-              <%--<i class="fa fa-cog"></i>--%> <img src="/img/rocketsticker.png">
-          </a>
-      </li>
-	  <li>
-		  <a href="#overwatch" role="tab" data-toggle="tab">
-			<%--<i class="fa fa-user"></i>--%> <img src="/img/overwatchsticker.png">
-          </a>
-      </li>
-	  <li>
-          <a href="#halo5" role="tab" data-toggle="tab">
-              <%--<i class="fa fa-user"></i>--%> <img src="/img/halo5sticker.png">
-          </a>
-      </li>
-	  <li>
-          <a href="#CSGO" role="tab" data-toggle="tab">
-              <%--<i class="fa fa-user"></i>--%> <img src="/img/csgosticker.png">
-          </a>
-      </li>
-	  
-	  <!--
-      <li><a href="#HS" role="tab" data-toggle="tab">
-          <%--<i class="fa fa-user"></i>--%> Hearthstone
-          </a>
-      </li>
-	  <li>
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="active">
+                <a href="#LoL" role="tab" data-toggle="tab">
+                    <%--<i class="fa fa-envelope"></i>--%>
+                    <img src="/img/lolsticker.png">
+                </a>
+            </li>
+            <li>
+                <a href="#RL" role="tab" data-toggle="tab">
+                    <%--<i class="fa fa-cog"></i>--%>
+                    <img src="/img/rocketsticker.png">
+                </a>
+            </li>
+            <li>
+                <a href="#overwatch" role="tab" data-toggle="tab">
+                    <%--<i class="fa fa-user"></i>--%>
+                    <img src="/img/overwatchsticker.png">
+                </a>
+            </li>
+            <li>
+                <a href="#halo5" role="tab" data-toggle="tab">
+                    <%--<i class="fa fa-user"></i>--%>
+                    <img src="/img/halo5sticker.png">
+                </a>
+            </li>
+            <li>
+                <a href="#CSGO" role="tab" data-toggle="tab">
+                    <%--<i class="fa fa-user"></i>--%>
+                    <img src="/img/csgosticker.png">
+                </a>
+            </li>
+
+
+            <li><a href="#HS" role="tab" data-toggle="tab">
+                <%--<i class="fa fa-user"></i>--%>
+                <img src="/img/hearthstonesticker.png">
+            </a>
+            </li>
+            <!--<li>
 	  <a href="#sfv" role="tab" data-toggle="tab">
 		<%--<i class="fa fa-user"></i>--%> <img src="/img/sfvsticker.png">
 		</a>
@@ -254,86 +263,117 @@
           <%--<i class="fa fa-user"></i>--%> <img src="/img/mtgsticker.png">
           </a>
       </li>-->
-	</ul>  
-      
-    
-    <!-- Tab panes -->
-    <div class="tab-content">
-      <%-- League of Legends--%>
-      <div class="tab-pane fade active in" id="LoL">
-    <!--      <h2>League of Legends</h2>-->
-          <div class="loldiv">
-                <div class="lolcontenttop row">
-					<div class="col-md-3">
-						<p>Date & Time</p>
-						<p><h2>July 30, 2016 @130p</h2></p>
-						Please register with both battlefy and the LoL website or you will not be eligible for prizing.
+        </ul>
+
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <%-- League of Legends--%>
+            <div class="tab-pane fade active in" id="LoL">
+                <!--      <h2>League of Legends</h2>-->
+                <div class="loldiv">
+                    <div class="lolcontenttop row">
+                        <div class="col-md-3">
+                            <p>Date & Time</p>
+                            <p>
+                                <h2>Oct 8, 2016 @130p</h2>
+                            </p>
+                            Please register with both battlefy and the LoL website or you will not be eligible for prizing.
 						
-					</div>
-					
-					<div class="col-md-3">
-					<p>Format</p>
-					<p><h2>5v5</h2></p>
-					double elimination
-					</div>
-					
-					<div class="col-md-3">
-					<p>Game Map & Type</p>
-					<p><h2>Summoners Rift</h2></p>
-					<p>Tournament Draft</p>
-					</div>
-					<div class="col-md-3">
-						<a href="https://battlefy.com/kcgameon/league-of-legends-kcgameon-70-gold-and-under-only/5768ab384344ec1a0c2b1cbc/join/rules"><img src="/img/join.png"></a>
-						<a href="http://events.na.leagueoflegends.com/events/202389"><img src="/img/registerlol.png" height="34" width="170"></a></ br>
+                        </div>
+
+                        <div class="col-md-3">
+                            <p>Format</p>
+                            <p>
+                                <h2>5v5</h2>
+                            </p>
+                            double elimination
+                        </div>
+
+                        <div class="col-md-3">
+                            <p>Game Map & Type</p>
+                            <p>
+                                <h2>Summoners Rift</h2>
+                            </p>
+                            <p>Tournament Draft</p>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="https://battlefy.com/kcgameon/league-of-legends-kcgameon-71-gold-and-under-only/57c24e784132ddf60cbde839/join/rules">
+                                <img src="/img/join.png"></a>
+                            <a href="http://events.na.leagueoflegends.com/events/217617">
+                                <img src="/img/registerlol.png" height="34" width="170"></a></ br>
 						<p>Gold and under only please.</p>
-					</div>			
-                </div>
-                <div class="lolcontentmain">
-                    <p><h2>Rules</h2></p>
-					<b>Hearts of Gold tournament - Only gold rank(s) and below are allowed to play.<br /></b>
-					Note: Please report your team's score after each given match.<br />
+                        </div>
+                    </div>
+                    <div class="lolcontentmain">
+                        <p>
+                            <h2>Rules</h2>
+                        </p>
+                        <b>Hearts of Gold tournament - Only gold rank(s) and below are allowed to play.<br />
+                        </b>
+                        Note: Please report your team's score after each given match.<br />
 
-<p><h2>Registration Rules</h2></p>
+                        <p>
+                            <h2>Registration Rules</h2>
+                        </p>
 
-<p>We only accept serious registrations. If you do register for a League of Legends tournament, we ask that you follow through and show up on game day. If your team is not present at the proper time, you may face a ban from future tournaments.
+                        <p>
+                            We only accept serious registrations. If you do register for a League of Legends tournament, we ask that you follow through and show up on game day. If your team is not present at the proper time, you may face a ban from future tournaments.
 You may only register one team at a time. Please do not try to register more than once as it will not increase your chances of participating.
 If you have any questions or inquiries about a current registration, please email us at webmaster@kcgameon.com
-The registration period ends at 1:30 PM CST on the day of the tournament. Make sure you fill up the slots or they will be filled with BYEs.</p>
-<p><h2>Player/Team Eligibility</h2></p>
+The registration period ends at 1:30 PM CST on the day of the tournament. Make sure you fill up the slots or they will be filled with BYEs.
+                        </p>
+                        <p>
+                            <h2>Player/Team Eligibility</h2>
+                        </p>
 
-<p>Players must be present at the event.  In order to compete, your summoner name must be included with the team's initial registration.
-Once a League of Legends tournament begins, no roster swapping will be allowed. Only the original 5 members may compete.</p>
+                        <p>
+                            Players must be present at the event.  In order to compete, your summoner name must be included with the team's initial registration.
+Once a League of Legends tournament begins, no roster swapping will be allowed. Only the original 5 members may compete.
+                        </p>
 
-<p><h2>Game Conduct</h2></p>
+                        <p>
+                            <h2>Game Conduct</h2>
+                        </p>
 
-<p>Please be respectful to other teams and participants. Refrain from using vulgar language or racial/sexist slurs in "All Chat" or you will be disqualified immediately.
+                        <p>
+                            Please be respectful to other teams and participants. Refrain from using vulgar language or racial/sexist slurs in "All Chat" or you will be disqualified immediately.
 You may use an approved third-party communication program to coordinate and speak with your team, however, there is zero-tolerance for the use of a hack or cheat. Players accused and proved of hacking are immediately disqualified.
-If a team is found intentionally feeding or throwing the game, they will be disqualified and possibly banned from our future League of Legends tournaments.</p>
+If a team is found intentionally feeding or throwing the game, they will be disqualified and possibly banned from our future League of Legends tournaments.
+                        </p>
 
-<p><h2>Tournament Check-In</h2></p>
+                        <p>
+                            <h2>Tournament Check-In</h2>
+                        </p>
 
-<p>We require that all registered teams check-in no later than 10 minutes before the tournament start.
+                        <p>
+                            We require that all registered teams check-in no later than 10 minutes before the tournament start.
 A reminder will be sent to the Team Captain prior to check-in.
 All 5 members on your team must be present at check-in or else it will not qualify.
-If a team that is registered fails to show up to check-in, a substitute team that is checked in will take their place.</p>
+If a team that is registered fails to show up to check-in, a substitute team that is checked in will take their place.
+                        </p>
 
-<p>Captains can report their own score.</p>				
-					
-                    <div class="lolbracket"></div>
-                </div>
-                <div class="lolcontentright">
-                    <p><h2>Prizes</h2></p>
+                        <p>Captains can report their own score.</p>
+
+                        <div class="lolbracket"></div>
+                    </div>
+                    <div class="lolcontentright">
+                        <p>
+                            <h2>Prizes</h2>
+                        </p>
                         <p>FIRST PLACE INDIVIDUALS</p>
-						<p>1500 RP, Triumphant Ryze, Mystery Icon</p><br />
+                        <p>1500 RP, Triumphant Ryze, Mystery Icon</p>
+                        <br />
 
-						<p>SECOND PLACE INDIVIDUALS</p>
-						<p>1000 RP, Mystery Icon</p><br />
+                        <p>SECOND PLACE INDIVIDUALS</p>
+                        <p>1000 RP, Mystery Icon</p>
+                        <br />
 
-						<p>THIRD PLACE - FOURTH PLACE INDIVIDUALS</p>
-						<p>Mystery Icon</p>
-                    <br />
+                        <p>THIRD PLACE - FOURTH PLACE INDIVIDUALS</p>
+                        <p>Mystery Icon</p>
+                        <br />
 
-						<!-- <p>FIRST PLACE INDIVIDUALS
+                        <!-- <p>FIRST PLACE INDIVIDUALS
 						4200 RP, Ryze, Triumphant Ryze, 10-Win IP Boost</p>
 
 						<p>SECOND PLACE INDIVIDUALS
@@ -347,92 +387,130 @@ If a team that is registered fails to show up to check-in, a substitute team tha
 
 						<p>FIFTH PLACE INDIVIDUALS–EIGHTH PLACE INDIVIDUALS
 						10-Win IP Boost</p> -->
-					<p><h2>Schedule</h2></p>
-					<p>2:30 PM</p>
-					<p>3:30</p>
-					<p>etc</p>
-					<p><h2>Questions</h2></p>
-					<p>Contact nick@kcgameon for any questions</p>
-					
-					<br />
-					
+                        <p>
+                            <h2>Schedule</h2>
+                        </p>
+                        <p>2:30 PM</p>
+                        <p>3:30</p>
+                        <p>etc</p>
+                        <p>
+                            <h2>Questions</h2>
+                        </p>
+                        <p>Contact nick@kcgameon for any questions</p>
+
+                        <br />
+
+                    </div>
                 </div>
             </div>
-      </div>
-      <%-- Rocket League --%>
-      <div class="tab-pane fade" id="RL">
-        <!--  <h2>Rocket League</h2>-->
-          <div class="rldiv">
-                <div class="rlcontenttop">
-                    <div class="col-md-3">
-						<p>Date & Time</p>
-						<p><h2>July 30, 2016 @800p</h2></p>
-						Please register with battlefy or you will not be eligible for prizing.
+            <%-- Rocket League --%>
+            <div class="tab-pane fade" id="RL">
+                <!--  <h2>Rocket League</h2>-->
+                <div class="rldiv">
+                    <div class="rlcontenttop">
+                        <div class="col-md-3">
+                            <p>Date & Time</p>
+                            <p>
+                                <h2>Oct 8, 2016 @800p</h2>
+                            </p>
+                            Please register with battlefy or you will not be eligible for prizing.
 						
-					</div>
-					
-					<div class="col-md-3">
-					<p>Format</p>
-					<p><h2>PC/PS4/XB1 3v3</h2></p>
-					double elimination
-					</div>
-					
-					<div class="col-md-3">
-					<p>Game Map & Type</p>
-					<p><h2>Random 3v3 map</h2></p>
-					</div>
-					<div class="col-md-3">
-						<a href="https://battlefy.com/kcgameon/rocket-league-kcgameon-70-3v3/5768af0626bafe2c0c537e20/join/"><img src="/img/join.png"></a>
-						<p>This tournament is cross-platform</p>
-					</div>	
-                </div>
-                <div class="rlcontentmain">
-                    <p><h2>Rules</h2></p>
-					Note: Please report your team's score after each given match.<br />
+                        </div>
 
-<p><h2>Registration Rules</h2></p>
+                        <div class="col-md-3">
+                            <p>Format</p>
+                            <p>
+                                <h2>PC/PS4/XB1 3v3</h2>
+                            </p>
+                            double elimination
+                        </div>
 
-<p>We only accept serious registrations. If you do register for a Rocket League tournament, we ask that you follow through and show up on game day. If your team is not present at the proper time, you may face a ban from future tournaments.
+                        <div class="col-md-3">
+                            <p>Game Map & Type</p>
+                            <p>
+                                <h2>Random 3v3 map</h2>
+                            </p>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="https://battlefy.com/kcgameon/rocket-league-kcgameon-71-3v3/57c24dea372a12100d5befd0/join/password">
+                                <img src="/img/join.png"></a>
+                            <p>This tournament is cross-platform</p>
+                        </div>
+                    </div>
+                    <div class="rlcontentmain">
+                        <p>
+                            <h2>Rules</h2>
+                        </p>
+                        Note: Please report your team's score after each given match.<br />
+
+                        <p>
+                            <h2>Registration Rules</h2>
+                        </p>
+
+                        <p>
+                            We only accept serious registrations. If you do register for a Rocket League tournament, we ask that you follow through and show up on game day. If your team is not present at the proper time, you may face a ban from future tournaments.
 You may only register one team at a time. Please do not try to register more than once as it will not increase your chances of participating.
 If you have any questions or inquiries about a current registration, please email us at webmaster@kcgameon.com
-The registration period ends at 7:30 PM CST on the day of the tournament. Make sure you fill up the slots or they will be filled with BYEs.</p>
-<p><h2>Player/Team Eligibility</h2></p>
+The registration period ends at 7:30 PM CST on the day of the tournament. Make sure you fill up the slots or they will be filled with BYEs.
+                        </p>
+                        <p>
+                            <h2>Player/Team Eligibility</h2>
+                        </p>
 
-<p>In order to compete, your steam/ps4 name must be included with the team's initial registration.
-Once a Rocket League tournament begins, no roster swapping will be allowed. Only the original 3 members may compete.</p>
+                        <p>
+                            In order to compete, your steam/ps4 name must be included with the team's initial registration.
+Once a Rocket League tournament begins, no roster swapping will be allowed. Only the original 3 members may compete.
+                        </p>
 
-<p><h2>Game Conduct</h2></p>
+                        <p>
+                            <h2>Game Conduct</h2>
+                        </p>
 
-<p>Please be respectful to other teams and participants. Refrain from using vulgar language or racial/sexist slurs in "All Chat" or you will be disqualified immediately.
+                        <p>
+                            Please be respectful to other teams and participants. Refrain from using vulgar language or racial/sexist slurs in "All Chat" or you will be disqualified immediately.
 You may use an approved third-party communication program to coordinate and speak with your team, however, there is zero-tolerance for the use of a hack or cheat. Players accused and proved of hacking are immediately disqualified.
-If a team is found intentionally feeding or throwing the game, they will be disqualified and possibly banned from our future tournaments.</p>
+If a team is found intentionally feeding or throwing the game, they will be disqualified and possibly banned from our future tournaments.
+                        </p>
 
-<p><h2>Tournament Check-In</h2></p>
+                        <p>
+                            <h2>Tournament Check-In</h2>
+                        </p>
 
-<p>We require that all registered teams check-in no later than 10 minutes before the tournament start.
+                        <p>
+                            We require that all registered teams check-in no later than 10 minutes before the tournament start.
 A reminder will be sent to the Team Captain prior to check-in.
 All 3 members on your team must be present at check-in or else it will not qualify.
-If a team that is registered fails to show up to check-in, a substitute team that is checked in will take their place.</p>
+If a team that is registered fails to show up to check-in, a substitute team that is checked in will take their place.
+                        </p>
 
-<p>Captains can report their own score.</p>		
-                    <div class="rlbracket"></div>
-                </div>
-                <div class="rlcontentright">
-                                        <p><h2>Prizes</h2></p>
-						<p>FIRST PLACE INDIVIDUALS <br />
-						Free KCGameOn #71 attendance w/8 or more teams competing.</p>
+                        <p>Captains can report their own score.</p>
+                        <div class="rlbracket"></div>
+                    </div>
+                    <div class="rlcontentright">
+                        <p>
+                            <h2>Prizes</h2>
+                        </p>
+                        <p>
+                            FIRST PLACE INDIVIDUALS
+                            <br />
+                            Free KCGameOn #72 attendance w/8 or more teams competing.
+                        </p>
 
-					<p><h2>Schedule</h2></p>
-					<p>6:30 PM</p>
-					<p>7:00</p>
-					<p>etc</p>
-					<p><h2>Questions</h2></p>
-					<p>Contact nick@kcgameon for any questions</p>
-					
+                        <p>
+                            <h2>Schedule</h2>
+                        </p>
+                        <p>6:30 PM</p>
+                        <p>7:00</p>
+                        <p>etc</p>
+                        <p>
+                            <h2>Questions</h2>
+                        </p>
+                        <p>Contact nick@kcgameon for any questions</p>
+
+                    </div>
                 </div>
             </div>
-      </div>
-	<!--  
+            <!--  
 	<%-- sfv --%>
       <div class="tab-pane fade" id="sfv">
           <div class="sfvdiv">
@@ -506,250 +584,442 @@ If a player that is registered fails to show up to check-in, a substitute player
                 </div>
             </div>
       </div>  -->
-	    <%-- halo5 --%>
-      <div class="tab-pane fade" id="halo5">
-          <div class="halo5div">
-                <div class="halo5contenttop">
-                    <div class="col-md-3">
-						<p>Date & Time</p>
-						<p><h2>July 30, 2016 @1p</h2></p>
-						Please register with Challonge or you will not be eligible for prizing.
+            <%-- halo5 --%>
+            <div class="tab-pane fade" id="halo5">
+                <div class="halo5div">
+                    <div class="halo5contenttop">
+                        <div class="col-md-3">
+                            <p>Date & Time</p>
+                            <p>
+                                <h2>Oct 8, 2016 @1p</h2>
+                            </p>
+                            Please register with Challonge or you will not be eligible for prizing.
 						
-					</div>
-					
-					<div class="col-md-3">
-					<p>Format</p>
-					<p><h2>Bo3 Prelim</p>
-					<p>Bo5 Qtrs/Semis</h2></p>
-					
-					</div>
-					
-					<div class="col-md-3">
-					<p>Finals</p>
-					<p><h2>Bo7 Finals</p>
-					<p>Double elim bracket</h2></p>
-					</div>
-					<div class="col-md-3">
-					<p><h2>Entry Fee: $15</h2></p>
-					<p>paid to TO prior to start of tournament</p>
-						<a href="http://challonge.com/KCLUV"><img src="/img/registerlol.png" height="34" width="170"></a>
-					</div>	
-                </div>
-                <div class="halo5contentmain">
-                    
-<p><h2><a href="https://www.facebook.com/events/1799412576956577/">Event page on Facebook</a></h2></p>
-<p><h2>Rules</h2></p>
-Note: Please report your score after each given match.<br />
-For additional rules specific for Halo5, please check out <a href="https://pdstournaments.com/halo-5-tournament-rules/">this link.</a> 
+                        </div>
+
+                        <div class="col-md-3">
+                            <p>Format</p>
+                            <p>
+                                <h2>
+                                Bo3 Prelim
+                            </p>
+                            <p>Bo5 Qtrs/Semis</h2></p>
+
+                        </div>
+
+                        <div class="col-md-3">
+                            <p>Finals</p>
+                            <p>
+                                <h2>
+                                Bo7 Finals
+                            </p>
+                            <p>Double elim bracket</h2></p>
+                        </div>
+                        <div class="col-md-3">
+                            <p>
+                                <h2>Entry Fee: $15</h2>
+                            </p>
+                            <p>paid to TO prior to start of tournament</p>
+                            <a href="http://challonge.com/KCLUV">
+                                <img src="/img/registerlol.png" height="34" width="170"></a>
+                        </div>
+                    </div>
+                    <div class="halo5contentmain">
+
+                        <p>
+                            <h2><a href="https://www.facebook.com/events/1799412576956577/">Event page on Facebook</a></h2>
+                        </p>
+                        <p>
+                            <h2>Rules</h2>
+                        </p>
+                        Note: Please report your score after each given match.<br />
+                        For additional rules specific for Halo5, please check out <a href="https://pdstournaments.com/halo-5-tournament-rules/">this link.</a>
 
 
 
-<p><h2>Registration Rules</h2></p>
+                        <p>
+                            <h2>Registration Rules</h2>
+                        </p>
 
-<p>We only accept serious registrations. If you do register for a Halo5 tournament, we ask that you follow through and show up on game day. If your team is not present at the proper time, you may face a ban from future tournaments.
+                        <p>
+                            We only accept serious registrations. If you do register for a Halo5 tournament, we ask that you follow through and show up on game day. If your team is not present at the proper time, you may face a ban from future tournaments.
 You may only register one team at a time. Please do not try to register more than once as it will not increase your chances of participating.
 If you have any questions or inquiries about a current registration, please email us at webmaster@kcgameon.com
-The registration period ends at 12:00 PM CST on the day of the tournament. Make sure you fill up the slots or they will be filled with BYEs.</p>
-<p><h2>Game Conduct</h2></p>
+The registration period ends at 12:00 PM CST on the day of the tournament. Make sure you fill up the slots or they will be filled with BYEs.
+                        </p>
+                        <p>
+                            <h2>Game Conduct</h2>
+                        </p>
 
-<p>Please be respectful to other players and participants. Refrain from using vulgar language or racial/sexist slurs in "All Chat" or you will be disqualified immediately.
+                        <p>
+                            Please be respectful to other players and participants. Refrain from using vulgar language or racial/sexist slurs in "All Chat" or you will be disqualified immediately.
 You may use an approved third-party communication program to coordinate and speak with your team, however, there is zero-tolerance for the use of a hack or cheat. Players accused and proved of hacking are immediately disqualified.
-If a team is found intentionally feeding or throwing the game, they will be disqualified and possibly banned from our future tournaments.</p>
+If a team is found intentionally feeding or throwing the game, they will be disqualified and possibly banned from our future tournaments.
+                        </p>
 
-<p><h2>Tournament Check-In</h2></p>
+                        <p>
+                            <h2>Tournament Check-In</h2>
+                        </p>
 
-<p>We require that all registered players check-in no later than 10 minutes before the tournament start.
+                        <p>
+                            We require that all registered players check-in no later than 10 minutes before the tournament start.
 
-If a player that is registered fails to show up to check-in, a substitute player that is checked in will take their place.</p>
+If a player that is registered fails to show up to check-in, a substitute player that is checked in will take their place.
+                        </p>
 
-<p>Players can report their own score.</p>		
-                    <div class="halo5bracket"></div>
-                </div>
-                <div class="halo5contentright">
-                                        <p><h2>Prizes</h2></p>
-						
-						<p>Cash payouts:</p>
-						<p>2-4 teams - 70/25%* of cash pot.</p>
-						<p>5-8 teams - 55/25/15%* of cash pot.</p>
-						<p>*5% will be used for marketing/infrastructure cost, paid to PDS tournaments</p>
-						<p>Bonus pot splash: 1st place team members will receive a free entry to KCGameOn #71 w/8 or more teams</p>
+                        <p>Players can report their own score.</p>
+                        <div class="halo5bracket"></div>
+                    </div>
+                    <div class="halo5contentright">
+                        <p>
+                            <h2>Prizes</h2>
+                        </p>
 
-					<p><h2>Schedule</h2></p>
-					<p>1:00 PM</p>
-					<p>2:00</p>
-					<p>etc</p>
-					<p><h2>Questions</h2></p>
-					<p>Contact nick@kcgameon for any questions</p>
-					
+                        <p>Cash payouts:</p>
+                        <p>2-4 teams - 70/25%* of cash pot.</p>
+                        <p>5-8 teams - 55/25/15%* of cash pot.</p>
+                        <p>*5% will be used for marketing/infrastructure cost, paid to PDS tournaments</p>
+                        <p>Bonus pot splash: 1st place team members will receive a free entry to KCGameOn #72 w/8 or more teams</p>
+
+                        <p>
+                            <h2>Schedule</h2>
+                        </p>
+                        <p>1:00 PM</p>
+                        <p>2:00</p>
+                        <p>etc</p>
+                        <p>
+                            <h2>Questions</h2>
+                        </p>
+                        <p>Contact nick@kcgameon for any questions</p>
+
+                    </div>
                 </div>
             </div>
-      </div>
-		 <%-- overwatch --%>
-			  <div class="tab-pane fade" id="overwatch">
-			
-				  <div class="overwatchdiv">
-						<div class="overwatchcontenttop">
-                    <div class="col-md-3">
-						<p>Date & Time</p>
-						<p><h2>July 30, 2016 @400p</h2></p>
-						Please register with battlefy or you will not be eligible for prizing.
+            <%-- overwatch --%>
+            <div class="tab-pane fade" id="overwatch">
+
+                <div class="overwatchdiv">
+                    <div class="overwatchcontenttop">
+                        <div class="col-md-3">
+                            <p>Date & Time</p>
+                            <p>
+                                <h2>Oct 8, 2016 @TBAp</h2>
+                            </p>
+                            Please register with battlefy or you will not be eligible for prizing.
 						
-					</div>
-					
-					<div class="col-md-3">
-					<p>Format</p>
-					<p><h2>PC 6v6</h2></p>
-					double elimination
-					</div>
-					
-					<div class="col-md-3">
-					<p>Game Map & Type</p>
-					<p><h2>Custom Game</h2></p>
-                    <p>Rules: Competitive</p>
-					</div>
-					<div class="col-md-3">
-						<a href="https://battlefy.com/kcgameon/overwatch-kcgameon-70/5768af54e52f02200cda9c48/join/mixed-join"><img src="/img/join.png"></a>
-						<p>This is a PC tournament</p>
-					</div>	
-                </div>
-						<div class="overwatchcontentmain">
-									<p><h2>Rules</h2></p>
-							Note: Please report your team's score after each given match.<br />
+                        </div>
 
-							<p><h2>Registration Rules</h2></p>
+                        <div class="col-md-3">
+                            <p>Format</p>
+                            <p>
+                                <h2>6v6</h2>
+                            </p>
+                            double elimination
+                        </div>
 
-							<p>We only accept serious registrations. If you do register for a Overwatch tournament, we ask that you follow through and show up on game day. If your team is not present at the proper time, you may face a ban from future tournaments.
+                        <div class="col-md-3">
+                            <p>Game Map & Type</p>
+                            <p>
+                                <h2>Random Custom</h2>
+                            </p>
+                            <p>Rules: Competitive</p>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="https://battlefy.com/kcgameon/hearthstone-kcgameon-71/57c24ef44f81a31a0dc6445c/join/rules">
+                                <img src="/img/join.png"></a>
+                            <p>This is a PC tournament</p>
+                        </div>
+                    </div>
+                    <div class="overwatchcontentmain">
+                        <p>
+                            <h2>Rules</h2>
+                        </p>
+                        Note: Please report your team's score after each given match.<br />
+
+                        <p>
+                            <h2>Registration Rules</h2>
+                        </p>
+
+                        <p>
+                            We only accept serious registrations. If you do register for a Overwatch tournament, we ask that you follow through and show up on game day. If your team is not present at the proper time, you may face a ban from future tournaments.
 							You may only register one team at a time. Please do not try to register more than once as it will not increase your chances of participating.
 							If you have any questions or inquiries about a current registration, please email us at webmaster@kcgameon.com
-							The registration period ends at 3:30 PM CST on the day of the tournament. Make sure you fill up the slots or they will be filled with BYEs.</p>
-							<p><h2>Player/Team Eligibility</h2></p>
+							The registration period ends at 3:30 PM CST on the day of the tournament. Make sure you fill up the slots or they will be filled with BYEs.
+                        </p>
+                        <p>
+                            <h2>Player/Team Eligibility</h2>
+                        </p>
 
-							<p>Players must be present at the event.  In order to compete, your summoner name must be included with the team's initial registration.
-							Once the Overwatch tournament begins, no roster swapping will be allowed. Only the original 6 members may compete.</p>
+                        <p>
+                            Players must be present at the event.  In order to compete, your summoner name must be included with the team's initial registration.
+							Once the Overwatch tournament begins, no roster swapping will be allowed. Only the original 6 members may compete.
+                        </p>
 
-							<p><h2>Game Conduct</h2></p>
+                        <p>
+                            <h2>Game Conduct</h2>
+                        </p>
 
-							<p>Please be respectful to other teams and participants. Refrain from using vulgar language or racial/sexist slurs in "All Chat" or you will be disqualified immediately.
+                        <p>
+                            Please be respectful to other teams and participants. Refrain from using vulgar language or racial/sexist slurs in "All Chat" or you will be disqualified immediately.
 							You may use an approved third-party communication program to coordinate and speak with your team, however, there is zero-tolerance for the use of a hack or cheat. Players accused and proved of hacking are immediately disqualified.
-							If a team is found intentionally feeding or throwing the game, they will be disqualified and possibly banned from our future tournaments.</p>
+							If a team is found intentionally feeding or throwing the game, they will be disqualified and possibly banned from our future tournaments.
+                        </p>
 
-							<p><h2>Tournament Check-In</h2></p>
+                        <p>
+                            <h2>Tournament Check-In</h2>
+                        </p>
 
-							<p>We require that all registered teams check-in no later than 10 minutes before the tournament start.
+                        <p>
+                            We require that all registered teams check-in no later than 10 minutes before the tournament start.
 							A reminder will be sent to the Team Captain prior to check-in.
 							All 6 members on your team must be present at check-in or else it will not qualify.
-							If a team that is registered fails to show up to check-in, a substitute team that is checked in will take their place.</p>
+							If a team that is registered fails to show up to check-in, a substitute team that is checked in will take their place.
+                        </p>
 
-							<p>Captains can report their own score.</p>	
-							<div class="overwatchbracket"></div>
-						</div>
-						<div class="overwatchcontentright">
-							        <p><h2>Prizes</h2></p>
-						<p>FIRST PLACE INDIVIDUALS <br />
-						Free KCGameOn #71 attendance w/8 or more teams competing.</p>
+                        <p>Captains can report their own score.</p>
+                        <%--<div class="overwatchbracket"></div>--%>
+                    </div>
+                    <div class="overwatchcontentright">
+                        <p>
+                            <h2>Prizes</h2>
+                        </p>
+                        <p>
+                            FIRST PLACE INDIVIDUALS
+                            <br />
+                            Free KCGameOn #72 attendance w/8 or more teams competing.
+                        </p>
 
-					<p><h2>Schedule</h2></p>
-					<p>4:00 PM</p>
-					<p>5:00</p>
-					<p>etc</p>
-					<p><h2>Questions</h2></p>
-					<p>Contact nick@kcgameon for any questions</p>
-					
-                </div>
-			  </div>
-    </div>
-	  
-<%-- CS:GO --%>
-      			  <div class="tab-pane fade" id="CSGO">
-			
-				  <div class="csdiv">
-						<div class="cscontenttop">
-                    <div class="col-md-3">
-						<p>Date & Time</p>
-						<p><h2>July 30, 2016 @200p</h2></p>
-						Please register with battlefy or you will not be eligible for prizing.
-						
-					</div>
-					
-					<div class="col-md-3">
-					<p>Format</p>
-					<p><h2>PC 5v5</h2></p>
-					pool play, double elimination
-					</div>
-					
-					<div class="col-md-3">
-					<p>Game Map & Type</p>
-					<p><h2>5v5 draft map</h2></p>
-					</div>
-					<div class="col-md-3"><p><h2>Entry Fee: $50</h2></p>
-						<p>paid to TO prior to start of tournament</p>
-						<a href="https://battlefy.com/kcgameon/kcgameon-70-csgo-2000/5768ad4fcb348b270c2aa5d8/join/password"><img src="/img/join.png"></a>
-						
-					</div>	
-                </div>
-						<div class="cscontentmain">
-									<p><h2>Rules</h2></p>
-							Note: Please report your team's score after each given match.<br />
+                        <p>
+                            <h2>Schedule</h2>
+                        </p>
+                        <p>4:00 PM</p>
+                        <p>5:00</p>
+                        <p>etc</p>
+                        <p>
+                            <h2>Questions</h2>
+                        </p>
+                        <p>Contact nick@kcgameon for any questions</p>
 
-							<p><h2>Registration Rules</h2></p>
-
-							<p>We only accept serious registrations. If you do register for a CS:GO tournament, we ask that you follow through and show up on game day. If your team is not present at the proper time, you may face a ban from future tournaments.
-							You may only register one team at a time. Please do not try to register more than once as it will not increase your chances of participating.
-							If you have any questions or inquiries about a current registration, please email us at webmaster@kcgameon.com
-							The registration period ends at 11:00 AM CST on the day of the tournament. Make sure you fill up the slots or they will be filled with BYEs.  You must pay the $50 entry fee per person to the tournament organizer (on 3rd floor) as soon as you set up your PC.</p>
-							<p><h2>Player/Team Eligibility</h2></p>
-
-							<p>Players must be present at the event.  In order to compete, your steam name must be included with the team's initial registration.
-							Once the CS:GO tournament begins, no roster swapping will be allowed. Only the original 5 members +subs may compete.</p>
-
-							<p><h2>Game Conduct</h2></p>
-
-							<p>Please be respectful to other teams and participants. Refrain from using vulgar language or racial/sexist slurs in "All Chat" or you will be disqualified immediately.
-							You may use an approved third-party communication program to coordinate and speak with your team, however, there is zero-tolerance for the use of a hack or cheat. Players accused and proved of hacking are immediately disqualified.
-							If a team is found intentionally feeding or throwing the game, they will be disqualified and possibly banned from our future tournaments.</p>
-
-							<p><h2>Tournament Check-In</h2></p>
-
-							<p>We require that all registered teams check-in no later than 10 minutes before the tournament start.
-							A reminder will be sent to the Team Captain prior to check-in.
-							All 5 members on your team must be present at check-in or else it will not qualify.
-							If a team that is registered fails to show up to check-in, a substitute team that is checked in will take their place.</p>
-
-							<p>Captains can report their own score.</p>	
-							<div class="csbracket"></div>
-						</div>
-						<div class="cscontentright">
-							        <p><h2>Prizes</h2></p>
-						<p>Cash payouts: 55/30/15%</p>
-						<p>Bonus pot splash: 1st place team members will receive a free entry to KCGameOn #71 w/8 or more teams</p>
-
-					<p><h2>Schedule</h2></p>
-					<p>12:00 PM</p>
-					<p>1:00</p>
-					<p>etc</p>
-					<p><h2>Questions</h2></p>
-					<p>Contact nick@kcgameon for any questions</p>
-					
-                </div>
-			  </div>
-    </div>
- <!--     <%-- Hearthstone --%>
-      <div class="tab-pane fade" id="HS">
-          <h2>Hearthstone</h2>
-          <div class="hsdiv">
-                <div class="hscontentleft">
-                    <p>Filler content</p>
-                </div>
-                <div class="hscontentmain">
-                    <p>Filler content</p>
-                    <div class="hsbracket"></div>
-                </div>
-                <div class="hscontentright">
-                    <p>Filler content</p>
+                    </div>
                 </div>
             </div>
-      </div> 
 
+            <%-- CS:GO --%>
+            <div class="tab-pane fade" id="CSGO">
+
+                <div class="csdiv">
+                    <div class="cscontenttop">
+                        <div class="col-md-3">
+                            <p>Date & Time</p>
+                            <p>
+                                <h2>Oct 8, 2016 @200p</h2>
+                            </p>
+                            Please register with battlefy or you will not be eligible for prizing.
+						
+                        </div>
+
+                        <div class="col-md-3">
+                            <p>Format</p>
+                            <p>
+                                <h2>PC 5v5</h2>
+                            </p>
+                            pool play, double elimination
+                        </div>
+
+                        <div class="col-md-3">
+                            <p>Game Map & Type</p>
+                            <p>
+                                <h2>5v5 draft map</h2>
+                            </p>
+                        </div>
+                        <div class="col-md-3">
+                            <p>
+                                <h2>Entry Fee: $50</h2>
+                            </p>
+                            <p>paid to TO prior to start of tournament</p>
+                            <a href="https://battlefy.com/kcgameon/kcgameon-71-csgo-2000/57c24ccb91d0a5220c405973/join/rules">
+                                <img src="/img/join.png"></a>
+
+                        </div>
+                    </div>
+                    <div class="cscontentmain">
+                        <p>
+                            <h2>Rules</h2>
+                        </p>
+                        Note: Please report your team's score after each given match.<br />
+
+                        <p>
+                            <h2>Registration Rules</h2>
+                        </p>
+
+                        <p>
+                            We only accept serious registrations. If you do register for a CS:GO tournament, we ask that you follow through and show up on game day. If your team is not present at the proper time, you may face a ban from future tournaments.
+							You may only register one team at a time. Please do not try to register more than once as it will not increase your chances of participating.
+							If you have any questions or inquiries about a current registration, please email us at webmaster@kcgameon.com
+							The registration period ends at 11:00 AM CST on the day of the tournament. Make sure you fill up the slots or they will be filled with BYEs.  You must pay the $50 entry fee per person to the tournament organizer (on 3rd floor) as soon as you set up your PC.
+                        </p>
+                        <p>
+                            <h2>Player/Team Eligibility</h2>
+                        </p>
+
+                        <p>
+                            Players must be present at the event.  In order to compete, your steam name must be included with the team's initial registration.
+							Once the CS:GO tournament begins, no roster swapping will be allowed. Only the original 5 members +subs may compete.
+                        </p>
+
+                        <p>
+                            <h2>Game Conduct</h2>
+                        </p>
+
+                        <p>
+                            Please be respectful to other teams and participants. Refrain from using vulgar language or racial/sexist slurs in "All Chat" or you will be disqualified immediately.
+							You may use an approved third-party communication program to coordinate and speak with your team, however, there is zero-tolerance for the use of a hack or cheat. Players accused and proved of hacking are immediately disqualified.
+							If a team is found intentionally feeding or throwing the game, they will be disqualified and possibly banned from our future tournaments.
+                        </p>
+
+                        <p>
+                            <h2>Tournament Check-In</h2>
+                        </p>
+
+                        <p>
+                            We require that all registered teams check-in no later than 10 minutes before the tournament start.
+							A reminder will be sent to the Team Captain prior to check-in.
+							All 5 members on your team must be present at check-in or else it will not qualify.
+							If a team that is registered fails to show up to check-in, a substitute team that is checked in will take their place.
+                        </p>
+
+                        <p>Captains can report their own score.</p>
+                        <%--<div class="csbracket"></div>--%>
+                    </div>
+                    <div class="cscontentright">
+                        <p>
+                            <h2>Prizes</h2>
+                        </p>
+                        <p>Cash payouts: 55/30/15%</p>
+                        <p>Bonus pot splash: 1st place team members will receive a free entry to KCGameOn #72 w/8 or more teams</p>
+
+                        <p>
+                            <h2>Schedule</h2>
+                        </p>
+                        <p>12:00 PM</p>
+                        <p>1:00</p>
+                        <p>etc</p>
+                        <p>
+                            <h2>Questions</h2>
+                        </p>
+                        <p>Contact nick@kcgameon for any questions</p>
+
+                    </div>
+                </div>
+            </div>
+            <%-- Hearthstone --%>
+            <div class="tab-pane fade" id="HS">
+               <%-- <h2>Hearthstone</h2>--%>
+                <div class="hsdiv">
+                    <div class="hscontenttop">
+                        <div class="col-md-3">
+                            <p>Date & Time</p>
+                            <p>
+                                <h2>Oct 8, 2016 @400p</h2>
+                            </p>
+                            Please register with battlefy or you will not be eligible for prizing.
+						
+                        </div>
+
+                        <div class="col-md-3">
+                            <p>Format</p>
+                            <p>
+                                <h2>TBA</h2>
+                            </p>
+                            double elimination
+                        </div>
+
+                        <div class="col-md-3">
+                            <p>Game Map & Type</p>
+                            <p>
+                                <h2>TBA</h2>
+                            </p>
+                            <p>Rules: TBA</p>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="https://battlefy.com/kcgameon/hearthstone-kcgameon-71/57c24ef44f81a31a0dc6445c/join/rules">
+                                <img src="/img/join.png"></a>
+                            <p>This is a PC tournament</p>
+                        </div>
+                    </div>
+                    <div class="hscontentmain">
+                        <p>
+                            <h2>Rules</h2>
+                        </p>
+                        Note: Please report your score after each given match.<br />
+
+                        <p>
+                            <h2>Registration Rules</h2>
+                        </p>
+
+                        <p>
+                            We only accept serious registrations. If you do register for a Hearthstone tournament, we ask that you follow through and show up on game day. If your team is not present at the proper time, you may face a ban from future tournaments.
+							You may only register one team at a time. Please do not try to register more than once as it will not increase your chances of participating.
+							If you have any questions or inquiries about a current registration, please email us at webmaster@kcgameon.com
+							The registration period ends at 3:30 PM CST on the day of the tournament. Make sure you fill up the slots or they will be filled with BYEs.
+                        </p>
+                        <p>
+                            <h2>Player/Team Eligibility</h2>
+                        </p>
+
+                        <p>
+                            Players must be present at the event.  In order to compete, your summoner name must be included with the team's initial registration.
+							
+                        </p>
+
+                        <p>
+                            <h2>Game Conduct</h2>
+                        </p>
+
+                        <p>
+                            Please be respectful to other teams and participants. Refrain from using vulgar language or racial/sexist slurs in "All Chat" or you will be disqualified immediately.
+							You may use an approved third-party communication program to coordinate and speak with your team, however, there is zero-tolerance for the use of a hack or cheat. Players accused and proved of hacking are immediately disqualified.
+							If a team is found intentionally feeding or throwing the game, they will be disqualified and possibly banned from our future tournaments.
+                        </p>
+
+                        <p>
+                            <h2>Tournament Check-In</h2>
+                        </p>
+
+                        <p>
+                            We require that all registered teams check-in no later than 10 minutes before the tournament start.
+							A reminder will be sent to the Team Captain prior to check-in.
+							All players must be present at check-in or else they will not qualify.
+							
+                        </p>
+
+                        <p>Players can report their own score.</p>
+                        <div class="hsbracket"></div>
+                    </div>
+                    <div class="hscontentright">
+                        <p>
+                            <h2>Prizes</h2>
+                        </p>
+                        <p>
+                            FIRST PLACE INDIVIDUALS
+                            <br />
+                            Free KCGameOn #72 attendance w/8 or more teams competing.
+                        </p>
+
+                        <p>
+                            <h2>Schedule</h2>
+                        </p>
+                        <p>4:00 PM</p>
+                        <p>5:00</p>
+                        <p>etc</p>
+                        <p>
+                            <h2>Questions</h2>
+                        </p>
+                        <p>Contact nick@kcgameon for any questions</p>
+                    </div>
+                </div>
+            </div>
+            <!--
 		<%-- Dota2 --%>
       <div class="tab-pane fade" id="Dota2">
           <div class="dota2div">
@@ -958,84 +1228,121 @@ If a team that is registered fails to show up to check-in, a substitute team tha
 			  </div>
     </div>
 	-->
-	<%-- Magic --%>
-			  <div class="tab-pane fade" id="MAGIC">
-			
-				  <div class="magicdiv">
-						<div class="magiccontenttop">
-                    <div class="col-md-3">
-						<p>Date & Time</p>
-						<p><h3>July 30, 2016 @1p and 7p</h3></p>
-						
-						<a href="http://goo.gl/forms/uWdzgzcw2jgSefLD3"><img src="/img/registerlol.png" height="34" width="170"></a>
-					</div>
-					
-					<div class="col-md-3">
-					<p>Format</p>
-						<p><h3><a href="https://en.wikipedia.org/wiki/Magic:_The_Gathering#Limited">Booster Draft ($10 entry)</a></h3></p>
-						3 packs<br />
-						4 Round <a href="https://en.wikipedia.org/wiki/Swiss-system_tournament">Swiss</a><br />
-						8 player minimum per flight
-					</div>
-					
-					<div class="col-md-3">
-						<p>Date & Time</p>
-						<p><h3>July 30, 2016 @1 and 7p</h3></p>
-						<a href="http://goo.gl/forms/uWdzgzcw2jgSefLD3"><img src="/img/registerlol.png" height="34" width="170"></a>
-					</div>
-					<div class="col-md-3">
-					<p>Format</p>
-						<p><h3><a href="https://en.wikipedia.org/wiki/Magic:_The_Gathering#Limited">Sealed Deck ($20 entry)</a></h3></p>
-						6 packs<br />
-						4 Round <a href="https://en.wikipedia.org/wiki/Swiss-system_tournament">Swiss</a><br />		
-						8 player minimum per flight
-					</div>	
-                </div>
-						<div class="magiccontentmain">
-									<p><h2>Rules</h2></p>
-							Note: Winner of each match, please report your score to the judge after each given match.<br />
+            <%-- Magic --%>
+            <div class="tab-pane fade" id="MAGIC">
 
-							<p><h2>Registration Rules</h2></p>
+                <div class="magicdiv">
+                    <div class="magiccontenttop">
+                        <div class="col-md-3">
+                            <p>Date & Time</p>
+                            <p>
+                                <h3>July 30, 2016 @1p and 7p</h3>
+                            </p>
 
-							<p>We only accept serious registrations. If you do register for a MTG tournament, we ask that you follow through and show up on game day. If you are not present at the proper time, you may face a ban from future tournaments.
+                            <a href="http://goo.gl/forms/uWdzgzcw2jgSefLD3">
+                                <img src="/img/registerlol.png" height="34" width="170"></a>
+                        </div>
+
+                        <div class="col-md-3">
+                            <p>Format</p>
+                            <p>
+                                <h3><a href="https://en.wikipedia.org/wiki/Magic:_The_Gathering#Limited">Booster Draft ($10 entry)</a></h3>
+                            </p>
+                            3 packs<br />
+                            4 Round <a href="https://en.wikipedia.org/wiki/Swiss-system_tournament">Swiss</a><br />
+                            8 player minimum per flight
+                        </div>
+
+                        <div class="col-md-3">
+                            <p>Date & Time</p>
+                            <p>
+                                <h3>July 30, 2016 @1 and 7p</h3>
+                            </p>
+                            <a href="http://goo.gl/forms/uWdzgzcw2jgSefLD3">
+                                <img src="/img/registerlol.png" height="34" width="170"></a>
+                        </div>
+                        <div class="col-md-3">
+                            <p>Format</p>
+                            <p>
+                                <h3><a href="https://en.wikipedia.org/wiki/Magic:_The_Gathering#Limited">Sealed Deck ($20 entry)</a></h3>
+                            </p>
+                            6 packs<br />
+                            4 Round <a href="https://en.wikipedia.org/wiki/Swiss-system_tournament">Swiss</a><br />
+                            8 player minimum per flight
+                        </div>
+                    </div>
+                    <div class="magiccontentmain">
+                        <p>
+                            <h2>Rules</h2>
+                        </p>
+                        Note: Winner of each match, please report your score to the judge after each given match.<br />
+
+                        <p>
+                            <h2>Registration Rules</h2>
+                        </p>
+
+                        <p>
+                            We only accept serious registrations. If you do register for a MTG tournament, we ask that you follow through and show up on game day. If you are not present at the proper time, you may face a ban from future tournaments.
 							You may only register yourself once for each tournament. Please do not try to register more than once as it will not increase your chances of participating.
 							If you have any questions or inquiries about a current registration, please email us at webmaster@kcgameon.com
-							The registration period ends at 12:30 PM CST on the day of the tournament. Make sure you fill up the slots or they will be filled with BYEs.</p>
+							The registration period ends at 12:30 PM CST on the day of the tournament. Make sure you fill up the slots or they will be filled with BYEs.
+                        </p>
+
+                        <p>
+                            <h2>Player Eligibility</h2>
+                        </p>
+
+                        <p>
+                            Players must be present at the event.  In order to compete, you must use your real name must be used in the registration.
+							Once the MTG tournament begins, no player swapping will be allowed. Only the original member may compete.
+                        </p>
+
+                        <p>
+                            <h2>Game Conduct</h2>
+                        </p>
+
+                        <p>
+                            Please be respectful to other teams and participants. Refrain from using vulgar language or racial/sexist slurs or you will be disqualified immediately.
+							There is zero-tolerance for cheating. If you have any questions at all, please contact the tournament judge.
+                        </p>
+
+                        <p>
+                            <h2>Tournament Check-In</h2>
+                        </p>
+
+                        <p>
+                            We require that all registered player check-in no later than 10 minutes before the tournament start.
 							
-							<p><h2>Player Eligibility</h2></p>
+							If a player that is registered fails to show up to check-in, a substitute player that is checked in will take their place.
+                        </p>
 
-							<p>Players must be present at the event.  In order to compete, you must use your real name must be used in the registration.
-							Once the MTG tournament begins, no player swapping will be allowed. Only the original member may compete.</p>
+                        <div class="magicbracket"></div>
+                    </div>
+                    <div class="magiccontentright">
+                        <p>
+                            <h2>Prizes</h2>
+                        </p>
+                        <p>
+                            Standard prizing for sealed/draft
+                            <br />
+                            details to follow
+                        </p>
 
-							<p><h2>Game Conduct</h2></p>
+                        <p>
+                            <h2>Schedule</h2>
+                        </p>
+                        <p>1 PM</p>
+                        <p>2 PM</p>
+                        <p>etc</p>
+                        <p>
+                            <h2>Questions</h2>
+                        </p>
+                        <p>Contact nick@kcgameon for any questions</p>
 
-							<p>Please be respectful to other teams and participants. Refrain from using vulgar language or racial/sexist slurs or you will be disqualified immediately.
-							There is zero-tolerance for cheating. If you have any questions at all, please contact the tournament judge.</p>
-
-							<p><h2>Tournament Check-In</h2></p>
-
-							<p>We require that all registered player check-in no later than 10 minutes before the tournament start.
-							
-							If a player that is registered fails to show up to check-in, a substitute player that is checked in will take their place.</p>
-
-							<div class="magicbracket"></div>
-						</div>
-						<div class="magiccontentright">
-							        <p><h2>Prizes</h2></p>
-						<p>Standard prizing for sealed/draft <br />
-						details to follow</p>
-
-					<p><h2>Schedule</h2></p>
-					<p>1 PM</p>
-					<p>2 PM</p>
-					<p>etc</p>
-					<p><h2>Questions</h2></p>
-					<p>Contact nick@kcgameon for any questions</p>
-					
-						</div>
-					  </div>
-			</div>
-        <%--<ul class="list-inline">
+                    </div>
+                </div>
+            </div>
+            <%--<ul class="list-inline">
             <li><a id="lol" href="#" class="brand">League of Legends</a></li>
             <li><a id="rl" href="#" class="brand">Rocket League</a></li>
 			<li><a id="csgo" href="#" class="brand">Counter-Strike: Global Offensive</a></li>
@@ -1046,23 +1353,23 @@ If a team that is registered fails to show up to check-in, a substitute team tha
 			<li><a id="sfv"" href="#" class="brand">Street Fighter V</a></li>
         </ul>--%>
 
-        <%--<form class="well form-inline">--%>
+            <%--<form class="well form-inline">--%>
             <%--<a name="csgopage"></a>--%>
-            
+
             <%--<a name="hearthstonepage"></a>--%>
-            
+
             <%--<a name="leagueoflegendspage"></a>--%>
-            
+
             <%--<a name="rocketleaguepage"></a>--%>
-			
-			<%--<a name="smashbros"></a>--%>
-			
-			<%--<a name="Dota 2"></a>--%>
-			
-			<%--<a name="magic"></a>--%>
-			
-			<%--<a name="sfv"></a>--%>
-            
-        <%--</form>--%>
-    </div>
+
+            <%--<a name="smashbros"></a>--%>
+
+            <%--<a name="Dota 2"></a>--%>
+
+            <%--<a name="magic"></a>--%>
+
+            <%--<a name="sfv"></a>--%>
+
+            <%--</form>--%>
+        </div>
 </asp:Content>

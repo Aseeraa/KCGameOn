@@ -4,18 +4,15 @@
 
 <asp:Content ID="HeadContent" ContentPlaceHolderID="HeadContent" runat="server">
     <style>
-        .modal-content, .modal-dialog, .modal-footer
-        {
+        .modal-content, .modal-dialog, .modal-footer {
             background: #282828;
         }
 
-        .modal-backdrop.in, .modal-backdrop
-        {
+        .modal-backdrop.in, .modal-backdrop {
             opacity: 0.5 !important;
         }
 
-        #field-body
-        {
+        #field-body {
             max-width: 1140px;
             margin: auto;
             margin: 10px;
@@ -23,53 +20,44 @@
             height: auto;
         }
 
-        #fields
-        {
+        #fields {
             width: auto;
             max-width: 220px;
             margin: auto;
             margin-right: 15px;
         }
 
-        #bottomtext
-        {
+        #bottomtext {
             width: auto;
             min-width: 800px;
             max-width: 800px;
             margin-bottom: 20px;
-            align-content:center
-            color: red
-            
+            align-content: center color: red;
         }
 
-        #registrationTable
-        {
+        #registrationTable {
             width: auto;
             min-width: 800px;
             max-width: 800px;
             margin-bottom: 20px;
         }
 
-        .total
-        {
+        .total {
             margin: 5px;
             height: auto;
             max-width: 300px;
             width: auto;
         }
 
-        .modal-content, .modal-dialog, .modal-footer
-        {
+        .modal-content, .modal-dialog, .modal-footer {
             background: #282828;
         }
 
-        .modal-dialong
-        {
+        .modal-dialong {
             top: 50%;
         }
 
-        .fullyear
-        {
+        .fullyear {
             text-align: center;
         }
     </style>
@@ -89,7 +77,7 @@
 
             $('.fullyear').find('input[type="checkbox"]').each(function () {
                 if ($(this).prop('checked') == true) {
-                    sum += amount + 15 * (remainingEvents-1);
+                    sum += amount + 15 * (remainingEvents - 1);
                 }
                 else {
                     sum += amount;
@@ -272,7 +260,7 @@
 </asp:Content>
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
     <%if (!String.IsNullOrEmpty(SessionVariables.UserName))
-{%>
+        {%>
     <!-- Success modal-->
     <div class="modal" id="failure" tabindex="-1" role="dialog">
         <div class="modal-dialog">
@@ -314,8 +302,12 @@
     </div>
     <!-- /.modal -->
     <%if (!SessionVariables.registrationBlocked)
-          {%>
+        {%>
     <div id="field-body">
+        
+        <h4 >KCGameOn and Extra-Life is teaming up to raise funds for Children's Miracle network for this 25-hour marathon event.  This event is providing attendee options to get involved, if you wish.</h4>
+        <h4>If you do feel like being a part of this Extra-life marathon, feel free to join our <a href=\"http://www.extra-life.org/index.cfm?fuseaction=donorDrive.teamParticipants&teamID=29099\">team</a>, run your own team or contribute in cash at the Extra-life booth located at the event.  Alternatively, simply check the box below to give $10 dollars directly to Extra-Life.</h4>
+                <br />
         <div id="fields" class="pull-left">
             <h3>Start Here:</h3>
             <label>Username:</label>
@@ -354,7 +346,7 @@
             </div>
             <div id="bottomtext" class="pull-right">
                 <br />
-                <h3>Please add yourself and any other guests you wish to pay for, then click PAY NOW</h3>
+                <h3>NOTE: It auto adds the person logged in to pay, when you are ready to start the payment process, click "PAY NOW."</h3>
                 <h3>After you pay, click the link back to the map and take a seat <b>immediately.</b></h3>
                 <br />
                 <h5>If you pay for more than one ticket, you will need to have that person log in and sit in their seat as well.</h5>
@@ -365,14 +357,15 @@
     
     <%} %>
     <%else
-    { %>
+        { %>
 		<div align=center>
 			<h2>There are currently no events available for registration, please check back closer to the event date or when the announcement email has been sent.</h2>
 			<br />
 		</div>
         <%} %>
     <% }
-        else { %>
+        else
+        { %>
     
     <h2>Please <a href="/Account/Login.aspx">login</a> to start the registration process.</h2>
     <% } %>
