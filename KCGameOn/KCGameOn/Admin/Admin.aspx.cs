@@ -568,6 +568,7 @@ namespace KCGameOn.Admin
             String first = mystring.ElementAt(0).ElementAt(1).ToString().Split(' ').ElementAt(0);
             String last = mystring.ElementAt(0).ElementAt(1).ToString().Split(' ').ElementAt(1);
             String paymentType = mystring.ElementAt(0).ElementAt(2).ToString();
+            Double donationAmount = 0;
 
             MySqlCommand cmd = null;
             MySqlConnection conn = null;
@@ -585,6 +586,7 @@ namespace KCGameOn.Admin
                 cmd.Parameters.AddWithValue("PaidFullYear", "N");
                 cmd.Parameters.AddWithValue("PaymentMethod", paymentType);
                 cmd.Parameters.AddWithValue("PaymentKey", "");
+                cmd.Parameters.AddWithValue("DonationAmount", donationAmount);
 
                 cmd.ExecuteScalar();
                 conn.Close();
@@ -698,60 +700,6 @@ namespace KCGameOn.Admin
                     conn.Close();
                 }
             }
-
-
-
-            //Create Command
-            cmd = new MySqlCommand("SELECT ua.Email,pt.Barcode,pt.EventID FROM payTable pt LEFT JOIN useraccount ua on pt.username = ua.username WHERE pt.Username = \'" + user + "\' AND pt.Barcode IS NOT NULL AND pt.verifiedPaid = 'Y' AND pt.eventID = (SELECT min(schedule.EventID) FROM schedule WHERE schedule.Active = 1)  LIMIT 1", conn);
-            cmd.CommandType = System.Data.CommandType.Text;
-            cmd.Connection.Open();
-
-            //Bind command to reader
-            using (MySqlDataReader reader = cmd.ExecuteReader())
-            {
-                //read each row
-                while (reader.Read())
-                {
-                    //associate variables
-                    string toEmail = reader["Email"].ToString();
-                    string barcode = reader["Barcode"].ToString();
-                    string eid = reader["EventID"].ToString();
-                    MailMessage mail = new MailMessage();
-                    SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
-
-                    mail.From = new MailAddress(ConfigurationManager.ConnectionStrings["FromEmail"].ConnectionString);
-                    mail.To.Add(toEmail);
-                    mail.Subject = "KcGameOn Account: Quick Check-In Barcode for Event #" + eid;
-                    mail.IsBodyHtml = true;
-
-                    var imageData = Convert.FromBase64String(getBarcode(barcode));
-
-                    var contentId = Guid.NewGuid().ToString();
-                    var linkedResource = new LinkedResource(new MemoryStream(imageData), "image/jpeg");
-                    linkedResource.ContentId = contentId;
-                    linkedResource.TransferEncoding = TransferEncoding.Base64;
-
-                    var body = "Behold, ";
-                    body += "<br /><br />This is your ticket to the lan event #" + eid + ", keep it safe!.";
-                    body += "<br /><br /><b>" + user + "</b>";
-                    body += string.Format("<br /><br /><img src=\"cid:{0}\" />", contentId);
-                    body += "<br /><br />Thanks,";
-                    body += "<br />KcGameOn Team!";
-                    var htmlView = AlternateView.CreateAlternateViewFromString(body, null, "text/html");
-                    htmlView.LinkedResources.Add(linkedResource);
-                    mail.AlternateViews.Add(htmlView);
-
-                    SmtpServer.Port = 587;
-                    SmtpServer.Credentials = new System.Net.NetworkCredential(ConfigurationManager.ConnectionStrings["FromEmail"].ConnectionString, ConfigurationManager.ConnectionStrings["FromEmailPass"].ConnectionString);
-                    SmtpServer.EnableSsl = true;
-
-                    SmtpServer.Send(mail);
-                }
-                // Call Close when done reading.
-                reader.Close();
-            }
-
-            cmd.Connection.Close();
             return true;
         }
 
