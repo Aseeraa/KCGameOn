@@ -703,7 +703,7 @@ If a player that is registered fails to show up to check-in, a substitute player
                         <div class="col-md-3">
                             <p>Date & Time</p>
                             <p>
-                                <h2>Oct 8, 2016 @TBAp</h2>
+                                <h2>Oct 8, 2016 @7p</h2>
                             </p>
                             Please register with battlefy or you will not be eligible for prizing.
 						
@@ -895,8 +895,9 @@ If a player that is registered fails to show up to check-in, a substitute player
                         <p>
                             <h2>Prizes</h2>
                         </p>
+                        <p>$2000* (based on 8 teams entering)</p>
                         <p>Cash payouts: 55/30/15%</p>
-                        <p>Bonus pot splash: 1st place team members will receive a free entry to KCGameOn #72 w/8 or more teams</p>
+                        
 
                         <p>
                             <h2>Schedule</h2>
@@ -914,13 +915,13 @@ If a player that is registered fails to show up to check-in, a substitute player
             </div>
             <%-- Hearthstone --%>
             <div class="tab-pane fade" id="HS">
-               <%-- <h2>Hearthstone</h2>--%>
+                <%-- <h2>Hearthstone</h2>--%>
                 <div class="hsdiv">
                     <div class="hscontenttop">
                         <div class="col-md-3">
                             <p>Date & Time</p>
                             <p>
-                                <h2>Oct 8, 2016 @400p</h2>
+                                <h2>Oct 8, 2016 @200p</h2>
                             </p>
                             Please register with battlefy or you will not be eligible for prizing.
 						
@@ -929,27 +930,30 @@ If a player that is registered fails to show up to check-in, a substitute player
                         <div class="col-md-3">
                             <p>Format</p>
                             <p>
-                                <h2>TBA</h2>
+                                <h2>Standard</h2>
                             </p>
                             double elimination
                         </div>
 
                         <div class="col-md-3">
-                            <p>Game Map & Type</p>
+                            <p>Gameplay</p>
                             <p>
-                                <h2>TBA</h2>
+                                <h2>Best of 3
+                                    <p>Best of 5 (in final 4)</p>
+                                </h2>
                             </p>
-                            <p>Rules: TBA</p>
+
                         </div>
                         <div class="col-md-3">
                             <a href="https://battlefy.com/kcgameon/hearthstone-kcgameon-71/57c24ef44f81a31a0dc6445c/join/rules">
                                 <img src="/img/join.png"></a>
-                            <p>This is a PC tournament</p>
+                            <p>Multi-platform tournament</p>
                         </div>
                     </div>
                     <div class="hscontentmain">
                         <p>
                             <h2>Rules</h2>
+                            <p><a href="https://bnetcmsus-a.akamaihd.net/cms/gallery/j9/J976W710HSTP1455317433658.pdf">Offical Competition Rules</a></p>
                         </p>
                         Note: Please report your score after each given match.<br />
 
@@ -959,16 +963,16 @@ If a player that is registered fails to show up to check-in, a substitute player
 
                         <p>
                             We only accept serious registrations. If you do register for a Hearthstone tournament, we ask that you follow through and show up on game day. If your team is not present at the proper time, you may face a ban from future tournaments.
-							You may only register one team at a time. Please do not try to register more than once as it will not increase your chances of participating.
+							You may only register one player of the same name. Please do not try to register more than once as it will not increase your chances of participating.
 							If you have any questions or inquiries about a current registration, please email us at webmaster@kcgameon.com
-							The registration period ends at 3:30 PM CST on the day of the tournament. Make sure you fill up the slots or they will be filled with BYEs.
+							The registration period ends at 1:30 PM CST on the day of the tournament. Make sure you fill up the slots or they will be filled with BYEs.
                         </p>
                         <p>
                             <h2>Player/Team Eligibility</h2>
                         </p>
 
                         <p>
-                            Players must be present at the event.  In order to compete, your summoner name must be included with the team's initial registration.
+                            Players must be present at the event.  In order to compete, your gamer name must be included with the team's initial registration.
 							
                         </p>
 
@@ -977,9 +981,9 @@ If a player that is registered fails to show up to check-in, a substitute player
                         </p>
 
                         <p>
-                            Please be respectful to other teams and participants. Refrain from using vulgar language or racial/sexist slurs in "All Chat" or you will be disqualified immediately.
+                            Please be respectful to other players and participants. Refrain from using vulgar language or racial/sexist slurs in "All Chat" or you will be disqualified immediately.
 							You may use an approved third-party communication program to coordinate and speak with your team, however, there is zero-tolerance for the use of a hack or cheat. Players accused and proved of hacking are immediately disqualified.
-							If a team is found intentionally feeding or throwing the game, they will be disqualified and possibly banned from our future tournaments.
+							If a person is found intentionally feeding or throwing the game, they will be disqualified and possibly banned from our future tournaments.
                         </p>
 
                         <p>
@@ -987,8 +991,8 @@ If a player that is registered fails to show up to check-in, a substitute player
                         </p>
 
                         <p>
-                            We require that all registered teams check-in no later than 10 minutes before the tournament start.
-							A reminder will be sent to the Team Captain prior to check-in.
+                            We require that all registered persons check-in no later than 10 minutes before the tournament start.
+							
 							All players must be present at check-in or else they will not qualify.
 							
                         </p>
@@ -1003,14 +1007,14 @@ If a player that is registered fails to show up to check-in, a substitute player
                         <p>
                             FIRST PLACE INDIVIDUALS
                             <br />
-                            Free KCGameOn #72 attendance w/8 or more teams competing.
+                            Free KCGameOn #72 attendance w/8 or more players competing.
                         </p>
 
                         <p>
                             <h2>Schedule</h2>
                         </p>
-                        <p>4:00 PM</p>
-                        <p>5:00</p>
+                        <p>2:00 PM</p>
+                        <p>2:30</p>
                         <p>etc</p>
                         <p>
                             <h2>Questions</h2>
