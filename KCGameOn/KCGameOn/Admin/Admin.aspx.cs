@@ -663,18 +663,13 @@ namespace KCGameOn.Admin
             cmd.Connection.Close();
             return true;
         }
+        [WebMethod]
         //nickcode
         public static bool addRaffle(string data)
         {
             String UserInfo = ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString;
-            List<Users> payment = new List<Users>();
             JavaScriptSerializer json = new JavaScriptSerializer();
-            List<String[]> mystring = json.Deserialize<List<string[]>>(data);
-
-            String user = mystring.ElementAt(0).ElementAt(0).ToString();
-            String first = mystring.ElementAt(0).ElementAt(1).ToString().Split(' ').ElementAt(0);
-            String last = mystring.ElementAt(0).ElementAt(1).ToString().Split(' ').ElementAt(1);
-            String paymentType = mystring.ElementAt(0).ElementAt(2).ToString();
+            String user = json.Deserialize<String>(data);
 
             MySqlCommand cmd = null;
             MySqlConnection conn = null;
@@ -685,12 +680,9 @@ namespace KCGameOn.Admin
 
                 conn.Open();
 
-                cmd = new MySqlCommand("spAddPayment", conn);
+                cmd = new MySqlCommand("spAddRaffle", conn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("UserName", user);
-                cmd.Parameters.AddWithValue("wondoor", "0");
-                cmd.Parameters.AddWithValue("wonloyalty", "0");
-
 
                 cmd.ExecuteScalar();
                 conn.Close();

@@ -171,17 +171,10 @@
             $('#addraffle').click(function (event) {
                 event.preventDefault();
                 var user = $('#userDropdown').val();
-                var name = $('#nameDropdown').val();
-                var userObject = [];
-                var payments = [];
-                userObject.push(user);
-                userObject.push(name);
-                userObject.push("Cash");
-                payments.push(userObject);
                 $.ajax({
                     type: "POST",
-                    url: "Admin.aspx/addPayment",
-                    data: "{'data':'" + JSON.stringify(payments) + "'}",
+                    url: "Admin.aspx/addRaffle",
+                    data: "{'data':'" + JSON.stringify(user) + "'}",
                     contentType: "application/json; charset=utf-8",
                     dataType: "json"
                 })
