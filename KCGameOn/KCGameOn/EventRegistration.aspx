@@ -305,8 +305,8 @@
         {%>
     <div id="field-body">
         
-        <h4 >KCGameOn and Extra-Life is teaming up to raise funds for Children's Miracle network for this 25-hour marathon event.  This event is providing attendee options to get involved, if you wish.</h4>
-        <h4>If you do feel like being a part of this Extra-life marathon, feel free to join our <a href=\"http://www.extra-life.org/index.cfm?fuseaction=donorDrive.teamParticipants&teamID=29099\">team</a>, run your own team or contribute in cash at the Extra-life booth located at the event.  Alternatively, simply check the box below to give $10 dollars directly to Extra-Life.</h4>
+        <h4 >KCGameOn and Extra Life is teaming up to raise funds for Children's Miracle network for this 25-hour marathon event.  This event is providing attendee options to get involved, if you wish.</h4>
+        <h4>If you do feel like being a part of this Extra-life marathon, feel free to join our <a href="http://www.extra-life.org/index.cfm?fuseaction=donorDrive.teamParticipants&teamID=29099">team</a>, run your own team or contribute in cash at the Extra-life booth located at the event.  Alternatively, simply check the box below to give $10 dollars directly to Extra Life.</h4>
                 <br />
         <div id="fields" class="pull-left">
             <h3>Start Here:</h3>

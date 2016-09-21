@@ -84,26 +84,39 @@
                     <table width=100% table-layout="fixed">
                         <!-- Tournament Posters -->
                         <tr>
-                            <td width="20%">
+                            <td width="11%">
                                 <a href="https://kcgameon.com/Tournament.aspx">
                                     <img src="img/lolPoster.png" alt="League of Legends" /></a>
                             </td>
-                            <td width="20%">
+                            <td width="11%">
                                 <a href="https://kcgameon.com/Tournament.aspx">
                                     <img src="img/rlPoster.png" alt="Rocket League" /></a>
                             </td>
-                            <td width="20%">
+                            <td width="11%">
                                 <a href="https://kcgameon.com/Tournament.aspx">
                                     <img src="img/csgoPoster.jpg" alt="CS:GO" /></a>
                             </td>
-                            <td width="20%">
+                            <td width="11%">
                                 <a href="https://kcgameon.com/Tournament.aspx">
                                     <img src="img/overwatchPoster.jpg" alt="Overwatch" /></a>
                             </td>
-                            <td width="20%">
+                            <td width="11%">
                                 <a href="https://kcgameon.com/Tournament.aspx">
                                     <img src="img/halo5Poster.png" alt="Halo5" /></a>
                             </td>
+                            <td width="11%">
+                                <a href="https://kcgameon.com/Tournament.aspx">
+                                    <img src="img/hearthstonePoster.jpg" alt="Hearthstone" /></a>
+                            </td>
+                            <td width="11%">
+                                <a href="https://kcgameon.com/Tournament.aspx">
+                                    <img src="img/fpvPoster.jpg" alt="FPV" /></a>
+                            </td>
+                            <td width="11%">
+                                <a href="https://kcgameon.com/Tournament.aspx">
+                                    <img src="img/destinyPoster.jpg" alt="Destiny" /></a>
+                            </td>
+
                             <!--
 							<td>
                                 <a href="https://kcgameon.com/Tournament.aspx">

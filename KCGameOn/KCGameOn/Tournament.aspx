@@ -15,7 +15,7 @@
                 margin: 0px;
             }
 
-            .csdiv, .hsdiv, .loldiv, .rldiv, .smashdiv, .heroesdiv, .dota2div, .magicdiv, .sfvdiv, .overwatchdiv, .halo5div {
+            .csdiv, .hsdiv, .loldiv, .rldiv, .destinydiv, .smashdiv, .heroesdiv, .dota2div, .magicdiv, .sfvdiv, .overwatchdiv, .halo5div, .fpvdiv {
                 padding: 20px;
                 height: 1080px;
                 width: 1140px;
@@ -23,7 +23,7 @@
                 background-size: cover;
             }
 
-            .cscontentmain, .hscontentmain, .lolcontentmain, .rlcontentmain, .smashcontentmain, .heroescontentmain, .dota2contentmain, .magiccontentmain, .sfvcontentmain, .overwatchcontentmain, .halo5contentmain {
+            .cscontentmain, .hscontentmain, .destinycontentmain, .lolcontentmain, .rlcontentmain, .smashcontentmain, .heroescontentmain, .dota2contentmain, .magiccontentmain, .sfvcontentmain, .overwatchcontentmain, .halo5contentmain, .fpvcontentmain {
                 padding: 10px;
                 background-color: rgba(0, 0, 0, 0.85);
                 overflow-y: auto;
@@ -37,7 +37,7 @@
                 right: 25%;
             }
 
-            .cscontentleft, .hscontentleft, .rlcontentleft, .lolcontentleft, .smashcontentleft, .heroescontentleft, .dota2contentleft, .magiccontentleft, .sfvcontentleft, .overwatchcontentleft, .halo5contentleft {
+            .cscontentleft, .hscontentleft, .rlcontentleft, .destinycontentleft, .lolcontentleft, .smashcontentleft, .heroescontentleft, .dota2contentleft, .magiccontentleft, .sfvcontentleft, .overwatchcontentleft, .halo5contentleft, .fpvcontentleft {
                 padding: 10px;
                 background-color: rgba(0, 0, 0, 0.85);
                 overflow-y: auto;
@@ -51,7 +51,7 @@
                 right: 75%;
             }
 
-            .cscontentright, .hscontentright, .rlcontentright, .lolcontentright, .smashcontentright, .heroescontentright, .dota2contentright, .magiccontentright, .sfvcontentright, .overwatchcontentright, .halo5contentright {
+            .cscontentright, .hscontentright, .rlcontentright, .lolcontentright, .destinycontentright, .smashcontentright, .heroescontentright, .dota2contentright, .magiccontentright, .sfvcontentright, .overwatchcontentright, .halo5contentright, .fpvcontentright {
                 padding: 10px;
                 background-color: rgba(0, 0, 0, 0.85);
                 overflow-y: auto;
@@ -65,7 +65,7 @@
                 left: 70%;
             }
 
-            .cscontenttop, .hscontenttop, .rlcontenttop, .lolcontenttop, .smashcontenttop, .heroescontenttop, .dota2contenttop, .magiccontenttop, .sfvcontenttop, .overwatchcontenttop, .halo5contenttop {
+            .cscontenttop, .hscontenttop, .rlcontenttop, .lolcontenttop, .smashcontenttop, .destinycontenttop, .heroescontenttop, .dota2contenttop, .magiccontenttop, .sfvcontenttop, .overwatchcontenttop, .halo5contenttop, .fpvcontenttop {
                 padding: 10px;
                 background-color: rgba(0, 0, 0, 0.85);
                 height: 150px;
@@ -78,7 +78,7 @@
                 right: 0;
             }
 
-            .csbracket, .hsbracket, .lolbracket, .rlbracket, .smashbracket, .heroesbracket, .dota2bracket, .magicbracket, .sfvbracket, .overwatchbracket, .halo5bracket {
+            .csbracket, .hsbracket, .lolbracket, .rlbracket, .smashbracket, .heroesbracket, .destinybracket, .dota2bracket, .magicbracket, .sfvbracket, .overwatchbracket, .halo5bracket, .fpvbracket {
                 position: absolute;
                 bottom: 0;
             }
@@ -125,6 +125,14 @@
 
             .overwatchdiv {
                 background-image: url("img/overwatchtourny.png");
+            }
+
+            .fpvdiv {
+                background-image: url("img/fpvtourney.jpg");
+            }
+
+            .destinydiv {
+                background-image: url("img/destinytourny.png");
             }
         </style>
         <script type="text/javascript">
@@ -234,8 +242,16 @@
                     <img src="/img/csgosticker.png">
                 </a>
             </li>
-
-
+            <li><a href="#destiny" role="tab" data-toggle="tab">
+                <%--<i class="fa fa-user"></i>--%>
+                <img src="/img/destinysticker.png">
+            </a>
+            </li>
+            <li><a href="#fpv" role="tab" data-toggle="tab">
+                <%--<i class="fa fa-user"></i>--%>
+                <img src="/img/fpvsticker.png">
+            </a>
+            </li>
             <li><a href="#HS" role="tab" data-toggle="tab">
                 <%--<i class="fa fa-user"></i>--%>
                 <img src="/img/hearthstonesticker.png">
@@ -276,7 +292,7 @@
                         <div class="col-md-3">
                             <p>Date & Time</p>
                             <p>
-                                <h2>Oct 8, 2016 @130p</h2>
+                                <h2>Oct 8, 2016 @230p</h2>
                             </p>
                             Please register with both battlefy and the LoL website or you will not be eligible for prizing.
 						
@@ -510,6 +526,112 @@ If a team that is registered fails to show up to check-in, a substitute team tha
                     </div>
                 </div>
             </div>
+            <%-- fpv --%>
+            <div class="tab-pane fade" id="fpv">
+                <!--  <h2>Rocket League</h2>-->
+                <div class="fpvdiv">
+                    <div class="fpvcontenttop">
+                        <div class="col-md-3">
+                            <p>Date & Time</p>
+                            <p>
+                                <h2>Oct 8, 2016 @1200p</h2>
+                            </p>
+                            Please register with battlefy or you will not be eligible for prizing.
+						
+                        </div>
+
+                        <div class="col-md-3">
+                            <p>Format</p>
+                            <p>
+                                <h2>Standard Race</h2>
+                            </p>
+                            Other Types TBA
+                        </div>
+
+                        <div class="col-md-3">
+                            <p>Class</p>
+                            <p>
+                                <h2>TBA</h2>
+                            </p>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="https://battlefy.com/kcgameon/fpv-kcgameon-71/57e20c5a132f59710c64b669/join/player-join">
+                                <img src="/img/join.png"></a>
+                            <%--<p>This tournament is cross-platform</p>--%>
+                        </div>
+                    </div>
+                    <div class="fpvcontentmain">
+                        <p>
+                            <h2>Rules</h2>
+                        </p>
+                        Note: Please report your score after each given match.<br />
+                        Please alsu use the pits on the map to ready yourself for each race.  Each person will have a 3' foot space, power is underneath the tables.
+                        <p>
+                            <h2>Registration Rules</h2>
+                        </p>
+
+                        <p>
+                            We only accept serious registrations. If you do register for a FPV tournament, we ask that you follow through and show up on game day. If your are not present at the proper time, you may face a ban from future tournaments.
+You may only register one team at a time. Please do not try to register more than once as it will not increase your chances of participating.
+If you have any questions or inquiries about a current registration, please email us at webmaster@kcgameon.com
+The registration period ends at 12 PM CST on the day of the tournament. Make sure you fill up the slots or they will be filled with BYEs.
+                        </p>
+                        <p>
+                            <h2>Player/Team Eligibility</h2>
+                        </p>
+
+                        <p>
+                            In order to compete, your name must be included with the initial registration.
+Once a FPV tournament begins, no roster swapping will be allowed. 
+                        </p>
+
+                        <p>
+                            <h2>Game Conduct</h2>
+                        </p>
+
+                        <p>
+                            Please be respectful to other teams and participants. Refrain from using vulgar language or racial/sexist slurs in "All Chat" or you will be disqualified immediately.
+You may use an approved third-party communication program to coordinate and speak with your team, however, there is zero-tolerance for the use of a hack or cheat. Players accused and proved of hacking are immediately disqualified.
+If anyone is found intentionally feeding or throwing the game, they will be disqualified and possibly banned from our future tournaments.
+                        </p>
+
+                        <p>
+                            <h2>Tournament Check-In</h2>
+                        </p>
+
+                        <p>
+                            We require that all registered persons check-in no later than 10 minutes before the tournament start.
+If a team that is registered fails to show up to check-in, a substitute person that is checked in will take their place.
+                        </p>
+
+                        <p>Persons can report their own score.</p>
+                        <div class="fpvbracket"></div>
+                    </div>
+                    <div class="fpvcontentright">
+                        <p>
+                            <h2>Prizes</h2>
+                        </p>
+                        <p>
+                            FIRST PLACE INDIVIDUALS
+                            <br />
+                            Free KCGameOn #72 attendance w/8 or more persons competing.
+                        </p>
+
+                        <p>
+                            <h2>Schedule</h2>
+                        </p>
+                        <p>12:00 PM</p>
+                        <p>12:30</p>
+                        <p>etc</p>
+                        <p>
+                            <h2>Questions</h2>
+                        </p>
+                        <p>Contact nick@kcgameon for any questions</p>
+
+                    </div>
+                </div>
+            </div>
+
             <!--  
 	<%-- sfv --%>
       <div class="tab-pane fade" id="sfv">
@@ -591,9 +713,9 @@ If a player that is registered fails to show up to check-in, a substitute player
                         <div class="col-md-3">
                             <p>Date & Time</p>
                             <p>
-                                <h2>Oct 8, 2016 @1p</h2>
+                                <h2>Oct 8, 2016 @2p</h2>
                             </p>
-                            Please register with Challonge or you will not be eligible for prizing.
+                            Please register with Battlefy or you will not be eligible for prizing.
 						
                         </div>
 
@@ -617,23 +739,23 @@ If a player that is registered fails to show up to check-in, a substitute player
                         </div>
                         <div class="col-md-3">
                             <p>
-                                <h2>Entry Fee: $15</h2>
+                                <h2>Entry Fee: FREE</h2>
                             </p>
-                            <p>paid to TO prior to start of tournament</p>
-                            <a href="http://challonge.com/KCLUV">
+                            <%--<p>paid to TO prior to start of tournament</p>--%>
+                            <a href="https://battlefy.com/kcgameon/halo5/57e205682d8925300cc29453/join/rules">
                                 <img src="/img/registerlol.png" height="34" width="170"></a>
                         </div>
                     </div>
                     <div class="halo5contentmain">
 
                         <p>
-                            <h2><a href="https://www.facebook.com/events/1799412576956577/">Event page on Facebook</a></h2>
+                            <h2><a href="https://www.facebook.com/events/1641022716188181/">Event page on Facebook</a></h2>
                         </p>
                         <p>
                             <h2>Rules</h2>
                         </p>
                         Note: Please report your score after each given match.<br />
-                        For additional rules specific for Halo5, please check out <a href="https://pdstournaments.com/halo-5-tournament-rules/">this link.</a>
+                        For additional rules specific for Halo5, please check out <a href="https://pdstournaments.com/our-rules/">this link.</a>
 
 
 
@@ -676,16 +798,13 @@ If a player that is registered fails to show up to check-in, a substitute player
                         </p>
 
                         <p>Cash payouts:</p>
-                        <p>2-4 teams - 70/25%* of cash pot.</p>
-                        <p>5-8 teams - 55/25/15%* of cash pot.</p>
-                        <p>*5% will be used for marketing/infrastructure cost, paid to PDS tournaments</p>
-                        <p>Bonus pot splash: 1st place team members will receive a free entry to KCGameOn #72 w/8 or more teams</p>
+                        <p>1st place team members will receive a free entry to KCGameOn #72 w/8 or more teams</p>
 
                         <p>
                             <h2>Schedule</h2>
                         </p>
-                        <p>1:00 PM</p>
-                        <p>2:00</p>
+                        <p>2:00 PM</p>
+                        <p>3:00</p>
                         <p>etc</p>
                         <p>
                             <h2>Questions</h2>
@@ -695,6 +814,116 @@ If a player that is registered fails to show up to check-in, a substitute player
                     </div>
                 </div>
             </div>
+
+            <%-- destiny --%>
+            <div class="tab-pane fade" id="destiny">
+                <div class="destinydiv">
+                    <div class="destinycontenttop">
+                        <div class="col-md-3">
+                            <p>Date & Time</p>
+                            <p>
+                                <h2>Oct 8, 2016 @2p</h2>
+                            </p>
+                            Please register with Battlefy or you will not be eligible for prizing.
+						
+                        </div>
+
+                        <div class="col-md-3">
+                            <p>Format</p>
+                            <p>
+                            <h2>Bo3 Prelim
+                            </p>
+                            <p>Bo5 Semis/Finals</h2>
+                            </p>
+
+                        </div>
+
+                        <div class="col-md-3">
+                            <p>Bo3</p>
+                            <p>2 objective games, 1 skirmish</p>
+                            <p>Bo5</p>
+                            <p>3 objective, 2 skirmish</p>
+                            <p>Double elim bracket</p>
+                        </div>
+                        <div class="col-md-3">
+                            <p>
+                                <h2>Entry Fee: FREE</h2>
+                            </p>
+                            <%--<p>paid to TO prior to start of tournament</p>--%>
+                            <a href="https://battlefy.com/kcgameon/destiny-rise-of-iron-kcgameon-71/57e20764ab9554220c2bb032/join/rules">
+                                <img src="/img/registerlol.png" height="34" width="170"></a>
+                        </div>
+                    </div>
+                    <div class="destinycontentmain">
+
+                        <p>
+                            <h2><a href="https://www.facebook.com/events/1641022716188181/">Event page on Facebook</a></h2>
+                        </p>
+                        <p>Please bring a full setup for your team (monitor, console - PS4 or XBone, game and controllers for each player)</p>
+                        <p>
+                            <h2>Rules</h2>
+                        </p>
+                        Note: Please report your score after each given match.<br />
+                        For additional rules specific for Destiny, please check out <a href="https://pdstournaments.com/our-rules/">this link.</a>
+
+
+
+                        <p>
+                            <h2>Registration Rules</h2>
+                        </p>
+
+                        <p>
+                            We only accept serious registrations. If you do register for a Destiny tournament, we ask that you follow through and show up on game day. If your team is not present at the proper time, you may face a ban from future tournaments.
+You may only register one team at a time. Please do not try to register more than once as it will not increase your chances of participating.
+If you have any questions or inquiries about a current registration, please email us at webmaster@kcgameon.com
+The registration period ends at 12:00 PM CST on the day of the tournament. Make sure you fill up the slots or they will be filled with BYEs.
+                        </p>
+                        <p>
+                            <h2>Game Conduct</h2>
+                        </p>
+
+                        <p>
+                            Please be respectful to other players and participants. Refrain from using vulgar language or racial/sexist slurs in "All Chat" or you will be disqualified immediately.
+You may use an approved third-party communication program to coordinate and speak with your team, however, there is zero-tolerance for the use of a hack or cheat. Players accused and proved of hacking are immediately disqualified.
+If a team is found intentionally feeding or throwing the game, they will be disqualified and possibly banned from our future tournaments.
+                        </p>
+
+                        <p>
+                            <h2>Tournament Check-In</h2>
+                        </p>
+
+                        <p>
+                            We require that all registered players check-in no later than 10 minutes before the tournament start.
+
+If a player that is registered fails to show up to check-in, a substitute player that is checked in will take their place.
+                        </p>
+
+                        <p>Players can report their own score.</p>
+                        <div class="destinybracket"></div>
+                    </div>
+                    <div class="destinycontentright">
+                        <p>
+                            <h2>Prizes</h2>
+                        </p>
+
+                        <p>Cash payouts:</p>
+                        <p>1st place team members will receive a free entry to KCGameOn #72 w/8 or more teams</p>
+
+                        <p>
+                            <h2>Schedule</h2>
+                        </p>
+                        <p>2:00 PM</p>
+                        <p>3:00</p>
+                        <p>etc</p>
+                        <p>
+                            <h2>Questions</h2>
+                        </p>
+                        <p>Contact nick@kcgameon for any questions</p>
+
+                    </div>
+                </div>
+            </div>
+
             <%-- overwatch --%>
             <div class="tab-pane fade" id="overwatch">
 
@@ -897,7 +1126,7 @@ If a player that is registered fails to show up to check-in, a substitute player
                         </p>
                         <p>$2000* (based on 8 teams entering)</p>
                         <p>Cash payouts: 55/30/15%</p>
-                        
+
 
                         <p>
                             <h2>Schedule</h2>
