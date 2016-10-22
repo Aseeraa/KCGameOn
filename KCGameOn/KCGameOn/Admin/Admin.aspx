@@ -128,7 +128,7 @@
                 var payments = [];
                 userObject.push(user);
                 userObject.push(name);
-                userObject.push("Other");
+                userObject.push("Volunteer");
                 payments.push(userObject);
                 $.ajax({
                     type: "POST",
@@ -147,6 +147,33 @@
                     });
             });
             
+            $('#tournamentwinner').click(function (event) {
+                event.preventDefault();
+                var user = $('#userDropdown').val();
+                var name = $('#nameDropdown').val();
+                var userObject = [];
+                var payments = [];
+                userObject.push(user);
+                userObject.push(name);
+                userObject.push("TournamentWinner");
+                payments.push(userObject);
+                $.ajax({
+                    type: "POST",
+                    url: "Admin.aspx/addPayment",
+                    data: "{'data':'" + JSON.stringify(payments) + "'}",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json"
+                })
+                    .done(function () {
+                        //$("#success").modal('show');
+                        alert("Added the user payment to the database like a boss!");
+                    })
+                    .fail(function () {
+                        //$("#failure").modal('show');
+                        alert("Unable to add user payment to the database, contact Dan (or applicable engineer).");
+                    });
+            });
+
             $('#archiveEvent').click(function (event) {
                 event.preventDefault();
                 var event = $('#eventDropdown').val();
@@ -282,6 +309,33 @@
                 });
 
             });
+
+            $('#verifyPayment').click(function (event) {
+                event.preventDefault();
+                var user = $('#userDropdown').val();
+                var name = $('#nameDropdown').val();
+                var userObject = [];
+                var payments = [];
+                userObject.push(user);
+                userObject.push(name);
+                payments.push(userObject);
+                $.ajax({
+                    type: "POST",
+                    url: "Admin.aspx/validateKeys",
+                    data: "{'data':'" + JSON.stringify(payments) + "'}",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json"
+                })
+                    .done(function () {
+                        //$("#success").modal('show');
+                        alert("Successfully cleared bad API keys and validate user.");
+                    })
+                    .fail(function () {
+                        //$("#failure").modal('show');
+                        alert("Failed to validate API keys.");
+                    });
+            });
+        
 
             /* Default class modification */
             $.extend($.fn.dataTableExt.oStdClasses, {
@@ -474,7 +528,8 @@
                 </select>
                 <br />
                 <button id="cash" class="btn btn-default pull-left">Paid Cash</button>
-                <button id="other" class="btn btn-default pull-left">Paid Online</button>
+                <button id="other" class="btn btn-default pull-left">Volunteer</button>
+                <button id="tournamentwinner" class="btn btn-default pull-left">TournamentWinner</button>
                 <button id="verifyPayment" class="btn btn-default pull-left">Clear Bad Keys</button>
                 
                 <button id="addraffle" class="btn btn-default pull-left">Add raffle ticket</button>

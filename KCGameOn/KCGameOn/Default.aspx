@@ -76,7 +76,7 @@
                         <img src="/img/csgo.png" style="width: 100%" />
                         <div class="carousel-caption">
                             
-                            <p>Hrishi is king, beat him and take his title</p>
+                            <p>Now hosting $2000 CSGO tournaments</p>
                         </div>
                     </div>
                     
@@ -163,7 +163,7 @@
 
 
             <form class="well form-inline">
-                <h3>Join our KCGameOn Extra-Life team!</h3>
+                <h3>Join us on December 3rd for our Loyalty event!</h3>
                 
                <!--  <div class="control-group">
                     <div class="controls">
@@ -177,9 +177,9 @@
 				Please bear with us while we set up for the next event. <br /> -->
                 <p style="text-align: justify"> 
 
-                    <img src="/img/extra-lifewhitelogo.png" />
+                    <center><img src="/img/kciexpologo.png" /></center>
                     <br />
-                    <p>Our goal for the year is to hit $1000 - <a href="http://extra-life.org/team/kcgameon">come be part of our team</a> and make a difference while you gaming with friends!</p>
+                    <p>Because of the HUGE growth this year, we are taking our event to the <a href="http://www.kciexpo.com/">KCI Expo Center!</a> We are excited to provide this enormous space for this unique event, hosting all gaming genres in KC.</p>
 
             <!--        <b style="color: #0099cc;">Who we are:</b> Gamers putting on a gaming event for YOU and your friends.  PC, Console, Board Games and Card games welcome!
             <br />

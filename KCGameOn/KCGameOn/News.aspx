@@ -91,6 +91,9 @@
                                                             <tr>
                                                                 <th>
                                                                     <h2>Announcements/Notes</h2>
+                                                                    <p><b>New stuff:</b>  We have added Destiny and <a href="https://www.youtube.com/watch?v=bR4Gq9qfpnM">FPV drone racing</a> to the tournaments page.  Please get signed up for these or any other tournaments as soon as possible so we can play accordingly.  Stop by 3rd floor and check out the drones, they might have some available for you to fly!</p>
+                                                                    <p>I've added the raffle tickets from Feb/April events into our digital raffle system.  Please visit your <a href="https://kcgameon.com/Account/Profile.aspx">PROFILE page</a> to confirm that all of your tickets are correct.  
+                                                                    <hr />
                                                                     <p>This October 8th event is a collaboration event with Extra Life. A 25-hour marathon where you can stream, get in your hours or just game out - this is totally optional and there is no pressure to join/donate.</p>
                                                                     <p>
                                                                         <a href="http://www.extra-life.org">
@@ -98,10 +101,11 @@
                                                                     </p>
                                                                     <p>However, if you wish to participate, please consider joining our <a href="http://extra-life.org/team/kcgameon">KCGameOn team today</a> and help us reach our goal of $1000.  For more information, check out the Extra Life booth that will set up at this event!</p>
 
+                                                                    <hr />
                                                                     <p>NOTE: since this is a 25 hour event - if you plan to stay the entire night, please have a seat in the rooms designated with the Extra Life icon!</p>
                                                                     <p>This will assist in helping us be less spread out as the crowd thins over time and we can clean up the other rooms.</p>
                                                                     <p>By request, I'm also adding a "Quiet room" - this will help keep the event somewhat family friendly.  Please respect the rules in this room.</p>
-                                                                    <p>Please stay tuned, we have so much more news as we get closer to the Oct 8 date!</p>
+                                                                    
 
 
 
@@ -109,11 +113,11 @@
                                                                     <table class="callout">
                                                                         <tr>
                                                                             <th class="callout-inner secondary">
-                                                                                <p>We are also continuing our Console tournament series with Halo5 with the help from PDS tournaments!</p>
+                                                                                <p>We are also continuing our Console tournament series with Halo5 and Destiny with the help of PDS tournaments!</p>
                                                                                 <p>
-                                                                                    <img src="http://www.kcgameon.com/img/pds.jpg">
+                                                                                    <iframe width="448" height="252" src="https://www.youtube.com/embed/YTGCbLChNe0" frameborder="0" allowfullscreen></iframe>
                                                                                 </p>
-                                                                                <p>Halo 5 will be a FREE tournament and prizing will be the usual, 1st place team gets free entrance to the next event (Dec3) with 8+ teams competing. Please get the word out and get signed up today!</p>
+                                                                                <p>Halo 5 and Destiny will be a FREE tournament and prizing will be the usual, 1st place team gets free entrance to the next event (Dec3) with 8+ teams competing. Please get the word out and get signed up today!</p>
                                                                             </th>
                                                                         </tr>
                                                                     </table>
@@ -132,7 +136,7 @@
                                                                                 Ransom Gaming will be bringing back Artemis and DiRT!  If you haven't had a chance to check out this setup - definitely take a few minutes to stop in the Tiger room.</th>
 
                                                                         </tr>
-                                                                        
+
                                                                     </table>
                                                                     <p></p>
                                                                     <p>Hearthstone is coming back to KCGameOn! We are going to roll out this event with a seasoned TO, Sam Benson and will be working with him going forward.  Sam also runs Hearthstone events outside of KCGameOn - the next one is Oct 17 at the Boulevard Brewery (free beer with entry fee).  To sign up or get more info, <a href="http://www.kcfiresides.com">KCfiresides</a>.</p>
@@ -193,6 +197,22 @@
                                                                                     </p>
                                                                                     </td>
                                                                                 </tr>
+                                                                                <tr>
+                                                                                    <td class="menu-item float-center"><b>FPV drone racing</b><p>
+                                                                                        Oct 8, 2016 @200p
+                                                                                        <br>
+                                                                                        Standard race
+                                                                                    </p>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td class="menu-item float-center"><b>Destiny</b><p>
+                                                                                        Oct 8, 2016 @200p
+                                                                                        <br>
+                                                                                        Bo3, Then Bo5 (final 4), double elim
+                                                                                    </p>
+                                                                                    </td>
+                                                                                </tr>
                                                                                 <!-- 	
                                                 <tr>
 												<td class="menu-item float-center"><b>Street Fighter V</b><p>Oct 8, 2016 @300p <br><b>$10 entry with cash payout</b> (70/20/10% of total cash pot) <br>Bo3 double elim, Bo5 finals</p></td>
@@ -203,7 +223,7 @@
 												<tr>
 												<td class="menu-item float-center"><b>HotS</b><p>Oct 8, 2016 @330p <br>5v5 - random map double elim</p></td>
                                                 </tr> -->
-                                                                                <%--<tr>
+                                                                                <!--<tr>
                                                                                     <td class="menu-item float-center"><b>Magic:The Gathering</b><p>
                                                                                         Oct 8, 2016 @1p and/or 7p
                                                                                         <br>
@@ -214,7 +234,7 @@
                                                                                         Sealed Deck for $20 (below retail price)
                                                                                     </p>
                                                                                     </td>
-                                                                                </tr>--%>
+                                                                                </tr>-->
                                                                             </table>
                                                                             <table class="button expand">
                                                                                 <tr>
@@ -230,22 +250,7 @@
                                                                                     <td class="expander"></td>
                                                                                 </tr>
                                                                             </table>
-                                                                            <table class="callout">
-                                                                                <tr>
-                                                                                    <th class="callout-inner secondary">
-                                                                                        <h5><b>Organizers:</b></h5>
-
-                                                                                        <p>Dennis Avondent</p>
-                                                                                        <p>Nick Engstrom</p>
-                                                                                        <p>Jason Wendel</p>
-                                                                                        <p><b>Email:</b><a href="mailto:nick@kcgameon.com">nick@kcgameon.com</a></p>
-                                                                                        <p><b><a href="http://www.kcgameon.com/Volunteer.aspx">Interested in volunteering?</a></b></p>
-                                                                                        <p><b><font color="red">FRAG THE WEAK, HURDLE THE DEAD!</font></b></p>
-                                                                                        <p><a href="https://kcgameon.com/FAQ/FAQ.aspx">FAQ</a> - <a href="http://www.kcgameon.com/cernergameon2016.ics">ICS file</a> - <a href="https://kcgameon.com/sponsors/sponsorinfokcgameon.pdf">Sponsor KCGO</a> - <a href="https://kcgameon.com/Account/Unsubscribe.aspx">Unsubscribe</a></p>
-                                                                                    </th>
-                                                                                    <th class="expander"></th>
-                                                                                </tr>
-                                                                            </table>
+                                                                            
                                                                 </th>
                                                             </tr>
                                                         </table>
@@ -282,11 +287,11 @@
 
                                                                                                     <th class="menu-item float-center"><b>Who we are:</b><p>Gamers putting on a gaming event for you, your family and your friends.</p>
                                                                                                     </th>
-                                                                                                    <th class="menu-item float-center"><b>What we do:</b><p>We cater to all gaming genres.  PC, Console, Board Games and Card Games are all welcome!</p>
+                                                                                                    <th class="menu-item float-center"><b>What we do:</b><p>We cater to all gaming genres.  PC, Console, Board Games, Tiny Whoop and Card Games are all welcome!</p>
                                                                                                     </th>
                                                                                                     <th class="menu-item float-center"><b>When is it:</b><p>Oct 8th from 11am till Oct 9th at noon - come and go when you please.</p>
                                                                                                     </th>
-                                                                                                    <th class="menu-item float-center"><b>How much:</b><p>$15 pre-paid reserved seating or $20 at the door GA seating</p>
+                                                                                                    <th class="menu-item float-center"><b>How much:</b><p>$15 pre-paid reserved seating or $20 at the door w/GA seating</p>
                                                                                                     </th>
                                                                                                     <th class="menu-item float-center"><b>Where:</b><p><a href="http://goo.gl/maps/icsPf">2702 Rockcreek Parkway, North Kansas City, MO 64117</a></p>
                                                                                                     </th>
@@ -332,6 +337,22 @@
                                                                                 <a href="http://www.updown-kc.com">
                                                                                     <img src="http://www.kcgameon.com/img/updown.png"></a>
                                                                             </p>
+                                                                            <table class="callout">
+                                                                                <tr>
+                                                                                    <th class="callout-inner secondary">
+                                                                                        <h5><b>Organizers:</b></h5>
+
+                                                                                        <p>Dennis Avondent</p>
+                                                                                        <p>Nick Engstrom</p>
+                                                                                        <p>Jason Wendel</p>
+                                                                                        <p><b>Email:</b><a href="mailto:nick@kcgameon.com">nick@kcgameon.com</a></p>
+                                                                                        <p><b><a href="http://www.kcgameon.com/Volunteer.aspx">Interested in volunteering?</a></b></p>
+                                                                                        <p><b><font color="red">FRAG THE WEAK, HURDLE THE DEAD!</font></b></p>
+                                                                                        <p><a href="https://kcgameon.com/FAQ/FAQ.aspx">FAQ</a> - <a href="http://www.kcgameon.com/cernergameon2016.ics">ICS file</a> - <a href="https://kcgameon.com/sponsors/sponsorinfokcgameon.pdf">Sponsor KCGO</a> - <a href="https://kcgameon.com/Account/Unsubscribe.aspx">Unsubscribe</a></p>
+                                                                                    </th>
+                                                                                    <th class="expander"></th>
+                                                                                </tr>
+                                                                            </table>
                                                                 </th>
                                                             </tr>
                                                         </table>

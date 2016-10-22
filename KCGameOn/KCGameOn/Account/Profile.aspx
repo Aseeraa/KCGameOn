@@ -173,7 +173,20 @@
                      <%= RaffleHTML%>
                 </tbody>
             </table>
-
+            <br />
+            <h3>Raffle Table Explaination:</h3>
+            <p>The first two events of the year used manual tickets, we had to import those tickets manually without an eventID, thus we used 2016 to denote both the Feb/April 2016 events.</p>
+            <p>WonDoor = 1 means you won a door prize at that event, 0 = not a winner.  Wonloyalty is the data point that will change per ticket to show how many times you passed on a prize and which ticket was used to claim a prize.</p>
+            <p>NOTE: Loyalty event tickets are not credited to your account until you check-in physically at the respective event.  You should have only 1 event ticket per event attended.</p>
+            <p>If you have any descrepancies in the raffle tickets above, contact <a href="mailto:nick@kcgameon.com?Subject=Raffle%20Ticket%20Question" target="_top">Nick</a> immediately through email by <h3>Nov 27.</h3>
+                 This is the last day we will change/work on raffle tickets.</p>
+            <ul>
+                <li>eventID 2016 = Feb OR April 2016 event (max 2)</li>
+                <li>eventID 69 = June 13, 2016 event</li>
+                <li>eventID 70 = July 30, 2016 event</li>
+                <li>eventID 71 = Oct 8, 2016 event</li>
+                <li>eventID 72 = Dec 3, 2016 event</li>
+            </ul>
         </div>
         <div class="control-group">
             <asp:Literal runat="server" ID="ProfileUpdateMessage" EnableViewState="false" />

@@ -69,7 +69,7 @@
                 window.location = '/Account/Login.aspx'
             });
         });
-        
+
     </script>
     <!-- Success modal-->
     <div class="modal" id="success" tabindex="-1" role="dialog">
@@ -81,7 +81,7 @@
                 </div>
                 <div class="modal-body" id="successMessage">
                     <p>You have been successfully seated.  If you are interested in tournaments, please sign up below.</p>
-                    <table width=100% table-layout="fixed">
+                    <table width="100%" table-layout="fixed">
                         <!-- Tournament Posters -->
                         <tr>
                             <td width="11%">
@@ -220,65 +220,65 @@
         <ul class="nav nav-pills" role="tablist">
             <li class="active">
                 <a href="#FirstFloor" id="FirstFloorTab" role="tab" data-toggle="tab">
-                    <i class="fa fa-envelope">1st floor map - Tabletop/BYOC/Card games</i>
+                    <i class="fa fa-envelope">1st floor map - Tabletop/BYOC/Card games/Hearthstone</i>
                 </a>
             </li>
             <li>
                 <a href="#ThirdFloor" id="ThirdFloorTab" role="tab" data-toggle="tab">
-                    <i class="fa fa-cog">3rd floor map - Console/$2000 CSGO/BYOC/Halo 5</i>
+                    <i class="fa fa-cog">3rd floor map - Console/$2000 CSGO/BYOC/Halo 5/Destiny/Extra Life</i>
                 </a>
             </li>
         </ul>
         <!-- Tab panes -->
         <div class="tab-content">
-			<form class="form-inline pull-left" role="search">
-				<div class="form-inline">
-					<input id="Mapsearch" type="text" placeholder="Username to find" />
-					<button id="Mapsearchbutton" class="btn btn-default " type="button">Search</button>
-				</div>
-			</form>
-			<div class="Count pull-left">
-				<h3>There are currently <%= count %> gamers locked in for the LAN</h3>
-			</div>
-			<div class="btn-group pull-right">
-				<button id="Legend" class="btn btn-default pull-right dropdown-toggle" type="button" data-toggle="dropdown">Legend</button>
-				<ul id="legenddropdown" class="dropdown-menu pull-right" role="menu">
-					<li>Current/Projector seat</br>
+            <form class="form-inline pull-left" role="search">
+                <div class="form-inline">
+                    <input id="Mapsearch" type="text" placeholder="Username to find" />
+                    <button id="Mapsearchbutton" class="btn btn-default " type="button">Search</button>
+                </div>
+            </form>
+            <div class="Count pull-left">
+                <h3>There are currently <%= count %> gamers locked in for the LAN</h3>
+            </div>
+            <div class="btn-group pull-right">
+                <button id="Legend" class="btn btn-default pull-right dropdown-toggle" type="button" data-toggle="dropdown">Legend</button>
+                <ul id="legenddropdown" class="dropdown-menu pull-right" role="menu">
+                    <li>Current/Projector seat</br>
 						<img src="/img/active.png" />
-						|
+                        |
 						<img src="/img/active_proj.png" />
-					</li>
-					<li class="divider"></li>
-					<li>Occupied/Projector seat</br>
+                    </li>
+                    <li class="divider"></li>
+                    <li>Occupied/Projector seat</br>
 						<img src="/img/occupied.png" />
-						|
+                        |
 						<img src="/img/occupied_proj.png" />
-					</li>
-					<li class="divider"></li>
-					<li>Empty/Projector seat</br>
+                    </li>
+                    <li class="divider"></li>
+                    <li>Empty/Projector seat</br>
 						<img src="/img/empty.png" />
-						|
+                        |
 						<img src="/img/projector.png" />
-					</li>
-					<li class="divider"></li>
-					<li>
-						<img src="/img/reserved.png" />
-						Reserved seat</li>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <img src="/img/reserved.png" />
+                        Reserved seat</li>
 
-				</ul>
-			</div>
-			<%if (SessionVariables.registrationBlocked)
-            {%>
-				<div align="center">
-					<br />
-					<br />
-					<br />
-					<h2>There are currently no events available for registration, please check back closer to the event date or when the announcement email has been sent.</h2>
-				</div>
-			<%} %>
-			<%else
-			{ %>
-			
+                </ul>
+            </div>
+            <%if (SessionVariables.registrationBlocked)
+                {%>
+            <div align="center">
+                <br />
+                <br />
+                <br />
+                <h2>There are currently no events available for registration, please check back closer to the event date or when the announcement email has been sent.</h2>
+            </div>
+            <%} %>
+            <%else
+                { %>
+
             <%-- First Floor Map --%>
             <div class="tab-pane fade active in" id="FirstFloor">
                 <%if (String.IsNullOrEmpty(SessionVariables.UserName))
@@ -298,19 +298,19 @@
                 </div>
                 <%} %>
                 <%else
-                { %>
-				<div id="viewport">
-					<script async>
-						var viewport,
+                    { %>
+                <div id="viewport">
+                    <script async>
+                        var viewport,
 							currentUser = "<%= SessionVariables.UserName.ToLower() %>"
 						function initialize() {
-							viewport = new GameOn.SeatingMap(document.getElementById("viewport"), seats, currentUser);
-							viewport.updateMarkers(people, filtered);
+						    viewport = new GameOn.SeatingMap(document.getElementById("viewport"), seats, currentUser);
+						    viewport.updateMarkers(people, filtered);
 						}
 						google.maps.event.addDomListener(window, "load", initialize);
-					</script>
-				</div>
-				<%} %>
+                    </script>
+                </div>
+                <%} %>
             </div>
             <%-- Third Floor Map --%>
             <div class="tab-pane fade" id="ThirdFloor">
@@ -330,21 +330,21 @@
                 </div>
                 <%} %>
                 <%else
-                { %>
-				<div id="viewport3">
-					<script async3>
-						var viewport3,
+                    { %>
+                <div id="viewport3">
+                    <script async3>
+                        var viewport3,
 							currentUser = "<%= SessionVariables.UserName.ToLower() %>"
 						function initialize3() {
-							viewport3 = new GameOn3.SeatingMap(document.getElementById("viewport3"), seats3, currentUser);
-							viewport3.updateMarkers(people, filtered);
+						    viewport3 = new GameOn3.SeatingMap(document.getElementById("viewport3"), seats3, currentUser);
+						    viewport3.updateMarkers(people, filtered);
 						}
 						google.maps.event.addDomListener(window, "load", initialize3);
-					</script>
-				</div>
-				<%} %>
+                    </script>
+                </div>
+                <%} %>
             </div>
-			<%} %>
+            <%} %>
         </div>
     </div>
     <script async>

@@ -534,7 +534,7 @@ If a team that is registered fails to show up to check-in, a substitute team tha
                         <div class="col-md-3">
                             <p>Date & Time</p>
                             <p>
-                                <h2>Oct 8, 2016 @1200p</h2>
+                                <h2>Oct 8, 2016 @200p</h2>
                             </p>
                             Please register with battlefy or you will not be eligible for prizing.
 						
@@ -562,50 +562,60 @@ If a team that is registered fails to show up to check-in, a substitute team tha
                     </div>
                     <div class="fpvcontentmain">
                         <p>
-                            <h2>Rules</h2>
+                            <h2>General Rules</h2>
                         </p>
                         Note: Please report your score after each given match.<br />
-                        Please alsu use the pits on the map to ready yourself for each race.  Each person will have a 3' foot space, power is underneath the tables.
+                        Please also use the pits on the map to ready yourself for each race.  Each person will have a 3' foot space, power is underneath the tables.
+                        <ul>
+                            <li>All pilots will need to arrive and check-in by 1:30 pm and attend the pilot briefing and safety meeting at 2:00 pm.</li>
+                            <li>Pilots will use the designated charging areas only.</li>
+                            <li>Pilots will not be allowed to fly in any area of Cerner not approved by the Cerner Rep.</li>
+                            <li>All registered pilots will be allowed to race in any or all events.</li>
+                            <li>If a pilot breaks his/her quad and cannot fix it they will be allowed to use another person's identical quad with their permission. </li>
+                        </ul>
+                        <h2>Standard Race-</h2>
+                        These races will be run similar to our standard FPV racing events.
+                        <ul>
+                            <li>Each pilot will be given 3 practice races.</li>
+                            <li>Each pilot will be given 3 mains heats to accumulate points to reach top 8 (points reset after).</li>
+                            <li>Each top 8 pilot will be given 3 heats to accumulate points to secure a final 4 spot (points reset after). </li>
+                            <li>Each final 4 pilot will be given 3 reverse course heats to determine final 4 points for overall winner.   </li>
+                        </ul>
                         <p>
                             <h2>Registration Rules</h2>
                         </p>
 
                         <p>
-                            We only accept serious registrations. If you do register for a FPV tournament, we ask that you follow through and show up on game day. If your are not present at the proper time, you may face a ban from future tournaments.
-You may only register one team at a time. Please do not try to register more than once as it will not increase your chances of participating.
-If you have any questions or inquiries about a current registration, please email us at webmaster@kcgameon.com
-The registration period ends at 12 PM CST on the day of the tournament. Make sure you fill up the slots or they will be filled with BYEs.
+                            We only accept serious registrations. If you do register for a FPV tournament, we ask that you follow through and show up on race day. Registration fees will be non refundable.
+If you have any questions or inquiries about registration or event rules, etc., please email KCGameOn at webmaster@kcgameon.com or Josh Chambers at haydnjayce@gmail.com.
                         </p>
                         <p>
-                            <h2>Player/Team Eligibility</h2>
+                            The registration period ends at 1:30 PM CST on the day of the event. 
+Pilot briefing and safety meeting is at 2:00pm.
                         </p>
 
                         <p>
-                            In order to compete, your name must be included with the initial registration.
-Once a FPV tournament begins, no roster swapping will be allowed. 
+                            <h2>Pilot Eligibility</h2>
                         </p>
 
                         <p>
-                            <h2>Game Conduct</h2>
+                            Pilots must be flying TinyWhoops. Other similar micro class quads with ducts or prop guards may or may not be allowed to race. This will be determined on a case by case basis, depending on size and speed. Safety to others and Cerner’s equipment and facility is paramount. Micro quads must be consented by the other pilots in the race or competition. An “unrestricted class” may be formed for these pilots.
                         </p>
 
                         <p>
-                            Please be respectful to other teams and participants. Refrain from using vulgar language or racial/sexist slurs in "All Chat" or you will be disqualified immediately.
-You may use an approved third-party communication program to coordinate and speak with your team, however, there is zero-tolerance for the use of a hack or cheat. Players accused and proved of hacking are immediately disqualified.
-If anyone is found intentionally feeding or throwing the game, they will be disqualified and possibly banned from our future tournaments.
+                            <h2>Event Conduct</h2>
                         </p>
 
                         <p>
-                            <h2>Tournament Check-In</h2>
+                            <ul>
+                                <li>All pilots will NOT power on their quads when not racing (windows for repairs and video testing will be scheduled). A single warning system will be in effect, if you power on again you will be eliminated from all events and prizes.</li>
+                                <li>Racing pilots are “encouraged” to have a spotter with goggles or a DVR. If their video is stomped on by another “non racer” and can be confirmed, they will be given another heat.</li>
+                                <li>If a pilot is not on the “block” for his upcoming event when it starts, they will not get a makeup race.</li>
+                                <li>All pilots are expected to behave in a decent, friendly manner to pilots and non pilots alike. Fights, arguments, sexual harassment, etc. will not be tolerated.This will end with your swift ejection from the event without reimbursement, a possible ban from future events and depending on the severity of the situation, being escorted off the property by Cerner security. </li>
+                            </ul>
                         </p>
 
-                        <p>
-                            We require that all registered persons check-in no later than 10 minutes before the tournament start.
-If a team that is registered fails to show up to check-in, a substitute person that is checked in will take their place.
-                        </p>
-
-                        <p>Persons can report their own score.</p>
-                        <div class="fpvbracket"></div>
+                       
                     </div>
                     <div class="fpvcontentright">
                         <p>
@@ -831,9 +841,11 @@ If a player that is registered fails to show up to check-in, a substitute player
                         <div class="col-md-3">
                             <p>Format</p>
                             <p>
-                            <h2>Bo3 Prelim
+                                <h2>
+                                Bo3 Prelim
                             </p>
-                            <p>Bo5 Semis/Finals</h2>
+                            <p>
+                                Bo5 Semis/Finals</h2>
                             </p>
 
                         </div>
@@ -954,7 +966,7 @@ If a player that is registered fails to show up to check-in, a substitute player
                             <p>Rules: Competitive</p>
                         </div>
                         <div class="col-md-3">
-                            <a href="https://battlefy.com/kcgameon/hearthstone-kcgameon-71/57c24ef44f81a31a0dc6445c/join/rules">
+                            <a href="https://battlefy.com/kcgameon/overwatch-kcgameon-71/57c24d8a6897c81a0c9af2e9/join/password">
                                 <img src="/img/join.png"></a>
                             <p>This is a PC tournament</p>
                         </div>
@@ -1021,8 +1033,8 @@ If a player that is registered fails to show up to check-in, a substitute player
                         <p>
                             <h2>Schedule</h2>
                         </p>
-                        <p>4:00 PM</p>
-                        <p>5:00</p>
+                        <p>7:00 PM</p>
+                        <p>8:00</p>
                         <p>etc</p>
                         <p>
                             <h2>Questions</h2>
