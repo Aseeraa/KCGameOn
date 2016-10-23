@@ -39,8 +39,10 @@
     </style>
     <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
     <script async src="js/bootbox.js?v=1.0"></script>
+    <script async2 src="js/bootbox.js?v=1.0"></script>
     <script async3 src="js/bootbox.js?v=1.0"></script>
     <script src="js/index.js?v=1.0"></script>
+    <script src="js/index2.js?v=1.0"></script>
     <script src="js/index3.js?v=1.0"></script>
     <!-- Nick replace this with the name of your new file-->
     <script>
@@ -69,7 +71,7 @@
                 window.location = '/Account/Login.aspx'
             });
         });
-        
+
     </script>
     <!-- Success modal-->
     <div class="modal" id="success" tabindex="-1" role="dialog">
@@ -81,7 +83,7 @@
                 </div>
                 <div class="modal-body" id="successMessage">
                     <p>You have been successfully seated.  If you are interested in tournaments, please sign up below.</p>
-                    <table width=100% table-layout="fixed">
+                    <table width="100%" table-layout="fixed">
                         <!-- Tournament Posters -->
                         <tr>
                             <td width="11%">
@@ -219,6 +221,11 @@
     <div class="container">
         <ul class="nav nav-pills" role="tablist">
             <li class="active">
+                <a href="#KCExpoFloor" id="KCExpoFloorTab" role="tab" data-toggle="tab">
+                    <i class="fa fa-envelope">KC Expo Center</i>
+                </a>
+            </li>
+            <li>
                 <a href="#FirstFloor" id="FirstFloorTab" role="tab" data-toggle="tab">
                     <i class="fa fa-envelope">1st floor map - Tabletop/BYOC/Card games</i>
                 </a>
@@ -231,56 +238,55 @@
         </ul>
         <!-- Tab panes -->
         <div class="tab-content">
-			<form class="form-inline pull-left" role="search">
-				<div class="form-inline">
-					<input id="Mapsearch" type="text" placeholder="Username to find" />
-					<button id="Mapsearchbutton" class="btn btn-default " type="button">Search</button>
-				</div>
-			</form>
-			<div class="Count pull-left">
-				<h3>There are currently <%= count %> gamers locked in for the LAN</h3>
-			</div>
-			<div class="btn-group pull-right">
-				<button id="Legend" class="btn btn-default pull-right dropdown-toggle" type="button" data-toggle="dropdown">Legend</button>
-				<ul id="legenddropdown" class="dropdown-menu pull-right" role="menu">
-					<li>Current/Projector seat</br>
+            <form class="form-inline pull-left" role="search">
+                <div class="form-inline">
+                    <input id="Mapsearch" type="text" placeholder="Username to find" />
+                    <button id="Mapsearchbutton" class="btn btn-default " type="button">Search</button>
+                </div>
+            </form>
+            <div class="Count pull-left">
+                <h3>There are currently <%= count %> gamers locked in for the LAN</h3>
+            </div>
+            <div class="btn-group pull-right">
+                <button id="Legend" class="btn btn-default pull-right dropdown-toggle" type="button" data-toggle="dropdown">Legend</button>
+                <ul id="legenddropdown" class="dropdown-menu pull-right" role="menu">
+                    <li>Current/Projector seat</br>
 						<img src="/img/active.png" />
-						|
+                        |
 						<img src="/img/active_proj.png" />
-					</li>
-					<li class="divider"></li>
-					<li>Occupied/Projector seat</br>
+                    </li>
+                    <li class="divider"></li>
+                    <li>Occupied/Projector seat</br>
 						<img src="/img/occupied.png" />
-						|
+                        |
 						<img src="/img/occupied_proj.png" />
-					</li>
-					<li class="divider"></li>
-					<li>Empty/Projector seat</br>
+                    </li>
+                    <li class="divider"></li>
+                    <li>Empty/Projector seat</br>
 						<img src="/img/empty.png" />
-						|
+                        |
 						<img src="/img/projector.png" />
-					</li>
-					<li class="divider"></li>
-					<li>
-						<img src="/img/reserved.png" />
-						Reserved seat</li>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <img src="/img/reserved.png" />
+                        Reserved seat</li>
 
-				</ul>
-			</div>
-			<%if (SessionVariables.registrationBlocked)
-            {%>
-				<div align="center">
-					<br />
-					<br />
-					<br />
-					<h2>There are currently no events available for registration, please check back closer to the event date or when the announcement email has been sent.</h2>
-				</div>
-			<%} %>
-			<%else
-			{ %>
-			
+                </ul>
+            </div>
+            <%if (SessionVariables.registrationBlocked)
+                {%>
+            <div align="center">
+                <br />
+                <br />
+                <br />
+                <h2>There are currently no events available for registration, please check back closer to the event date or when the announcement email has been sent.</h2>
+            </div>
+            <%} %>
+            <%else
+                { %>
             <%-- First Floor Map --%>
-            <div class="tab-pane fade active in" id="FirstFloor">
+            <div class="tab-pane fade" id="FirstFloor">
                 <%if (String.IsNullOrEmpty(SessionVariables.UserName))
                     {%>
                 <div id="viewport">
@@ -298,19 +304,51 @@
                 </div>
                 <%} %>
                 <%else
-                { %>
-				<div id="viewport">
-					<script async>
-						var viewport,
+                    { %>
+                <div id="viewport">
+                    <script async>
+                        var viewport,
 							currentUser = "<%= SessionVariables.UserName.ToLower() %>"
-						function initialize() {
-							viewport = new GameOn.SeatingMap(document.getElementById("viewport"), seats, currentUser);
-							viewport.updateMarkers(people, filtered);
-						}
-						google.maps.event.addDomListener(window, "load", initialize);
-					</script>
-				</div>
-				<%} %>
+                        function initialize() {
+                            viewport = new GameOn.SeatingMap(document.getElementById("viewport"), seats, currentUser);
+                            viewport.updateMarkers(people, filtered);
+                        }
+                        google.maps.event.addDomListener(window, "load", initialize);
+                    </script>
+                </div>
+                <%} %>
+            </div>
+            <%-- Expo center Map --%>
+            <div class="tab-pane fade active in" id="KCExpoFloor">
+                <%if (String.IsNullOrEmpty(SessionVariables.UserName))
+                    {%>
+                <div id="viewport2">
+                    <script async2>
+
+                        var viewport2,
+                            currentUser = null
+                        function initialize2() {
+                            viewport2 = new GameOn2.SeatingMap(document.getElementById("viewport2"), seats2, currentUser);
+                            viewport2.updateMarkers(people, filtered);
+                        }
+                        google.maps.event.addDomListener(window, "load", initialize2);
+                    </script>
+                </div>
+                <%} %>
+                <%else
+                    { %>
+                <div id="viewport2">
+                    <script async2>
+                        var viewport2,
+							currentUser = "<%= SessionVariables.UserName.ToLower() %>"
+                        function initialize2() {
+                            viewport2 = new GameOn2.SeatingMap(document.getElementById("viewport2"), seats2, currentUser);
+                            viewport2.updateMarkers(people, filtered);
+                        }
+                        google.maps.event.addDomListener(window, "load", initialize2);
+                    </script>
+                </div>
+                <%} %>
             </div>
             <%-- Third Floor Map --%>
             <div class="tab-pane fade" id="ThirdFloor">
@@ -330,23 +368,63 @@
                 </div>
                 <%} %>
                 <%else
-                { %>
-				<div id="viewport3">
-					<script async3>
-						var viewport3,
+                    { %>
+                <div id="viewport3">
+                    <script async3>
+                        var viewport3,
 							currentUser = "<%= SessionVariables.UserName.ToLower() %>"
-						function initialize3() {
-							viewport3 = new GameOn3.SeatingMap(document.getElementById("viewport3"), seats3, currentUser);
-							viewport3.updateMarkers(people, filtered);
-						}
-						google.maps.event.addDomListener(window, "load", initialize3);
-					</script>
-				</div>
-				<%} %>
+                        function initialize3() {
+                            viewport3 = new GameOn3.SeatingMap(document.getElementById("viewport3"), seats3, currentUser);
+                            viewport3.updateMarkers(people, filtered);
+                        }
+                        google.maps.event.addDomListener(window, "load", initialize3);
+                    </script>
+                </div>
+                <%} %>
             </div>
-			<%} %>
+            <%} %>
         </div>
     </div>
+    <script async2>
+        seats2 = <%=seats2%>
+                filtered = [];
+        $(document).ready(function () {
+            $('form input').keydown(function (event) {
+                if (event.keyCode == 13) {
+                    event.preventDefault();
+                    var found = [];
+                    var value = $(this).val().toLowerCase();
+                    $.grep(people, function (n) {
+                        if (value != "") {
+                            var index = n.title.indexOf(value);
+                            if (index != -1) {
+                                //filtered.push(people.get(index));
+                                found.push(n);
+                            }
+                        }
+                    });
+                    filtered = found;
+                    viewport2.updateMarkers(people, filtered);
+                }
+            });
+            $('#Mapsearchbutton').click(function (event) {
+                event.preventDefault();
+                var found = [];
+                var value = $('#Mapsearch').val().toLowerCase();
+                $.grep(people, function (n) {
+                    if (value != "") {
+                        var index = n.title.indexOf(value);
+                        if (index != -1) {
+                            //filtered.push(people.get(index));
+                            found.push(n);
+                        }
+                    }
+                });
+                filtered = found;
+                viewport2.updateMarkers(people, filtered);
+            });
+        });
+    </script>
     <script async>
         var people = <%=people%>
         seats = <%=seats%>

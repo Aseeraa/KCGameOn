@@ -27,6 +27,7 @@ namespace KCGameOn
     {
         public static List<String> seatList = new List<String>();
         public string seats;
+        public string seats2;
         public string seats3;
         public string people;
         public string people3;
@@ -94,6 +95,21 @@ namespace KCGameOn
                     seats3 = seats3 + seat3;
                 }
                 seats3 += "]";
+                reader.Close();
+
+                cmd = new MySqlCommand("SELECT * FROM seatcoords WHERE floor = 2", new MySqlConnection(UserInfo));
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Connection.Open();
+                result = cmd.BeginExecuteReader();
+                //reader = cmd.ExecuteReader();
+                reader = cmd.EndExecuteReader(result);
+                seats2 += "[";
+                while (reader.Read())
+                {
+                    String seat2 = "{ \"id\": \"" + reader["id"].ToString() + "\", \"title\": \"" + reader["title"] + "\", \"lat\": " + (double)reader["lat"] + ", \"lng\":" + (double)reader["lng"] + " },";
+                    seats2 = seats2 + seat2;
+                }
+                seats2 += "]";
                 reader.Close();
 
                 cmd.Connection.Close();

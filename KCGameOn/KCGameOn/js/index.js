@@ -60,11 +60,13 @@
         };
 
         function initIcons() {
-            var base = {
+            var base;
+            base = {
                 size: new gmaps.Size(20, 20),
                 origin: new gmaps.Point(0, 0),
                 anchor: new gmaps.Point(12, 15)
             };
+
             icons.empty = {
                 url: "/img/empty.png",
                 size: base.size, origin: base.origin, anchor: base.anchor
@@ -228,7 +230,7 @@
 
     // Seating Map
     GameOn.SeatingMap = function (mapDivId, seats, currentUser) {
-		//add projectors below for first floor
+        //add projectors below for first floor
         var projectors = [];
         //var userFound = found;
         var world = new GameOn.CustomMap(mapDivId);
@@ -296,10 +298,9 @@
                         type: "POST",
                         url: "Map.aspx/checkPaid",
                         contentType: "application/json; charset=utf-8",
-                        dataType: "json"})
-                        .success(function(data)
-                        {
-                            debugger;
+                        dataType: "json"
+                    })
+                        .success(function (data) {
                             if (data.d == "true") {
                                 world.markers.forEach(function (marker) {
                                     if (marker.title == currentUser) {
@@ -325,31 +326,29 @@
                                 });
 
                                 //Makes call to set user to the current seat.
-								if(e.marker.title == currentUser)
-								{
-                                var user = {};
-                                user.Username = currentUser;
-                                user.SeatID = e.marker.id;
-                                $.ajax({
-                                    type: "POST",
-                                    url: "Map.aspx/SaveUser",
-                                    data: '{user: ' + JSON.stringify(user) + '}',
-                                    contentType: "application/json; charset=utf-8",
-                                    dataType: "json",
-                                })
-                                .done(function (data) {
-                                    //successBox();
-                                    $("#success").modal('show');
-                                })
-                                .fail(function () {
-                                    //failedBox();
+                                if (e.marker.title == currentUser) {
+                                    var user = {};
+                                    user.Username = currentUser;
+                                    user.SeatID = e.marker.id;
+                                    $.ajax({
+                                        type: "POST",
+                                        url: "Map.aspx/SaveUser",
+                                        data: '{user: ' + JSON.stringify(user) + '}',
+                                        contentType: "application/json; charset=utf-8",
+                                        dataType: "json",
+                                    })
+                                    .done(function (data) {
+                                        //successBox();
+                                        $("#success").modal('show');
+                                    })
+                                    .fail(function () {
+                                        //failedBox();
+                                        $("#failure").modal('show');
+                                    });
+                                }
+                                else {
                                     $("#failure").modal('show');
-                                });
-								}
-								else
-								{
-								$("#failure").modal('show');
-								}
+                                }
                             }
                             else {
                                 $("#payToSit").modal('show');
@@ -374,10 +373,10 @@
                                 //});
                             }
                         })
-                        .fail(function(error) {
+                        .fail(function (error) {
                             alert(error.message);
                         });
-                    
+
                 }
                 else {
                     bootbox.dialog({

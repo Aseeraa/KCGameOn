@@ -298,7 +298,6 @@
                         dataType: "json"})
                         .success(function(data)
                         {
-                            debugger;
                             if (data.d == "true") {
                                 world.markers.forEach(function (marker) {
                                     if (marker.title == currentUser) {
