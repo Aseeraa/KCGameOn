@@ -1,9 +1,9 @@
 
-(function (GameOn, gmaps) {
+(function (GameOn2, gmaps) {
     "use strict";
 
     // Custom Map
-    GameOn.CustomMap = function (mapDivId) {
+    GameOn2.CustomMap = function (mapDivId) {
         var map,
             icons = {},
             markers = [],
@@ -107,7 +107,7 @@
             var options = {
                 draggable: false,
                 center: new gmaps.LatLng(84.55, -171.5),
-                zoom: 3,
+                zoom: 7,
                 disableDefaultUI: true,
                 backgroundColor: '#DDDDDD'
             };
@@ -123,14 +123,14 @@
                         return null;
                     var image = zoom + "_" + normalizedCoord.x + "_" + normalizedCoord.y;
                     if ($.inArray(image, images) != -1) {
-                        var imageURL = "/img/tiles/" + image + ".png";
+                        var imageURL = "/img/KCExpo/" + image + ".png";
                         return imageURL;
                     }
                     //if (exists(imageURL)) {
                     //    return imageURL;
                     //}
                 },
-                tileSize: new gmaps.Size(208, 208),
+                tileSize: new gmaps.Size(194, 194),
                 maxZoom: 7,
                 minZoom: 7
             };
@@ -182,8 +182,8 @@
     };
 
     // Placement Map
-    GameOn.PlacementMap = function (mapDivId, seats) {
-        var world = new GameOn.CustomMap(mapDivId);
+    GameOn2.PlacementMap = function (mapDivId, seats) {
+        var world = new GameOn2.CustomMap(mapDivId);
         //world.setMarkerEvents({
         //    click: function(e) {
         //        var marker = e.marker;
@@ -227,10 +227,10 @@
     };
 
     // Seating Map
-    GameOn.SeatingMap = function (mapDivId, seats, currentUser) {
+    GameOn2.SeatingMap = function (mapDivId, seats, currentUser) {
         var projectors = ["59", "60", "64"];
         //var userFound = found;
-        var world = new GameOn.CustomMap(mapDivId);
+        var world = new GameOn2.CustomMap(mapDivId);
 
         //var infowindow = new google.maps.InfoWindow();
         //var infobox = new InfoBox({
@@ -295,10 +295,9 @@
                         type: "POST",
                         url: "Map.aspx/checkPaid",
                         contentType: "application/json; charset=utf-8",
-                        dataType: "json"})
-                        .success(function(data)
-                        {
-                            debugger;
+                        dataType: "json"
+                    })
+                        .success(function (data) {
                             if (data.d == "true") {
                                 world.markers.forEach(function (marker) {
                                     if (marker.title == currentUser) {
@@ -324,31 +323,29 @@
                                 });
 
                                 //Makes call to set user to the current seat.
-								if(e.marker.title == currentUser)
-								{
-                                var user = {};
-                                user.Username = currentUser;
-                                user.SeatID = e.marker.id;
-                                $.ajax({
-                                    type: "POST",
-                                    url: "Map.aspx/SaveUser",
-                                    data: '{user: ' + JSON.stringify(user) + '}',
-                                    contentType: "application/json; charset=utf-8",
-                                    dataType: "json",
-                                })
-                                .done(function (data) {
-                                    //successBox();
-                                    $("#success").modal('show');
-                                })
-                                .fail(function () {
-                                    //failedBox();
+                                if (e.marker.title == currentUser) {
+                                    var user = {};
+                                    user.Username = currentUser;
+                                    user.SeatID = e.marker.id;
+                                    $.ajax({
+                                        type: "POST",
+                                        url: "Map.aspx/SaveUser",
+                                        data: '{user: ' + JSON.stringify(user) + '}',
+                                        contentType: "application/json; charset=utf-8",
+                                        dataType: "json",
+                                    })
+                                    .done(function (data) {
+                                        //successBox();
+                                        $("#success").modal('show');
+                                    })
+                                    .fail(function () {
+                                        //failedBox();
+                                        $("#failure").modal('show');
+                                    });
+                                }
+                                else {
                                     $("#failure").modal('show');
-                                });
-								}
-								else
-								{
-								$("#failure").modal('show');
-								}
+                                }
                             }
                             else {
                                 $("#payToSit").modal('show');
@@ -373,10 +370,10 @@
                                 //});
                             }
                         })
-                        .fail(function(error) {
+                        .fail(function (error) {
                             alert(error.message);
                         });
-                    
+
                 }
                 else {
                     bootbox.dialog({
@@ -525,5 +522,5 @@
         };
     };
 
-})(window.GameOn = window.GameOn || {}, google.maps);
+})(window.GameOn2 = window.GameOn2 || {}, google.maps);
 

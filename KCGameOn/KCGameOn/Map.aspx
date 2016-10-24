@@ -39,8 +39,10 @@
     </style>
     <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
     <script async src="js/bootbox.js?v=1.0"></script>
+    <script async2 src="js/bootbox.js?v=1.0"></script>
     <script async3 src="js/bootbox.js?v=1.0"></script>
     <script src="js/index.js?v=1.0"></script>
+    <script src="js/index2.js?v=1.0"></script>
     <script src="js/index3.js?v=1.0"></script>
     <!-- Nick replace this with the name of your new file-->
     <script>
@@ -219,6 +221,11 @@
     <div class="container">
         <ul class="nav nav-pills" role="tablist">
             <li class="active">
+                <a href="#KCExpoFloor" id="KCExpoFloorTab" role="tab" data-toggle="tab">
+                    <i class="fa fa-envelope">KC Expo Center</i>
+                </a>
+            </li>
+            <li>
                 <a href="#FirstFloor" id="FirstFloorTab" role="tab" data-toggle="tab">
                     <i class="fa fa-envelope">1st floor map - Tabletop/BYOC/Card games/Hearthstone</i>
                 </a>
@@ -278,9 +285,8 @@
             <%} %>
             <%else
                 { %>
-
             <%-- First Floor Map --%>
-            <div class="tab-pane fade active in" id="FirstFloor">
+            <div class="tab-pane fade" id="FirstFloor">
                 <%if (String.IsNullOrEmpty(SessionVariables.UserName))
                     {%>
                 <div id="viewport">
@@ -303,11 +309,43 @@
                     <script async>
                         var viewport,
 							currentUser = "<%= SessionVariables.UserName.ToLower() %>"
-						function initialize() {
-						    viewport = new GameOn.SeatingMap(document.getElementById("viewport"), seats, currentUser);
-						    viewport.updateMarkers(people, filtered);
-						}
-						google.maps.event.addDomListener(window, "load", initialize);
+                        function initialize() {
+                            viewport = new GameOn.SeatingMap(document.getElementById("viewport"), seats, currentUser);
+                            viewport.updateMarkers(people, filtered);
+                        }
+                        google.maps.event.addDomListener(window, "load", initialize);
+                    </script>
+                </div>
+                <%} %>
+            </div>
+            <%-- Expo center Map --%>
+            <div class="tab-pane fade active in" id="KCExpoFloor">
+                <%if (String.IsNullOrEmpty(SessionVariables.UserName))
+                    {%>
+                <div id="viewport2">
+                    <script async2>
+
+                        var viewport2,
+                            currentUser = null
+                        function initialize2() {
+                            viewport2 = new GameOn2.SeatingMap(document.getElementById("viewport2"), seats2, currentUser);
+                            viewport2.updateMarkers(people, filtered);
+                        }
+                        google.maps.event.addDomListener(window, "load", initialize2);
+                    </script>
+                </div>
+                <%} %>
+                <%else
+                    { %>
+                <div id="viewport2">
+                    <script async2>
+                        var viewport2,
+							currentUser = "<%= SessionVariables.UserName.ToLower() %>"
+                        function initialize2() {
+                            viewport2 = new GameOn2.SeatingMap(document.getElementById("viewport2"), seats2, currentUser);
+                            viewport2.updateMarkers(people, filtered);
+                        }
+                        google.maps.event.addDomListener(window, "load", initialize2);
                     </script>
                 </div>
                 <%} %>
@@ -335,11 +373,11 @@
                     <script async3>
                         var viewport3,
 							currentUser = "<%= SessionVariables.UserName.ToLower() %>"
-						function initialize3() {
-						    viewport3 = new GameOn3.SeatingMap(document.getElementById("viewport3"), seats3, currentUser);
-						    viewport3.updateMarkers(people, filtered);
-						}
-						google.maps.event.addDomListener(window, "load", initialize3);
+                        function initialize3() {
+                            viewport3 = new GameOn3.SeatingMap(document.getElementById("viewport3"), seats3, currentUser);
+                            viewport3.updateMarkers(people, filtered);
+                        }
+                        google.maps.event.addDomListener(window, "load", initialize3);
                     </script>
                 </div>
                 <%} %>
@@ -347,6 +385,46 @@
             <%} %>
         </div>
     </div>
+    <script async2>
+        seats2 = <%=seats2%>
+                filtered = [];
+        $(document).ready(function () {
+            $('form input').keydown(function (event) {
+                if (event.keyCode == 13) {
+                    event.preventDefault();
+                    var found = [];
+                    var value = $(this).val().toLowerCase();
+                    $.grep(people, function (n) {
+                        if (value != "") {
+                            var index = n.title.indexOf(value);
+                            if (index != -1) {
+                                //filtered.push(people.get(index));
+                                found.push(n);
+                            }
+                        }
+                    });
+                    filtered = found;
+                    viewport2.updateMarkers(people, filtered);
+                }
+            });
+            $('#Mapsearchbutton').click(function (event) {
+                event.preventDefault();
+                var found = [];
+                var value = $('#Mapsearch').val().toLowerCase();
+                $.grep(people, function (n) {
+                    if (value != "") {
+                        var index = n.title.indexOf(value);
+                        if (index != -1) {
+                            //filtered.push(people.get(index));
+                            found.push(n);
+                        }
+                    }
+                });
+                filtered = found;
+                viewport2.updateMarkers(people, filtered);
+            });
+        });
+    </script>
     <script async>
         var people = <%=people%>
         seats = <%=seats%>
