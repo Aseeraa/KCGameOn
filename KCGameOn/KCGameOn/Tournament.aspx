@@ -208,11 +208,12 @@
             <asp:Label ID="previousPage" Text="" runat="server" /></h3>
     </center>
     <h2>Event Tournaments</h2>
-    <h4>If you want to request a tournament for a particular game, please let us know and we will work on getting one set up!</h4>
+	<h4>Tournament page will need some work, check back later...</h4>
+    <!-- <h4>If you want to request a tournament for a particular game, please let us know and we will work on getting one set up!</h4> -->
     <div class="container">
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist">
-            <li class="active">
+            <!--<li class="active">
                 <a href="#LoL" role="tab" data-toggle="tab">
                     <%--<i class="fa fa-envelope"></i>--%>
                     <img src="/img/lolsticker.png">
@@ -256,7 +257,7 @@
                 <%--<i class="fa fa-user"></i>--%>
                 <img src="/img/hearthstonesticker.png">
             </a>
-            </li>
+            </li> -->
             <!--<li>
 	  <a href="#sfv" role="tab" data-toggle="tab">
 		<%--<i class="fa fa-user"></i>--%> <img src="/img/sfvsticker.png">
@@ -314,10 +315,10 @@
                             <p>Tournament Draft</p>
                         </div>
                         <div class="col-md-3">
-                            <a href="https://battlefy.com/kcgameon/league-of-legends-kcgameon-71-gold-and-under-only/57c24e784132ddf60cbde839/join/rules">
+                            <!-- <a href="https://battlefy.com/kcgameon/league-of-legends-kcgameon-71-gold-and-under-only/57c24e784132ddf60cbde839/join/rules">
                                 <img src="/img/join.png"></a>
                             <a href="http://events.na.leagueoflegends.com/events/217617">
-                                <img src="/img/registerlol.png" height="34" width="170"></a></ br>
+                                <img src="/img/registerlol.png" height="34" width="170"></a></ br> -->
 						<p>Gold and under only please.</p>
                         </div>
                     </div>

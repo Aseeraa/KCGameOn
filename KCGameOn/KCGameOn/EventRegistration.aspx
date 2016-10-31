@@ -305,8 +305,9 @@
         {%>
     <div id="field-body">
         
-        <h4 >KCGameOn and Extra Life is teaming up to raise funds for Children's Miracle network for this 25-hour marathon event.  This event is providing attendee options to get involved, if you wish.</h4>
-        <h4>If you do feel like being a part of this Extra-life marathon, feel free to join our <a href="http://www.extra-life.org/index.cfm?fuseaction=donorDrive.teamParticipants&teamID=29099">team</a>, run your own team or contribute in cash at the Extra-life booth located at the event.  Alternatively, simply check the box below to give $10 dollars directly to Extra Life.</h4>
+        <h4 >KCGameOn 72 will be held at the KCI Expo Center - featuring tournament finals and the loyalty prize giveaway! All persons are required to purchase a ticket to enter the venue.</h4>
+        <h4>Please make sure you check yourself in, then get your gear.  KCI Expo has a 'no unloading' policy at the door, so a dolly is recommended.</h4>
+        
                 <br />
         <div id="fields" class="pull-left">
             <h3>Start Here:</h3>
