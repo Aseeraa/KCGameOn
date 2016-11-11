@@ -181,7 +181,7 @@ namespace KCGameOn
                 String user = mystring.ElementAt(i).ElementAt(1).ToString();
                 String first = mystring.ElementAt(i).ElementAt(2).ToString();
                 String last = mystring.ElementAt(i).ElementAt(3).ToString();
-                Double donationAmount = Convert.ToDouble(mystring.ElementAt(i).ElementAt(7));
+                Double donationAmount = 0.00;
 
                 MySqlCommand cmd = null;
                 MySqlConnection conn = null;
@@ -254,7 +254,7 @@ namespace KCGameOn
                         String verfiedPaid = "N";
                         String paymentMethod = "PayPal";
 
-                        Double donationAmount = Convert.ToDouble(mystring.ElementAt(i).ElementAt(7));
+                        Double donationAmount = 0.00;
 
                         MySqlCommand cmd = null;
                         MySqlConnection conn = null;

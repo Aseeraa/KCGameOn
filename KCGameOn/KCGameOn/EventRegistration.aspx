@@ -190,7 +190,7 @@
                         $("#userInTable").modal('show');
                     }
                     else {
-                        var newRow = $('<tr><td>' + user + '</td><td>' + first + '</td><td>' + last + '</td><td class = "price">' + amount.toFixed(2) + '</td><td class="fullyear">' + '<input type="checkbox" value="checked" onclick="calculateSum();"></td><td class="extralife">' + '<input type="checkbox" value="checked" onclick="calculateSum();"></td>' + '</tr>');
+                        var newRow = $('<tr><td>' + user + '</td><td>' + first + '</td><td>' + last + '</td><td class = "price">' + amount.toFixed(2) + '</td><td class="fullyear">' + '<input type="checkbox" value="checked" onclick="calculateSum();"></td>' + '</tr>');
                         $('#registrationTable').append(newRow);
                         calculateSum();
                     }
@@ -217,7 +217,7 @@
                 var payments = []
                 var fullYear = false;
                 $('#registrationTable tbody tr').each(function () {
-                    $(this).find('input[type="checkbox"]').eq(0).each(function () {
+                    $(this).find('input[type="checkbox"]').each(function () {
                         if ($(this).prop('checked') == true) {
 
                             fullYear = true;
@@ -226,15 +226,7 @@
                             fullYear = false;
                         }
                     });
-                    $(this).find('input[type="checkbox"]').eq(1).each(function () {
-                        if ($(this).prop('checked') == true) {
-
-                            extraLife = "10.00";
-                        }
-                        else {
-                            extraLife = "0.00";
-                        }
-                    });
+                    extraLife = "0.00";
                     var tdArray = []
                     tdArray.push(fullYear);
                     $(this).find('td').each(function () {
@@ -330,8 +322,7 @@
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Cost per event</th>
-                        <th>Remaining Year?</th>
-                        <th>Extra Life Donation</th>
+                        <th>Remaining Year</th>
                     </tr>
                 </thead>
                 <tbody>
