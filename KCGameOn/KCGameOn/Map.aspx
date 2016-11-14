@@ -158,10 +158,10 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Failure</h4>
+                    <h4 class="modal-title">Oops!</h4>
                 </div>
                 <div class="modal-body" id="failureMessage">
-                    <p>Failed to sit down, please LOG OFF and then LOG IN and try again.  If that doesn't work, please inform an administrator or try again in a few minutes.</p>
+                    <p>Failed to sit down, please select an open, "white seat", to sit at. If trouble persists, please inform an administrator or try again in a few minutes.</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -172,16 +172,17 @@
         <!-- /.modal-dialog -->
     </div>
     <!-- /.modal -->
-    <!-- Pay modal-->
+   
+     <!-- Pay modal-->
     <div class="modal" id="payToSit" tabindex="-1" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Failure</h4>
+                    <h4 class="modal-title">Pay to Sit</h4>
                 </div>
                 <div class="modal-body" id="payToSitMessage">
-                    <p>Failed to sit down, please inform an administrator or try again in a few minutes.</p>
+                    <p>Click Pay Now to reserve your seat! If problems persist, please inform an administrator or try again in a few minutes.</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
