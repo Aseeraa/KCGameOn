@@ -10,6 +10,6 @@
 namespace KCGameOn.Sponsors {
     
     
-    public partial class Sponsors {
+    public partial class SponsorInfo {
     }
 }

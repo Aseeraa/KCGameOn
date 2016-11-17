@@ -247,11 +247,12 @@
     <Content Include="packages.config" />
     <Content Include="icon\Thumbs.db" />
     <Content Include="Schedule.aspx" />
-    <Content Include="Sponsors\HowToHelp.aspx" />
+    <Content Include="Sponsors\ApplyHere.aspx" />
     <Content Include="Sponsors\Sponsors.aspx" />
+    <Content Include="Sponsors\SponsorInfo.aspx" />
     <Content Include="Staff.aspx" />
     <Content Include="Swag.aspx" />
-    <Content Include="Tournament.aspx" />
+    <Content Include="Tournament2.aspx" />
     <Content Include="Checkin.aspx" />
     <Content Include="Users.aspx" />
     <Content Include="ViewSwitcher.ascx" />
@@ -260,6 +261,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Bundle.config" />
+    <Content Include="Tournaments.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Site.Mobile.Master" />
@@ -445,12 +447,26 @@
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
+    <Compile Include="Sponsors\ApplyHere.aspx.cs">
+      <DependentUpon>ApplyHere.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sponsors\ApplyHere.aspx.designer.cs">
+      <DependentUpon>ApplyHere.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Sponsors\Sponsors.aspx.cs">
       <DependentUpon>Sponsors.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Sponsors\Sponsors.aspx.designer.cs">
       <DependentUpon>Sponsors.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sponsors\SponsorInfo.aspx.cs">
+      <DependentUpon>SponsorInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sponsors\SponsorInfo.aspx.designer.cs">
+      <DependentUpon>SponsorInfo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Staff.aspx.cs">
       <DependentUpon>Staff.aspx</DependentUpon>
@@ -466,12 +482,12 @@
     <Compile Include="Swag.aspx.designer.cs">
       <DependentUpon>Swag.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Tournament.aspx.cs">
-      <DependentUpon>Tournament.aspx</DependentUpon>
+    <Compile Include="Tournament2.aspx.cs">
+      <DependentUpon>Tournament2.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Tournament.aspx.designer.cs">
-      <DependentUpon>Tournament.aspx</DependentUpon>
+    <Compile Include="Tournament2.aspx.designer.cs">
+      <DependentUpon>Tournament2.aspx</DependentUpon>
     </Compile>
     <Compile Include="Checkin.aspx.cs">
       <DependentUpon>Checkin.aspx</DependentUpon>
@@ -501,6 +517,13 @@
     </Compile>
     <Compile Include="Volunteer.aspx.designer.cs">
       <DependentUpon>Volunteer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tournaments.aspx.cs">
+      <DependentUpon>Tournaments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tournaments.aspx.designer.cs">
+      <DependentUpon>Tournaments.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

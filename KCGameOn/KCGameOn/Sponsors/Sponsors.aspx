@@ -1,4 +1,4 @@
-﻿<%@ Page Title=" "Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Sponsors.aspx.cs" Inherits="KCGameOn.Sponsors" %>
+﻿<%@ Page Title=" "Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Sponsors.aspx.cs" Inherits="KCGameOn.Sponsors.Sponsors" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -56,14 +56,14 @@
 	
 	<form class="well form-inline">	
 				<p><b>Gold Level:</b></p><br/>
-		<table style="width:100%" cellpadding="10" cellspacing="40" border="0" id="example" >
+		<!-- <table style="width:100%" cellpadding="10" cellspacing="40" border="0" id="example" >
 		<tr>
 			<td><p><a href="http://www.nimblestorage.com"><img src="/img/Nimble-Storage-Logo.png"></a> 
 			</td>
 			<td>Nimble Storage's Adaptive Flash platform is the first storage solution to eliminate the flash performance and capacity tradeoff.</p>
 			</td>
 		</tr>
-		</table>
+		</table> -->
 	</form>
 	
 	<form class="well form-inline">

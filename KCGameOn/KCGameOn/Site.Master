@@ -38,13 +38,15 @@
 	<script src="/js/application.js?v=1.0"></script>
     <script src="js/bootbox.js?v=1.0"></script>
     <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-  ga('create', 'UA-82775428-1', 'auto');
-  ga('send', 'pageview');
+        ga('create', 'UA-82775428-1', 'auto');
+        ga('send', 'pageview');
 
     </script>
 	<asp:ContentPlaceHolder ID="HeadContent" runat="server"></asp:ContentPlaceHolder>
@@ -52,15 +54,16 @@
         .navbar-default, .navbar-collapse {
             border: none;
         }
-        .navbar-inner{
-            padding-left:5px;
-            padding-right:0px;
-        }
 
-        .navbar-collapse
-        {
+        .navbar-inner {
+            padding-left: 5px;
             padding-right: 0px;
         }
+
+        .navbar-collapse {
+            padding-right: 0px;
+        }
+
         .navbar-default {
             background-color: transparent;
         }
@@ -69,14 +72,16 @@
             max-width: 1170px;
             width: auto;
         }
-        .navbar-default navbar-toggle .icon-bar{
-  background-color: black;
+
+        .navbar-default navbar-toggle .icon-bar {
+            background-color: black;
         }
-.navbar-default .navbar-toggle:hover,
-.navbar-default .navbar-toggle:focus {
-  background-color: #33b5e5;
-  border-color: #33b5e5;
-}
+
+        .navbar-default .navbar-toggle:hover,
+        .navbar-default .navbar-toggle:focus {
+            background-color: #33b5e5;
+            border-color: #33b5e5;
+        }
     </style>
 </head>	
 <body>
@@ -136,7 +141,7 @@
 			      <ul class="dropdown-menu">
                     <li><a href="/Map.aspx" class="active">Map</a></li>
 				    <li><a href="/Schedule.aspx" class ="active">Schedule</a></li>
-                    <li><a href="/Tournament.aspx" class ="active">Tournaments</a></li>
+                    <li><a href="/Tournaments.aspx" class ="active">Tournaments</a></li>
 			        <li><a href="/GameServers.aspx">Game Servers</a></li>
 			      </ul>
 			    </li>
@@ -145,8 +150,10 @@
 			    <li class="dropdown">
 			      <a data-toggle="dropdown" class="dropdown-toggle" href="#">Sponsors & Exhibitors<b class="caret"></b></a>
 			      <ul class="dropdown-menu">
-				    <li><a href="/Sponsors/Sponsors.aspx">Sponsors</a></li>
-				    <li><a href="/Sponsors/HowToHelp.aspx">How to help</a></li>
+                      <li><a href="/Sponsors/SponsorInfo.aspx">Sponsorship/Exhibitor Tiers</a></li>
+				    <li><a href="/Sponsors/Sponsors.aspx">Curent Sponsors</a></li>
+                    
+				    <li><a href="/Sponsors/ApplyHere.aspx">Application</a></li>
 			      </ul>
 			    </li>
 			    
@@ -174,18 +181,18 @@
 			      </ul>
 			    </li>
                 <%if (SessionVariables.UserAdmin == 1)
-                { %>
+                    { %>
 				    <li><a href="/Admin/Admin.aspx">Admin</a></li>
 			    <%} %>
 		      </ul>
 		      <%if (SessionVariables.UserName == null)
-          { %>
+                  { %>
 		      <ul class="nav navbar-right">
 			    <li class="dropdown">
 			      <a id="A1" runat="server" data-toggle="dropdown" class="dropdown-toggle" href="/Acccount/Login.aspx">Login <b class="caret"></b></a>
 			      <ul class="dropdown-menu">
 				    <%if (SessionVariables.UserName == null)
-          { %>
+                        { %>
 				    <li><a href="/Account/Login.aspx">Login</a></li>
                 <!--    <li><a href="/Account/Profile.aspx">User Profile</a></li> -->
 				    <li><a href="/Account/Register.aspx">Create Account</a></li>
@@ -195,7 +202,7 @@
 		      </ul>
 		      <%} %>
 		      <%if (SessionVariables.UserName != null)
-          { %>
+                  { %>
 		      <ul class="nav pull-right">
 			    <li class="dropdown">
 			      <a id="A2" runat="server" data-toggle="dropdown" class="dropdown-toggle" href="#"><%= SessionVariables.UserName.ToString()%><b class="caret"></b></a>
