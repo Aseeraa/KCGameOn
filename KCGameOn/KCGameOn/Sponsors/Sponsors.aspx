@@ -64,6 +64,12 @@
 			</td>
 		</tr>
 		</table> -->
+        <table style="width:100%" cellpadding="10" cellspacing="40" border="0" id="example" >
+        <tr>
+            <td><p><a href="https://ocz.com"><img src ="/img/ocz_logo_reversed_lrg.png" /></p></td>
+            <td><p>OCZ, an SSD brand offered by Toshiba for the consumer market, has a history of offering high performance PC components for gamers and enthusiasts. With its roots in these communities, OCZ understands the passion for products that go beyond conventional to take computing to the next level.</p></td>
+        </tr>
+            </table>
 	</form>
 	
 	<form class="well form-inline">
