@@ -4,48 +4,6 @@
 <asp:Content ID="HeaderContent" ContentPlaceHolderID="HeadContent" runat="server">
 
     <script type="text/javascript" src='https://www.google.com/recaptcha/api.js'></script>
-       <script type="text/javascript">
-        function checkValidInputs() {
-            debugger;
-            if (checkPasswordMatch() && checkEmailMatch()) {
-                $('input[type="submit"]').attr('disabled', false);
-
-            }
-            else {
-                $('input[type="submit"]').attr('disabled', true);
-            }
-        }
-        
-    
-        /* Table initialisation */
-        $(document).ready(function () {
-            $('#adminusertable').dataTable({
-                "sDom": "<'row'<'col-md-12'><'col-md-12'f>r>t<'row'<'col-md-12'i><'col-md-12'p>>",
-                "sPaginationType": "bootstrap",
-                "bLengthChange": false
-            });
-        });
-        </script>
- <!--    <script type="text/javascript">
-        jQuery(document).ready(function () {
-            jQuery(".Content").hide();
-            //toggle the componenet with class msg_body
-            jQuery(".Menubody-trigger").click(function () {
-                // For Nav Labels
-                if ($(this).hasClass("Menubody-trigger-active")) {
-                    $(this).removeClass("Menubody-trigger-active");
-                    $(this).parent().find('.Content').stop(true, true).slideUp(500);
-                }
-                else {
-                    $(this).addClass("Menubody-trigger-active");
-                    $(this).parent().find('.Content').stop(true, true).slideDown(500);
-                    //$(this).parent().find('.Content2').hide();
-                }
-            });
-        });
-    
-
-    </script> -->
 
 </asp:Content>
 
@@ -54,20 +12,6 @@
         {%>
 <form class="well form-horizontal" runat="server" id="updatepassword">
     <h2>Welcome, <asp:Literal runat="server" ID="usernameText" EnableViewState="false" />!</h2>    
-
-    <div class="UImenu">
-        <div class="UImenuItem">
-            <label class="Menubody-trigger"><div class="control-group">
-                    <label class="control-label">Subscribed</label>
-                    <label class="controls" style="margin-top: 5px;">
-                        
-                    </label>
-                </div>SFV logo</label>
-            <div class="Content">
-                <p>game info here</p>
-            </div>
-        </div>
-    </div>
 
     <div class="UImenu">
         <div class="UImenuItem">
