@@ -4,7 +4,24 @@
 <asp:Content ID="HeaderContent" ContentPlaceHolderID="HeadContent" runat="server">
 
     <script type="text/javascript" src='https://www.google.com/recaptcha/api.js'></script>
-
+    <script type="text/javascript">
+            jQuery(document).ready(function () {
+                jQuery(".Content").hide();
+                //toggle the componenet with class msg_body
+                jQuery(".Menubody-trigger").click(function () {
+                    // For Nav Labels
+                    if ($(this).hasClass("Menubody-trigger-active")) {
+                        $(this).removeClass("Menubody-trigger-active");
+                        $(this).parent().find('.Content').stop(true, true).slideUp(500);
+                    }
+                    else {
+                        $(this).addClass("Menubody-trigger-active");
+                        $(this).parent().find('.Content').stop(true, true).slideDown(500);
+                        //$(this).parent().find('.Content2').hide();
+                    }
+                });
+            });
+        </script>
 </asp:Content>
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
@@ -13,7 +30,7 @@
 <form class="well form-horizontal" runat="server" id="updatepassword">
     <h2>Welcome, <asp:Literal runat="server" ID="usernameText" EnableViewState="false" />!</h2>    
 
-    <div class="UImenu">
+  <!--  <div class="UImenu">
         <div class="UImenuItem">
             <label class="Menubody-trigger">What is KCGAMEON?</label>
             <div class="Content">
@@ -30,77 +47,77 @@
                     <p>There are SIX events each year. They are roughly 6-8 weeks apart. During the summer we tend to spread them out little more due to folks being on vacations and what not.</p>
                 </div>
         </div> 
-    </div>
-
+    </div> -->
    <div class="UImenuItem">
-        <label class="Menubody-trigger">The King of Fighters XIV logo</label>
+        <label class="Menubody-trigger"><input type="checkbox" id="SFVRegisteredCB" runat="server" />SFV</label>
         <div class="Content">
             <p>game info here</p>
         </div>
-       <input type="checkbox" id="TKFRegisteredCB" runat="server" />
+       
+   </div>
+   <div class="UImenuItem">
+        <label class="Menubody-trigger"><input type="checkbox" id="TKFRegisteredCB" runat="server" />The King of Fighters XIV logo</label>
+        <div class="Content">
+            <p>game info here</p>
+        </div>
+       
     </div>
 	<div class="UImenuItem">
-        <label class="Menubody-trigger">Guilty Gear Xrd: Revelator</label>
+        <label class="Menubody-trigger"><input type="checkbox" id="GGXRegisteredCB" runat="server" />Guilty Gear Xrd: Revelator</label>
         <div class="Content">
 			<p>game info here</p>
         </div>
     </div>
     <div class="UImenuItem">
-        <label class="Menubody-trigger">Killer Instinct</label>
+        <label class="Menubody-trigger"><input type="checkbox" id="KIRegisteredCB" runat="server" />Killer Instinct</label>
         <div class="Content">
 			<p>game info here</p>
         </div>
     </div>
     <div class="UImenuItem">
-        <label class="Menubody-trigger">Skullgirls 2nd Encore</label>
+        <label class="Menubody-trigger"><input type="checkbox" id="SG2ERegisteredCB" runat="server" />Skullgirls 2nd Encore</label>
         <div class="Content">
 			<p>game info here</p>
         </div>
     </div>
     <div class="UImenuItem">
-        <label class="Menubody-trigger">Ultra Street Fighter 4</label>
+        <label class="Menubody-trigger"><input type="checkbox" id="USF4RegisteredCB" runat="server" />Ultra Street Fighter 4</label>
         <div class="Content">
 			<p>game info here</p>
         </div>
     </div>
     <div class="UImenuItem">
-        <label class="Menubody-trigger">BlazBlue: Central Fiction</label>
+        <label class="Menubody-trigger"><input type="checkbox" id="BBCFRegisteredCB" runat="server" />BlazBlue: Central Fiction</label>
         <div class="Content">
 			<p>game info here</p>
         </div>
     </div>
     <div class="UImenuItem">
-        <label class="Menubody-trigger">Street Fighter III: 3rd Strike</label>
+        <label class="Menubody-trigger"><input type="checkbox" id="SF3RegisteredCB" runat="server" />Street Fighter III: 3rd Strike</label>
         <div class="Content">
 			<p>game info here</p>
         </div>
     </div>
     <div class="UImenuItem">
-        <label class="Menubody-trigger">BlazBlue: Central Fiction</label>
+        <label class="Menubody-trigger"><input type="checkbox" id="MKXRegisteredCB" runat="server" />Mortal Kombat X</label>
         <div class="Content">
 			<p>game info here</p>
         </div>
     </div>
     <div class="UImenuItem">
-        <label class="Menubody-trigger">Mortal Kombat X</label>
+        <label class="Menubody-trigger"><input type="checkbox" id="MVCRegisteredCB" runat="server" />Ultimate Marvel vs Capcom 3</label>
         <div class="Content">
 			<p>game info here</p>
         </div>
     </div>
     <div class="UImenuItem">
-        <label class="Menubody-trigger">Ultimate Marvel vs Capcom 3</label>
+        <label class="Menubody-trigger"><input type="checkbox" id="DOA5RegisteredCB" runat="server" />Dead or Alive 5 Last Round</label>
         <div class="Content">
 			<p>game info here</p>
         </div>
     </div>
     <div class="UImenuItem">
-        <label class="Menubody-trigger">Dead or Alive 5 Last Round</label>
-        <div class="Content">
-			<p>game info here</p>
-        </div>
-    </div>
-    <div class="UImenuItem">
-        <label class="Menubody-trigger">Pokken</label>
+        <label class="Menubody-trigger"><input type="checkbox" id="POKRegisteredCB" runat="server" />Pokken</label>
         <div class="Content">
 			<p>game info here</p>
         </div>

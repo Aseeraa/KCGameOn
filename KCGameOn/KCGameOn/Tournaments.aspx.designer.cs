@@ -31,6 +31,15 @@ namespace KCGameOn {
         protected global::System.Web.UI.WebControls.Literal usernameText;
         
         /// <summary>
+        /// SFVRegisteredCB control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox SFVRegisteredCB;
+        
+        /// <summary>
         /// TKFRegisteredCB control.
         /// </summary>
         /// <remarks>
@@ -38,6 +47,96 @@ namespace KCGameOn {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox TKFRegisteredCB;
+        
+        /// <summary>
+        /// GGXRegisteredCB control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox GGXRegisteredCB;
+        
+        /// <summary>
+        /// KIRegisteredCB control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox KIRegisteredCB;
+        
+        /// <summary>
+        /// SG2ERegisteredCB control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox SG2ERegisteredCB;
+        
+        /// <summary>
+        /// USF4RegisteredCB control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox USF4RegisteredCB;
+        
+        /// <summary>
+        /// BBCFRegisteredCB control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox BBCFRegisteredCB;
+        
+        /// <summary>
+        /// SF3RegisteredCB control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox SF3RegisteredCB;
+        
+        /// <summary>
+        /// MKXRegisteredCB control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox MKXRegisteredCB;
+        
+        /// <summary>
+        /// MVCRegisteredCB control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox MVCRegisteredCB;
+        
+        /// <summary>
+        /// DOA5RegisteredCB control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox DOA5RegisteredCB;
+        
+        /// <summary>
+        /// POKRegisteredCB control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox POKRegisteredCB;
         
         /// <summary>
         /// ProfileUpdateMessage control.
