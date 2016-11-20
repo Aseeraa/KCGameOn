@@ -47,22 +47,19 @@ namespace KCGameOn
                         Reader = cmd.ExecuteReader();
                         if (Reader.Read())
                         {
-                            while (Reader.Read())
-                            {
-                                // Set active
-                                SFVRegistered = Reader.GetBoolean("SFV");
-                                TKFRegistered = Reader.GetBoolean("KingofFighters");
-                                //GGXRegistered = Reader.GetBoolean("GuiltyGear");
-                                //KIRegistered = Reader.GetBoolean("KI");
-                                //SG2ERegistered = Reader.GetBoolean("Skullgirls");
-                                //USF4Registered = Reader.GetBoolean("UltraSF4");
-                                //BBCFRegistered = Reader.GetBoolean("BlazBlue");
-                                //SF3Registered = Reader.GetBoolean("SF3");
-                                //MKXRegistered = Reader.GetBoolean("MKX");
-                                //MVCRegistered = Reader.GetBoolean("MVC");
-                                //DOA5Registered = Reader.GetBoolean("DOA5");
-                                //POKRegistered = Reader.GetBoolean("Pokken");
-                            }
+                            // Set active
+                            SFVRegistered = Reader.GetBoolean("SFV");
+                            TKFRegistered = Reader.GetBoolean("KingofFighters");
+                            GGXRegistered = Reader.GetBoolean("GuiltyGear");
+                            KIRegistered = Reader.GetBoolean("KI");
+                            SG2ERegistered = Reader.GetBoolean("Skullgirls");
+                            USF4Registered = Reader.GetBoolean("UltraSF4");
+                            BBCFRegistered = Reader.GetBoolean("BlazeBlue");
+                            SF3Registered = Reader.GetBoolean("SF3");
+                            MKXRegistered = Reader.GetBoolean("MKX");
+                            MVCRegistered = Reader.GetBoolean("MVC");
+                            DOA5Registered = Reader.GetBoolean("DOA5");
+                            POKRegistered = Reader.GetBoolean("Pokken");
                             cmd.Connection.Close();
                             UpdateFields();
                         }
@@ -91,44 +88,37 @@ namespace KCGameOn
 
             SFVRegisteredCB.Checked = SFVRegistered;
             TKFRegisteredCB.Checked = TKFRegistered;
-            //GGXRegisteredCB.Checked = GGXRegistered;
-            //KIRegisteredCB.Checked = KIRegistered;
-            //SG2ERegisteredCB.Checked = SG2ERegistered;
-            //USF4RegisteredCB.Checked = USF4Registered;
-            //BBCFRegisteredCB.Checked = BBCFRegistered;
-            //SF3RegisteredCB.Checked = SF3Registered;
-            //MKXRegisteredCB.Checked = MKXRegistered;
-            //MVCRegisteredCB.Checked = MVCRegistered;
-            //DOA5RegisteredCB.Checked = DOA5Registered;
-            //POKRegisteredCB.Checked = POKRegistered;
+            GGXRegisteredCB.Checked = GGXRegistered;
+            KIRegisteredCB.Checked = KIRegistered;
+            SG2ERegisteredCB.Checked = SG2ERegistered;
+            USF4RegisteredCB.Checked = USF4Registered;
+            BBCFRegisteredCB.Checked = BBCFRegistered;
+            SF3RegisteredCB.Checked = SF3Registered;
+            MKXRegisteredCB.Checked = MKXRegistered;
+            MVCRegisteredCB.Checked = MVCRegistered;
+            DOA5RegisteredCB.Checked = DOA5Registered;
+            POKRegisteredCB.Checked = POKRegistered;
 
 
         }
 
         protected void ChangeProfile_Click(object sender, EventArgs e)
         {
-            if (Request.Form["ctl00$MainContent$TKFRegisteredCB"] == "on")
-            {
-                TKFRegistered = true;
-            }
-            else
-            {
-                TKFRegistered = false;
-
-            }
-
-            if (Request.Form["ctl00$MainContent$SFVRegisteredCB"] == "on")
-            {
-                SFVRegistered = true;
-            }
-            else
-            {
-                SFVRegistered = false;
-
-            }
+            SFVRegistered = SFVRegisteredCB.Checked;
+            TKFRegistered = TKFRegisteredCB.Checked;
+            GGXRegistered = GGXRegisteredCB.Checked;
+            KIRegistered = KIRegisteredCB.Checked;
+            SG2ERegistered = SG2ERegisteredCB.Checked;
+            USF4Registered = USF4RegisteredCB.Checked;
+            BBCFRegistered = BBCFRegisteredCB.Checked;
+            SF3Registered= SF3RegisteredCB.Checked;
+            MKXRegistered = MKXRegisteredCB.Checked;
+            MVCRegistered = MVCRegisteredCB.Checked;
+            DOA5Registered = DOA5RegisteredCB.Checked;
+            POKRegistered = POKRegisteredCB.Checked;
 
             UpdateFields();
-            using (MySqlCommand cmd = new MySqlCommand("UPDATE tournaments SET SFV = " + SFVRegistered + ", KingofFighters = " + TKFRegistered + " WHERE tournaments.username = \'" + SessionVariables.UserName + "\'", new MySqlConnection(ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString)))
+            using (MySqlCommand cmd = new MySqlCommand("UPDATE tournaments SET SFV = " + SFVRegistered + ", KingofFighters = " + TKFRegistered + ", GuiltyGear = " + GGXRegistered + ", KI = " + KIRegistered + ", Skullgirls = " + SG2ERegistered + ", UltraSF4 = " + USF4Registered + ", BlazeBlue = " + BBCFRegistered + ", SF3 = " + SF3Registered + ", MKX = " + MKXRegistered + ", MVC = " + MVCRegistered + ", DOA5 = " + DOA5Registered + ", Pokken = " + POKRegistered + " WHERE tournaments.username = \'" + SessionVariables.UserName + "\'", new MySqlConnection(ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString)))
             //using (MySqlCommand cmd = new MySqlCommand("UPDATE useraccount SET Email = \'" + Email + "\', Cerner = \'" + Sponsor + "\', Active = " + isActive + ", Password = \'" + NewHashedPassword + "\', SteamHandle = \'" + SteamHandle + "\', BattleHandle = \'" + BattleHandle + "\', OriginHandle = \'" + OriginHandle + "\', TwitterHandle = \'" + TwitterHandle + "\' WHERE useraccount.Username = \'" + SessionVariables.UserName + "\'", new MySqlConnection(ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString)))
             {
                 cmd.CommandType = System.Data.CommandType.Text;
