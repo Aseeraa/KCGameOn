@@ -99,3 +99,8 @@
   background: #33b5e5;
   color: #FFFFFF;
 }
+
+.tournament-menu {
+    display: inline !important;
+    margin-left: 10px;
+}
