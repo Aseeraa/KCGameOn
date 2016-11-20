@@ -116,7 +116,7 @@ namespace KCGameOn
             POKRegistered = POKRegisteredCB.Checked;
 
             UpdateFields();
-            using (MySqlCommand cmd = new MySqlCommand("UPDATE tournaments SET SFV = " + SFVRegistered + ", KingofFighters = " + TKFRegistered + ", GuiltyGear = " + GGXRegistered + ", KI = " + KIRegistered + ", Skullgirls = " + SG2ERegistered + ", UltraSF4 = " + USF4Registered + ", BlazeBlue = " + BBCFRegistered + ", SF3 = " + SF3Registered + ", MKX = " + MKXRegistered + ", MVC = " + MVCRegistered + ", DOA5 = " + DOA5Registered + ", Pokken = " + POKRegistered + " WHERE tournaments.username = \'" + SessionVariables.UserName + "\'", new MySqlConnection(ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString)))
+            using (MySqlCommand cmd = new MySqlCommand("UPDATE tournaments SET SFV = " + SFVRegistered + ", KingofFighters = " + TKFRegistered + ", GuiltyGear = " + GGXRegistered + ", KI = " + KIRegistered + ", Skullgirls = " + SG2ERegistered + ", UltraSF4 = " + USF4Registered + ", BlazeBlue = " + BBCFRegistered + ", SF3 = " + SF3Registered + ", MKX = " + MKXRegistered + ", MVC = " + MVCRegistered + ", DOA5 = " + DOA5Registered + ", Pokken = " + POKRegistered + " WHERE tournaments.username = \' AND tournaments.EventID = (SELECT EventID FROM kcgameon.schedule WHERE Active = 1 order by ID LIMIT 1)" + SessionVariables.UserName + "\'", new MySqlConnection(ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString)))
             {
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Connection.Open();
