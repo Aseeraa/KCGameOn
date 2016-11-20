@@ -30,11 +30,7 @@ namespace KCGameOn
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            // On first load get the values for the user logged in
-
-   //check to see if row exists for user
-   //if username doesn't exist - a row is created in the tournaments table where username = seesionvariables and eventid = eventid - the rest should be set to false.
-   //futuredev - if row exists for eventid - 1, copy that row and create new row for current eventid
+            // Eventually we copy the precious eventID settings to a new row if they don't have one but did last event
             if (!IsPostBack)
             {
                 if (SessionVariables.UserName != null )
@@ -47,7 +43,7 @@ namespace KCGameOn
                         Reader = cmd.ExecuteReader();
                         if (Reader.Read())
                         {
-                            // Set active
+                            // Set variables from db
                             SFVRegistered = Reader.GetBoolean("SFV");
                             TKFRegistered = Reader.GetBoolean("KingofFighters");
                             GGXRegistered = Reader.GetBoolean("GuiltyGear");
@@ -65,6 +61,7 @@ namespace KCGameOn
                         }
                         else
                         {
+                            // Create new row if they do not have one
                             using (MySqlCommand cmd2 = new MySqlCommand("INSERT INTO tournaments (id, username, EventID) VALUES ((SELECT ID FROM useraccount WHERE username = \'" + SessionVariables.UserName + "\'), \'" + SessionVariables.UserName + "\', (SELECT EventID FROM kcgameon.schedule WHERE Active = 1 order by ID LIMIT 1))", new MySqlConnection(ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString)))
                             {
                                 cmd2.CommandType = System.Data.CommandType.Text;
@@ -83,7 +80,7 @@ namespace KCGameOn
 
         protected void UpdateFields()
         {
-            // Set the textbox values
+            // Set checkboxes from db value
             usernameText.Text = SessionVariables.UserName;
 
             SFVRegisteredCB.Checked = SFVRegistered;
@@ -104,6 +101,7 @@ namespace KCGameOn
 
         protected void ChangeProfile_Click(object sender, EventArgs e)
         {
+            // Set values from checkboxes to send to db
             SFVRegistered = SFVRegisteredCB.Checked;
             TKFRegistered = TKFRegisteredCB.Checked;
             GGXRegistered = GGXRegisteredCB.Checked;
@@ -119,12 +117,10 @@ namespace KCGameOn
 
             UpdateFields();
             using (MySqlCommand cmd = new MySqlCommand("UPDATE tournaments SET SFV = " + SFVRegistered + ", KingofFighters = " + TKFRegistered + ", GuiltyGear = " + GGXRegistered + ", KI = " + KIRegistered + ", Skullgirls = " + SG2ERegistered + ", UltraSF4 = " + USF4Registered + ", BlazeBlue = " + BBCFRegistered + ", SF3 = " + SF3Registered + ", MKX = " + MKXRegistered + ", MVC = " + MVCRegistered + ", DOA5 = " + DOA5Registered + ", Pokken = " + POKRegistered + " WHERE tournaments.username = \'" + SessionVariables.UserName + "\'", new MySqlConnection(ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString)))
-            //using (MySqlCommand cmd = new MySqlCommand("UPDATE useraccount SET Email = \'" + Email + "\', Cerner = \'" + Sponsor + "\', Active = " + isActive + ", Password = \'" + NewHashedPassword + "\', SteamHandle = \'" + SteamHandle + "\', BattleHandle = \'" + BattleHandle + "\', OriginHandle = \'" + OriginHandle + "\', TwitterHandle = \'" + TwitterHandle + "\' WHERE useraccount.Username = \'" + SessionVariables.UserName + "\'", new MySqlConnection(ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString)))
             {
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Connection.Open();
                 cmd.ExecuteNonQuery();
-                //fails here, tried a few different escape characters, but not sure what is wrong with the sql above to actually update rows.
                 cmd.Connection.Close();
                 ProfileUpdateMessage.Text = "Profile Successfully Updated!";
             }
