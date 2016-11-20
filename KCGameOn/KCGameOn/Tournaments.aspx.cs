@@ -31,9 +31,13 @@ namespace KCGameOn
         protected void Page_Load(object sender, EventArgs e)
         {
             // On first load get the values for the user logged in
+
+   //check to see if row exists for user
+   //if username doesn't exist - a row is created in the tournaments table where username = seesionvariables and eventid = eventid - the rest should be set to false.
+   //futuredev - if row exists for eventid - 1, copy that row and create new row for current eventid
             if (!IsPostBack)
             {
-                using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM useraccount WHERE useraccount.Username = \'" + SessionVariables.UserName + "\'", new MySqlConnection(ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString)))
+                using (MySqlCommand cmd = new MySqlCommand("SELECT * FROM tournaments WHERE tournaments.Username = \'" + SessionVariables.UserName + "\'", new MySqlConnection(ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString)))
                 {
                     MySqlDataReader Reader = null;
                     cmd.CommandType = System.Data.CommandType.Text;
@@ -44,16 +48,16 @@ namespace KCGameOn
                         // Set active
                         SFVRegistered = Reader.GetBoolean("SFV");
                         TKFRegistered = Reader.GetBoolean("KingofFighters");
-                        GGXRegistered = Reader.GetBoolean("GuiltyGear");
-                        KIRegistered = Reader.GetBoolean("KI");
-                        SG2ERegistered = Reader.GetBoolean("Skullgirls");
-                        USF4Registered = Reader.GetBoolean("UltraSF4");
-                        BBCFRegistered = Reader.GetBoolean("BlazBlue");
-                        SF3Registered = Reader.GetBoolean("SF3");
-                        MKXRegistered = Reader.GetBoolean("MKX");
-                        MVCRegistered = Reader.GetBoolean("MVC");
-                        DOA5Registered = Reader.GetBoolean("DOA5");
-                        POKRegistered = Reader.GetBoolean("Pokken");
+                        //GGXRegistered = Reader.GetBoolean("GuiltyGear");
+                        //KIRegistered = Reader.GetBoolean("KI");
+                        //SG2ERegistered = Reader.GetBoolean("Skullgirls");
+                        //USF4Registered = Reader.GetBoolean("UltraSF4");
+                        //BBCFRegistered = Reader.GetBoolean("BlazBlue");
+                        //SF3Registered = Reader.GetBoolean("SF3");
+                        //MKXRegistered = Reader.GetBoolean("MKX");
+                        //MVCRegistered = Reader.GetBoolean("MVC");
+                        //DOA5Registered = Reader.GetBoolean("DOA5");
+                        //POKRegistered = Reader.GetBoolean("Pokken");
                     }
                     cmd.Connection.Close();
                     UpdateFields();
@@ -70,16 +74,16 @@ namespace KCGameOn
 
             SFVRegisteredCB.Checked = SFVRegistered;
             TKFRegisteredCB.Checked = TKFRegistered;
-            GGXRegisteredCB.Checked = GGXRegistered;
-            KIRegisteredCB.Checked = KIRegistered;
-            SG2ERegisteredCB.Checked = SG2ERegistered;
-            USF4RegisteredCB.Checked = USF4Registered;
-            BBCFRegisteredCB.Checked = BBCFRegistered;
-            SF3RegisteredCB.Checked = SF3Registered;
-            MKXRegisteredCB.Checked = MKXRegistered;
-            MVCRegisteredCB.Checked = MVCRegistered;
-            DOA5RegisteredCB.Checked = DOA5Registered;
-            POKRegisteredCB.Checked = POKRegistered;
+            //GGXRegisteredCB.Checked = GGXRegistered;
+            //KIRegisteredCB.Checked = KIRegistered;
+            //SG2ERegisteredCB.Checked = SG2ERegistered;
+            //USF4RegisteredCB.Checked = USF4Registered;
+            //BBCFRegisteredCB.Checked = BBCFRegistered;
+            //SF3RegisteredCB.Checked = SF3Registered;
+            //MKXRegisteredCB.Checked = MKXRegistered;
+            //MVCRegisteredCB.Checked = MVCRegistered;
+            //DOA5RegisteredCB.Checked = DOA5Registered;
+            //POKRegisteredCB.Checked = POKRegistered;
 
 
         }
@@ -96,13 +100,24 @@ namespace KCGameOn
 
             }
 
+            if (Request.Form["ctl00$MainContent$SFVRegisteredCB"] == "on")
+            {
+                SFVRegistered = true;
+            }
+            else
+            {
+                SFVRegistered = false;
+
+            }
+
             UpdateFields();
-            using (MySqlCommand cmd = new MySqlCommand("UPDATE tournaments SET SFV = \'" + SFVRegistered + "\',KingofFighters = \'" + TKFRegistered + "\', WHERE useraccount.Username = \'" + SessionVariables.UserName + "\'", new MySqlConnection(ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString)))
+            using (MySqlCommand cmd = new MySqlCommand("UPDATE tournaments SET SFV = \'" + SFVRegistered + "\',KingofFighters = \'" + TKFRegistered + "\', WHERE tournaments.username = \'" + SessionVariables.UserName + "\'", new MySqlConnection(ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString)))
             //using (MySqlCommand cmd = new MySqlCommand("UPDATE useraccount SET Email = \'" + Email + "\', Cerner = \'" + Sponsor + "\', Active = " + isActive + ", Password = \'" + NewHashedPassword + "\', SteamHandle = \'" + SteamHandle + "\', BattleHandle = \'" + BattleHandle + "\', OriginHandle = \'" + OriginHandle + "\', TwitterHandle = \'" + TwitterHandle + "\' WHERE useraccount.Username = \'" + SessionVariables.UserName + "\'", new MySqlConnection(ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString)))
             {
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Connection.Open();
                 cmd.ExecuteNonQuery();
+    //fails here, tried a few different escape characters, but not sure what is wrong with the sql above to actually update rows.
                 cmd.Connection.Close();
                 ProfileUpdateMessage.Text = "Profile Successfully Updated!";
             }
