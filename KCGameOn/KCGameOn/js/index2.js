@@ -61,7 +61,7 @@
 
         function initIcons() {
             var base = {
-                size: new gmaps.Size(20, 20),
+                size: new gmaps.Size(15, 15),
                 origin: new gmaps.Point(0, 0),
                 anchor: new gmaps.Point(12, 15)
             };
@@ -95,18 +95,18 @@
             };
             icons.found = {
                 url: "/img/found.png",
-                size: new gmaps.Size(22, 22), origin: base.origin, anchor: base.anchor
+                size: new gmaps.Size(16, 16), origin: base.origin, anchor: base.anchor
             };
             icons.proj_found = {
                 url: "/img/proj_found.png",
-                size: new gmaps.Size(22, 22), origin: base.origin, anchor: base.anchor
+                size: new gmaps.Size(16, 16), origin: base.origin, anchor: base.anchor
             };
         }
 
         function createMap() {
             var options = {
                 draggable: false,
-                center: new gmaps.LatLng(84.55, -171.5),
+                center: new gmaps.LatLng(84.39, -172.5),
                 zoom: 7,
                 disableDefaultUI: true,
                 backgroundColor: '#DDDDDD'
@@ -115,7 +115,12 @@
         }
 
         function setCustomMapType() {
-            var images = ["7_1_1", "7_1_2", "7_1_3", "7_2_1", "7_2_2", "7_2_3", "7_3_1", "7_3_2", "7_3_3", "7_4_1", "7_4_2", "7_4_3", "7_5_1", "7_5_2", "7_5_3", "7_6_1", "7_6_2", "7_6_3"];
+            var images = ["7_1_1", "7_1_2", "7_1_3", "7_1_4", "7_1_5", "7_1_6",
+                "7_2_1", "7_2_2", "7_2_3", "7_2_4", "7_2_5", "7_2_6",
+                "7_3_1", "7_3_2", "7_3_3", "7_3_4", "7_3_5", "7_3_6",
+                "7_4_1", "7_4_2", "7_4_3", "7_4_4", "7_4_5", "7_4_6",
+                "7_5_1", "7_5_2", "7_5_3", "7_5_4", "7_5_5", "7_5_6",
+                "7_6_1", "7_6_2", "7_6_3", "7_6_4", "7_6_5", "7_6_6"];
             var options = {
                 getTileUrl: function (coord, zoom) {
                     var normalizedCoord = getNormalizedCoord(coord, zoom);
@@ -130,7 +135,7 @@
                     //    return imageURL;
                     //}
                 },
-                tileSize: new gmaps.Size(194, 194),
+                tileSize: new gmaps.Size(170, 170),
                 maxZoom: 7,
                 minZoom: 7
             };
