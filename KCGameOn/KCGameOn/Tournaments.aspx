@@ -21,6 +21,7 @@
                     }
                 });
             });
+
         </script>
 </asp:Content>
 
@@ -28,78 +29,117 @@
     <%if (!String.IsNullOrEmpty(SessionVariables.UserName))
         {%>
 <form class="well form-horizontal" runat="server" id="updatepassword">
-    <h2>Welcome, <asp:Literal runat="server" ID="usernameText" EnableViewState="false" />!</h2>    
+    <h2>Welcome, <asp:Literal runat="server" ID="usernameText" EnableViewState="false" />!</h2>
+    <p>Buttons/Check boxes will get tournament registration started.  Click the game names for more information. </p>    
 
-  <!--  <div class="UImenu">
-        <div class="UImenuItem">
-            <label class="Menubody-trigger">What is KCGAMEON?</label>
-            <div class="Content">
-                <p>KCGAMEON started as a LAN (Local Area Network) party. It is basically a bunch of gamers who pack up their computers, 
-                (BYOC = Bring your own computer), set it up in a room with many other gamers, plug into a network connection, 
-                and play games until their eyes bleed. Both men and women attend LANs, some LANs include tournaments in which 
-                the winner may win a prize. Usually there is food provided. Over the last few years we have expanded our event to encompass all forms of gaming - PC, Console, Boardgames and Card games.
-                </p>
-            </div>
-        </div>
-        <div class="UImenuItem">
-            <label class="Menubody-trigger">How many events are their a year?</label>
-                <div class="Content">
-                    <p>There are SIX events each year. They are roughly 6-8 weeks apart. During the summer we tend to spread them out little more due to folks being on vacations and what not.</p>
-                </div>
-        </div> 
-    </div> -->
+<h2>PC Gaming</h2>
+
+    <div class="UImenuItem">
+        <label class="Menubody-trigger tournament-menu">League of Legends</label>
+        <div class="Content">
+            <p><div class="col-md-3">
+                            <p>Date & Time</p>
+                            <p>
+                                <h2>Oct 8, 2016 @230p</h2>
+                            </p>
+                            Please register with both battlefy and the LoL website or you will not be eligible for prizing.
+						
+                        </div>
+
+                        <div class="col-md-3">
+                            <p>Format</p>
+                            <p>
+                                <h2>5v5</h2>
+                            </p>
+                            double elimination
+                        </div>
+
+                        <div class="col-md-3">
+                            <p>Game Map & Type</p>
+                            <p>
+                                <h2>Summoners Rift</h2>
+                            </p>
+                            <p>Tournament Draft</p>
+                        </div></p>
+       </div>
+   </div>
    <div class="UImenuItem">
-        <input type="checkbox" id="SFVRegisteredCB" runat="server" /><label class="Menubody-trigger tournament-menu">SFV</label>
+        <label class="Menubody-trigger tournament-menu">Overwatch</label>
+        <div class="Content">
+            <p>game info here</p>
+        </div>
+       
+    </div>
+    <div class="UImenuItem">
+        <label class="Menubody-trigger tournament-menu">Rocket League</label>
+        <div class="Content">
+            <p>game info here</p>
+        </div>
+       
+    </div>
+    <div class="UImenuItem">
+        <label class="Menubody-trigger tournament-menu">CS:GO</label>
+        <div class="Content">
+            <p>game info here</p>
+        </div>
+       
+    </div>
+
+
+<h2>Console Gaming</h2>
+
+   <div class="UImenuItem">
+        <input type="checkbox" id="SFVRegisteredCB" runat="server" /><label class="Menubody-trigger tournament-menu">$10 SFV</label>
         <div class="Content">
             <p>game info here</p>
         </div>
        
    </div>
    <div class="UImenuItem">
-        <input type="checkbox" id="TKFRegisteredCB" runat="server" /><label class="Menubody-trigger tournament-menu">The King of Fighters XIV logo</label>
+        <input type="checkbox" id="TKFRegisteredCB" runat="server" /><label class="Menubody-trigger tournament-menu">$10 The King of Fighters XIV</label>
         <div class="Content">
             <p>game info here</p>
         </div>
        
     </div>
 	<div class="UImenuItem">
-        <input type="checkbox" id="GGXRegisteredCB" runat="server" /><label class="Menubody-trigger tournament-menu">Guilty Gear Xrd: Revelator</label>
+        <input type="checkbox" id="GGXRegisteredCB" runat="server" /><label class="Menubody-trigger tournament-menu">$10 Guilty Gear Xrd: Revelator</label>
         <div class="Content">
 			<p>game info here</p>
         </div>
     </div>
     <div class="UImenuItem">
-        <input type="checkbox" id="KIRegisteredCB" runat="server" /><label class="Menubody-trigger tournament-menu">Killer Instinct</label>
+        <input type="checkbox" id="KIRegisteredCB" runat="server" /><label class="Menubody-trigger tournament-menu">$10 Killer Instinct</label>
         <div class="Content">
 			<p>game info here</p>
         </div>
     </div>
     <div class="UImenuItem">
-        <input type="checkbox" id="SG2ERegisteredCB" runat="server" /><label class="Menubody-trigger tournament-menu">Skullgirls 2nd Encore</label>
+        <input type="checkbox" id="SG2ERegisteredCB" runat="server" /><label class="Menubody-trigger tournament-menu">$10 Skullgirls 2nd Encore</label>
         <div class="Content">
 			<p>game info here</p>
         </div>
     </div>
     <div class="UImenuItem">
-        <input type="checkbox" id="USF4RegisteredCB" runat="server" /><label class="Menubody-trigger tournament-menu">Ultra Street Fighter 4</label>
+        <input type="checkbox" id="USF4RegisteredCB" runat="server" /><label class="Menubody-trigger tournament-menu">$10 Ultra Street Fighter 4</label>
         <div class="Content">
 			<p>game info here</p>
         </div>
     </div>
     <div class="UImenuItem">
-        <input type="checkbox" id="BBCFRegisteredCB" runat="server" /><label class="Menubody-trigger tournament-menu">BlazBlue: Central Fiction</label>
+        <input type="checkbox" id="BBCFRegisteredCB" runat="server" /><label class="Menubody-trigger tournament-menu">$10 BlazBlue: Central Fiction</label>
         <div class="Content">
 			<p>game info here</p>
         </div>
     </div>
     <div class="UImenuItem">
-        <input type="checkbox" id="SF3RegisteredCB" runat="server" /><label class="Menubody-trigger tournament-menu">Street Fighter III: 3rd Strike</label>
+        <input type="checkbox" id="SF3RegisteredCB" runat="server" /><label class="Menubody-trigger tournament-menu">$5 Street Fighter III: 3rd Strike</label>
         <div class="Content">
 			<p>game info here</p>
         </div>
     </div>
     <div class="UImenuItem">
-        <input type="checkbox" id="MKXRegisteredCB" runat="server" /><label class="Menubody-trigger tournament-menu">Mortal Kombat X</label>
+        <input type="checkbox" id="MKXRegisteredCB" runat="server" /><label class="Menubody-trigger tournament-menu">$10 Mortal Kombat X</label>
         <div class="Content">
 			<p>game info here</p>
         </div>
@@ -111,7 +151,7 @@
         </div>
     </div>
     <div class="UImenuItem">
-        <input type="checkbox" id="DOA5RegisteredCB" runat="server" /><label class="Menubody-trigger tournament-menu">Dead or Alive 5 Last Round</label>
+        <input type="checkbox" id="DOA5RegisteredCB" runat="server" /><label class="Menubody-trigger tournament-menu">$10 Dead or Alive 5 Last Round</label>
         <div class="Content">
 			<p>game info here</p>
         </div>
@@ -121,6 +161,55 @@
         <div class="Content">
 			<p>game info here</p>
         </div>
+    </div>
+     <div class="UImenuItem">
+        <label class="Menubody-trigger tournament-menu">Destiny</label>
+        <div class="Content">
+            <p>game info here</p>
+        </div>
+       
+    </div>
+    <div class="UImenuItem">
+        <label class="Menubody-trigger tournament-menu">Halo5</label>
+        <div class="Content">
+            <p>game info here</p>
+        </div>
+       
+    </div>
+     <div class="UImenuItem">
+        <label class="Menubody-trigger tournament-menu">Sm4sh</label>
+        <div class="Content">
+            <p>game info here</p>
+        </div>
+       
+    </div>
+    <div class="UImenuItem">
+        <label class="Menubody-trigger tournament-menu">Smash PM</label>
+        <div class="Content">
+            <p>game info here</p>
+        </div>
+       
+    </div>
+    <div class="UImenuItem">
+        <label class="Menubody-trigger tournament-menu">Smash Melee</label>
+        <div class="Content">
+            <p>game info here</p>
+        </div>
+    </div>
+
+  <h2>Mobile/Other</h2>
+
+     <div class="UImenuItem">
+        <label class="Menubody-trigger tournament-menu">Hearthstone</label>
+        <div class="Content">
+            <p>game info here</p>
+        </div>
+    </div>
+    <div class="UImenuItem">
+        <label class="Menubody-trigger tournament-menu">Tiny Whoop (Mini Drone Racing)</label>
+        <div class="Content">
+            <p>game info here</p>
+        </div>  
     </div>
  
     <div class="control-group">
