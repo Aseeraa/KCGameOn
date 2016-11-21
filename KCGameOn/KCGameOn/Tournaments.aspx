@@ -34,50 +34,43 @@
 
 <h2>PC Gaming</h2>
 
-    <div class="UImenuItem">
+    <div class="UImenuItem clearfix">
         <label class="Menubody-trigger tournament-menu">League of Legends</label>
         <div class="Content">
-            <p><div class="col-md-3">
-                            <p>Date & Time</p>
-                            <p>
-                                <h2>Oct 8, 2016 @230p</h2>
-                            </p>
-                            Please register with both battlefy and the LoL website or you will not be eligible for prizing.
-						
-                        </div>
+            <div class="col-md-3">
+                <h2>Date & Time</h2>
+                <h3>Oct 8, 2016 @230p</h3>
+                <p>Please register with both battlefy and the LoL website or you will not be eligible for prizing.</p>
+            </div>
 
-                        <div class="col-md-3">
-                            <p>Format</p>
-                            <p>
-                                <h2>5v5</h2>
-                            </p>
-                            double elimination
-                        </div>
+            <div class="col-md-3">
+                <h2>Format</h2>
+                <h3>5v5</h3>
+                <p>double elimination</p>
+            </div>
 
-                        <div class="col-md-3">
-                            <p>Game Map & Type</p>
-                            <p>
-                                <h2>Summoners Rift</h2>
-                            </p>
-                            <p>Tournament Draft</p>
-                        </div></p>
+            <div class="col-md-3">
+                <h2>Game Map & Type</h2>
+                <h3>Summoners Rift</h3>
+                <p>Tournament Draft</p>
+            </div>
        </div>
    </div>
-   <div class="UImenuItem">
-        <label class="Menubody-trigger tournament-menu">Overwatch</label>
+   <div class="UImenuItem clearfix">
+        <input type="checkbox" id="Checkbox1" runat="server" /><label class="Menubody-trigger tournament-menu">Overwatch</label>
         <div class="Content">
             <p>game info here</p>
         </div>
        
     </div>
-    <div class="UImenuItem">
+    <div class="UImenuItem clearfix">
         <label class="Menubody-trigger tournament-menu">Rocket League</label>
         <div class="Content">
             <p>game info here</p>
         </div>
        
     </div>
-    <div class="UImenuItem">
+    <div class="UImenuItem clearfix">
         <label class="Menubody-trigger tournament-menu">CS:GO</label>
         <div class="Content">
             <p>game info here</p>
@@ -88,109 +81,109 @@
 
 <h2>Console Gaming</h2>
 
-   <div class="UImenuItem">
+   <div class="UImenuItem clearfix">
         <input type="checkbox" id="SFVRegisteredCB" runat="server" /><label class="Menubody-trigger tournament-menu">$10 SFV</label>
         <div class="Content">
             <p>game info here</p>
         </div>
        
    </div>
-   <div class="UImenuItem">
+   <div class="UImenuItem clearfix">
         <input type="checkbox" id="TKFRegisteredCB" runat="server" /><label class="Menubody-trigger tournament-menu">$10 The King of Fighters XIV</label>
         <div class="Content">
             <p>game info here</p>
         </div>
        
     </div>
-	<div class="UImenuItem">
+	<div class="UImenuItem clearfix">
         <input type="checkbox" id="GGXRegisteredCB" runat="server" /><label class="Menubody-trigger tournament-menu">$10 Guilty Gear Xrd: Revelator</label>
         <div class="Content">
 			<p>game info here</p>
         </div>
     </div>
-    <div class="UImenuItem">
+    <div class="UImenuItem clearfix">
         <input type="checkbox" id="KIRegisteredCB" runat="server" /><label class="Menubody-trigger tournament-menu">$10 Killer Instinct</label>
         <div class="Content">
 			<p>game info here</p>
         </div>
     </div>
-    <div class="UImenuItem">
+    <div class="UImenuItem clearfix">
         <input type="checkbox" id="SG2ERegisteredCB" runat="server" /><label class="Menubody-trigger tournament-menu">$10 Skullgirls 2nd Encore</label>
         <div class="Content">
 			<p>game info here</p>
         </div>
     </div>
-    <div class="UImenuItem">
+    <div class="UImenuItem clearfix">
         <input type="checkbox" id="USF4RegisteredCB" runat="server" /><label class="Menubody-trigger tournament-menu">$10 Ultra Street Fighter 4</label>
         <div class="Content">
 			<p>game info here</p>
         </div>
     </div>
-    <div class="UImenuItem">
+    <div class="UImenuItem clearfix">
         <input type="checkbox" id="BBCFRegisteredCB" runat="server" /><label class="Menubody-trigger tournament-menu">$10 BlazBlue: Central Fiction</label>
         <div class="Content">
 			<p>game info here</p>
         </div>
     </div>
-    <div class="UImenuItem">
+    <div class="UImenuItem clearfix">
         <input type="checkbox" id="SF3RegisteredCB" runat="server" /><label class="Menubody-trigger tournament-menu">$5 Street Fighter III: 3rd Strike</label>
         <div class="Content">
 			<p>game info here</p>
         </div>
     </div>
-    <div class="UImenuItem">
+    <div class="UImenuItem clearfix">
         <input type="checkbox" id="MKXRegisteredCB" runat="server" /><label class="Menubody-trigger tournament-menu">$10 Mortal Kombat X</label>
         <div class="Content">
 			<p>game info here</p>
         </div>
     </div>
-    <div class="UImenuItem">
+    <div class="UImenuItem clearfix">
         <input type="checkbox" id="MVCRegisteredCB" runat="server" /><label class="Menubody-trigger tournament-menu">Ultimate Marvel vs Capcom 3</label>
         <div class="Content">
 			<p>game info here</p>
         </div>
     </div>
-    <div class="UImenuItem">
+    <div class="UImenuItem clearfix">
         <input type="checkbox" id="DOA5RegisteredCB" runat="server" /><label class="Menubody-trigger tournament-menu">$10 Dead or Alive 5 Last Round</label>
         <div class="Content">
 			<p>game info here</p>
         </div>
     </div>
-    <div class="UImenuItem">
+    <div class="UImenuItem clearfix">
         <input type="checkbox" id="POKRegisteredCB" runat="server" /><label class="Menubody-trigger tournament-menu">Pokken</label>
         <div class="Content">
 			<p>game info here</p>
         </div>
     </div>
-     <div class="UImenuItem">
+     <div class="UImenuItem clearfix">
         <label class="Menubody-trigger tournament-menu">Destiny</label>
         <div class="Content">
             <p>game info here</p>
         </div>
        
     </div>
-    <div class="UImenuItem">
+    <div class="UImenuItem clearfix">
         <label class="Menubody-trigger tournament-menu">Halo5</label>
         <div class="Content">
             <p>game info here</p>
         </div>
        
     </div>
-     <div class="UImenuItem">
+     <div class="UImenuItem clearfix">
         <label class="Menubody-trigger tournament-menu">Sm4sh</label>
         <div class="Content">
             <p>game info here</p>
         </div>
        
     </div>
-    <div class="UImenuItem">
+    <div class="UImenuItem clearfix">
         <label class="Menubody-trigger tournament-menu">Smash PM</label>
         <div class="Content">
             <p>game info here</p>
         </div>
        
     </div>
-    <div class="UImenuItem">
+    <div class="UImenuItem clearfix">
         <label class="Menubody-trigger tournament-menu">Smash Melee</label>
         <div class="Content">
             <p>game info here</p>
@@ -199,13 +192,13 @@
 
   <h2>Mobile/Other</h2>
 
-     <div class="UImenuItem">
+     <div class="UImenuItem clearfix">
         <label class="Menubody-trigger tournament-menu">Hearthstone</label>
         <div class="Content">
             <p>game info here</p>
         </div>
     </div>
-    <div class="UImenuItem">
+    <div class="UImenuItem clearfix">
         <label class="Menubody-trigger tournament-menu">Tiny Whoop (Mini Drone Racing)</label>
         <div class="Content">
             <p>game info here</p>
