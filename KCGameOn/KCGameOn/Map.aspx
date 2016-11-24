@@ -82,40 +82,40 @@
                     <h4 class="modal-title">Success</h4>
                 </div>
                 <div class="modal-body" id="successMessage">
-                    <p>You have been successfully seated.  If you are interested in tournaments, please sign up below.</p>
+                    <p>You have been successfully seated!  If you are interested in tournaments, please sign up below.</p>
                     <table width="100%" table-layout="fixed">
                         <!-- Tournament Posters -->
                         <tr>
                             <td width="11%">
-                                <a href="https://kcgameon.com/Tournament.aspx">
+                                <a href="https://kcgameon.com/Tournaments.aspx">
                                     <img src="img/lolPoster.png" alt="League of Legends" /></a>
                             </td>
                             <td width="11%">
-                                <a href="https://kcgameon.com/Tournament.aspx">
+                                <a href="https://kcgameon.com/Tournaments.aspx">
                                     <img src="img/rlPoster.png" alt="Rocket League" /></a>
                             </td>
                             <td width="11%">
-                                <a href="https://kcgameon.com/Tournament.aspx">
+                                <a href="https://kcgameon.com/Tournaments.aspx">
                                     <img src="img/csgoPoster.jpg" alt="CS:GO" /></a>
                             </td>
                             <td width="11%">
-                                <a href="https://kcgameon.com/Tournament.aspx">
+                                <a href="https://kcgameon.com/Tournaments.aspx">
                                     <img src="img/overwatchPoster.jpg" alt="Overwatch" /></a>
                             </td>
                             <td width="11%">
-                                <a href="https://kcgameon.com/Tournament.aspx">
+                                <a href="https://kcgameon.com/Tournaments.aspx">
                                     <img src="img/halo5Poster.png" alt="Halo5" /></a>
                             </td>
                             <td width="11%">
-                                <a href="https://kcgameon.com/Tournament.aspx">
+                                <a href="https://kcgameon.com/Tournaments.aspx">
                                     <img src="img/hearthstonePoster.jpg" alt="Hearthstone" /></a>
                             </td>
                             <td width="11%">
-                                <a href="https://kcgameon.com/Tournament.aspx">
+                                <a href="https://kcgameon.com/Tournaments.aspx">
                                     <img src="img/fpvPoster.jpg" alt="FPV" /></a>
                             </td>
                             <td width="11%">
-                                <a href="https://kcgameon.com/Tournament.aspx">
+                                <a href="https://kcgameon.com/Tournaments.aspx">
                                     <img src="img/destinyPoster.jpg" alt="Destiny" /></a>
                             </td>
 

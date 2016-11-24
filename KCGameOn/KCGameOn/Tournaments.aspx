@@ -612,7 +612,7 @@
                     <div class="col-md-3">
                         <p>Date & Time</p>
                         <p>
-                            <h2>TBA</h2>
+                            <h2>April 16, 2016 @3:30p</h2>
                         </p>
                         Smash 4
                     </div>

@@ -1,9 +1,8 @@
-﻿<%@ Page Title="Venue2" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Venue2.aspx.cs" Inherits="KCGameOn.FAQ.Venue2" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Venue2.aspx.cs" Inherits="KCGameOn.FAQ.Venue2" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <style>
+     <style>
         table {
             border-collapse: collapse;
             border-spacing: 0;
@@ -14,9 +13,9 @@
             text-align: left;
         }
     </style>
-    <img src="/img/2702.png" />
+    <img src="/img/kciexpo.jpg" />
     <center>
-        <h2><b>Travel and Venue Information:</b></h2>
+        <h2><b>Travel and Venue Information: December 3rd @KCI EXPO CENTER</b></h2>
     </center>
     <form class="well form-inline">
 
@@ -27,15 +26,17 @@
                     <p>
                         <h3>Address:</h3>
                     </p>
-                    <p><a href="https://www.google.com/maps/place/KCI+Expo+Center/@39.307019,-94.6850167,17z/data=!4m5!3m4!1s0x87c05e8149321a0d:0x3307d3c3cf3af9ec!8m2!3d39.307019!4d-94.682828?hl=en">11730 NW Ambassador Dr, Kansas City, MO 64153</a></p>
-                    <p>Located in North Kansas City, MO (nearly the centerpoint of the KC Metro) - our venue is right off of I-35 and Armour Road, just north of downtown KCMO.  There is no public transportation to this area on Saturdays so you will need to drive/carpool to the event.</p>
-                    <p>Please park in any legal spot around the building that is available.  You can park temporarily outside the entrance of the building to drop off your stuff and check-in, but you must move your vehicle as soon as possible.  Security will keep the firelane clear if your car is parked there for more than 10 minutes.</p>
-                    <p>We have no special discounts or sponsorships with hotels at this time.</p>
+                    <p><a href="https://www.google.com/maps/place/KCI+Expo+Center/@39.307019,-94.6850167,17z/data=!4m5!3m4!1s0x87c05e8149321a0d:0x3307d3c3cf3af9ec!8m2!3d39.307019!4d-94.682828">11730 NW Ambassador Dr, Kansas City, MO 64153</a></p>
+                    <p>Located in Kansas City, MO (near the Kansas City airport (MCI)) - our venue is right off of I-29 and NW Mid Continent Trafficway, just east of the airport.  For informaton on public transportation to this area on Dec 3rd, you will need to check out <a href="www.ridekc.org">RideKC</a> for routes/schedules.</p>
+                    <p>We are NOT allowed to drop off next to the front door.  There will be another event going on and temp parking blocks the sidewalk that everyone uses to access the front doors. Please park in any legal spot around the building that is available.</p>
+                    <p>Please park your car, come check-in, then bring your gear inside the venue.  This will make everything a bit easier for everyone, including the Pet Expo going on at the same time.</p>
+                    <p>If there is interest in a hotel block, please let us know.</p>
                     <p>
                         <h3>Rules:</h3>
                     </p>
-                    <p>No alcohol is allowed in the venue</p>
-                    <p>No smoking of any kind (cig/vape/other) is allowed on the campus - please use your car or walk across the street (west of Walker Rd)</p>
+                    <p>No outside food or drink is allowed in the venue.  This will be provided during the event.  Alcoholic beverages are served at the hotel bar, but not allowed at the event itself.</p>
+                    <p>Dinner will be served at 6pm, snacks and drink will be available during the event as well.  We recommend you eat lunch before you show up at the event.</p>
+                    <p>No smoking inside the building - please use the designated smoking area outside the building</p>
                     <p>No derogatory, defamation, racist or otherwise offensive words will be used at KCGameOn.  You will get one warning, unless otherwise blatently over the line, then you will be asked to leave immediately.</p>
                 </th>
                 <th>
