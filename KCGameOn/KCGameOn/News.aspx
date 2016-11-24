@@ -89,12 +89,17 @@
                                                     <th class="small-12 large-7 columns first">
                                                         <table>
                                                             <tr>
-                                                                <th>
+                                                                <th>So much info, so little space - please read through.
                                                                     <h2>Announcements/Notes</h2>
-                                                                    <p><b>EVENT LOCATION CHANGE:</b> We are VERY excited to announce for this December 3rd event, we are moving our event to the <a href="https://www.google.com/maps/@39.3068801,-94.6828892,19z">KCI Expo Center!</a> Thanks to all of you folks showing up, we needed a bigger space to accomodate our Loyalty Prize Give-Away. Due to the cost of this event and new infrastructure, you will need to provide a power strip and at least 25' of ethernet for this event (if required for your setup).  We do apologize for this inconvenience.</p>
+                                                                    <p><b>EVENT LOCATION CHANGE:</b> We are VERY excited to announce for this December 3rd event, we are moving our event to the <a href="https://www.google.com/maps/@39.3068801,-94.6828892,19z">KCI Expo Center!</a> Thanks to all of you folks showing up, we needed a bigger space to accomodate our Loyalty Prize Giveaway. Due to the cost of this event and new infrastructure, <b>you will need to provide a power strip and at least 25' of ethernet for this event (if required for your setup).</b>  We do apologize for this inconvenience.</p>
+                                                                    <p><b>The <a href="https://kcgameon.com/Tournaments.aspx">tournament page</a> is now available!</b> HUGE things are happening, tournament prizing may change as we get closer to the event date.  We are still getting offers from all potential sponsors for prizing. So far we have OCZ, Steel Series and Skreyne that will be donating swag and hardware.  There might be more...follow us on <a href="https://www.twitter.com/KCGameOn">twitter</a> where I'll announce these partnerships as they are completed.</p>
+                                                                    <p><b>VENDORS:</b> We will also be adding some vendors to this event - like <a href="http://skreyne.com/">Skreyne</a> for example - If you buy at the event, it kicks a little back to KCGO to pay for infrastructure.  Use code 'KCGAMEON' for future discounts!</p>
+                                                                    <p>KCGO will also have a booth - we will be selling network cables and power strips on site, along with some other swag - just in case you forget to bring your own.</p>
+                                                                    <p><b>D&D (one shot adventures):</b> James Mayo will be hosting several one shot adventures, complete with pre-made characters, ready to go for 4-6 players each.  Depending on how quickly it plays out, we should be able to get two or three in during the event. Seek him out in the tabletop area - there will be a sign.</p>
                                                                     <p><b>LOYALTY EVENT!</b> If you have attended any of our other KCGameOn events, you are eligible for the loyalty prize give-away (8-10k in prizes).</p>
                                                                     <p>For the quick explanation of this loyalty prize give-away, check out our <a href="https://kcgameon.com/FAQ/FAQ.aspx">FAQ</a> and click the 'Loyalty Event' question.  </p>
                                                                     <p>Please visit your <a href="https://kcgameon.com/Account/Profile.aspx">PROFILE page</a> to confirm that all of your tickets are correct.  You will have until Nov 29th to get any descrepancies logged and verified.</p>  
+                                                                    <p>There will be door prizes available for ALL attendees as well. These will be given away prior to the Loyalty giveaway.</p>
                                                                     <p><b>FEATURED PLAY/BLEACHERS:</b> This event will have an area where some* tournament finals will be played in front of bleachers and projected behind the players, all while being streamed - in true eSports fashion.</p>
                                                                     <p>*tournaments to be selected and scheduled to maximize the most popular/most exciting tournaments as efficiently as possible.  This area will have PC setups provided by <b>Novastar</b> - monitor/keyboard/mouse swap outs are OK/expected.</p>
                                                                     <p><b>PC RENTAL:</b> KCGameOn is partnering with <b>Novastar</b> to bring you PC Rental - Don't want to haul in your rig/monitor?  For $25 bucks, Novastar will come in and set up your machine w/ monitor on Friday so you are ready to go at noon on December 3rd!  Check out these <a href="https://kcgameon.com/NSG_PC_SPECS.pdf">SPECS</a>.  PC's are in limited supply, if you are interested - please get with <a href="mailto:justin.wilson@novastargaming.com?Subject=PC%20rental" target="_top">Justin</a> and reserve your PC today. *NOTE* 144hz monitors are not available.</p>
@@ -134,110 +139,19 @@
                                                                     </table>
                                                                     <p></p>
                                                                     <p>Hearthstone is coming back to KCGameOn! We are going to roll out this event with a seasoned TO, Sam Benson and will be working with him going forward. To sign up or get more info, <a href="http://www.kcfiresides.com">KCfiresides</a>.</p>
-                                                                    <p>We plan to have Pokemon Sun/Moon tournaments - please stay tuned for more information on this! </p>
+                                                                    <p>We plan to have Pokemon Sun/Moon tournaments and Sm4sh is back! We also are going to run PM/Melee and many more! Sign up today!</p>
 
                                                                     <h2>Tournaments</h2>
                                                                     <p>
-                                                                        Free to play with venue fee except as marked below.  Must register on tournament pages to be eligible for prizing.  Further rules on each tournament page.<p>
-                                                                            <!-- <table>
-                                                                                <tr>
-                                                                                    <td class="menu-item float-center"><b>Counter Strike:GO</b><p>
-                                                                                        Oct 8, 2016 @1200p
-                                                                                        <br />
-                                                                                        <b>$50 entry with cash payout</b> (55/30/15% of total cash pot)
-                                                                                        <br />
-                                                                                        5v5 - groups, double elim
-                                                                                    </p>
-                                                                                    </td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td class="menu-item float-center"><b>Halo5</b><p>
-                                                                                        Oct 8, 2016 @100p
-                                                                                        <br />
-
-                                                                                        4v4 - Bo3/Bo5/Bo7, double elim
-                                                                                    </p>
-                                                                                    </td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td class="menu-item float-center"><b>League of Legends</b><p>
-                                                                                        Oct 8, 2016 @130p
-                                                                                        <br>
-                                                                                        <b>Hearts of Gold (Gold and under only)</b><br>
-                                                                                        5v5 Summoner's Rift, double elim
-                                                                                    </p>
-                                                                                    </td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td class="menu-item float-center"><b>Rocket League</b><p>
-                                                                                        Oct 8, 2016 @800p
-                                                                                        <br>
-                                                                                        3v3 - Bo3 (best of 3) random map, double elim
-                                                                                    </p>
-                                                                                    </td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td class="menu-item float-center"><b>Overwatch</b><p>
-                                                                                        Oct 8, 2016 @700p
-                                                                                        <br>
-                                                                                        6v6 - Bo3 random map, double elim
-                                                                                    </p>
-                                                                                    </td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td class="menu-item float-center"><b>Hearthstone</b><p>
-                                                                                        Oct 8, 2016 @200p
-                                                                                        <br>
-                                                                                        Bo3, Then Bo5 (final 4), double elim
-                                                                                    </p>
-                                                                                    </td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td class="menu-item float-center"><b>FPV drone racing</b><p>
-                                                                                        Oct 8, 2016 @200p
-                                                                                        <br>
-                                                                                        Standard race
-                                                                                    </p>
-                                                                                    </td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td class="menu-item float-center"><b>Destiny</b><p>
-                                                                                        Oct 8, 2016 @200p
-                                                                                        <br>
-                                                                                        Bo3, Then Bo5 (final 4), double elim
-                                                                                    </p>
-                                                                                    </td>
-                                                                                </tr>
-                                                                                 	
-                                                <tr>
-												<td class="menu-item float-center"><b>Street Fighter V</b><p>Oct 8, 2016 @300p <br><b>$10 entry with cash payout</b> (70/20/10% of total cash pot) <br>Bo3 double elim, Bo5 finals</p></td>
-                                                </tr>
-                                                <tr>
-												<td class="menu-item float-center"><b>DOTA 2</b><p>Oct 8, 2016 @100p <br>5v5 Captain's mode double elim</p></td>
-                                                </tr>
-												<tr>
-												<td class="menu-item float-center"><b>HotS</b><p>Oct 8, 2016 @330p <br>5v5 - random map double elim</p></td>
-                                                </tr> 
-                                                                                tr>
-                                                                                    <td class="menu-item float-center"><b>Magic:The Gathering</b><p>
-                                                                                        Oct 8, 2016 @1p and/or 7p
-                                                                                        <br>
-                                                                                        Booster Draft for $10 (below retail price)<br>
-                                                                                        <br>
-                                                                                        Oct 8, 2016 @1 and/or 7p
-                                                                                        <br>
-                                                                                        Sealed Deck for $20 (below retail price)
-                                                                                    </p>
-                                                                                    </td>
-                                                                                </tr>
-                                                                            </table>-->
+                                                                        Free to play with venue fee except as marked on the page.  You must register on tournament pages to be eligible for prizing.  Further rules under each tournament listing.<p>
+                                                                       <p>Some select tournaments will run the finals in our featured play area.  Please see the tournament page for this schedule.</p>   
                                                                             <table class="button expand">
                                                                                 <tr>
                                                                                     <td>
                                                                                         <table>
                                                                                             <tr>
                                                                                                 <td>
-                                                                                                    <center data-parsed=""><a href="http://www.kcgameon.com/tournament.aspx" align="center" class="text-center">Check back soon for Tournaments here</a></center>
+                                                                                                    <center data-parsed=""><a href="http://www.kcgameon.com/Tournaments.aspx" align="center" class="text-center">Tournaments page - check back often for updates</a></center>
                                                                                                 </td>
                                                                                             </tr>
                                                                                         </table>

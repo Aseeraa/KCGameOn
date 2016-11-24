@@ -10,6 +10,6 @@
 namespace KCGameOn.FAQ {
     
     
-    public partial class Travel {
+    public partial class Venue {
     }
 }

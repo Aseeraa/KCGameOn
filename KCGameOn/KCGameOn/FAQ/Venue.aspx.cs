@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace KCGameOn.FAQ
 {
-    public partial class Travel : System.Web.UI.Page
+    public partial class Venue : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

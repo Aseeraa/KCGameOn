@@ -38,7 +38,7 @@
             <p></p>
             <h3>NOON start time</h3>
             <div class="UImenuItem clearfix">
-                <a href="https://battlefy.com/kcgameon/kcgameon-72-csgo-2000/582be9c55b2cfb3f03235ab3/info"><img src="/img/join.png" / height="40" width="150"></a><label class="Menubody-trigger tournament-menu">CS:GO $50 entry, $2000 payout*</label>
+                <a href="https://battlefy.com/kcgameon/kcgameon-72-csgo-2000/582be9c55b2cfb3f03235ab3/info"><img src="/img/join.png" /></a><label class="Menubody-trigger tournament-menu">CS:GO $50 entry, $2000 payout*</label>
                 <div class="Content">
 
                     <ul>
@@ -92,11 +92,11 @@
             <p></p>
             <h3>1:30pm start time</h3>
             <div class="UImenuItem clearfix">
-                <a href="https://battlefy.com/kcgameon/league-of-legends-kcgameon-72/5833d2f825f38544065941e1/info"><img src="/img/join.png" /></a> <label class="Menubody-trigger tournament-menu">League of Legends</label>
+                <a href="https://battlefy.com/kcgameon/league-of-legends-kcgameon-72/5833d2f825f38544065941e1/info"><img src="/img/join.png" /></a><a href="http://events.na.leagueoflegends.com/events/229056"><img src="/img/registerlol.png" /></a> <label class="Menubody-trigger tournament-menu">League of Legends</label>
                 <div class="Content">
                     <ul>
                         <li>NO GOLD or lower restriction - all are eligible to play</li>
-                        <li>Winning team will get prizes provided by League of Legends.</li>
+                        <li>Winning team will get prizes TBA</li>
                         <li>Please register with battlefy or you will not be eligible for prizing. BOTH links</li>
                         <li>Please register with League of Legends or you will not be eligible for prizing. BOTH links</li>
                         <li>Team Captains of team and ALL free agents must check in 30 min prior at tournament desk</li>
@@ -236,7 +236,7 @@
             </div>
         </div>
         <div id="ProfileUpdateRightPane" style="width: 50%; float: right;">
-            <img src="/img/maxout.png" height="75" width="200" />
+            <img src="/img/maxout.png" height="65" width="200" />
             <p></p>
             <h3>1pm start time</h3>
             <div class="UImenuItem clearfix">
@@ -271,7 +271,7 @@
                 </div>
             </div>
             <div class="UImenuItem clearfix">
-                <input type="checkbox" id="POKRegisteredCB" runat="server" /><label class="Menubody-trigger tournament-menu">Pokken - $? Entry</label>
+                <input type="checkbox" id="POKRegisteredCB" runat="server" /><label class="Menubody-trigger tournament-menu">Pokken - $10 Entry</label>
                 <div class="Content">
                     <ul>
                         <li>Please register with kcgameon website or you will not be eligible for prizing.</li>
@@ -516,7 +516,7 @@
                 <div class="Content">
                     <ul>
                         <li>NO GOLD or lower restriction - all are eligible to play</li>
-                        <li>Winning team will get prizes provided by League of Legends.</li>
+                        <li>Winning team will get prizes TBA.</li>
                         <li>Please register with battlefy or you will not be eligible for prizing. BOTH links</li>
                         <li>Please register with League of Legends or you will not be eligible for prizing. BOTH links</li>
                         <li>Team Captains of team and ALL free agents must check in 30 min prior at tournament desk</li>
@@ -612,7 +612,7 @@
                     <div class="col-md-3">
                         <p>Date & Time</p>
                         <p>
-                            <h2>April 16, 2016 @3:30p</h2>
+                            <h2>TBA</h2>
                         </p>
                         Smash 4
                     </div>
@@ -656,7 +656,7 @@
             </div>
         </div>
         <div id="ProfileUpdateRightPane2" style="width: 50%; float: right;">
-            <img src="/img/maxout.png" height="75" width="200" />
+            <img src="/img/maxout.png" height="65" width="200" />
             <p></p>
             <h3>1pm start time</h3>
             <div class="UImenuItem clearfix">
@@ -691,7 +691,7 @@
                 </div>
             </div>
             <div class="UImenuItem clearfix">
-                <label class="Menubody-trigger tournament-menu">Pokken - $? Entry</label>
+                <label class="Menubody-trigger tournament-menu">Pokken - $10 Entry</label>
                 <div class="Content">
                     <ul>
                         <li>Please register with kcgameon website or you will not be eligible for prizing.</li>
