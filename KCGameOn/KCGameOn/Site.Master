@@ -142,7 +142,9 @@
                     <li><a href="/Map.aspx" class="active">Map</a></li>
 				    <li><a href="/Schedule.aspx" class ="active">Schedule</a></li>
                     <li><a href="/Tournaments.aspx" class ="active">Tournaments</a></li>
+                    <li><a href="/StageSchedule.aspx">Featured Play (Stage)/Schedule</a></li>
 			        <li><a href="/GameServers.aspx">Game Servers</a></li>
+                      
 			      </ul>
 			    </li>
 

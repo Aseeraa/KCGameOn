@@ -252,6 +252,7 @@
     <Content Include="Sponsors\Sponsors.aspx" />
     <Content Include="Sponsors\SponsorInfo.aspx" />
     <Content Include="Staff.aspx" />
+    <Content Include="StageSchedule.aspx" />
     <Content Include="Swag.aspx" />
     <Content Include="Tournament2.aspx" />
     <Content Include="Checkin.aspx" />
@@ -482,6 +483,13 @@
     </Compile>
     <Compile Include="Staff.aspx.designer.cs">
       <DependentUpon>Staff.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StageSchedule.aspx.cs">
+      <DependentUpon>StageSchedule.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StageSchedule.aspx.designer.cs">
+      <DependentUpon>StageSchedule.aspx</DependentUpon>
     </Compile>
     <Compile Include="Swag.aspx.cs">
       <DependentUpon>Swag.aspx</DependentUpon>
