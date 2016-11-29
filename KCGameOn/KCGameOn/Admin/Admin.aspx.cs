@@ -19,6 +19,12 @@ using System.Data;
 
 namespace KCGameOn.Admin
 {
+    public class entry<T1,T2,T3>
+    {
+        public T1 First { get; set; }
+        public T2 Second { get; set; }
+        public T3 Third { get; set; }
+    }
     public partial class Admin : System.Web.UI.Page
     {
         public static List<UsersObject> userlist = new List<UsersObject>();
@@ -32,6 +38,11 @@ namespace KCGameOn.Admin
         public static StringBuilder RaffleHTML;
         public static List<string> usersPaid = new List<string>();
         public static Dictionary<string, int> usersCheckedIn = new Dictionary<string, int>();
+        public static List<entry<string, int, int>> loyaltyRaffle = new List<entry<string, int, int>>();
+        public static entry<string, int, int> loyaltyWinner = new entry<string, int, int>();
+        public static string currentPrize;
+        public static string currentPrizeUrl;
+        public static string currentPrizeSponsor;
         public static UsersObject raffleWinner = new UsersObject("", "", "");
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -153,19 +164,6 @@ namespace KCGameOn.Admin
                 }
                 Reader.Close();
 
-                foreach (UsersObject user in userlist)
-                {
-                    RaffleHTML.AppendLine("<tr>");
-                    RaffleHTML.AppendLine("<td class=\"col-md-1\">").Append(Reader.GetString("username")).Append("</td>");
-                    RaffleHTML.AppendLine("<td class=\"col-md-1\">").Append(Reader.GetString("FirstName")).Append("</td>");
-                    RaffleHTML.AppendLine("<td class=\"col-md-1\">").Append(Reader.GetString("LastName")).Append("</td>");
-                    RaffleHTML.AppendLine("<td class=\"col-md-1\">").Append(Reader.GetString("eventID")).Append("</td>");
-                    RaffleHTML.AppendLine("<td class=\"col-md-1\">").Append(Reader.GetString("wondoor")).Append("</td>");
-                    RaffleHTML.AppendLine("<td class=\"col-md-1\">").Append(Reader.GetString("wonloyalty")).Append("</td>");
-                    RaffleHTML.AppendLine("</tr>");
-                    //copyall the way up to foreach after rebuilding get string for everything you want.
-                }
-
                 //populate checked in users for raffle
                 cmd = new MySqlCommand("SELECT DISTINCT * FROM EventArchive WHERE eventID = (SELECT EventID FROM kcgameon.schedule WHERE Active = 1 order by ID LIMIT 1) AND checkedin = 1 AND activeIndicator = 1", new MySqlConnection(UserInfo));
                 cmd.CommandType = System.Data.CommandType.Text;
@@ -179,7 +177,30 @@ namespace KCGameOn.Admin
                     if (Reader["userName"] != DBNull.Value)
                     {
                         if (!usersCheckedIn.ContainsKey(Reader.GetString("userName")))
-                            usersCheckedIn.Add(Reader.GetString("userName"), Reader.GetByte("wondoor"));
+                            usersCheckedIn.Add(Reader.GetString("userName"), Reader.GetByte("wonloyalty"));
+                    }
+                }
+                Reader.Close();
+
+                //populate checked in users for loyalty event
+                cmd = new MySqlCommand("SELECT DISTINCT * FROM EventArchive WHERE eventID >=69 AND checkedin = 1 AND activeIndicator = 1;", new MySqlConnection(UserInfo));
+                cmd.CommandType = System.Data.CommandType.Text;
+
+                cmd.Connection.Open();
+                Reader = cmd.ExecuteReader();
+
+
+                while (Reader.Read())
+                {
+                    if (Reader["userName"] != DBNull.Value)
+                    {
+                        //If loyaltyRaffle does NOT have the existing userName and eventID pair, add it with 
+                        if (!(loyaltyRaffle.Any(entry => entry.First.Contains(Reader.GetString("userName")) && entry.Second == Reader.GetInt32("eventID"))))
+                        {
+                            entry<string, int, int> user = new entry<string, int, int>();
+                            user.First = Reader.GetString("userName"); user.Second = Reader.GetInt32("eventID"); user.Third = Reader.GetByte("wonloyalty");
+                            loyaltyRaffle.Add(user);
+                        }
                     }
                 }
                 Reader.Close();
@@ -753,6 +774,50 @@ namespace KCGameOn.Admin
                 }
             }
             return "Ran out of users, probably...";
+        }
+
+        [WebMethod]
+        public static string loyalty(string data)
+        {
+            string winner = null;
+            if (!String.IsNullOrWhiteSpace(loyaltyWinner.First) && !data.Equals("skipSelection"))
+            {
+                loyaltyRaffle.Single(t => t.First == loyaltyWinner.First && t.Second == loyaltyWinner.Second).Third = 1;
+                if (dbHelper("UPDATE kcgameon.TABLENAME SET wonloyalty = 1 WHERE Username = \"" + loyaltyWinner.First + "\""))//actually commit the winner to DB, do we need to update prize table?
+                {
+                    if(dbHelper("UPDATE kcgameon.prizes SET ClaimedBy = \"" + loyaltyWinner.First + "\" WHERE Prize = \"" + currentPrize + "\""))
+                    return "Success";
+                }
+                else
+                    return "Fail";
+
+            }
+            else if(data.Equals("skipSelection") || String.IsNullOrWhiteSpace(data))
+            {
+                Random randNum = new Random();
+                int randomNumber;
+                //temporary user list to enable looping
+                List<entry<string,int,int>> eligibleUsers = loyaltyRaffle.Where(user => user.Third == 0).ToList();
+                while (eligibleUsers.Count > 0)
+                {
+                    randomNumber = randNum.Next(eligibleUsers.Count);
+                    loyaltyWinner =  loyaltyRaffle.ElementAt(randomNumber);
+                    winner = userlist.Find(user => user.Username.Equals(loyaltyRaffle.ElementAt(randomNumber))).First + " " + userlist.Find(user => user.Username.Equals(loyaltyRaffle.ElementAt(randomNumber))).Last;//Get user's first + last name
+
+                    if (raffleWinner != null)
+                        return winner;
+                }
+            }
+            //else (data has a value not eqaul to NULL or skipSelection) AND (loyaltyWinner is null), which shoudln't ever happen, so just hit failure
+            return "Fail";
+        }
+
+        [WebMethod]
+        public static string loadPrizePicture(string data)//TODO
+        {
+            if(dbHelper("SELECT * FROM kcgameon.prizes WHERE"))
+                
+            return null;
         }
 
         [WebMethod]
