@@ -254,6 +254,8 @@
                         .done(function (val) {
                             if (val != "Fail") {
                                 document.getElementById('loyaltyWinner').style.color = "#06db06";
+                                var winnerName = JSON.parse(val);
+                                document.getElementById('Name').innerHTML = "" + winnerName.d;
                             } else
                                 alert("User database entry not updated.  Check this guy out later.");
                         })

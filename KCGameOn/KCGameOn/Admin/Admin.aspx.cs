@@ -21,9 +21,9 @@ namespace KCGameOn.Admin
 {
     public class entry<T1,T2,T3>
     {
-        public T1 First { get; set; }
-        public T2 Second { get; set; }
-        public T3 Third { get; set; }
+        public T1 Name { get; set; }
+        public T2 Event { get; set; }
+        public T3 Won { get; set; }
     }
     public partial class Admin : System.Web.UI.Page
     {
@@ -195,10 +195,10 @@ namespace KCGameOn.Admin
                     if (Reader["userName"] != DBNull.Value)
                     {
                         //If loyaltyRaffle does NOT have the existing userName and eventID pair, add it with 
-                        if (!(loyaltyRaffle.Any(entry => entry.First.Contains(Reader.GetString("userName")) && entry.Second == Reader.GetInt32("eventID"))))
+                        if (!(loyaltyRaffle.Any(entry => entry.Name.Contains(Reader.GetString("userName")) && entry.Event == Reader.GetInt32("eventID"))))
                         {
                             entry<string, int, int> user = new entry<string, int, int>();
-                            user.First = Reader.GetString("userName"); user.Second = Reader.GetInt32("eventID"); user.Third = Reader.GetByte("wonloyalty");
+                            user.Name = Reader.GetString("userName"); user.Event = Reader.GetInt32("eventID"); user.Won = Reader.GetByte("wonloyalty");
                             loyaltyRaffle.Add(user);
                         }
                     }
@@ -757,7 +757,7 @@ namespace KCGameOn.Admin
                 int randomNumber;
                 //temporary user list to enable looping
                 List<string> eligibleUsers = usersCheckedIn.Where(user => user.Value == 0).Select(x => x.Key).ToList();
-                while (eligibleUsers.Count > 0)
+                if (eligibleUsers.Count > 0)
                 {
                     randomNumber = randNum.Next(eligibleUsers.Count);
                     raffleWinner = userlist.Find(user => user.Username.Equals(eligibleUsers.ElementAt(randomNumber)));//Get user's first + last name
@@ -778,47 +778,48 @@ namespace KCGameOn.Admin
 
         [WebMethod]
         public static string loyalty(string data)
-        {
+        {//Weird issue with recursion
             string winner = null;
-            if (!String.IsNullOrWhiteSpace(loyaltyWinner.First) && !data.Equals("skipSelection"))
+            if (!String.IsNullOrWhiteSpace(loyaltyWinner.Name) && !data.Equals("skipSelection"))
             {
-                loyaltyRaffle.Single(t => t.First == loyaltyWinner.First && t.Second == loyaltyWinner.Second).Third = 1;
-                if (dbHelper("UPDATE kcgameon.TABLENAME SET wonloyalty = 1 WHERE Username = \"" + loyaltyWinner.First + "\""))//actually commit the winner to DB, do we need to update prize table?
+                loyaltyRaffle.Single(t => t.Name == loyaltyWinner.Name && t.Event == loyaltyWinner.Event).Won = 1;
+                if (dbHelper("UPDATE kcgameon.EventArchive SET wonloyalty = 1 WHERE Username = \"" + loyaltyWinner.Name + "\" AND eventID = \"" + loyaltyWinner.Event + "\" LIMIT 1"))//actually commit the winner to DB, do we need to update prize table?
                 {
-                    if(dbHelper("UPDATE kcgameon.prizes SET ClaimedBy = \"" + loyaltyWinner.First + "\" WHERE Prize = \"" + currentPrize + "\""))
-                    return "Success";
+                    //if(dbHelper("UPDATE kcgameon.prizes SET ClaimedBy = \"" + loyaltyWinner.Name + "\" WHERE Prize = \"" + currentPrize + "\""))//TODO PRIZE
+                    return loyalty("skipSelection");//spin after committing
                 }
                 else
                     return "Fail";
 
             }
-            else if(data.Equals("skipSelection") || String.IsNullOrWhiteSpace(data))
+            if(data.Equals("skipSelection") || data.Equals("spin"))
             {
                 Random randNum = new Random();
                 int randomNumber;
                 //temporary user list to enable looping
-                List<entry<string,int,int>> eligibleUsers = loyaltyRaffle.Where(user => user.Third == 0).ToList();
-                while (eligibleUsers.Count > 0)
+                List<entry<string,int,int>> eligibleUsers = loyaltyRaffle.Where(user => user.Won == 0).ToList();
+                if (eligibleUsers.Count > 0)
                 {
                     randomNumber = randNum.Next(eligibleUsers.Count);
-                    loyaltyWinner =  loyaltyRaffle.ElementAt(randomNumber);
-                    winner = userlist.Find(user => user.Username.Equals(loyaltyRaffle.ElementAt(randomNumber))).First + " " + userlist.Find(user => user.Username.Equals(loyaltyRaffle.ElementAt(randomNumber))).Last;//Get user's first + last name
-
-                    if (raffleWinner != null)
-                        return winner;
+                    loyaltyWinner = loyaltyRaffle.ElementAt(randomNumber);
+                    winner = userlist.Find(user => user.Username.Equals(loyaltyRaffle.ElementAt(randomNumber).Name)).First;
+                    winner += " " + userlist.Find(user => user.Username.Equals(loyaltyRaffle.ElementAt(randomNumber).Name)).Last;//Get user's first + last name
+                    return winner;
                 }
+                else
+                    return "Fail";
             }
             //else (data has a value not eqaul to NULL or skipSelection) AND (loyaltyWinner is null), which shoudln't ever happen, so just hit failure
             return "Fail";
         }
 
-        [WebMethod]
-        public static string loadPrizePicture(string data)//TODO
-        {
-            if(dbHelper("SELECT * FROM kcgameon.prizes WHERE"))
+        //[WebMethod]
+        //public static string loadPrizePicture(string data)//TODO PRIZE
+        //{
+        //    if(dbHelper("SELECT * FROM kcgameon.prizes WHERE"))
                 
-            return null;
-        }
+        //    return null;
+        //}
 
         [WebMethod]
         public static void blockUnblock(string data)
