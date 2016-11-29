@@ -482,7 +482,9 @@
                 <label class="Menubody-trigger tournament-menu">Overwatch</label>
                 <div class="Content">
                     <ul>
-                        <li>Winning team will get 6 pair of Skreyne glasses</li>
+                        <li>1st place - 6x SteelSeries Keyboard - Apex M500</li>
+                        <li>2nd place - 6x SteelSeries Headset - Siberia 200</li>
+                        <li>3rd place - 6x SteelSeries Mouse - Rival 300</li>
                         <li>Please register with battlefy or you will not be eligible for prizing.</li>
                         <li>Team Captains of team and ALL free agents must check in 30 min prior at tournament desk</li>
                         <li>PC 6v6</li>
@@ -569,6 +571,20 @@
             </div>
             <hr />
             <img src="/img/pds.jpg" height="75" width="200" />
+            
+            <h3>1pm start time</h3>
+            <div class="UImenuItem clearfix">
+                <label class="Menubody-trigger tournament-menu">Sm4sh</label>
+                 <div class="Content">
+                    <ul>
+                        <li>Singles</li>
+                        <li>Open to use any Pokemon</li>
+                        <li>Come to learn and have fun!</li>
+                    </ul>
+                </div>
+
+            </div>
+            <p></p>
             <h3>2pm start time</h3>
             <div class="UImenuItem clearfix">
                 <label class="Menubody-trigger tournament-menu">Destiny</label>
@@ -603,55 +619,27 @@
                 </div>
 
             </div>
-            <h3>TBA start time</h3>
-            <div class="UImenuItem clearfix">
-                <label class="Menubody-trigger tournament-menu">Sm4sh</label>
-                <div class="Content">
-
-
-                    <div class="col-md-3">
-                        <p>Date & Time</p>
-                        <p>
-                            <h2>April 16, 2016 @3:30p</h2>
-                        </p>
-                        Smash 4
-                    </div>
-
-
-
-                </div>
-
-            </div>
+            <p></p>
+            <h3>3pm start time</h3>
             <div class="UImenuItem clearfix">
                 <label class="Menubody-trigger tournament-menu">Smash PM</label>
                 <div class="Content">
-                    <div class="col-md-3">
-                        <p>Date & Time</p>
-                        <p>
-                            <h2>April 16, 2016 @5:30p</h2>
-                        </p>
-                        PM Singles
-                    </div>
-                    <div class="col-md-3">
-                        <p>Date & Time</p>
-                        <p>
-                            <h2>April 16, 2016 @2:30p</h2>
-                        </p>
-                        PM Doubles
-                    </div>
+                    <ul>
+                        
+                        <li>Need to fill out rules</li>
+                    </ul>
                 </div>
 
             </div>
+            <p></p>
+            <h3>5pm start time</h3>
             <div class="UImenuItem clearfix">
                 <label class="Menubody-trigger tournament-menu">Smash Melee</label>
                 <div class="Content">
-                    <div class="col-md-3">
-                        <p>Date & Time</p>
-                        <p>
-                            <h2>April 16, 2016 @7:30p</h2>
-                        </p>
-                        Smash Melee
-                    </div>
+                    <ul>
+                        
+                        <li>Need to fill out rules</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -659,6 +647,26 @@
             <img src="/img/maxout.png" height="65" width="200" />
             <p></p>
             <h3>1pm start time</h3>
+            
+           
+            <div class="UImenuItem clearfix">
+                <label class="Menubody-trigger tournament-menu">Pokken - $10 Entry</label>
+                <div class="Content">
+                    <ul>
+                        <li>Please register with kcgameon website or you will not be eligible for prizing.</li>
+                        <li>ALL players must check in 30 min prior at tournament desk</li>
+                        <li>Double Elimination</li>
+                        <li>Best 2/3</li>
+                        <li>Best 3/5 (finals)</li>
+                        <li>Winner keeps same character, loser may select a new one.</li>
+                        <li>Winners Finals, Losers Finals, and Grand Finals for all tournaments will switch to best 3 out of 5 matches.</li>
+                        <li>Payout: 70/20/10% of cash pot collected at check-in.</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <p></p>
+            <h3>2pm start time</h3>
             <div class="UImenuItem clearfix">
                 <label class="Menubody-trigger tournament-menu">Street Fighter V - $10 Entry</label>
                 <div class="Content">
@@ -674,36 +682,6 @@
                     </ul>
                 </div>
 
-            </div>
-            <div class="UImenuItem clearfix">
-                <label class="Menubody-trigger tournament-menu">Skullgirls 2nd Encore - $10 Entry</label>
-                <div class="Content">
-                    <ul>
-                        <li>Please register with kcgameon website or you will not be eligible for prizing.</li>
-                        <li>ALL players must check in 30 min prior at tournament desk</li>
-                        <li>Double Elimination</li>
-                        <li>Best 3/5 the whole way</li>
-                        <li>Winner keeps same character, loser may select a new one.</li>
-                        <li>Winner is allowed to switch assists but not characters or team order.</li>
-                        <li>Winners Finals, Losers Finals, and Grand Finals for all tournaments will switch to best 3 out of 5 matches.</li>
-                        <li>Payout: 70/20/10% of cash pot collected at check-in.</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="UImenuItem clearfix">
-                <label class="Menubody-trigger tournament-menu">Pokken - $10 Entry</label>
-                <div class="Content">
-                    <ul>
-                        <li>Please register with kcgameon website or you will not be eligible for prizing.</li>
-                        <li>ALL players must check in 30 min prior at tournament desk</li>
-                        <li>Double Elimination</li>
-                        <li>Best 2/3</li>
-                        <li>Best 3/5 (finals)</li>
-                        <li>Winner keeps same character, loser may select a new one.</li>
-                        <li>Winners Finals, Losers Finals, and Grand Finals for all tournaments will switch to best 3 out of 5 matches.</li>
-                        <li>Payout: 70/20/10% of cash pot collected at check-in.</li>
-                    </ul>
-                </div>
             </div>
             <p></p>
             <h3>3pm start time</h3>
@@ -737,11 +715,12 @@
                         <li>Payout: 70/20/10% of cash pot collected at check-in.</li>
                     </ul>
                 </div>
+
+            </div>
                 <p></p>
                 <h3>4pm start time</h3>
-            </div>
             <div class="UImenuItem clearfix">
-                <label class="Menubody-trigger tournament-menu">Guilty Gear Xrd: Revelator - $10 Entry</label>
+                <label class="Menubody-trigger tournament-menu">Mortal Kombat X - $10 Entry</label>
                 <div class="Content">
                     <ul>
                         <li>Please register with kcgameon website or you will not be eligible for prizing.</li>
@@ -755,6 +734,7 @@
                     </ul>
                 </div>
             </div>
+           
             <div class="UImenuItem clearfix">
                 <label class="Menubody-trigger tournament-menu">Ultimate Marvel vs Capcom 3</label>
                 <div class="Content">
@@ -772,8 +752,23 @@
             </div>
             <p></p>
             <h3>5pm start time</h3>
+             <div class="UImenuItem clearfix">
+                <label class="Menubody-trigger tournament-menu">Guilty Gear Xrd: Revelator - $10 Entry</label>
+                <div class="Content">
+                    <ul>
+                        <li>Please register with kcgameon website or you will not be eligible for prizing.</li>
+                        <li>ALL players must check in 30 min prior at tournament desk</li>
+                        <li>Double Elimination</li>
+                        <li>Best 2/3</li>
+                        <li>Best 3/5 (finals)</li>
+                        <li>Winner keeps same character, loser may select a new one.</li>
+                        <li>Winners Finals, Losers Finals, and Grand Finals for all tournaments will switch to best 3 out of 5 matches.</li>
+                        <li>Payout: 70/20/10% of cash pot collected at check-in.</li>
+                    </ul>
+                </div>
+            </div>
             <div class="UImenuItem clearfix">
-                <label class="Menubody-trigger tournament-menu">Mortal Kombat X - $10 Entry</label>
+                <label class="Menubody-trigger tournament-menu">Ultra Street Fighter 4 - $10 Entry</label>
                 <div class="Content">
                     <ul>
                         <li>Please register with kcgameon website or you will not be eligible for prizing.</li>
@@ -805,39 +800,7 @@
                 </div>
 
             </div>
-            <div class="UImenuItem clearfix">
-                <label class="Menubody-trigger tournament-menu">Dead or Alive 5 Last Round - $10 Entry</label>
-                <div class="Content">
-                    <ul>
-                        <li>Please register with kcgameon website or you will not be eligible for prizing.</li>
-                        <li>ALL players must check in 30 min prior at tournament desk</li>
-                        <li>Double Elimination</li>
-                        <li>Best 2/3</li>
-                        <li>Best 3/5 (finals)</li>
-                        <li>Winner keeps same character, loser may select a new one.</li>
-                        <li>Winners Finals, Losers Finals, and Grand Finals for all tournaments will switch to best 3 out of 5 matches.</li>
-                        <li>Payout: 70/20/10% of cash pot collected at check-in.</li>
-                    </ul>
-                </div>
-            </div>
-            <p></p>
-            <h3>7pm start time</h3>
-            <div class="UImenuItem clearfix">
-                <label class="Menubody-trigger tournament-menu">Ultra Street Fighter 4 - $10 Entry</label>
-                <div class="Content">
-                    <ul>
-                        <li>Please register with kcgameon website or you will not be eligible for prizing.</li>
-                        <li>ALL players must check in 30 min prior at tournament desk</li>
-                        <li>Double Elimination</li>
-                        <li>Best 2/3</li>
-                        <li>Best 3/5 (finals)</li>
-                        <li>Winner keeps same character, loser may select a new one.</li>
-                        <li>Winners Finals, Losers Finals, and Grand Finals for all tournaments will switch to best 3 out of 5 matches.</li>
-                        <li>Payout: 70/20/10% of cash pot collected at check-in.</li>
-                    </ul>
-                </div>
-            </div>
-
+            
             <div class="UImenuItem clearfix">
                 <label class="Menubody-trigger tournament-menu">Street Fighter III: 3rd Strike - $5 Entry</label>
                 <div class="Content">
@@ -854,6 +817,41 @@
                     </ul>
                 </div>
             </div>
+            <p></p>
+            <h3>7pm start time</h3>
+            <div class="UImenuItem clearfix">
+                <label class="Menubody-trigger tournament-menu">Dead or Alive 5 Last Round - $10 Entry</label>
+                <div class="Content">
+                    <ul>
+                        <li>Please register with kcgameon website or you will not be eligible for prizing.</li>
+                        <li>ALL players must check in 30 min prior at tournament desk</li>
+                        <li>Double Elimination</li>
+                        <li>Best 2/3</li>
+                        <li>Best 3/5 (finals)</li>
+                        <li>Winner keeps same character, loser may select a new one.</li>
+                        <li>Winners Finals, Losers Finals, and Grand Finals for all tournaments will switch to best 3 out of 5 matches.</li>
+                        <li>Payout: 70/20/10% of cash pot collected at check-in.</li>
+                    </ul>
+                </div>
+            </div>
+             <div class="UImenuItem clearfix">
+                <label class="Menubody-trigger tournament-menu">Skullgirls 2nd Encore - $10 Entry</label>
+                <div class="Content">
+                    <ul>
+                        <li>Please register with kcgameon website or you will not be eligible for prizing.</li>
+                        <li>ALL players must check in 30 min prior at tournament desk</li>
+                        <li>Double Elimination</li>
+                        <li>Best 3/5 the whole way</li>
+                        <li>Winner keeps same character, loser may select a new one.</li>
+                        <li>Winner is allowed to switch assists but not characters or team order.</li>
+                        <li>Winners Finals, Losers Finals, and Grand Finals for all tournaments will switch to best 3 out of 5 matches.</li>
+                        <li>Payout: 70/20/10% of cash pot collected at check-in.</li>
+                    </ul>
+                </div>
+            </div>
+            
+
+            
         </div>
    
     <%} %>
