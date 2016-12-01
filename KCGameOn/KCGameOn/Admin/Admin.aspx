@@ -31,6 +31,12 @@
         div.dataTables_length label {
             color: #33b5e5;
         }
+
+        #Name {
+            color:white;
+            align-content:center;
+            font-size:large;
+        }
     </style>
     <script src="js/bootbox.js?v=1.0"></script>
     <link rel="stylesheet" type="text/css" href="css/black/bootstrap.css">
@@ -251,6 +257,52 @@
                         })
                         .fail(function () {
                             //$("#failure").modal('show');
+                            alert("We messed up.  It didn't work.  Etc.");
+                        });
+            });
+
+            /* Control the Spin button */
+            $('#Spin').click(function (event) {
+                event.preventDefault();
+                $.ajax({
+                    type: "POST",
+                    url: "Admin.aspx/loyalty",
+                    data: "{'data':'spin'}",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "text"
+                })
+                        .done(function (val) {
+                            if (val != "Fail") {
+                                document.getElementById('loyaltyWinner').style.color = "#06db06";
+                                var winnerName = JSON.parse(val);
+                                document.getElementById('Name').innerHTML = "" + winnerName.d;
+                            } else
+                                alert("User database entry not updated.  Check this guy out later.");
+                        })
+                        .fail(function () {
+                            alert("We messed up.  It didn't work.  Etc.");
+                        });
+            });
+
+            /* Control the Skip button */
+            $('#Skip').click(function (event) {
+                event.preventDefault();
+                $.ajax({
+                    type: "POST",
+                    url: "Admin.aspx/loyalty",
+                    data: "{'data':'skipSelection'}",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "text"
+                })
+                        .done(function (val) {
+                            if (val != "Fail") {
+                                document.getElementById('loyaltyWinner').style.color = "#06db06";
+                                var winnerName = JSON.parse(val);
+                                document.getElementById('Name').innerHTML = "" + winnerName.d;
+                            } else
+                                alert("We messed up.  It didn't work.  Etc.");
+                        })
+                        .fail(function () {
                             alert("We messed up.  It didn't work.  Etc.");
                         });
             });
@@ -492,7 +544,7 @@
             {%>
  
     <!-- tab setup -->
- <div class="container">   
+    <div class="container">
         <ul class="nav nav-pills">
             <li class="active">
                 <a href="#UserManagement" role="tab" data-toggle="pill">
@@ -507,6 +559,11 @@
             <li>
                 <a href="#Raffle" role="tab" data-toggle="pill">
                     <i class="fa fa-cog">Raffle</i>
+                </a>
+            </li>
+            <li>
+                <a href="#Loyalty" role="tab" data-toggle="pill">
+                    <i class="fa fa-cog">Loyalty</i>
                 </a>
             </li>
         </ul>
@@ -534,12 +591,14 @@
                 
                 <button id="addraffle" class="btn btn-default pull-left">Add raffle ticket</button>
 
+                    <button id="addraffle" class="btn btn-default pull-left">Add raffle ticket</button>
 
 
-                
-               <!-- <div class="row  col-lg-12"> -->
-                
-                <hr />
+
+
+                    <!-- <div class="row  col-lg-12"> -->
+
+                    <hr />
                     <h3>User Payment Verification:</h3>
                     <table cellpadding="0" cellspacing="0" border="0" class="bordered-table zebra-striped" id="adminusertable">
                         <thead>
@@ -554,78 +613,110 @@
                             <%= AdminUserHTML%>
                         </tbody>
                     </table>
-                
-           <!--     </div> -->
-        </div>
-    </div>
-<!--</div>
-    <!-- tab2 -->
-    <div class="tab-pane fade" id="EventManagement">
-        <div class="container">
-            <div class="column">
-                <!-- <div class="row pull-left col-lg-12"> -->
-                    <hr />
-                    <h3>Block/Unblock Payments
-                    </h3>
-                    <div class="pull-left">
-                        <button id="blockRegistration" class="btn pull-left btn-danger">Block Registration</button>
-                        <button id="unblockRegistration" class="btn pull-left btn-success">Unblock Registration</button>
-                        <button id="sendBarcodes" class="btn btn-default pull-left">Send Barcodes to All Users</button>
-                    </div>
-               <!-- </div> 
-                <div class="row pull-left col-lg-12"> -->
-                    <hr />
-                    <h3>Archive Event
-                    </h3>
-                    <div class="pull-left">
-                        <label>Unarchived Events:</label>
-                        <select id="eventDropdown" class="pull-left dropdown col-lg-12">
-                            <option selected="selected">None</option>
-                        </select>
-                        <button id="archiveEvent" class="btn pull-left btn-danger">Archive Event</button>
-                    </div>
-               <!-- </div> -->
 
+                    <!--     </div> -->
+                </div>
             </div>
-        </div>
-    </div>
+            <!--</div>
+    <!-- tab2 -->
+            <div class="tab-pane fade" id="EventManagement">
+                <div class="container">
+                    <div class="column">
+                        <!-- <div class="row pull-left col-lg-12"> -->
+                        <hr />
+                        <h3>Block/Unblock Payments
+                        </h3>
+                        <div class="pull-left">
+                            <button id="blockRegistration" class="btn pull-left btn-danger">Block Registration</button>
+                            <button id="unblockRegistration" class="btn pull-left btn-success">Unblock Registration</button>
+                            <button id="sendBarcodes" class="btn btn-default pull-left">Send Barcodes to All Users</button>
+                        </div>
+                        <!-- </div> 
+                <div class="row pull-left col-lg-12"> -->
+                        <hr />
+                        <h3>Archive Event
+                        </h3>
+                        <div class="pull-left">
+                            <label>Unarchived Events:</label>
+                            <select id="eventDropdown" class="pull-left dropdown col-lg-12">
+                                <option selected="selected">None</option>
+                            </select>
+                            <button id="archiveEvent" class="btn pull-left btn-danger">Archive Event</button>
+                        </div>
+                        <!-- </div> -->
 
-        <!-- TAB 3 -->
+                    </div>
+                </div>
+            </div>
 
-    <div class="tab-pane fade" id="Raffle">
-           <div class="container">
-            <div class="column">
-              <!--<div class="row pull-left col-lg-12">
+            <!-- TAB 3 Raffle-->
+
+            <div class="tab-pane fade" id="Raffle">
+                <div class="container">
+                    <div class="column">
+                        <!--<div class="row pull-left col-lg-12">
                     <div class="row pull-left col-lg-12">-->
                         <hr />
                         <h3>Digital Raffle Drawing</h3>
                         <div id="winner"></div>
                         <button id="randNum" class="btn btn-default pull-left">Pick a winner</button>
                         <button id="randRepick" class="btn btn-default pull-left">Repick</button>
-                    <!--</div>-->
-                  <hr />
-                  <h3>Raffle Verification:</h3>
-                    <table cellpadding="0" cellspacing="0" border="0" class="bordered-table zebra-striped" id="adminusertable">
-                        <thead>
-                            <tr>
-                                <th>UserName</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>EventID</th>
-                                <th>Wondoor</th>
-                                <th>Wonloyalty</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <%= RaffleHTML%>
-                        </tbody>
-                    </table>
-                <!--</div>-->
-              </div>
+                        <!--</div>-->
+                        <hr />
+                        <h3>Raffle Verification:</h3>
+                        <table cellpadding="0" cellspacing="0" border="0" class="bordered-table zebra-striped" id="adminusertable">
+                            <thead>
+                                <tr>
+                                    <th>UserName</th>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>EventID</th>
+                                    <th>Wondoor</th>
+                                    <th>Wonloyalty</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <%= RaffleHTML%>
+                            </tbody>
+                        </table>
+                        <!--</div>-->
+                    </div>
+                </div>
             </div>
+
+            <!-- TAB 4 Loyalty-->
+
+            <div class="tab-pane fade" id="Loyalty">
+                <div class="container">
+                    <div class="container">
+                        <div class="row-fluid">
+                            <div class="col-lg-5" id="loyaltyWinner">
+                                <form class="well form-inline">
+                                    <h3>Loyalty Prize Winner</h3>
+                                    <p id="Name"></p>
+                                    <button class="btn btn-success" id="Spin">Spin</button>
+                                    <button class="btn btn-danger" id="Skip">Skip</button>
+                                </form>
+                            </div>
+                            <div class="col-lg-5">
+                                <form class="well form-inline">
+                                    <h3>Prize up for grabs</h3>
+                                    <center>
+                                        <img id="prize"></center>
+                                    <br>
+                                    <p id="Sponsor">
+                                        Thanks to our sponsor, test Sponsor, for donating this.
+                                    </p>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
-</div>
-</div>
 
         <%}
             else
