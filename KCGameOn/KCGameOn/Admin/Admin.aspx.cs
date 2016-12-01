@@ -778,14 +778,15 @@ namespace KCGameOn.Admin
 
         [WebMethod]
         public static string loyalty(string data)
-        {//Weird issue with recursion
+        {
             string winner = null;
-            if (!String.IsNullOrWhiteSpace(loyaltyWinner.Name) && !data.Equals("skipSelection"))
+            if (!String.IsNullOrWhiteSpace(loyaltyWinner.Name) && data.Equals("spin"))
             {
                 loyaltyRaffle.Single(t => t.Name == loyaltyWinner.Name && t.Event == loyaltyWinner.Event).Won = 1;
                 if (dbHelper("UPDATE kcgameon.EventArchive SET wonloyalty = 1 WHERE Username = \"" + loyaltyWinner.Name + "\" AND eventID = \"" + loyaltyWinner.Event + "\" LIMIT 1"))//actually commit the winner to DB, do we need to update prize table?
                 {
                     //if(dbHelper("UPDATE kcgameon.prizes SET ClaimedBy = \"" + loyaltyWinner.Name + "\" WHERE Prize = \"" + currentPrize + "\""))//TODO PRIZE
+                    loyaltyWinner.Name = null;
                     return loyalty("skipSelection");//spin after committing
                 }
                 else
@@ -797,7 +798,7 @@ namespace KCGameOn.Admin
                 Random randNum = new Random();
                 int randomNumber;
                 //temporary user list to enable looping
-                List<entry<string,int,int>> eligibleUsers = loyaltyRaffle.Where(user => user.Won == 0).ToList();
+                List<entry<string,int,int>> eligibleUsers = loyaltyRaffle.Where(user => user.Won == 0 && !String.IsNullOrWhiteSpace(user.Name)).ToList();
                 if (eligibleUsers.Count > 0)
                 {
                     randomNumber = randNum.Next(eligibleUsers.Count);

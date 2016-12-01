@@ -276,10 +276,10 @@
                 })
                         .done(function (val) {
                             if (val != "Fail") {
-                                document.getElementById('loyaltyWinner').style.color = "#FFFFFF";
-                                $('#Spin').click();//re-spins
-                            }
-                            else
+                                document.getElementById('loyaltyWinner').style.color = "#06db06";
+                                var winnerName = JSON.parse(val);
+                                document.getElementById('Name').innerHTML = "" + winnerName.d;
+                            } else
                                 alert("We messed up.  It didn't work.  Etc.");
                         })
                         .fail(function () {
