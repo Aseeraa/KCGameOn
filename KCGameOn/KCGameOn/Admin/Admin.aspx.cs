@@ -19,12 +19,13 @@ using System.Data;
 
 namespace KCGameOn.Admin
 {
-    public class entry<T1,T2,T3>
+    public class entry<T1, T2, T3>
     {
         public T1 Name { get; set; }
         public T2 Event { get; set; }
         public T3 Won { get; set; }
     }
+
     public partial class Admin : System.Web.UI.Page
     {
         public static List<UsersObject> userlist = new List<UsersObject>();
@@ -44,6 +45,8 @@ namespace KCGameOn.Admin
         public static string currentPrizeUrl;
         public static string currentPrizeSponsor;
         public static UsersObject raffleWinner = new UsersObject("", "", "");
+        public static string imageSource = null;
+        public static string prizeName = null;
         protected void Page_Load(object sender, EventArgs e)
         {
             userlist = new List<UsersObject>();
@@ -52,7 +55,8 @@ namespace KCGameOn.Admin
             lastnames = new List<String>();
             names = new List<String>();
             populateEventDropdown();
-
+            imageSource = displayPrize();
+            loyaltyWinner = new entry<string, int, int>();
             String UserInfo = ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString;
             MySqlDataReader Reader = null;
             MySqlCommand cmd = null;
@@ -144,7 +148,7 @@ namespace KCGameOn.Admin
                 }
 
                 //raffle-populate user table in admin page
-                cmd = new MySqlCommand("select ea.username, ua.FirstName, ua.LastName, ea.eventID, ea.wondoor, ea.wonloyalty from EventArchive ea left join useraccount ua on ea.Username = ua.username WHERE eventID = (SELECT EventID FROM kcgameon.schedule WHERE Active = 1 order by ID LIMIT 1) and wondoor != 0", new MySqlConnection(UserInfo));
+                cmd = new MySqlCommand("select ea.Username, ua.FirstName, ua.LastName, ea.eventID, ea.wondoor, ea.wonloyalty from EventArchive ea inner join useraccount ua on ea.Username = ua.Username WHERE (eventID IN (SELECT EventID FROM kcgameon.schedule WHERE TournamentDate LIKE '%2016%' order by ID) OR eventID = '2016') and wondoor != 0 ", new MySqlConnection(UserInfo));
                 cmd.CommandType = System.Data.CommandType.Text;
 
                 cmd.Connection.Open();
@@ -154,7 +158,7 @@ namespace KCGameOn.Admin
                 while (Reader.Read())
                 {
                     RaffleHTML.AppendLine("<tr>");
-                    RaffleHTML.AppendLine("<td class=\"col-md-1\">").Append(Reader.GetString("username")).Append("</td>");
+                    RaffleHTML.AppendLine("<td class=\"col-md-1\">").Append(Reader.GetString("Username")).Append("</td>");
                     RaffleHTML.AppendLine("<td class=\"col-md-1\">").Append(Reader.GetString("FirstName")).Append("</td>");
                     RaffleHTML.AppendLine("<td class=\"col-md-1\">").Append(Reader.GetString("LastName")).Append("</td>");
                     RaffleHTML.AppendLine("<td class=\"col-md-1\">").Append(Reader.GetString("eventID")).Append("</td>");
@@ -278,14 +282,14 @@ namespace KCGameOn.Admin
                     {
                         conn.Close();
                     }
-                   
+
                 }
             }
             return false;
 
         }
 
-        
+
         public void populateEventDropdown()
         {
             String UserInfo = ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString;
@@ -310,12 +314,12 @@ namespace KCGameOn.Admin
                 {
                     eventids.Add(int.Parse(reader["eventid"].ToString()));
                 }
-                
+
             }
             catch (Exception ex)
             {
                 //return "An internal error has occurred, please contact an administrator.";
-               
+
             }
             finally
             {
@@ -326,7 +330,7 @@ namespace KCGameOn.Admin
                 reader.Close();
 
             }
-          
+
 
         }
 
@@ -767,40 +771,108 @@ namespace KCGameOn.Admin
             }
             return "Ran out of users, probably...";
         }
+        
+        public static string displayPrize()
+        {
+            string prize = "/img/";
+
+            String UserInfo = ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString;
+            MySqlCommand cmd = null;
+            MySqlConnection conn = null;
+
+            conn = new MySqlConnection(UserInfo);
+            try
+            {
+                conn.Open();
+                string command = "SELECT Picture FROM prizes WHERE ClaimedBy IS NULL ORDER BY ID LIMIT 1";
+                cmd = new MySqlCommand(command, new MySqlConnection(UserInfo));
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.CommandText = command;
+                cmd.Connection.Open();
+                prizeName = cmd.ExecuteScalar().ToString();
+                prize += prizeName;
+                conn.Close();
+            }
+            catch (Exception)
+            {
+                //return "An internal error has occurred, please contact an administrator.";
+                return "Fail";
+            }
+            finally
+            {
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+            return prize;
+        }
 
         [WebMethod]
         public static string loyalty(string data)
         {
             string winner = null;
-            if (!String.IsNullOrWhiteSpace(loyaltyWinner.Name) && data.Equals("spin"))
-            {
-                loyaltyRaffle.Single(t => t.Name == loyaltyWinner.Name && t.Event == loyaltyWinner.Event).Won = 1;
-                if (dbHelper("UPDATE kcgameon.EventArchive SET wonloyalty = 1 WHERE Username = \"" + loyaltyWinner.Name + "\" AND eventID = \"" + loyaltyWinner.Event + "\" LIMIT 1"))//actually commit the winner to DB, do we need to update prize table?
-                {
-                    //if(dbHelper("UPDATE kcgameon.prizes SET ClaimedBy = \"" + loyaltyWinner.Name + "\" WHERE Prize = \"" + currentPrize + "\""))//TODO PRIZE
-                    loyaltyWinner.Name = null;
-                    return loyalty("skipSelection");//spin after committing
-                }
-                else
-                    return "Fail";
+            Random randNum = new Random();
+            int randomNumber;
+            //temporary user list to enable looping
+            List<entry<string, int, int>> eligibleUsers = loyaltyRaffle.Where(user => user.Won == 0 && !String.IsNullOrWhiteSpace(user.Name)).ToList();
 
-            }
-            if(data.Equals("skipSelection") || data.Equals("spin"))
+            if (data.Equals("spin"))
             {
-                Random randNum = new Random();
-                int randomNumber;
-                //temporary user list to enable looping
-                List<entry<string,int,int>> eligibleUsers = loyaltyRaffle.Where(user => user.Won == 0 && !String.IsNullOrWhiteSpace(user.Name)).ToList();
+                //If the previous person wanted the prize (i.e. spin was hit again when there was already a winner), we need to update that the user won the prize in the db and then display the new image.
+                if (loyaltyWinner.Name != null)
+                {
+                    if (!dbHelper("UPDATE kcgameon.prizes SET ClaimedBy = \'" + loyaltyWinner.Name + "\' WHERE Picture = \'" + prizeName + "\'"))
+                        return "Fail";
+                    imageSource = displayPrize();
+                }
                 if (eligibleUsers.Count > 0)
                 {
                     randomNumber = randNum.Next(eligibleUsers.Count);
                     loyaltyWinner = loyaltyRaffle.ElementAt(randomNumber);
-                    winner = userlist.Find(user => user.Username.Equals(loyaltyRaffle.ElementAt(randomNumber).Name)).First;
-                    winner += " " + userlist.Find(user => user.Username.Equals(loyaltyRaffle.ElementAt(randomNumber).Name)).Last;//Get user's first + last name
-                    return winner;
+                    var test = loyaltyRaffle.ElementAt(randomNumber);
+                    winner = userlist.Find(user => user.Username.ToUpper().Equals(loyaltyRaffle.ElementAt(randomNumber).Name.ToUpper())).First;
+                    winner += " " + userlist.Find(user => user.Username.ToUpper().Equals(loyaltyRaffle.ElementAt(randomNumber).Name.ToUpper())).Last;
+
+                    if (dbHelper("UPDATE kcgameon.EventArchive SET wonloyalty = 1 WHERE Username = \'" + loyaltyWinner.Name + "\' AND eventID = \'" + loyaltyWinner.Event + "\' LIMIT 1"))//actually commit the winner to DB, do we need to update prize table?
+                    {
+                        //if(dbHelper("UPDATE kcgameon.prizes SET ClaimedBy = \"" + loyaltyWinner.Name + "\" WHERE Prize = \"" + currentPrize + "\""))//TODO PRIZE
+                        //loyaltyWinner.Name = null;
+                        //return loyalty("skipSelection");//spin after committing
+                        usersCheckedIn[loyaltyWinner.Name] = 1;
+                        loyaltyRaffle.Single(t => t.Name.ToUpper().Equals(loyaltyWinner.Name.ToUpper()) && t.Event == loyaltyWinner.Event).Won = 1;
+                        return winner;
+                    }
+                    else
+                        return "Fail";
                 }
-                else
-                    return "Fail";
+            }
+            else if (data.Equals("skipSelection"))
+            {
+                if (loyaltyWinner.Name != null)
+                {
+                    if (dbHelper("UPDATE kcgameon.EventArchive SET wonloyalty = 2 WHERE Username = \'" + loyaltyWinner.Name + "\' AND eventID = \'" + loyaltyWinner.Event + "\' LIMIT 1"))
+                    {
+                        usersCheckedIn[loyaltyWinner.Name] = 2;
+
+                        if (eligibleUsers.Count > 0)
+                        {
+                            randomNumber = randNum.Next(eligibleUsers.Count);
+                            loyaltyWinner = loyaltyRaffle.ElementAt(randomNumber);
+                            winner = userlist.Find(user => user.Username.ToUpper().Equals(loyaltyRaffle.ElementAt(randomNumber).Name.ToUpper())).First;
+                            winner += " " + userlist.Find(user => user.Username.ToUpper().Equals(loyaltyRaffle.ElementAt(randomNumber).Name.ToUpper())).Last;//Get user's first + last name
+                            if (dbHelper("UPDATE kcgameon.EventArchive SET wonloyalty = 1 WHERE Username = \'" + loyaltyWinner.Name + "\' AND eventID = \'" + loyaltyWinner.Event + "\' LIMIT 1"))
+                            {
+                                usersCheckedIn[loyaltyWinner.Name] = 1;
+                                return winner;
+                            }
+                        }
+                        else
+                            return "Fail";
+                    }
+                    else
+                        return "Fail";
+                }
             }
             //else (data has a value not eqaul to NULL or skipSelection) AND (loyaltyWinner is null), which shoudln't ever happen, so just hit failure
             return "Fail";
@@ -810,7 +882,7 @@ namespace KCGameOn.Admin
         //public static string loadPrizePicture(string data)//TODO PRIZE
         //{
         //    if(dbHelper("SELECT * FROM kcgameon.prizes WHERE"))
-                
+
         //    return null;
         //}
 

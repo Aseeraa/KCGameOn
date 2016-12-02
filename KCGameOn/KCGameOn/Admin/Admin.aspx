@@ -273,6 +273,16 @@
                 })
                         .done(function (val) {
                             if (val != "Fail") {
+
+                                //Refreshing image using javascript
+                                var img = $('#prize');
+                                var src = img.attr('src');
+                                var i = src.indexOf('?timestamp=');
+                                src = i != -1 ? src.substring(0, i) : src;
+                                var d = new Date();
+                                img.attr('src', "<%=imageSource%>?timestamp=" + d.getTime());
+                                //End refresh image
+
                                 document.getElementById('loyaltyWinner').style.color = "#06db06";
                                 var winnerName = JSON.parse(val);
                                 document.getElementById('Name').innerHTML = "" + winnerName.d;
@@ -702,7 +712,9 @@
                                 <form class="well form-inline">
                                     <h3>Prize up for grabs</h3>
                                     <center>
-                                        <img id="prize"></center>
+                                        <%--<img id="prize" src ="<%= imageSource%>"/>--%>
+
+                                    </center>
                                     <br>
                                     <p id="Sponsor">
                                         Thanks to our sponsor, test Sponsor, for donating this.
