@@ -242,7 +242,19 @@
                     contentType: "application/json; charset=utf-8",
                     dataType: "json"
                 })
-                    .done(function (data) { window.location.href = data.d; })
+                    .done(function (data) {
+                        try{                      
+                            var obj = JSON.parse(data.d);
+                            if (obj.Message === "duplicate") {
+                                $("#duplicate").modal('show');
+                            } else {
+                                window.location.href = data.d;
+                            }
+                        } catch (err)
+                        {
+                            window.location.href = data.d;
+                        }                                                
+                    })
                     .fail(function () {
                         $("#failure").modal('show');
                     });
@@ -263,6 +275,25 @@
                 </div>
                 <div class="modal-body" id="failureMessage">
                     <p>Failed to proceed to checkout, please contact an administrator or try again later.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+        <div class="modal" id="duplicate" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Checkout Already Attempted.</h4>
+                </div>
+                <div class="modal-body" id="duplicateMessage">
+                    <p>It looks like you have already tried to check out for this event. Please contact an administrator.</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
