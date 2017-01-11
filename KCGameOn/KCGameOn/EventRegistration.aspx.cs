@@ -191,6 +191,19 @@ namespace KCGameOn
                     conn = new MySqlConnection(UserInfo);
                     conn.Open();
 
+                    //This SQL command should be replaced by a function in the database.
+                    MySqlCommand existsCommand = new MySqlCommand("SELECT CASE WHEN EXISTS(SELECT userName FROM payTable WHERE eventID = (SELECT MAX(eventID) FROM payTable) AND userName = '" + user + "')THEN 'TRUE'ELSE 'FALSE'END ", conn);
+                    existsCommand.CommandType = CommandType.Text;
+
+                    //existsCommand.Parameters.AddWithValue("Username", user);
+                    bool doesUserExist = Convert.ToBoolean(existsCommand.ExecuteScalar());
+
+                    //If the user already has an entry in the pay table, return a json message saying "duplicate"
+                    if (doesUserExist)
+                    {
+                        return new JavaScriptSerializer().Serialize(new { Message = "duplicate" });
+                    }
+
                     cmd = new MySqlCommand("spValidateUsersForPayment", conn);
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("UserName", user);
@@ -219,7 +232,7 @@ namespace KCGameOn
                     conn.Close();
 
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
                     //return "An internal error has occurred, please contact an administrator.";
                     //return;
