@@ -82,11 +82,13 @@
                     <h4 class="modal-title">Success</h4>
                 </div>
                 <div class="modal-body" id="successMessage">
-                    <p>You have been successfully seated!  If you are interested in tournaments, please sign up below.</p>
+                    <p>You have been successfully seated!</p>
+                    <p>If you are interested in tournaments, please sign up <a href="https://kcgameon.com/Tournaments.aspx">here.</a></p>
                     <table width="100%" table-layout="fixed">
                         <!-- Tournament Posters -->
                         <tr>
-                            <td width="11%">
+                            <p>FYI: Left click another seat to move - Right click your current seat to unsit yourself</p>
+                           <!-- <td width="11%">
                                 <a href="https://kcgameon.com/Tournaments.aspx">
                                     <img src="img/lolPoster.png" alt="League of Legends" /></a>
                             </td>
@@ -118,8 +120,6 @@
                                 <a href="https://kcgameon.com/Tournaments.aspx">
                                     <img src="img/destinyPoster.jpg" alt="Destiny" /></a>
                             </td>
-
-                            <!--
 							<td>
                                 <a href="https://kcgameon.com/Tournament.aspx">
                                     <img src="img/sfvPoster.png" alt="Street Fighter V" height="350" width="193" /></a>
@@ -220,21 +220,21 @@
     </center>
     <div class="container">
         <ul class="nav nav-pills" role="tablist">
-            <li class="active">
+            <!--<li class="active">
                 <a href="#KCExpoFloor" id="KCExpoFloorTab" role="tab" data-toggle="tab">
                     <i class="fa fa-envelope">KCI Expo Center</i>
                 </a>
-            </li>
-            <!--<li>
+            </li> -->
+            <li class="active">
                 <a href="#FirstFloor" id="FirstFloorTab" role="tab" data-toggle="tab">
-                    <i class="fa fa-envelope">1st floor map - Tabletop/BYOC/Card games</i>
+                    <i class="fa fa-envelope">1st floor map - Maxout/COD:IW/Console/BYOC/Dinner/Snacks</i>
                 </a>
             </li>
             <li>
                 <a href="#ThirdFloor" id="ThirdFloorTab" role="tab" data-toggle="tab">
-                    <i class="fa fa-cog">3rd floor map - Console/$2000 CSGO/BYOC/Halo 5</i>
+                    <i class="fa fa-cog">3rd floor map - Tabletop/BYOC/TinyWhoop</i>
                 </a>
-            </li> -->
+            </li>
         </ul>
         <!-- Tab panes -->
         <div class="tab-content">
@@ -286,7 +286,7 @@
             <%else
                 { %>
             <%-- First Floor Map --%>
-            <!--<div class="tab-pane fade" id="FirstFloor">
+            <div class="tab-pane fade active in" id="FirstFloor">
                 <%if (String.IsNullOrEmpty(SessionVariables.UserName))
                     {%>
                 <div id="viewport">
@@ -314,44 +314,44 @@
                             viewport.updateMarkers(people, filtered);
                         }
                         google.maps.event.addDomListener(window, "load", initialize);
-                    </script>
-                </div>
-                <%} %>
-            </div>-->
-            <%-- Expo center Map --%>
-            <div class="tab-pane fade active in" id="KCExpoFloor">
-                <%if (String.IsNullOrEmpty(SessionVariables.UserName))
-                    {%>
-                <div id="viewport2">
-                    <script async2>
-
-                        var viewport2,
-                            currentUser = null
-                        function initialize2() {
-                            viewport2 = new GameOn2.SeatingMap(document.getElementById("viewport2"), seats2, currentUser);
-                            viewport2.updateMarkers(people, filtered);
-                        }
-                        google.maps.event.addDomListener(window, "load", initialize2);
-                    </script>
-                </div>
-                <%} %>
-                <%else
-                    { %>
-                <div id="viewport2">
-                    <script async2>
-                        var viewport2,
-							currentUser = "<%= SessionVariables.UserName.ToLower() %>"
-                        function initialize2() {
-                            viewport2 = new GameOn2.SeatingMap(document.getElementById("viewport2"), seats2, currentUser);
-                            viewport2.updateMarkers(people, filtered);
-                        }
-                        google.maps.event.addDomListener(window, "load", initialize2);
                     </script>
                 </div>
                 <%} %>
             </div>
+            <%-- Expo center Map --%>
+           <!--<div class="tab-pane fade active in" id="KCExpoFloor">
+                <%if (String.IsNullOrEmpty(SessionVariables.UserName))
+                    {%>
+                <div id="viewport2">
+                    <script async2>
+
+                        var viewport2,
+                            currentUser = null
+                        function initialize2() {
+                            viewport2 = new GameOn2.SeatingMap(document.getElementById("viewport2"), seats2, currentUser);
+                            viewport2.updateMarkers(people, filtered);
+                        }
+                        google.maps.event.addDomListener(window, "load", initialize2);
+                    </script>
+                </div>
+                <%} %>
+                <%else
+                    { %>
+                <div id="viewport2">
+                    <script async2>
+                        var viewport2,
+							currentUser = "<%= SessionVariables.UserName.ToLower() %>"
+                        function initialize2() {
+                            viewport2 = new GameOn2.SeatingMap(document.getElementById("viewport2"), seats2, currentUser);
+                            viewport2.updateMarkers(people, filtered);
+                        }
+                        google.maps.event.addDomListener(window, "load", initialize2);
+                    </script>
+                </div>
+                <%} %>
+            </div> -->
             <%-- Third Floor Map --%>
-            <!--<div class="tab-pane fade" id="ThirdFloor">
+            <div class="tab-pane fade" id="ThirdFloor">
                 <%if (String.IsNullOrEmpty(SessionVariables.UserName))
                     {%>
                 <div id="viewport3">
@@ -381,7 +381,7 @@
                     </script>
                 </div>
                 <%} %>
-            </div>-->
+            </div>
             <%} %>
         </div>
     </div>

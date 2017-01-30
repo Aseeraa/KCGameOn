@@ -601,10 +601,6 @@
                 
                 <button id="addraffle" class="btn btn-default pull-left">Add raffle ticket</button>
 
-                    <button id="addraffle" class="btn btn-default pull-left">Add raffle ticket</button>
-
-
-
 
                     <!-- <div class="row  col-lg-12"> -->
 

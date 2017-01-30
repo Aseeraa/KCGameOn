@@ -31,12 +31,12 @@
             <div class="UImenuItem">
                 <label class="Menubody-trigger">What is KCGAMEON?</label>
                 <div class="Content">
-                    <p>
-                        KCGAMEON started as a LAN (Local Area Network) party. It is basically a bunch of gamers who pack up their computers, 
-            (BYOC = Bring your own computer), set it up in a room with many other gamers, plug into a network connection, 
-            and play games until their eyes bleed. Both men and women attend LANs, some LANs include tournaments in which 
-            the winner may win a prize. Usually there is food provided. Over the last few years we have expanded our event to encompass all forms of gaming - PC, Console, Boardgames and Card games.
-                    </p>
+                    <p>KCGAMEON started as a LAN (Local Area Network) party in 2005. It is basically a small group of gamers who pack up their computers, 
+            (BYOC = Bring your own computer), set up their rigs by plugging into a local network, and would play games until their eyes bleed. A lot of things have changed since the days of 30 players.</p>
+                    <p>Over the last few years we have expanded our event to encompass all forms of gaming/fun - PC, console, hand-held gaming, tabletop and tinyWhoop (drones).</p>
+                    <p>Both men and women attend these events, which include tournaments for various games.  Some of these tournaments have prizes. </p>
+                    <p>We typically provide food and snacks/drinks/candy throughout the event.</p>
+                    
                 </div>
             </div>
             <div class="UImenuItem">
@@ -48,19 +48,17 @@
             <div class="UImenuItem">
                 <label class="Menubody-trigger">How much does it cost and who do I pay?</label>
                 <div class="Content">
-                    <p>
-                        There is a cost of $15 to attend each LAN.
-			<p>This website will allow you to pay via paypal (dalha_is@hotmail.com) or bitcoin when you register for the next LAN.</p>
-                        <p>If you wish to pre-pay in cash, there will be a list of persons to pay in each e-blast prior to the event.</p>
-                        <p>You also have the option to pay $20 at registration table as you walk in the door - but this does not guarantee you a seat.</p>
+                    <p>There is a cost of $20 for BYOC and $15 for everyone else at this event (including spectators).
+			        <p>This website will allow you to pay via paypal when you <a href="http://kcgameon.com/EventRegistration.aspx">register</a> for the next event.</p>
+                    <p>You also have the option to pay $25 at registration table as you walk in the door - but this does not guarantee you a seat.  The $25 dollars goes for everyone, both BYOC and all over players/spectators.</p>
                 </div>
             </div>
             <div class="UImenuItem">
-                <label class="Menubody-trigger">Why do you charge for the LAN?</label>
+                <label class="Menubody-trigger">Why do you charge for this event?</label>
                 <div class="Content">
-                    <p>We wanted to create something to give back to the gamer, so we decided the best way to do that is by giving away GREAT prizes at the end of each year.</p>
-                    <p>The majority of the money goes into those "Loyalty Event" prizes.  A portion also goes to purchasing candy/snacks and sometimes we need to buy more infrastructure - new cat5/multiplugs/etc.  We are fortunate enough to have our building expenses and dinner paid for through sponsorship!</p>
-                    <p>The Staff does not make a dime.  The LAN does not exist to make money off of the gamer - we are only here to network and above all - HAVE FUN!</p>
+                    <p>We know that in order to retain players over time, we must provide value for the player.</p>
+                    <p>A portion also goes to purchasing candy/snacks and sometimes we need to buy more infrastructure - new cat5/multiplugs/etc.  We are fortunate enough to have our building expenses and dinner paid for through sponsorship!</p>
+                    <p>The staff does not make a dime.  The event does not exist to make money off of the gamer - we are only here to network and above all - HAVE FUN!</p>
                 </div>
             </div>
             <div class="UImenuItem">
@@ -73,8 +71,7 @@
             <div class="UImenuItem">
                 <label class="Menubody-trigger">What are my odds of winning a prize?</label>
                 <div class="Content">
-                    <p>Well, it all depends on how many prizes we get from our current sponsors and how many we purchase out right, but typically it is 4-8 door prizes per event.</p>
-                    <p>Keep in mind, not all of our sponsors contribute through products. Our "Loyalty Event" is where you have the largest percent chance to get a prize.  The more events you make during the year, the more chances you have to win!</p>
+                    <p>Well, it all depends on how many prizes we get from our current sponsors and how many we purchase out right, but typically it is 10-20 door prizes per event.</p>
                 </div>
             </div>
             <div class="UImenuItem">
@@ -85,18 +82,17 @@
                 </div>
             </div>
             <div class="UImenuItem">
-                <label class="Menubody-trigger">What is this "Loyalty Event" you always talk about at each LAN?</label>
+                <label class="Menubody-trigger">What is this "Loyalty Event?"</label>
                 <div class="Content">
-                    <p>The "Loyalty Event" is always the last event of each year (usually first weekend of December).</p>
-                    <p>Each LAN, after we confirm you have paid, you will receive a blue ticket.  You write your name on the ticket and we put these tickets into a bucket for prizes.  We use this bucket for that event's door prize selection.  After the door prize drawings are over, we put all the names back into the bucket and the bucket is kept in a secret, safe place until the first weekend of December.</p>
-                    <p>With all tickets combined for the first five events of the year, we start drawing names for prizes.  We bring prizes out one at a time and typically from least value to most valuable - so you don't know what is coming next..and if your name is called, you have an option.  Say 'yes' and take the current prize or say 'no' and decline the prize.  All tickets drawn are thrown out, so if you only have two tickets and this is your second ticket drawn, you better take the prize.  We keep drawing until someone says yes to each prize.  Keep in mind - once you take a prize, you are also done - so if your name comes up again, you are no longer eligible for any other prize.  It creates some mystery and fun while encouraging everyone to come to each LAN to get five total tickets to increase your chances.</p>
-                    <p>We typically have 40+ prizes valued at $50 or more.  I expect that to continue to grow as our numbers have doubled in the last two years.  Some of our larger prizes have included various laptops, tablets, barebones computers, etc.</p>
+                    <p>The "Loyalty Event" WAS always the last event of each year (usually first weekend of December).</p>
+                    <p>We have now discontinued the loyalty event.  This is an unfortunate side effect to our growth, but we do play to still give away prizes.</p>
+                    <p>The new format will pick names and the player will have to pick up the prize.  No more sitting around for two hours - we have gaming to do! </p>
                 </div>
             </div>
             <div class="UImenuItem">
                 <label class="Menubody-trigger">What tournaments do you run at KCGAMEON?</label>
                 <div class="Content">
-                    <p>This is largely dependent on user interest.  Currently, <a href="http://www.ransomgaming.com">Ransom Gaming</a> is running a League of Legends tournament at each LAN.</p>
+                    <p>This is largely dependent on user interest.  Here is a <a href="http://kcgameon.com/Tournaments.aspx">current list</a> of all of the tournaments at this event.</p>
                     <p>If you have a favorite game and you want to get a tournament going, just let us know and we will get signups going at the registration desk.</p>
                 </div>
             </div>
@@ -107,21 +103,21 @@
                 </div>
             </div>
             <div class="UImenuItem">
-                <label class="Menubody-trigger">Can I refer a new gamer even if I haven't been to a LAN?</label>
+                <label class="Menubody-trigger">Can I refer a new gamer even if I haven't been to a KCGO event?</label>
                 <div class="Content">
-                    <p>Yes, have them contact a staff member for details and to answer any questions.</p>
+                    <p>Absolutely, please feel free to use social media to spread the good word as well.</p>
                 </div>
             </div>
             <div class="UImenuItem">
-                <label class="Menubody-trigger">Can I refer more than one gamer to the LAN?</label>
+                <label class="Menubody-trigger">Can I refer more than one gamer to the KCGO event?</label>
                 <div class="Content">
-                    <p>Yes, have them each contact a staff member.</p>
+                    <p>Absolutely, please feel free to use social media to spread the good word as well.</p>
                 </div>
             </div>
             <div class="UImenuItem">
                 <label class="Menubody-trigger">Can I pay for a friend?</label>
                 <div class="Content">
-                    <p>Yes, you sure can. Please put their name in the description on paypal. This way we know it is for.</p>
+                    <p>Yes, you sure can. When going through the <a href="http://kcgameon.com/EventRegistration.aspx">registration process</a>, just be sure to add their name to your checkout before hitting the PAY NOW button.</p>
                 </div>
             </div>
             <div class="UImenuItem">
@@ -134,13 +130,14 @@
             <div class="UImenuItem">
                 <label class="Menubody-trigger">How many people need to attend before an event is cancelled?</label>
                 <div class="Content">
-                    <p>We need a minimum of 30 person pay for the event fee. We have had to cancel events in the past, but it has been many years since we did. :)</p>
+                    <p>We need a minimum of 30 person pay for the event fee. We have had to cancel events in the past, but it has been many, many years since we did. :)</p>
+                    <p>Take a look at the <a href="http://kcgameon.com/Schedule.aspx">schedule</a> page for a long history of attendence counts.</p>
                 </div>
             </div>
             <div class="UImenuItem">
-                <label class="Menubody-trigger">How do I cancel?</label>
+                <label class="Menubody-trigger">Can I cancel?</label>
                 <div class="Content">
-                    <p>You must email a staff person with the words "cancel and your gamer-name" before the event. If you don't, your money may be forfeited. If you do contact a staff person, then your next event you attend will be paid.</p>
+                    <p>Due to the overwhelming number of players, we no longer accept cancellations.  Please be sure you can make it before you buy a ticket.</p>
                 </div>
             </div>
         </div>

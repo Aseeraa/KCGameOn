@@ -1,0 +1,46 @@
+BEGIN:VCALENDAR
+VERSION:4.0
+PRODID:-//PUC Calendar// v4.0//EN
+BEGIN:VEVENT
+DTSTART:20170225T120000
+DTEND:20170226T030000
+SUMMARY:KCGameOn
+LOCATION:2702 Rockcreek Parkway\, North Kansas City\, MO 64117
+DESCRIPTION:$20 for PC pre-paid/$15 for Spectator/Console/Tabletop/TinyWhoop pre-paid/$25 at the door\, come and go when you please. Dinner and door prizes will be provided around 6p. Sign up at www.kcgameon.com and register on our website to reserve a seat.
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20170415T120000
+DTEND:20170416T030000
+SUMMARY:KCGameOn
+LOCATION:2702 Rockcreek Parkway\, North Kansas City\, MO 64117
+DESCRIPTION:$20 for PC pre-paid/$15 for Spectator/Console/Tabletop/TinyWhoop pre-paid/$25 at the door\, come and go when you please. Dinner and door prizes will be provided around 6p. Sign up at www.kcgameon.com and register on our website to reserve a seat.
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20170610T120000
+DTEND:20170611T030000
+SUMMARY:KCGameOn
+LOCATION:2702 Rockcreek Parkway\, North Kansas City\, MO 64117
+DESCRIPTION:Please sign up at www.kcgameon.com to add yourself to the attendance list and then reserve your seat on the map. Entrance fee TBA, Dinner and door prizes will be provided around 6p.
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20170729T120000
+DTEND:20170730T030000
+SUMMARY:KCGameOn
+LOCATION:2702 Rockcreek Parkway\, North Kansas City\, MO 64117
+DESCRIPTION:$20 for PC pre-paid/$15 for Spectator/Console/Tabletop/TinyWhoop pre-paid/$25 at the door\, come and go when you please. Dinner and door prizes will be provided around 6p. Sign up at www.kcgameon.com and register on our website to reserve a seat.
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20171007T120000
+DTEND:20171008T030000
+SUMMARY:KCGameOn
+LOCATION:2702 Rockcreek Parkway\, North Kansas City\, MO 64117
+DESCRIPTION:$20 for PC pre-paid/$15 for Spectator/Console/Tabletop/TinyWhoop pre-paid/$25 at the door\, come and go when you please. Dinner and door prizes will be provided around 6p. Sign up at www.kcgameon.com and register on our website to reserve a seat.
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20171202T120000
+DTEND:20171203T030000
+SUMMARY:KCGameOn
+LOCATION:11730 NW Ambassador Dr,\ Kansas City,\ MO 64153
+DESCRIPTION:Please sign up at www.kcgameon.com to add yourself to the attendance list and then reserve your seat on the map. Entrance fee TBA, Dinner and door prizes will be provided around 6p.
+END:VEVENT
+END:VCALENDAR

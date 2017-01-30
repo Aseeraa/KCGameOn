@@ -2,42 +2,42 @@
 
 <asp:Content ID="HeadContent" ContentPlaceHolderID="HeadContent" runat="server">
     <style>
-        .tbody
-        {
+        .tbody {
             width: 100%;
             height: 235px;
             display: block;
             overflow-y: auto;
         }
 
-        .scrollable
-        {
+        .scrollable {
             width: 389px;
             height: 235px;
             width: 100%;
         }
         /* Fade transition for carousel items */
-.carousel .item {
-    left: 0 !important;
-      -webkit-transition: opacity .4s; /*adjust timing here */
-         -moz-transition: opacity .4s;
-           -o-transition: opacity .4s;
-              transition: opacity .4s;
-}
-.carousel-control {
-    background-image: none !important; /* remove background gradients on controls */
-}
-/* Fade controls with items */
-.next.left,
-.prev.right {
-    opacity: 1;
-    z-index: 1;
-}
-.active.left,
-.active.right {
-    opacity: 0;
-    z-index: 2;
-}
+        .carousel .item {
+            left: 0 !important;
+            -webkit-transition: opacity .4s; /*adjust timing here */
+            -moz-transition: opacity .4s;
+            -o-transition: opacity .4s;
+            transition: opacity .4s;
+        }
+
+        .carousel-control {
+            background-image: none !important; /* remove background gradients on controls */
+        }
+        /* Fade controls with items */
+        .next.left,
+        .prev.right {
+            opacity: 1;
+            z-index: 1;
+        }
+
+        .active.left,
+        .active.right {
+            opacity: 0;
+            z-index: 2;
+        }
     </style>
     <script>
         function myFunction() {
@@ -66,48 +66,50 @@
                 <!-- Carousel items -->
                 <div class="carousel-inner">
                     <div class="item active">
-                        <img src="/img/gameon2016.png" style="width: 100%" />
+                        <img src="/img/gameon2017.png" style="width: 100%" />
                         <div class="carousel-caption">
                             <h4>KCGameOn</h4>
-                            <p>KCGameOn 2016 poster</p>
+                            <p>KCGameOn 2017 poster</p>
+                            <p>Feb 25, Apr 15, Jun 10, July 29, Oct 7, Dec 2</p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="/img/maxout2017mockup.jpg" style="width: 100%" />
+                        <div class="carousel-caption">
+
+                            <p>Partnering with Maxout to bring you fighting games at KCGameOn!</p>
                         </div>
                     </div>
                     <div class="item">
                         <img src="/img/csgo.png" style="width: 100%" />
                         <div class="carousel-caption">
-                            
+
                             <p>Now hosting $2000 CSGO tournaments</p>
                         </div>
                     </div>
-                    
+
                     <div class="item">
                         <img src="/img/lol.png" style="width: 100%" />
                         <div class="carousel-caption">
-                            
+
                             <p>Our most popular game</p>
                         </div>
                     </div>
-					<div class="item">
+                    <div class="item">
                         <img src="/img/rocket-league.png" style="width: 100%" />
                         <div class="carousel-caption">
-                            
-                            <p>3v3 tournament and a ton of fun</p>
-						</div>
-					</div>
-					<div class="item">
+
+                            <p>3v3 tournament skills</p>
+                        </div>
+                    </div>
+                    <div class="item">
                         <img src="/img/overwatch.png" style="width: 100%" />
                         <div class="carousel-caption">
-                            
+
                             <p>The new hype at KCGameOn</p>
-						</div>
-					</div>
-					<div class="item">
-                        <img src="/img/lfd2.png" style="width: 100%" />
-                        <div class="carousel-caption">
-                            
-                            <p>A great 4v4 game for everyone to enjoy</p>
-						</div>
-					</div>
+                        </div>
+                    </div>
+                    
                     <div class="item">
                         <img src="/img/mtg.png" style="width: 100%" />
                         <div class="carousel-caption">
@@ -115,18 +117,18 @@
                             <p>Play Standard, Legacy, Commander and other various multiplayer formats!</p>
                         </div>
                     </div>
-					<div class="item">
+                    <div class="item">
                         <img src="/img/hearthstone.png" style="width: 100%" />
                         <div class="carousel-caption">
-                            
+
                             <p>Pull up a chair by the hearth!</p>
                         </div>
                     </div>
                     <div class="item">
-                        <img src="/img/diablo-3.png" style="width: 100%" />
+                        <img src="/img/FPV.jpg" style="width: 100%" />
                         <div class="carousel-caption">
-                            
-                            <p>Hack n' Slash your way to better loot!</p>
+
+                            <p>Tiny Whoop - Come fly with us!</p>
                         </div>
                     </div>
                     <div class="item">
@@ -150,10 +152,10 @@
                 <table class="tbody" id="table_feed" runat="server">
                 </table>
             </div>-->
-			
+
             <%--<a data-toggle="modal" href="#myModal" >
 		<img src="/img/GameOn.jpg"style="width:389px;height:235px;width:100%"/></a>--%>
-<%--            <div class="modal hide" id="myModal">
+            <%--            <div class="modal hide" id="myModal">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">×</button>
                     <h3>GameOn Events</h3>
@@ -163,7 +165,7 @@
 
 
             <form class="well form-inline">
-                <h3>Join us on December 3rd for our Loyalty event!</h3>
+                <center><h3>Featured Charity for Feb 25th:</h3>
                 
                <!--  <div class="control-group">
                     <div class="controls">
@@ -177,59 +179,58 @@
 				Please bear with us while we set up for the next event. <br /> -->
                 <p style="text-align: justify"> 
 
-                    <center><img src="/img/kciexpologo.png" /></center>
+                    <center><a href="FeaturedCharity.aspx"><img src="/img/PTBBC.png" /></a></center>
                     <br />
-                    <p>Because of the HUGE growth this year, we are taking our event to the <a href="http://www.kciexpo.com/">KCI Expo Center!</a> We are excited to provide this enormous space for this unique event, hosting all gaming genres in KC.</p>
+                    <p>For more information click the pic above for more info!</p></center>
 
             <!--        <b style="color: #0099cc;">Who we are:</b> Gamers putting on a gaming event for YOU and your friends.  PC, Console, Board Games and Card games welcome!
             <br />
                     <b style="color: #0099cc;">Where:</b> 2702 Rockcreek Parkway, North Kansas City, MO 64117.
             <br />
-                    <b style="color: #0099cc;">Cost:</b> $15/pre-pay or $20@door <!-- You can pay using paypal via <a href="https://kcgameon.com/EventRegistration.aspx">registration</a> page, bitcoin OR by cash.-->
+                    <b style="color: #0099cc;">Cost:</b> $15/pre-pay or $20@door <!-- You can pay using paypal via <a href="https://kcgameon.com/EventRegistration.aspx">registration</a> page, bitcoin OR by cash.
 			<%--<br />
-					<b style="color: #0099cc;">For more poster submission information, click <a href="https://kcgameon.com/Postersubmission.aspx">HERE.</a>--%>
-            </form>
-            <iframe src="https://discordapp.com/widget?id=143552833805877248&theme=dark" width="470" height="270" allowtransparency="true" frameborder="0"></iframe>
+					<b style="color: #0099cc;">For more poster submission information, click <a href="https://kcgameon.com/Postersubmission.aspx">HERE.</a>--%> -->
+            </form> 
+            <iframe src="https://discordapp.com/widget?id=143552833805877248&theme=dark" width="470" height="150" allowtransparency="true" frameborder="0"></iframe>
         </div>
     </div>
 
     <div class="row-fluid">
         <div class="span4">
             <center>
-                
-                    <a href="http://www.collectorscache.com">
-					<img src="img/collectorscache.png" /></a><p>
-					<!-- <img src="img/shinra.png" /><p>
+
+                <a href="http://www.collectorscache.com">
+                    <img src="img/collectorscache.png" /></a><p>
+                        <!-- <img src="img/shinra.png" /><p>
 		<p><a href="http://www.cerner.com"> -->
                         <!-- <img src="img/cernerlogo2.png" /></a></p> -->
-                <br />
-                <br />
+                        <br />
+                        <br />
             </center>
         </div>
 
         <div class="span4">
             <p>
-		<center>
+                <center>
                     <a href="http://www.ransomgaming.com">
                         <img src="img/ransomgaminglogo.png" /></a>
                     <br />
                     <br />
                 </center>
                 <center>
-		<a href="http://www.ibm.com">
+                    <a href="http://www.ibm.com">
                         <img src="img/IBM_logo_transparent.png" /></a>
-                    
+
                     <br />
                     <br />
                 </center>
-                
         </div>
 
         <div class="span4">
             <center>
                 <!-- <a href="http://www.soprogaming.com">
                     <img src="img/soprogaming-2.png" /></a> -->
-					<a href="http://www.kcgameon.com/howtohelp.aspx">
+                <a href="http://www.kcgameon.com/howtohelp.aspx">
                     <img src="img/sponsor.jpg" /></a>
                 <br />
                 <br />

@@ -42,6 +42,13 @@
             margin-bottom: 20px;
         }
 
+        #BYOCregistrationTable {
+            width: auto;
+            min-width: 800px;
+            max-width: 800px;
+            margin-bottom: 20px;
+        }
+
         .total {
             margin: 5px;
             height: auto;
@@ -63,6 +70,7 @@
     </style>
     <script>
         var amount = 15.00;
+        var byocamount = 20.00;
         var checkIn = <%= checkInDay%>
         function calculateSum() {
             var sum = 0;
@@ -75,14 +83,14 @@
             //    }
             //});
 
-            $('.fullyear').find('input[type="checkbox"]').each(function () {
-                if ($(this).prop('checked') == true) {
-                    sum += amount + 15 * (remainingEvents - 1);
-                }
-                else {
-                    sum += amount;
-                }
-            });
+            //$('.fullyear').find('input[type="checkbox"]').each(function () {
+            //    if ($(this).prop('checked') == true) {
+            //        sum += amount + 15 * (remainingEvents - 1);
+            //    }
+            //    else {
+            //        sum += amount;
+            //    }
+            //});
             $('.extralife').find('input[type="checkbox"]').each(function () {
                 if ($(this).prop('checked') == true) {
                     sum += 10;
@@ -173,6 +181,25 @@
 
             });
 
+            $('#delete_rowBYOC').click(function (event) {
+                event.preventDefault();
+                deleterow('BYOCregistrationTable');
+                if ($('#BYOCregistrationTable tr').size() > 1) {
+                    $('#pay').removeAttr('disabled');
+                }
+                else {
+                    $('#pay').attr('disabled', 'disabled');
+                }
+                if ($('#BYOCregistrationTable tr').size() == 1) {
+                    $('#delete_rowBYOC').attr('disabled', 'disabled');
+                    $('#result').text("");
+                }
+                else {
+                    $('#delete_rowBYOC').removeAttr('disabled');
+                }
+
+            });
+
             $('#add').click(function (event) {
                 event.preventDefault();
                 var user = $('#userDropdown').val();
@@ -181,7 +208,7 @@
                 var first = split[0];
                 var last = split[1];
                 if (checkIn == true) {
-                    amount = 20.00
+                    amount = 25.00
                 }
                 if (user != "None" && name != "None") {
                     if ($('#registrationTable tr > td:contains(' + user + ') + td:contains(' + first + ') + td:contains(' + last + ')').length) {
@@ -190,7 +217,7 @@
                         $("#userInTable").modal('show');
                     }
                     else {
-                        var newRow = $('<tr><td>' + user + '</td><td>' + first + '</td><td>' + last + '</td><td class = "price">' + amount.toFixed(2) + '</td><td class="fullyear">' + '<input type="checkbox" value="checked" onclick="calculateSum();"></td>' + '</tr>');
+                        var newRow = $('<tr><td>' + user + '</td><td>' + first + '</td><td>' + last + '</td><td class = "price">' + amount.toFixed(2) + '</td><td class="extralife">' + '<input type="checkbox" value="checked" onclick="calculateSum();"></td>' + '</tr>');
                         $('#registrationTable').append(newRow);
                         calculateSum();
                     }
@@ -209,6 +236,45 @@
                     $('#delete_row').removeAttr('disabled');
                 }
             });
+
+            $('#addBYOC').click(function (event) {
+                event.preventDefault();
+                var user = $('#userDropdown').val();
+                var name = $('#nameDropdown').val();
+                var split = name.split(" ");
+                var first = split[0];
+                var last = split[1];
+                if (checkIn == true) {
+                    byocamount = 25.00
+                }
+                if (user != "None" && name != "None") {
+                    if ($('#BYOCregistrationTable tr > td:contains(' + user + ') + td:contains(' + first + ') + td:contains(' + last + ')').length) {
+                        //bootbox.alert("User is already in the table.", function () {
+                        //});
+                        $("#userInTable").modal('show');
+                    }
+                    else {
+                        var newRow = $('<tr><td>' + user + '</td><td>' + first + '</td><td>' + last + '</td><td class = "price">' + byocamount.toFixed(2) + '</td><td class="extralife">' + '<input type="checkbox" value="checked" onclick="calculateSum();"></td>' + '</tr>');
+                        $('#BYOCregistrationTable').append(newRow);
+                        calculateSum();
+                    }
+                }
+                if ($('#BYOCregistrationTable tr').size() > 1) {
+                    $('#pay').removeAttr('disabled');
+                }
+                else {
+                    $('#pay').attr('disabled', 'disabled');
+                }
+                if ($('#BYOCregistrationTable tr').size() == 1) {
+                    $('#delete_rowBYOC').attr('disabled', 'disabled');
+                    $('#result').text("");
+                }
+                else {
+                    $('#delete_rowBYOC').removeAttr('disabled');
+                }
+            });
+
+
             $(".Content").hide();
             //$(calculateSum);
 
@@ -217,18 +283,26 @@
                 var payments = []
                 var fullYear = false;
                 $('#registrationTable tbody tr').each(function () {
+                    //$(this).find('input[type="checkbox"]').each(function () {
+                    //    if ($(this).prop('checked') == true) {
+                    //
+                    //        fullYear = true;
+                    //    }
+                    //    else {
+                    //        fullYear = false;
+                    //    }
+                    //});
                     $(this).find('input[type="checkbox"]').each(function () {
                         if ($(this).prop('checked') == true) {
 
-                            fullYear = true;
+                            extraLife = "10.00";
                         }
                         else {
-                            fullYear = false;
+                            extraLife = "0.00";
                         }
                     });
-                    extraLife = "0.00";
                     var tdArray = []
-                    tdArray.push(fullYear);
+                    //tdArray.push(fullYear);
                     $(this).find('td').each(function () {
                         tdArray.push($(this).text());
                     })
@@ -296,69 +370,109 @@
     <%if (!SessionVariables.registrationBlocked)
         {%>
     <div id="field-body">
-        
-        <h4 >KCGameOn 72 will be held at the KCI Expo Center - featuring tournament finals and the loyalty prize giveaway! All persons are required to purchase a ticket to enter the venue.</h4>
-        <h4>Please make sure you check yourself in, then get your gear.  KCI Expo has a 'no unloading' policy at the door, so a dolly is recommended.</h4>
-        
-                <br />
-        <div id="fields" class="pull-left">
-            <h3>Start Here:</h3>
-            <label>Username:</label>
-            <select id="userDropdown" class="dropdown">
-                <option selected="selected">None</option>
-            </select>
-            <label>Name:</label>
-            <select id="nameDropdown" class="dropdown">
-                <option selected="selected">None</option>
-            </select>
-            <br />
-            <button id="add" class="btn btn-default pull-right">Add User</button>
-        </div>
-        <form id="Form1" runat="server">
-            <table id="registrationTable" class="table bordered-table zebra-striped pull-right">
-                <thead>
-                    <tr>
-                        <th>Username</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Cost per event</th>
-                        <th>Remaining Year</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-            <div class="total pull-right">
-                <div>
-                    <h3 class="pull-right" id="result"></h3>
-                </div>
-                <button id="delete_row"  disabled="disabled" class="pull-left btn btn-default">Delete User</button>
 
-                <button id="pay" disabled="disabled" class="btn pull-right btn-inverse">Pay Now</button>
+        <h4>KCGameOn 73 will be held at the KCI Expo Center - featuring tournament finals and the loyalty prize giveaway! All persons are required to purchase a ticket to enter the venue.</h4>
+        <br />
+        <div class="row">
+            <div class="col-sm-4">
+                <div id="fields" class="pull-left">
+                    <h4>Use these dropdowns to register yourself and friends for the next event:</h4>
+                    <label>Username:</label>
+                    <select id="userDropdown" class="dropdown">
+                        <option selected="selected">None</option>
+                    </select>
+                    <label>Name:</label>
+                    <select id="nameDropdown" class="dropdown">
+                        <option selected="selected">None</option>
+                    </select>
+                    <br />
+                    <!--<button id="add" class="btn btn-default pull-right">Add User</button>-->
+                    <br />
+                    <h3>NOTE: It auto adds the person logged in to pay, when you are ready to start the payment process, click "PAY NOW."</h3>
+                    <h3>After you pay, click the link back to the map and take a seat <b>immediately.</b></h3>
+                    <br />
+                    <h5>If you pay for more than one ticket, you will need to have that person log in and sit in their seat as well.</h5>
+                    <h5>An email with the easy check-in barcode will be sent to your email after you take a seat.</h5>
+                </div>
+
             </div>
-            <div id="bottomtext" class="pull-right">
-                <br />
-                <h3>NOTE: It auto adds the person logged in to pay, when you are ready to start the payment process, click "PAY NOW."</h3>
-                <h3>After you pay, click the link back to the map and take a seat <b>immediately.</b></h3>
-                <br />
-                <h5>If you pay for more than one ticket, you will need to have that person log in and sit in their seat as well.</h5>
-                <h5>An email with the easy check-in barcode will be sent to your email after you take a seat.</h5>
+
+            <div class="col-sm-8">
+                <form id="Form1" runat="server">
+
+                    <div class="pull-right">
+                        <h3>Console/Spectator/TableTop/TinyWhoop ticket</h3>
+                        <table id="registrationTable" class="table bordered-table zebra-striped pull-right">
+                            <thead>
+                                <tr>
+                                    <th>Username</th>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Cost of event</th>
+                                    <th>Play to Beat Brain Cancer Donation</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+
+                        </table>
+                    </div>
+                    <div class="pull-right">
+                        <button id="add" class="btn btn-default pull-left">Add User</button>
+                        <button id="delete_row" disabled="disabled" class="pull-right btn btn-default">Delete User</button>
+                    </div>
+
+                    <br />
+                    <br />
+                    <div class="pull-right">
+                        <h3>BYOC ticket</h3>
+                        <table id="BYOCregistrationTable" class="table bordered-table zebra-striped pull-right">
+                            <thead>
+                                <tr>
+                                    <th>Username</th>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Cost of event</th>
+                                    <th>Play to Beat Brain Cancer Donation</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+
+                        </table>
+                    </div>
+                    <div class="pull-right">
+                        <button id="addBYOC" class="btn btn-default pull-left">Add User</button>
+                        <button id="delete_rowBYOC" disabled="disabled" class="pull-left btn btn-default">Delete User</button>
+                    </div>
+
+
+                    <div class="total pull-right">
+                        <div>
+                            <h3 class="pull-right" id="result"></h3>
+                        </div>
+
+                        <button id="pay" disabled="disabled" class="btn pull-right btn-inverse">Pay Now</button>
+                    </div>
+
+
+                </form>
+
             </div>
-        </form>
-    </div>
-    
-    <%} %>
-    <%else
-        { %>
-		<div align=center>
-			<h2>There are currently no events available for registration, please check back closer to the event date or when the announcement email has been sent.</h2>
-			<br />
-		</div>
+        </div>
+
         <%} %>
-    <% }
-        else
-        { %>
-    
-    <h2>Please <a href="/Account/Login.aspx">login</a> to start the registration process.</h2>
-    <% } %>
+        <%else
+            { %>
+        <div align="center">
+            <h2>There are currently no events available for registration, please check back closer to the event date or when the announcement email has been sent.</h2>
+            <br />
+        </div>
+        <%} %>
+        <% }
+            else
+            { %>
+
+        <h2>Please <a href="/Account/Login.aspx">login</a> to start the registration process.</h2>
+        <% } %>
 </asp:Content>

@@ -90,7 +90,7 @@
 <div class="row-fluid">
 	<div class="span9"><br/>
 		<img src="/img/logo.png" height="43px" width="295px" style="float:left;"/>
-        <h3 style="float:left; padding:15px 0 0 15px">Next event:<b style="color: #0099cc;"> Dec 3rd, registration is open!</b></h3>
+        <h3 style="float:left; padding:15px 0 0 15px">Next event:<b style="color: #0099cc;"> Feb 25th, registration will open soon!</b></h3>
         <!-- <a href="/Checkin.aspx">Check-in</a> -->
 	</div>
 	<div class="span3"><br/>
@@ -139,11 +139,13 @@
                   <li class="dropdown">
 			      <a data-toggle="dropdown" class="dropdown-toggle" href="#">Event<b class="caret"></b></a>
 			      <ul class="dropdown-menu">
+                    <li><a href="/FeaturedCharity.aspx" class ="active">Featured Charity</a></li>
                     <li><a href="/Map.aspx" class="active">Map</a></li>
 				    <li><a href="/Schedule.aspx" class ="active">Schedule</a></li>
                     <li><a href="/Tournaments.aspx" class ="active">Tournaments</a></li>
-                    <li><a href="/StageSchedule.aspx">Featured Play (Stage)/Schedule</a></li>
-			        <li><a href="/GameServers.aspx">Game Servers</a></li>
+                    <!--<li><a href="/StageSchedule.aspx">Featured Play (Stage)/Schedule</a></li>
+			        <li><a href="/GameServers.aspx">Game Servers</a></li>-->
+
                       
 			      </ul>
 			    </li>
@@ -179,7 +181,7 @@
 				    <li><a href="/FAQ/FAQ.aspx">General</a></li>
 				    <li><a href="/FAQ/WhatToBring.aspx">What To Bring</a></li>
                     <li><a href="/FAQ/GetStarted.aspx">Get Started</a></li>
-                    <li><a href="/FAQ/Venue2.aspx">Travel/Venue</a></li>
+                    <li><a href="/FAQ/Venue.aspx">Travel/Venue</a></li>
 			      </ul>
 			    </li>
                 <%if (SessionVariables.UserAdmin == 1)

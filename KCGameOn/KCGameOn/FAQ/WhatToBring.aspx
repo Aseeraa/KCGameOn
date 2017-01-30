@@ -59,7 +59,7 @@
         <label class="Menubody-trigger">Console System Check</label> 
         <div class="Content">
         <p>
-			<p>KCGAMEON tries to provide up to 8 projectors and speakers for use at the LAN.  These are reserved when you register for the LAN - first come, first serve.<br/></p>
+			<p>KCGAMEON tries to provide some projectors and speakers for use at the KCGO events.  These are reserved when you sit on the map - first come, first serve.<br/></p>
 			Your console of choice<br/>
 			Power cord<br/>
 			Video cord(s) (usually hdmi or component, but I recommend you bring composite as well, if your console supports that)<br/>
@@ -97,6 +97,7 @@
 		20-sided dice<br />
 		Counters<br />
 		Labels for any binders/boxes<br />
+        Pen/Pad of paper for keep track of scores<br />
 		        
         </p>
         </div>

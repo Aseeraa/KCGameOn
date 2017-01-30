@@ -174,7 +174,7 @@
                 </tbody>
             </table>
             <br />
-            <h3>Raffle Table Explaination:</h3>
+           <%-- <h3>Raffle Table Explaination:</h3>
             <p>The first two events of the year used manual tickets, we had to import those tickets manually without an eventID, thus we used 2016 to denote both the Feb/April 2016 events.</p>
             <p>WonDoor = 1 means you won a door prize at that event, 0 = not a winner.  Wonloyalty is the data point that will change per ticket to show how many times you passed on a prize and which ticket was used to claim a prize.</p>
             <p>NOTE: Loyalty event tickets are not credited to your account until you check-in physically at the respective event.  You should have only 1 event ticket per event attended.</p>
@@ -186,7 +186,7 @@
                 <li>eventID 70 = July 30, 2016 event</li>
                 <li>eventID 71 = Oct 8, 2016 event</li>
                 <li>eventID 72 = Dec 3, 2016 event</li>
-            </ul>
+            </ul>--%>
         </div>
         <div class="control-group">
             <asp:Literal runat="server" ID="ProfileUpdateMessage" EnableViewState="false" />
