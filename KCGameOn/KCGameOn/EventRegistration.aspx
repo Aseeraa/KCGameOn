@@ -70,9 +70,18 @@
     </style>
     <script>
         var amount = 15.00;
+        var byocamount = 15.00;
         var checkIn = <%= checkInDay%>;
-        if (checkIn == true) {
+        if (checkIn) {
             amount = 25.00;
+        }
+        if (checkIn)
+        {
+            byocamount = amount;
+        }
+        else
+        {
+            byocamount = amount + 5;
         }
         function calculateSum() {
             var sum = 0;
@@ -265,7 +274,7 @@
                         $("#userInTable").modal('show');
                     }
                     else {
-                        var newRow = $('<tr><td>' + user + '</td><td>' + first + '</td><td>' + last + '</td><td class = "price">' + amount.toFixed(2) + '</td><td class="extralife">' + '<input type="checkbox" value="checked" onclick="calculateSum();"></td>' + '</tr>');
+                        var newRow = $('<tr><td>' + user + '</td><td>' + first + '</td><td>' + last + '</td><td class = "price">' + byocamount.toFixed(2) + '</td><td class="extralife">' + '<input type="checkbox" value="checked" onclick="calculateSum();"></td>' + '</tr>');
                         $('#BYOCregistrationTable').append(newRow);
                         calculateSum();
                     }
