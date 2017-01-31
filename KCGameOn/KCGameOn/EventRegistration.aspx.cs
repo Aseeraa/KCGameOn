@@ -251,15 +251,18 @@ namespace KCGameOn
                     for (int i = 0; i < mystring.Count; i++)
                     {
                         String fullYear;
+                        String BYOC;
                         //if (mystring.ElementAt(i).ElementAt(0).ToString().Equals("True"))
                         //    fullYear = "Y";
                         //else
                         //    fullYear = "N";
 
+                        // Change this to new column/variable for BYOC
                         if (Convert.ToBoolean(mystring.ElementAt(i).ElementAt(6)))
-                            fullYear = "Y";
+                            BYOC = "Y";
                         else
-                            fullYear = "N";
+                            BYOC = "N";
+
                         String user = mystring.ElementAt(i).ElementAt(1).ToString();
                         String payKey = responsePay.payKey;
 
@@ -280,7 +283,9 @@ namespace KCGameOn
                             cmd.CommandType = System.Data.CommandType.StoredProcedure;
                             cmd.Parameters.AddWithValue("Username", user);
                             cmd.Parameters.AddWithValue("VerifiedPaid", verfiedPaid);
-                            cmd.Parameters.AddWithValue("PaidFullYear", fullYear);
+                            //cmd.Parameters.AddWithValue("PaidFullYear", fullYear);
+                            // Change this "PaidFullYear" to new column for BYOC also prob have to change the stored proc spAddPayment
+                            cmd.Parameters.AddWithValue("PaidFullYear", BYOC);
                             cmd.Parameters.AddWithValue("PaymentMethod", paymentMethod);
                             cmd.Parameters.AddWithValue("PaymentKey", payKey);
                             cmd.Parameters.AddWithValue("DonationAmount", donationAmount);
