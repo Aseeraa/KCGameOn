@@ -28,6 +28,7 @@ namespace KCGameOn
         public static List<String> names = new List<String>();
         public List<UsersObject> payments = new List<UsersObject>();
         public static int quantity = 0;
+        public static int byocQuantity = 0;
         public static Double extraLife = 0.00;
         public static UsersObject current = new UsersObject("", "", "");
         public static StringBuilder newRow;
@@ -45,6 +46,7 @@ namespace KCGameOn
                 {
                     checkInDay = "true";
                 }
+                checkInDay = "true";
             }
             //page = this.Page;
             String UserInfo = ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString;
@@ -178,10 +180,11 @@ namespace KCGameOn
             List<String[]> mystring = json.Deserialize<List<string[]>>(data);
             for (int i = 0; i < mystring.Count; i++)
             {
-                String user = mystring.ElementAt(i).ElementAt(1).ToString();
-                String first = mystring.ElementAt(i).ElementAt(2).ToString();
-                String last = mystring.ElementAt(i).ElementAt(3).ToString();
-                Double donationAmount = 0.00;
+                String user = mystring.ElementAt(i).ElementAt(0).ToString();
+                String first = mystring.ElementAt(i).ElementAt(1).ToString();
+                String last = mystring.ElementAt(i).ElementAt(2).ToString();
+                bool byoc =  Convert.ToBoolean(mystring.ElementAt(i).ElementAt(6));
+                Double donationAmount = Convert.ToDouble(mystring.ElementAt(i).ElementAt(5));
 
                 MySqlCommand cmd = null;
                 MySqlConnection conn = null;
@@ -202,8 +205,12 @@ namespace KCGameOn
                     switch (userValue)
                     {
                         case -1: // Successfully Validated
-                            if (mystring.ElementAt(i).ElementAt(0).Equals("True"))
-                                quantity += remainingEvents;
+                            //if (mystring.ElementAt(i).ElementAt(0).Equals("True"))
+                            //    quantity += remainingEvents;
+                            //else
+                            //    quantity += 1;
+                            if (byoc)
+                                byocQuantity += 1;
                             else
                                 quantity += 1;
                             if (donationAmount > 0)
@@ -235,7 +242,7 @@ namespace KCGameOn
             if (tableValid)
             {
                 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-                PayRequest requestPay = Payment(quantity, extraLife);
+                PayRequest requestPay = Payment(quantity, byocQuantity, extraLife);
                 PayResponse responsePay = PayAPIOperations(requestPay);
                 RedirectURL = "https://www.paypal.com/cgi-bin/webscr?cmd=_ap-payment&paykey=" + responsePay.payKey;
                 //RedirectURL = "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_ap-payment&paykey=" + responsePay.payKey;
@@ -244,7 +251,12 @@ namespace KCGameOn
                     for (int i = 0; i < mystring.Count; i++)
                     {
                         String fullYear;
-                        if (mystring.ElementAt(i).ElementAt(0).ToString().Equals("True"))
+                        //if (mystring.ElementAt(i).ElementAt(0).ToString().Equals("True"))
+                        //    fullYear = "Y";
+                        //else
+                        //    fullYear = "N";
+
+                        if (Convert.ToBoolean(mystring.ElementAt(i).ElementAt(6)))
                             fullYear = "Y";
                         else
                             fullYear = "N";
@@ -254,7 +266,7 @@ namespace KCGameOn
                         String verfiedPaid = "N";
                         String paymentMethod = "PayPal";
 
-                        Double donationAmount = 0.00;
+                        Double donationAmount = Convert.ToDouble(mystring.ElementAt(i).ElementAt(5));
 
                         MySqlCommand cmd = null;
                         MySqlConnection conn = null;
@@ -301,7 +313,7 @@ namespace KCGameOn
         }
 
         // # Payment
-        public static PayRequest Payment(int quantity, Double extraLife)
+        public static PayRequest Payment(int quantity, int byocQuantity, Double extraLife)
         {
             // # PayRequest
             // The code for the language in which errors are returned
@@ -314,12 +326,11 @@ namespace KCGameOn
             decimal amount;
             if (checkInDay.Equals("true"))
             {
-                amount = Convert.ToDecimal((quantity - 1) * 15.00);
-                amount += Convert.ToDecimal(20.00);
+                amount = Convert.ToDecimal(quantity * 25.00) + Convert.ToDecimal(byocQuantity * 25.00);
             }
             else
             {
-                    amount = Convert.ToDecimal(quantity * 15.00);
+                amount = Convert.ToDecimal(quantity * 15.00) + Convert.ToDecimal(byocQuantity * 20.00);
             }
             if (extraLife > 0)
             {

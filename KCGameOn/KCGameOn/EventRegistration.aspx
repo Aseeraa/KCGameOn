@@ -70,8 +70,10 @@
     </style>
     <script>
         var amount = 15.00;
-        var byocamount = 20.00;
-        var checkIn = <%= checkInDay%>
+        var checkIn = true;
+        if (checkIn == true) {
+            amount = 25.00;
+        }
         function calculateSum() {
             var sum = 0;
             // iterate through each td based on class and add the values
@@ -91,6 +93,20 @@
             //        sum += amount;
             //    }
             //});
+            $('#registrationTable tbody tr').each(function () {
+                sum += amount;
+            });
+            $('#BYOCregistrationTable tbody tr').each(function () {
+                if (checkIn)
+                {
+                    sum += amount;
+                }
+                else
+                {
+                    sum += amount + 5;
+                }
+                
+            });
             $('.extralife').find('input[type="checkbox"]').each(function () {
                 if ($(this).prop('checked') == true) {
                     sum += 10;
@@ -150,7 +166,8 @@
                 }
                 $("#userDropdown").val("<%=SessionVariables.UserName %>");
                 $("#userDropdown").trigger("change");
-                $('#add').trigger("click");
+                $('#addBYOC').trigger("click");
+                calculateSum();
             };
 
             function deleterow(tableID) {
@@ -207,9 +224,6 @@
                 var split = name.split(" ");
                 var first = split[0];
                 var last = split[1];
-                if (checkIn == true) {
-                    amount = 25.00
-                }
                 if (user != "None" && name != "None") {
                     if ($('#registrationTable tr > td:contains(' + user + ') + td:contains(' + first + ') + td:contains(' + last + ')').length) {
                         //bootbox.alert("User is already in the table.", function () {
@@ -244,9 +258,6 @@
                 var split = name.split(" ");
                 var first = split[0];
                 var last = split[1];
-                if (checkIn == true) {
-                    byocamount = 25.00
-                }
                 if (user != "None" && name != "None") {
                     if ($('#BYOCregistrationTable tr > td:contains(' + user + ') + td:contains(' + first + ') + td:contains(' + last + ')').length) {
                         //bootbox.alert("User is already in the table.", function () {
@@ -254,7 +265,7 @@
                         $("#userInTable").modal('show');
                     }
                     else {
-                        var newRow = $('<tr><td>' + user + '</td><td>' + first + '</td><td>' + last + '</td><td class = "price">' + byocamount.toFixed(2) + '</td><td class="extralife">' + '<input type="checkbox" value="checked" onclick="calculateSum();"></td>' + '</tr>');
+                        var newRow = $('<tr><td>' + user + '</td><td>' + first + '</td><td>' + last + '</td><td class = "price">' + amount.toFixed(2) + '</td><td class="extralife">' + '<input type="checkbox" value="checked" onclick="calculateSum();"></td>' + '</tr>');
                         $('#BYOCregistrationTable').append(newRow);
                         calculateSum();
                     }
@@ -307,6 +318,26 @@
                         tdArray.push($(this).text());
                     })
                     tdArray.push(extraLife);
+                    tdArray.push(false);
+                    payments.push(tdArray)
+                })
+                $('#BYOCregistrationTable tbody tr').each(function () {
+                    $(this).find('input[type="checkbox"]').each(function () {
+                        if ($(this).prop('checked') == true) {
+
+                            extraLife = "10.00";
+                        }
+                        else {
+                            extraLife = "0.00";
+                        }
+                    });
+                    var tdArray = []
+                    //tdArray.push(fullYear);
+                    $(this).find('td').each(function () {
+                        tdArray.push($(this).text());
+                    })
+                    tdArray.push(extraLife);
+                    tdArray.push(true);
                     payments.push(tdArray)
                 })
                 $.ajax({
