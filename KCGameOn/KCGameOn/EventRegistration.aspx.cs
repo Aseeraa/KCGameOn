@@ -46,7 +46,6 @@ namespace KCGameOn
                 {
                     checkInDay = "true";
                 }
-                checkInDay = "true";
             }
             //page = this.Page;
             String UserInfo = ConfigurationManager.ConnectionStrings["KcGameOnSQL"].ConnectionString;

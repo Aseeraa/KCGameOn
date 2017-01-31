@@ -70,7 +70,7 @@
     </style>
     <script>
         var amount = 15.00;
-        var checkIn = true;
+        var checkIn = <%= checkInDay%>;
         if (checkIn == true) {
             amount = 25.00;
         }
