@@ -411,12 +411,13 @@
         {%>
     <div id="field-body">
 
-        <h4>KCGameOn 73 will be held at the KCI Expo Center - featuring tournament finals and the loyalty prize giveaway! All persons are required to purchase a ticket to enter the venue.</h4>
+
         <br />
         <div class="row">
             <div class="col-sm-4">
                 <div id="fields" class="pull-left">
-                    <h4>Use these dropdowns to register yourself and friends for the next event:</h4>
+                    <h4>Add yourself (and others) to the ticket type you want to purchase:</h4>
+                    <br />
                     <label>Username:</label>
                     <select id="userDropdown" class="dropdown">
                         <option selected="selected">None</option>
@@ -428,11 +429,21 @@
                     <br />
                     <!--<button id="add" class="btn btn-default pull-right">Add User</button>-->
                     <br />
-                    <h3>NOTE: It auto adds the person logged in to pay, when you are ready to start the payment process, click "PAY NOW."</h3>
-                    <h3>After you pay, click the link back to the map and take a seat <b>immediately.</b></h3>
+                    <h3>Venue Address:</h3>
+                    <p><a href="https://www.google.com/maps/place/2702+Rock+Creek+Pkwy,+Kansas+City,+MO+64117/@39.151148,-94.547333,17z/data=!3m1!4b1!4m5!3m4!1s0x87c0f9f67a2fffe5:0xf2cfbbd58020c35!8m2!3d39.151148!4d-94.547333?hl=en">2702 Rock Creek Parkway, North Kansas City, MO 64117</a></p>
+                    <p>
+                        <iframe width="220" height="147" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed/v1/place?q=39.150828199424806,-94.54728671016365&key=AIzaSyAN0om9mFmy1QN6Wf54tXAowK4eT0ZUPrU"></iframe>
+                    </p>
+                    <p>Located in North Kansas City, MO (nearly the centerpoint of the KC Metro) - our venue is right off of I-35 and Armour Road, just north of downtown KCMO.  There is no public transportation to this area on Saturdays so you will need to drive/carpool to the event.</p>
                     <br />
-                    <h5>If you pay for more than one ticket, you will need to have that person log in and sit in their seat as well.</h5>
-                    <h5>An email with the easy check-in barcode will be sent to your email after you take a seat.</h5>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
                 </div>
 
             </div>
@@ -441,6 +452,8 @@
                 <form id="Form1" runat="server">
 
                     <div class="pull-right">
+                        <h4>KCGameOn 73 features the gaming charity <a href="FeaturedCharity.aspx">Play to Beat Brain Cancer.</a> All donations are optional - you can donate at the PTBBC booth at our event or pay through our website for convienence.</h4>
+                        <br />
                         <h3>Console/Spectator/TableTop/TinyWhoop ticket</h3>
                         <table id="registrationTable" class="table bordered-table zebra-striped pull-right">
                             <thead>
@@ -457,7 +470,7 @@
 
                         </table>
                     </div>
-                    <div class="pull-right">
+                    <div class="pull-left">
                         <button id="add" class="btn btn-default pull-left">Add User</button>
                         <button id="delete_row" disabled="disabled" class="pull-right btn btn-default">Delete User</button>
                     </div>
@@ -481,7 +494,7 @@
 
                         </table>
                     </div>
-                    <div class="pull-right">
+                    <div class="pull-left">
                         <button id="addBYOC" class="btn btn-default pull-left">Add User</button>
                         <button id="delete_rowBYOC" disabled="disabled" class="pull-left btn btn-default">Delete User</button>
                     </div>
@@ -497,6 +510,21 @@
 
 
                 </form>
+
+            </div>
+            <div class="bottomtext">
+                <h2>Instructions for event registration:</h2>
+                <p>1) It auto adds you your name to the BYOC ticket line, if you are not bringing a computer, delete your name there.</p>
+                <p>2) If you ARE buying a BYOC ticket, then just hit 'pay now' and you will be forwarded to Paypal to make the payment.</p>
+                <p>3) If you want a console/other ticket, add yourself to Console/other using 'add' under the Console Ticket section.</p>
+                <p>4) Once everything is set the way you'd like it, click the 'Pay Now' button and off to Paypal with you.</p>
+                <p>5) After you pay, you should be directed back to the map page where you will select a seat on the map.</p>
+                <p>6) An email will be delivered to you with a barcode - save this barcode and bring it with you to check-in at the next event!</p>
+                <p>optionals:</p>
+                <p>* Are you paying for any other tickets?  if so, select thier name in the dropdowns on the left side.  Click the add button again.</p>
+                <p>* Optionally, click the checkbox on each row created to donate to our featured charity!</p>
+                
+                
 
             </div>
         </div>

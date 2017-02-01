@@ -51,7 +51,7 @@
                                                             <img src="http://www.kcgameon.com/icon/discord.png" alt="flickr"></a>
                                                     </td>
                                                     <td>
-                                                        <p class="text-right">December 3rd, 2016 noon till 3am</p>
+                                                        <p class="text-right">Feburary 25th, 2017 noon till 3am</p>
                                                         <h6 class="text-right"><a href="https://kcgameon.com/News.aspx">looks horrible?  try the web view</a></h6>
                                                     </td>
                                                 </tr>

@@ -156,7 +156,7 @@
             <img src="/img/pds.jpg" height="75" width="200" />
             <h3>1:30 pm start time</h3>
             <div class="UImenuItem clearfix">
-                <a href="http://challonge.com/KCGOIW"><img src="/img/join.png" /></a><label class="Menubody-trigger tournament-menu">Call of Duty: Infinate Warfare $10 entry, $320 payout*</label>
+                <a href="http://challonge.com/KCGOIW"><img src="/img/join.png" /></a><label class="Menubody-trigger tournament-menu">Call of Duty: Infinite Warfare $10 entry, $320 payout*</label>
                 <div class="Content">
                     <ul>
                         <li>*based on 8 teams paying $40 per team</li>
@@ -591,7 +591,7 @@
             <img src="/img/pds.jpg" height="75" width="200" />
             <h3>1:30 pm start time</h3>
             <div class="UImenuItem clearfix">
-                <label class="Menubody-trigger tournament-menu">Call of Duty: Infinate Warfare $10 entry, $320 payout*</label>
+                <label class="Menubody-trigger tournament-menu">Call of Duty: Infinite Warfare $10 entry, $320 payout*</label>
                 <div class="Content">
                     <ul>
                         <li>*based on 8 teams paying $40 per team</li>
